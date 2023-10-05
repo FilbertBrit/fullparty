@@ -19,11 +19,11 @@ const removeCurrentUser = () => {
 };
 
 export const login = (user) => async (dispatch) => {
-  const { phone_number, password } = user;
+  const { phoneNumber, password } = user;
   const response = await csrfFetch('/api/session', {
     method: 'POST',
     body: JSON.stringify({
-      phone_number,
+      phoneNumber,
       password
     })
   });
