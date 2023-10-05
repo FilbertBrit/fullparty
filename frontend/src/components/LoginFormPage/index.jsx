@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import './LoginForm.css';
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function LoginFormPage() {
 
   return (
     <form onSubmit={handleSubmit} className='loginForm'>
+        <h1 id='title'>Welcome to partiful</h1>
       <ul>
         {errors.map(error => <li key={error}>{error}</li>)}
       </ul>

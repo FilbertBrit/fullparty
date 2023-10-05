@@ -31,10 +31,10 @@ async function csrfFetch(url, options = {}) {
     if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken);
   }
   
-  export async function restoreCSRF() {
-    const response = await csrfFetch("/api/session");
-    storeCSRFToken(response);
-    return response;
-  }
+  // export async function restoreCSRF() {
+  //   const response = await csrfFetch("/api/session");
+  //   storeCSRFToken(response);
+  //   return response;
+  // }
   
   export default csrfFetch;

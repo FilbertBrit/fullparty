@@ -9,7 +9,7 @@ function App() {
   return (
     <Switch>
       <Route path="/login">
-        <h1>Hello from App</h1>
+        {/* <h1>Welcome to partiful</h1> */}
         <LoginFormPage />
       </Route>
     </Switch>
