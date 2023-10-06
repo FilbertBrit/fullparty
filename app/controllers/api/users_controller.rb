@@ -1,9 +1,9 @@
 class Api::UsersController < ApplicationController
-  wrap_parameters include: User.attribute_names + ['password'] # ask about this
+  wrap_parameters include: User.attribute_names + ['password', 'phoneNumber'] # ask about this
 
   def create
     @user = User.new(user_params)
-
+    # debugger
     if @user.save
       login!(@user)
       # render json: {user: @user}
