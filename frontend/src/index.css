@@ -1,1 +1,6 @@
 /* TODO Add site wide styles */
+
+#title{
+    font-family: "Lucida Console", "Courier New", monospace;
+    color: azure;
+}

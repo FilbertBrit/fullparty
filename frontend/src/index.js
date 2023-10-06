@@ -21,6 +21,7 @@ function Root() {
   return (
     <Provider store={store}>
       <BrowserRouter>
+      <h1 id='title'>Welcome to partiful</h1>
         <App />
       </BrowserRouter>
     </Provider>

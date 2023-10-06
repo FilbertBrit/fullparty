@@ -33,7 +33,6 @@ function LoginFormPage() {
 
   return (
     <form onSubmit={handleSubmit} className='loginForm'>
-        <h1 id='title'>Welcome to partiful</h1>
       <ul>
         {errors.map(error => <li key={error}>{error}</li>)}
       </ul>
