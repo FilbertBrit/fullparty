@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: fullParty_production
-  username: fullParty
-  password: <%= ENV["FULLPARTY_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
