@@ -3,12 +3,12 @@ import { Route, Switch } from 'react-router-dom'
 import LoginFormPage from './components/LoginFormPage';
 import { Router } from 'react-router-dom/cjs/react-router-dom.min';
 import SignupFormPage from './components/SignupFormPage';
+import Navigation from "./components/Navigation";
 
 function App() {
-  // return (
-  //   <h1>Hello from App</h1>
-  // );
   return (
+    <>
+    <Navigation />
     <Switch>
       <Route path="/login">
         {/* <h1>Welcome to partiful</h1> */}
@@ -18,6 +18,7 @@ function App() {
         <SignupFormPage/>
       </Route>
     </Switch>
+    </>
   );
 
 }
