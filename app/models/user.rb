@@ -36,10 +36,10 @@ class User < ApplicationRecord
     dependent: :destroy
   has_many :socials,
   dependent: :destroy
-  # has_many :achievements,
+  has_many :achievements,
   dependent: :destroy
-  has_many :parties,
-    through: 
+  # has_many :parties,
+  #   through: 
     
   def reset_session_token!
     # `update!` the user's session token to a new, random token
