@@ -10,9 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_03_221444) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_09_222154) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "achievements", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_achievements_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "body", null: false
+    t.bigint "author_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_comments_on_author_id"
+    t.index ["event_id"], name: "index_comments_on_event_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "description"
+    t.string "location"
+    t.datetime "date_time"
+    t.integer "capacity"
+    t.integer "comments"
+    t.bigint "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_events_on_author_id"
+  end
+
+  create_table "rsvps", force: :cascade do |t|
+    t.string "status", null: false
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_rsvps_on_event_id"
+    t.index ["user_id", "event_id"], name: "index_rsvps_on_user_id_and_event_id", unique: true
+    t.index ["user_id"], name: "index_rsvps_on_user_id"
+  end
+
+  create_table "socials", force: :cascade do |t|
+    t.string "platform", null: false
+    t.string "handle", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "platform"], name: "index_socials_on_user_id_and_platform", unique: true
+    t.index ["user_id"], name: "index_socials_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
@@ -23,7 +75,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_03_221444) do
     t.datetime "updated_at", null: false
     t.index ["phone_number"], name: "index_users_on_phone_number", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
-    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "achievements", "users"
+  add_foreign_key "comments", "events"
+  add_foreign_key "comments", "users", column: "author_id"
+  add_foreign_key "events", "users", column: "author_id"
+  add_foreign_key "rsvps", "events"
+  add_foreign_key "rsvps", "users"
+  add_foreign_key "socials", "users"
 end

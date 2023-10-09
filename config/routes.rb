@@ -11,6 +11,6 @@ Rails.application.routes.draw do
     # resource :events, only: [:show, :create, :destroy, :index, :update, :index]
     # resources :rsvps, only: [:create, :update]
     # resources :comments, only: [:create, :update, :destroy]
-    get '*path', to: "static_pages#frontend_index"
   end
+  get '*path', to: "static_pages#frontend_index"
 end

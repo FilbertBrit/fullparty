@@ -24,7 +24,20 @@ class User < ApplicationRecord
     validates :session_token, presence: true, uniqueness: true
     validates :password, length: { in: 6..255 }, allow_nil: true
     
-    before_validation :ensure_session_token
+  has_many :events,
+    foreign_key: :author_id,
+    class_name: :Event,
+    dependent: :destroy
+  has_many :rsvps,
+  dependent: :destroy
+  has_many :comments,
+    foreign_key: :author_id,
+    class_name: :Comment,
+    dependent: :destroy
+  has_many :socials,
+  dependent: :destroy
+  has_many :achievements,
+  dependent: :destroy
     
   def reset_session_token!
     # `update!` the user's session token to a new, random token
