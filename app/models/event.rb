@@ -15,6 +15,7 @@
 #
 class Event < ApplicationRecord
     validates :title, :author_id, presence: true
+    
     belongs_to :user,
         foreign_key: :author_id,
         class_name: :User

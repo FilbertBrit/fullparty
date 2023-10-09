@@ -10,4 +10,8 @@
 #  updated_at :datetime         not null
 #
 class Social < ApplicationRecord
+    validates :platform, :handle, :user_id, presence: true
+    validates :platform, uniqueness: {scope: :user_id}
+
+    belongs_to :user
 end

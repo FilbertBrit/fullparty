@@ -10,5 +10,7 @@
 #  updated_at :datetime         not null
 #
 class Comment < ApplicationRecord
+    validates :body, :author_id, :event_id, presence: true
     belongs_to :user
+    belongs_to :event
 end
