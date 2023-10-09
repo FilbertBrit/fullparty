@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id              :bigint           not null, primary key
-#  username        :string           not null
+#  name            :string           not null
 #  phone_number    :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
@@ -14,7 +14,7 @@ class User < ApplicationRecord
   before_validation :ensure_session_token
   has_secure_password
 
-  validates :username, 
+  validates :name, 
     uniqueness: true, 
     length: { in: 3..30 }, 
     format: { without: URI::MailTo::EMAIL_REGEXP, message:  "can't be an email" }
@@ -28,18 +28,24 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     class_name: :Event,
     dependent: :destroy
+
   has_many :rsvps,
   dependent: :destroy
+
   has_many :comments,
     foreign_key: :author_id,
     class_name: :Comment,
     dependent: :destroy
+
   has_many :socials,
   dependent: :destroy
+
   has_many :achievements,
   dependent: :destroy
-  # has_many :parties,
-  #   through: 
+
+  has_many :parties,
+    through: :rsvps,
+    source: :event
     
   def reset_session_token!
     # `update!` the user's session token to a new, random token
@@ -88,7 +94,5 @@ class User < ApplicationRecord
     # if `self.session_token` is nil, set it to `generate_unique_session_token`
     self.session_token ||= generate_unique_session_token
   end
-
-
 
 end
