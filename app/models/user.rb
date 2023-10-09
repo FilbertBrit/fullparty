@@ -36,7 +36,7 @@ class User < ApplicationRecord
     dependent: :destroy
   has_many :socials,
   dependent: :destroy
-  has_many :achievements,
+  # has_many :achievements,
   dependent: :destroy
   has_many :parties,
     through: 
