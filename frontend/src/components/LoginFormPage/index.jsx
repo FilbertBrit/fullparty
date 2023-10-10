@@ -43,10 +43,6 @@ function LoginFormPage() {
 
   }
 
-  const handleClick = () => {
-    console.log('hello')
-  }
-
   return (
     <>
       <div className='layout'>
