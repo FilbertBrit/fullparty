@@ -4,3 +4,17 @@
     font-family: "Lucida Console", "Courier New", monospace;
     color: azure;
 }
+
+.logo{
+    height: 30px;
+    width: 125px;
+    padding: 2%;
+}
+
+.app{
+    /* background: linear-gradient(90deg, #0062ff, #da61ff); */
+    background:linear-gradient(rgba(5, 5, 147, 0.816),transparent);
+    background-color: lightblue;
+    min-height: 100vh;
+    width: 100%;
+}

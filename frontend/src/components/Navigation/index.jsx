@@ -8,6 +8,7 @@ import './Navigation.css';
 function Navigation() {
 
     let { route } = useParams()
+    console.log(route)
     const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
@@ -29,12 +30,14 @@ function Navigation() {
   }
 
   return (
+    <>
     <ul>
       <li>
         <NavLink exact to="/">Home</NavLink>
         {sessionLinks}
       </li>
     </ul>
+    </>
   );
 
 }
