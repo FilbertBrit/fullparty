@@ -5,6 +5,10 @@
     align-items: center;
     cursor: pointer;
     width: max-content;
+    height: max-content;
+}
+.dropdown-btn:hover{
+    background: #4a525d;
 }
 .dropdown-item{
     display: flex;
@@ -27,12 +31,7 @@
     background: #4a525d;
 }
 
-.dropdown-container{
-    /* hover: border-l-transparent; */
 
-    /* width: 100%;
-    height: inherit; */
-}
 h3-button{
     display: grid;
     background-color: white;

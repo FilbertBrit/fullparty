@@ -33,6 +33,12 @@
     cursor: pointer;
     font-size: 18px;
     border-style: none;
+    display: flex;
+    justify-content: center;
+}
+#login-button-div{
+    display: flex;
+    justify-content: center;
 }
 
 #submit-buttons{
@@ -57,3 +63,7 @@ input {
 
     height: 65px;
   }
+
+inpput:hover{
+    background: #4a525d;
+}

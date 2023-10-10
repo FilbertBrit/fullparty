@@ -47,7 +47,6 @@ function LoginFormPage() {
     console.log('hello')
   }
 
-
   return (
     <>
       <div className='layout'>
@@ -62,7 +61,6 @@ function LoginFormPage() {
               </span>
               <input
                 type="text"
-                // maxLength="10"
                 value={phoneNumber}
                 onChange={(e) => onChange(e)}
                 name='phoneNumber'
@@ -74,29 +72,30 @@ function LoginFormPage() {
               </ul>
             </div>
           </span>
-
-          <br/>
-          {}
-          {/* <label>
-            Password
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              name='password'
-            />
-          </label> */}
           <br />
           <div id='submit-buttons'>
             { isLengthTen ? (
-            <button id='login-button' onClick={handleClick}>Login</button> 
+              <>
+              <div id='password-container'>
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    name='password'
+                    placeholder='Password'
+                  />
+                <br />
+                <div id='login-button-div'>
+                  <button type="submit" id='login-button'>Login</button> 
+                </div>
+              </div>
+              </>
             ) : (
               <></>
             )}
             
             {/* // <button id='login-button'>Login</button>  */}
-            {/* <button type="submit"> I AGREE </button> */}
           </div>
         </form>
 
