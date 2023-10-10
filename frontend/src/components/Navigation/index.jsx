@@ -8,7 +8,7 @@ import './Navigation.css';
 function Navigation() {
 
     let { route } = useParams()
-    console.log(route)
+    // console.log(route)
     const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
