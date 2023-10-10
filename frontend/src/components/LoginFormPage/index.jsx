@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.css';
+import RegionMenu from "./RegionMenu"
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -10,8 +11,11 @@ function LoginFormPage() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
+  const [isLengthTen, setIsLengthTen] = useState(false)
 
   if (sessionUser) return <Redirect to="/" />;
+
+  let regionMenu = RegionMenu();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,35 +35,76 @@ function LoginFormPage() {
       });
   }
 
+  const onChange = (e) => {
+
+    setPhoneNumber(e.target.value)
+    e.target.value.toString().length === 10 ? setIsLengthTen(true) : setIsLengthTen(false);
+    // console.log(e.target.value, isLengthTen)
+
+  }
+
+  const handleClick = () => {
+    console.log('hello')
+  }
+
+
   return (
-    <form onSubmit={handleSubmit} className='loginForm'>
-      <ul>
-        {errors.map(error => <li key={error}>{error}</li>)}
-      </ul>
-      <label>
-        Phone Number
-        <input
-          type="text"
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-          required
-          name='phoneNumber'
-        />
-      </label>
-      <br/>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          name='password'
-        />
-      </label>
-      <button type="submit">Log In</button>
-    </form>
+    <>
+      <div className='layout'>
+
+        <h3 id='login-title'>Sign in or sign up</h3>
+        <form onSubmit={handleSubmit} className='loginForm'>
+
+          <span>
+            <div id='phone-div'>
+              <span id='region-menu'>
+                {regionMenu}
+              </span>
+              <input
+                type="text"
+                // maxLength="10"
+                value={phoneNumber}
+                onChange={(e) => onChange(e)}
+                name='phoneNumber'
+                placeholder='XXXXXXXXXX'
+                required
+              />
+              <ul>
+                {errors.map(error => <li key={error}>{error}</li>)}
+              </ul>
+            </div>
+          </span>
+
+          <br/>
+          {}
+          {/* <label>
+            Password
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              name='password'
+            />
+          </label> */}
+          <br />
+          <div id='submit-buttons'>
+            { isLengthTen ? (
+            <button id='login-button' onClick={handleClick}>Login</button> 
+            ) : (
+              <></>
+            )}
+            
+            {/* // <button id='login-button'>Login</button>  */}
+            {/* <button type="submit"> I AGREE </button> */}
+          </div>
+        </form>
+
+      </div>
+    </>
   );
 }
+
+
 
 export default LoginFormPage;
