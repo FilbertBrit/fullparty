@@ -20,7 +20,7 @@ ApplicationRecord.transaction do
     # Create one user with an easy to remember username, email, and password:
     User.create!(
       name: 'Demo-lition', 
-      phone_number: '012-345-6789', 
+      phone_number: '0123456789', 
       password: 'password'
     )
   

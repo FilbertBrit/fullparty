@@ -26,9 +26,9 @@ function Root() {
       <BrowserRouter>
       {/* <h1 id='title'>Welcome to partiful</h1> */}
       <div className='app' >
-      <NavLink exact to="/" className="photo-logo-home-link">
+      {/* <NavLink exact to="/" className="photo-logo-home-link">
         <img className='logo' src={logo}/>
-      </NavLink>
+      </NavLink> */}
         <App />
       </div>
       </BrowserRouter>

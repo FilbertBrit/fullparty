@@ -39,7 +39,7 @@ function RegionMenu(){
           {isActive && (
             <div className="dropdown-content">
               {countries.map((country, i) => (
-                <div className="dropdown-item">
+                <div className="dropdown-item" key={country.country}>
                   <h3 id='item-comp'>{country.flag}{country.country}{country['area-code']}</h3>
                   {/* <h3 id='item-comp'>{country.country}</h3>
                   <h3 id='item-comp'>{country['area-code']}</h3> */}

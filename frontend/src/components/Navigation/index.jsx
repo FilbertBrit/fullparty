@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import { useParams } from 'react-router';
 import './Navigation.css';
+import logo from "../../images/logo.png"
 
 function Navigation() {
 
@@ -24,7 +25,7 @@ function Navigation() {
         <br/>
         <NavLink to="/login">Log In</NavLink>
         <br/>
-        <NavLink to="/signup">Sign Up</NavLink>
+        {/* <NavLink to="/signup">Sign Up</NavLink> */}
       </>
     );
   }
@@ -32,10 +33,11 @@ function Navigation() {
   return (
     <>
     <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
+        <NavLink exact to="/" className="photo-logo-home-link">
+          <img className='logo' src={logo}/>
+        </NavLink>
+        {/* <NavLink exact to="/">Home</NavLink> */}
         {sessionLinks}
-      </li>
     </ul>
     </>
   );

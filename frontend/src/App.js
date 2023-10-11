@@ -8,7 +8,7 @@ import Navigation from "./components/Navigation";
 function App() {
   return (
     <>
-    {/* <Navigation /> */}
+    <Navigation />
     <Switch>
       <Route path="/login">
         {/* <h1>Welcome to partiful</h1> */}
