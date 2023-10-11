@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import './LoginForm.css';
 import RegionMenu from "./RegionMenu"
 import { AiOutlineInstagram } from "react-icons/ai"
+import Navigation from '../Navigation';
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ function LoginFormPage() {
   const [isLengthTen, setIsLengthTen] = useState(false)
   let regionMenu = RegionMenu();
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/events" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -55,6 +56,7 @@ function LoginFormPage() {
 
   return (
     <>
+      <Navigation/>
       <div className='layout'>
         <ul>
           {errors.map(error => <li key={error}>{error}</li>)}

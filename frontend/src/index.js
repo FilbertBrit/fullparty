@@ -25,9 +25,6 @@ function Root() {
     <Provider store={store}>
       <BrowserRouter>
       <div className='app' >
-      {/* <NavLink exact to="/" className="photo-logo-home-link">
-        <img className='logo' src={logo}/>
-      </NavLink> */}
         <App />
       </div>
       </BrowserRouter>
