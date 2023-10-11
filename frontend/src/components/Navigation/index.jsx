@@ -36,6 +36,7 @@ function Navigation() {
         sessionLinks = ( 
           <div id='splash-nav'>
             <button>inspo</button>
+            <button>Home</button>
             <NavLink exact to="/login" className="splash-login-button">
               Login
             </NavLink>
@@ -54,9 +55,13 @@ function Navigation() {
             <img className='logo' src={logo}/>
           </NavLink>
         ) : (
-          <NavLink exact to="/" className="photo-logo-home-link">
-            <img className='logo' src={logo}/>
-          </NavLink>
+          <div>
+
+            <NavLink exact to="/" className="photo-logo-home-link">
+              <img className='logo' src={logo}/>
+            </NavLink>
+            {/* <>{sessionLinks}</> */}
+          </div>
         )}
         {sessionLinks}
     </ul>
