@@ -24,7 +24,6 @@ function Root() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-      {/* <h1 id='title'>Welcome to partiful</h1> */}
       <div className='app' >
       {/* <NavLink exact to="/" className="photo-logo-home-link">
         <img className='logo' src={logo}/>

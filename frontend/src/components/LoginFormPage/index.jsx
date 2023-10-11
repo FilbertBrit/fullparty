@@ -45,7 +45,7 @@ function LoginFormPage() {
 
   //for handling demo user login button
   const handleClick = (e) => {
-    
+
     setPhoneNumber("0123456789");
     setPassword("password");
 
@@ -63,7 +63,7 @@ function LoginFormPage() {
         <h3 id='login-title'>Sign in or sign up</h3>
         <form onSubmit={handleSubmit} className='loginForm'>
 
-          <span>
+          <div id='phone-container'>
             <div id='phone-div'>
               <span id='region-menu'>
                 {regionMenu}
@@ -77,15 +77,16 @@ function LoginFormPage() {
                 required
               />
             </div>
-          </span>
+          </div>
           <br />
           <div id='submit-buttons'>
             { isLengthTen ? (
               <>
               <div >
                 <div id='password-container'>
-                <h4>PASSWORD</h4>
+                  <h4>PASSWORD</h4>
                   <input
+                      id='password-input'
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -111,7 +112,7 @@ function LoginFormPage() {
           </div>
         </form>
         <footer className='footer'>
-          <div>© 2023 Partiful™ | Terms & Privacy | Careers |</div>
+          <div>© 2023 FullParty™ | Terms & Privacy | Careers |</div>
           <div> Questions? DM us 
             <AiOutlineInstagram/>
           </div>

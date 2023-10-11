@@ -8,8 +8,9 @@ import logo from "../../images/logo.png"
 
 function Navigation() {
 
-    let { route } = useParams()
-    // console.log(route)
+    // let { route } = useParams()
+    const currentURL = window.location.pathname
+    console.log(currentURL);
     const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
@@ -18,6 +19,14 @@ function Navigation() {
       <ProfileButton user={sessionUser} />
     );
   } else {
+    
+    switch (currentURL) {
+      case "/login":
+        console.log('in case 1')
+        // break;
+      case "/":
+        // break;
+    }
 
     //add : case
     sessionLinks = (
