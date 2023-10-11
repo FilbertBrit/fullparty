@@ -8,6 +8,7 @@ import configureStore from './store';
 import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session';
 import logo from "./images/logo.png"
+import { AiOutlineInstagram } from "react-icons/ai"
 
 
 //development purposes
@@ -26,6 +27,10 @@ function Root() {
       <BrowserRouter>
       <div className='app' >
         <App />
+        <footer className='footer'>
+          <div>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
+          {/* <div><AiOutlineInstagram/></div> */}
+        </footer> 
       </div>
       </BrowserRouter>
     </Provider>

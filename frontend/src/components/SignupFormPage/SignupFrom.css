@@ -1,0 +1,26 @@
+#signup-title{
+    color: white;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    font-size: 24px;
+    padding-top: 3%;
+}
+
+.name-container{
+    color: grey;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    display:flex;
+    flex-direction: column;
+    /* background-color: #363d4782; */
+    padding-bottom: 3.5%;
+    padding-right: 2%;
+    padding-top: 3%;
+    height: 25px;
+    font-size: small;
+    border-bottom-style: solid;
+}
+
+#confirm-input{
+    border-bottom-style: solid;
+    border-bottom-color: #ab76f6;
+}
+

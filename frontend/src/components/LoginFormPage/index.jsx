@@ -113,12 +113,11 @@ function LoginFormPage() {
             )}
           </div>
         </form>
-        <footer className='footer'>
-          <div>© 2023 FullParty™ | Terms & Privacy | Careers |</div>
-          <div> Questions? DM us 
-            <AiOutlineInstagram/>
-          </div>
-        </footer>
+        {/* <footer className='footer'>
+          <div>© 2023 FullParty™ | Terms & Privacy | Careers | </div>
+          <div> Questions? DM us </div>
+          <div><AiOutlineInstagram/></div>
+        </footer>  */}
 
       </div>
     </>

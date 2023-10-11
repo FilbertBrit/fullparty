@@ -28,9 +28,9 @@ function RegionMenu(){
         <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>
         <h3 id='h3-button'>🇺🇸🇨🇦</h3>
           {!isActive ? (
-              <BsFillCaretDownFill size={10} color='grey'/> 
+              <BsFillCaretDownFill size={10} color='grey' id='caret'/> 
             ) : (
-              <BsFillCaretUpFill size={10} color='grey'/> 
+              <BsFillCaretUpFill size={10} color='grey' id='caret'/> 
             )}
 
           {/* <FontAwesomeIcon icon={faCarrot} /> */}

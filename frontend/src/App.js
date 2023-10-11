@@ -4,7 +4,8 @@ import LoginFormPage from './components/LoginFormPage';
 import { Redirect, Router } from 'react-router-dom/cjs/react-router-dom.min';
 import SignupFormPage from './components/SignupFormPage';
 import { useSelector } from "react-redux"
-import { HomePage, SplashPage } from './components/HomePage';
+import { HomePage } from './components/HomePage';
+import { SplashPage } from './components/SplashPage';
 
 
 function App() {
@@ -13,9 +14,11 @@ function App() {
   return (
     <>
     <Switch>
+
       <Route path="/login">
         <LoginFormPage />
       </Route>
+
       <Route path="/events">
       {sessionUser ? (
               <HomePage/>
@@ -23,6 +26,11 @@ function App() {
               <Redirect to="/login"/>
             )}
       </Route>
+
+      <Route path="/signup">
+        <SignupFormPage/>
+      </Route>
+
       <Route path="/">
       {sessionUser ? (
         <Redirect to="/events"/>
@@ -30,6 +38,7 @@ function App() {
         <SplashPage/>
       )}
       </Route>
+      
     </Switch>
     </>
   );
