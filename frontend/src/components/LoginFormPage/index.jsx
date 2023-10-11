@@ -13,15 +13,15 @@ function LoginFormPage() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
-  const [isLengthTen, setIsLengthTen] = useState(false)
+  const [isLengthTen, setIsLengthTen] = useState(false);
+  const [redirectSignup, setRedirectSignup] = useState(false);
   let regionMenu = RegionMenu();
 
   if (sessionUser) return <Redirect to="/events" />;
+  if (redirectSignup) return <Redirect to="/signup" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log("phone",phoneNumber);
-    // console.log("pass", password);
     setErrors([]);
     return dispatch(sessionActions.login({ phoneNumber, password }))
     .catch(async (res) => {
@@ -54,6 +54,11 @@ function LoginFormPage() {
     
   }
 
+  const handleSignupClick = (e) => {
+    e.preventDefault()
+    setRedirectSignup(true)
+  }
+
   return (
     <>
       <Navigation/>
@@ -62,7 +67,14 @@ function LoginFormPage() {
           {errors.map(error => <li key={error}>{error}</li>)}
         </ul>
 
-        <h3 id='login-title'>Sign in or sign up</h3>
+        <div id='login-title-container'>
+          {/* <h3 id='login-title'>Sign in or sign up</h3> */}
+          <h3 id='login-title'>Sign in or </h3>
+          <div id='login-title'>
+            <h3 id='signup-click' onClick={handleSignupClick}> { " sign up"}</h3>
+          </div>
+        </div>
+
         <form onSubmit={handleSubmit} className='loginForm'>
 
           <div id='phone-container'>
@@ -113,11 +125,6 @@ function LoginFormPage() {
             )}
           </div>
         </form>
-        {/* <footer className='footer'>
-          <div>© 2023 FullParty™ | Terms & Privacy | Careers | </div>
-          <div> Questions? DM us </div>
-          <div><AiOutlineInstagram/></div>
-        </footer>  */}
 
       </div>
     </>

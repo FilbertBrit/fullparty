@@ -15,9 +15,11 @@ function SignupFormPage() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [isLengthTen, setIsLengthTen] = useState(false)
     const [errors, setErrors] = useState([]);
+    const [redirectLogin, setRedirectLogin] = useState(false);
     const regionMenu = RegionMenu();
   
     if (sessionUser) return <Redirect to="/events" />;
+    if (redirectLogin) return <Redirect to="/login"/>;
   
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -44,6 +46,10 @@ function SignupFormPage() {
       setPhoneNumber(e.target.value)
       e.target.value.toString().length === 10 ? setIsLengthTen(true) : setIsLengthTen(false);
     }
+    const handleSignupClick = (e) => {
+      e.preventDefault()
+      setRedirectLogin(true)
+    }
   
     return (
       <>
@@ -52,7 +58,15 @@ function SignupFormPage() {
           <ul>
             {errors.map(error => <li key={error}>{error}</li>)}
           </ul>
-          <h2 id='signup-title'>Sign Up</h2>
+          {/* <h2 id='signup-title'>Sign Up</h2> */}
+          <div id='signup-title-container'>
+          <div id='login-title'>
+            <h3 id='sign-in-click' onClick={handleSignupClick}> Sign in </h3>
+          </div>
+          <div id='login-title'>
+            <h3 id='login-title-sign-up'> {" or sign up"} </h3>
+          </div>
+        </div>
 
           <form onSubmit={handleSubmit}>
             <div className="name-container">
