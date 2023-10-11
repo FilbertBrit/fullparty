@@ -20,8 +20,8 @@ function LoginFormPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("phone",phoneNumber);
-    console.log("pass", password);
+    // console.log("phone",phoneNumber);
+    // console.log("pass", password);
     setErrors([]);
     return dispatch(sessionActions.login({ phoneNumber, password }))
     .catch(async (res) => {

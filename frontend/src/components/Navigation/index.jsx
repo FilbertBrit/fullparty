@@ -26,10 +26,10 @@ function Navigation() {
     );
   } else {
     const currentURL = window.location.pathname
-    console.log(currentURL);
+    // console.log(currentURL);
     switch (currentURL) {
       case "/login":
-        console.log('in case 1')
+        // console.log('in case 1')
         sessionLinks = ( <></> )
         break;
       case "/":
