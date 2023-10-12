@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: fit-content;
 }
 
 #phone{
@@ -533,4 +534,11 @@
     margin-top: 100px;
     margin-left: 25px;
     border-radius: 30px;
+}
+
+#footer{
+    font-family: Sporting Grotesque, sans-serif;
+    font-size: 15px;
+    color: white;
+    margin-bottom: 15px;
 }

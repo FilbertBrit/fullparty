@@ -23,6 +23,7 @@ import review2 from "../../images/review2.png"
 import review3 from "../../images/review3.png"
 import review4 from "../../images/review4.png"
 import demo from "../../images/demo.mov"
+import { AiOutlineInstagram } from "react-icons/ai"
 
 // import logo from "../../images/logo.png"
 
@@ -163,6 +164,8 @@ export function SplashPage () {
                     <img src={feature} id="features-img" alt="img"/>
                     <a href="/create" id="cpp-btn">PRESS TO PARTY</a>
                 </div>
+
+                <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
                 {/* <div className="div-9">
                     <h4>Ready to start partying?</h4>
                     <h4>Create your page </h4>

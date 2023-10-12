@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import configureStore from './store';
 import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session';
-import { AiOutlineInstagram } from "react-icons/ai"
+// import { AiOutlineInstagram } from "react-icons/ai"
 
 
 //development purposes
@@ -24,10 +24,10 @@ function Root() {
       <BrowserRouter>
       <div className='app' >
         <App />
-        <footer className='footer'>
-          <div id='div-footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
+        {/* <footer className='footer'>
+          <div id='div-footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div> */}
           {/* <div><AiOutlineInstagram/></div> */}
-        </footer> 
+        {/* </footer>  */}
       </div>
       </BrowserRouter>
     </Provider>
