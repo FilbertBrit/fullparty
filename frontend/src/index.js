@@ -20,8 +20,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 function Root() {
-  // let w = window.innerWidth;
-  // let h = window.innerHeight;
   return (
     <Provider store={store}>
       <BrowserRouter>

@@ -17,6 +17,7 @@ import blasts from "../../images/text-blast.webp"
 import enjoy from "../../images/enjoy.webp"
 import camera from "../../images/camera.webp"
 import feature from "../../images/feature.webp"
+import stringy from "../../images/stringyy.png"
 
 // import logo from "../../images/logo.png"
 
@@ -123,6 +124,7 @@ export function SplashPage () {
                             <h4 id="inner-h4">Text Blast updates</h4>
                         </div>
                     </div>
+                    <img src={stringy} id="stringy" />
                     <div className="gtps-btn">
                         <a href="/create" id="gtps-btn">GET THE PARTY STARTED</a>
                     </div>
