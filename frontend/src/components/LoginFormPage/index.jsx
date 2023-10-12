@@ -1,10 +1,10 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState } from 'react'; //useEffect
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.css';
 import RegionMenu from "./RegionMenu"
-import { AiOutlineInstagram } from "react-icons/ai"
+// import { AiOutlineInstagram } from "react-icons/ai"
 import Navigation from '../Navigation';
 
 function LoginFormPage() {

@@ -34,11 +34,11 @@ export function SplashPage () {
             <div className="splash-layout">
                 <div className="div-1">
                     <div className="phone-gif">
-                        <video src={demo} width="170" id="vid"></video>
-                        <img src={phone} id="phone" />
+                        <video src={demo} width="170" id="vid" autoPlay ></video>
+                        <img src={phone} id="phone" alt="img"/>
                     </div>
                     <div className="div-1-header">
-                        <img src={highkeylowkey} id="highkey" />
+                        <img src={highkeylowkey} id="highkey" alt="img"/>
                         <div className="sexiest">
                         The sexiest way to get all your guests on the same page (literally)
                         </div>
@@ -51,15 +51,15 @@ export function SplashPage () {
                     </div>
                 </div>
                 <div className="div-2">
-                    <img src={goodtimes} id="goodtimes" />
+                    <img src={goodtimes} id="goodtimes" alt="img"/>
                 </div>
                 <div className="div-3">
                     <div id="div-3-header"> PEOPLE ARE SAYING...</div>
                     <div className="reviews">
-                        <img src={review1} id="review" />
-                        <img src={review2} id="review" />
-                        <img src={review3} id="review" />
-                        <img src={review4} id="review" />
+                        <img src={review1} id="review" alt="img"/>
+                        <img src={review2} id="review" alt="img"/>
+                        <img src={review3} id="review" alt="img"/>
+                        <img src={review4} id="review" alt="img"/>
 
                         {/* <h4>review 1</h4>
                         <h4>review 2</h4>
@@ -76,13 +76,13 @@ export function SplashPage () {
                     </div>
                     <div className="div-4-photos-container">
                         <div className="div-4-events">
-                            <img src={events} id="event-photo" />
+                            <img src={events} id="event-photo" alt="img"/>
                         </div>
                         <div className="div-4-inner-div">
-                            <img src={app} id="app-img" />
+                            <img src={app} id="app-img" alt="img"/>
                             <div className="design">
-                                <img src={theme} id="theme" />
-                                <img src={effect} id="effect" />
+                                <img src={theme} id="theme" alt="img"/>
+                                <img src={effect} id="effect" alt="img"/>
                             </div>
                         </div>
                     </div>
@@ -96,15 +96,15 @@ export function SplashPage () {
                     </div>
                     <div className="div-5-photo-container">
                         <div className="container">
-                            <img src={contacts} id="contact-img" />
+                            <img src={contacts} id="contact-img" alt="img" />
                             <h4 id="photo-text">Share link or Text Blast past guest</h4>
                         </div>
                         <div className="rsvp-container">
-                            <img src={rsvp} id="rsvp-img" />
+                            <img src={rsvp} id="rsvp-img" alt="img"/>
                             <h4 id="photo-text">Get RSVPs or gauge interest</h4>
                         </div>
                         <div className="container">
-                            <img src={comments} id="comments-img" />
+                            <img src={comments} id="comments-img" alt="img"/>
                             <h4 id="photo-text">Group adds comments + gifs</h4>
                         </div>
                     </div>
@@ -122,28 +122,28 @@ export function SplashPage () {
                     <div className="div-6-photo-container">
                         <div className="photos-shared">
                             <h4 id="inner-h4">Share photos</h4>
-                            <img src={photos} id="share-photos" />
+                            <img src={photos} id="share-photos" alt="img"/>
                         </div>
                         <div className="div-6-photo-container-inner">
                             <h4 id="inner-h4">Collect $$$</h4>
-                            <img src={cost} id="cost-img" />
-                            <img src={polls} id="poll-img" />
+                            <img src={cost} id="cost-img" alt="img"/>
+                            <img src={polls} id="poll-img" alt="img"/>
                             <h4 id="inner-h4">Run polls</h4>
                         </div>
                         <div className="text-blasts">
-                            <img src={blasts} id="text-blast" />
+                            <img src={blasts} id="text-blast" alt="img"/>
                             <h4 id="inner-h4">Text Blast updates</h4>
                         </div>
                     </div>
-                    <img src={stringy} id="stringy" />
+                    <img src={stringy} id="stringy" alt="img"/>
                     <div className="gtps-btn">
                         <a href="/create" id="gtps-btn">GET THE PARTY STARTED</a>
                     </div>
                 </div>
                 <div className="div-7">
                     {/* <div className="div-5-photo-container"> */}
-                        <img src={enjoy} id="img-5" />
-                        <img src={camera} id="img-5" />
+                        <img src={enjoy} id="img-5" alt="img"/>
+                        <img src={camera} id="img-5" alt="img"/>
                     {/* </div> */}
                     <h4 id="header-div-7">The Recyclable Camera</h4>
                     <h4 id="h4-div-7">Includes development, a prepaid mailer & free shipping.</h4>
@@ -160,7 +160,7 @@ export function SplashPage () {
                 </div>
                 <div className="div-8">
                     <h2 id="feature-h4">OUR OTHER FEATURES</h2>
-                    <img src={feature} id="features-img" />
+                    <img src={feature} id="features-img" alt="img"/>
                     <a href="/create" id="cpp-btn">PRESS TO PARTY</a>
                 </div>
                 {/* <div className="div-9">

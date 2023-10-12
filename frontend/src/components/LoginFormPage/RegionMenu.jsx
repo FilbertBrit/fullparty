@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch} from 'react-redux';
+import React, { useState } from 'react'; //useEffect
+// import { useDispatch} from 'react-redux';
 import "./RegionMenu.css"
 import { BsFillCaretDownFill, BsFillCaretUpFill } from "react-icons/bs"
 import countries from './countries.json'
 
 function RegionMenu(){
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const [isActive, setIsActive] = useState(false);
     // const [selectedRegion, setSelectedRegion] = useState("America/Canada")
     
-    useEffect(() => {
-      if (!isActive) return;
+    // useEffect(() => {
+    //   if (!isActive) return;
   
-      const closeMenu = () => {
-        setIsActive(false);
-      };
+    //   const closeMenu = () => {
+    //     setIsActive(false);
+    //   };
   
-      document.addEventListener('click', closeMenu);
+    //   document.addEventListener('click', closeMenu);
     
-      return () => document.removeEventListener("click", closeMenu);
-    }, [isActive]);
+    //   return () => document.removeEventListener("click", closeMenu);
+    // }, [isActive]);
   
     return (
       <>
@@ -41,8 +41,6 @@ function RegionMenu(){
               {countries.map((country, i) => (
                 <div className="dropdown-item" key={country.country}>
                   <h3 id='item-comp'>{country.flag}{country.country}{country['area-code']}</h3>
-                  {/* <h3 id='item-comp'>{country.country}</h3>
-                  <h3 id='item-comp'>{country['area-code']}</h3> */}
                 </div>
               ))}
             </div>
