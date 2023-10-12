@@ -35,11 +35,11 @@ function Navigation() {
       case "/":
         sessionLinks = ( 
           <div id='splash-nav'>
-            <button>inspo</button>
-            <button>Home</button>
-            <NavLink exact to="/login" className="splash-login-button">
+            <a href="/" id='inspo-nav'>✨INSPO</a>
+            <a href="/login" id='login-nav'>LOGIN</a>
+            {/* <NavLink exact to="/login" className="splash-login-button">
               Login
-            </NavLink>
+            </NavLink> */}
           </div>
          )
         break;
