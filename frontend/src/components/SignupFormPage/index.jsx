@@ -111,7 +111,6 @@ function SignupFormPage() {
                       name='password'
                       placeholder='XXXXXXXX'
                     />
-                  <br />
                   <h4>CONFIRM PASSWORD</h4>
                   <input
                     id='confirm-input'

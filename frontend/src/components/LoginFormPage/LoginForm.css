@@ -8,10 +8,11 @@
 #login-title-container{
     display: flex;
     flex-direction: row;
+    margin-bottom: 25px;
 }
 
 #signup-click{
-    padding-top: 5.5%;
+    padding-top: 2.5%;
     padding-left: 8%;
     height: 20px;
     min-width: max-content;
@@ -32,12 +33,15 @@
     margin-left: 2%;
     height: 40px;
     max-width: 300px;
+    border-bottom-style: solid;
+    border-bottom-color: grey;
+    /* max-width:min-content; */
 }
 
 #phone-container{
-    border-bottom-style: solid;
+    /* border-bottom-style: solid;
     border-bottom-color: grey;
-    max-width:min-content;
+    max-width:min-content; */
 }
 #region-menu{
     /* padding: 2%; */
@@ -100,15 +104,19 @@ inpput:hover{
     background-color: #363d4782;
     padding-bottom: 2%;
     padding-right: 2%;
+    margin-top: 0px;
+    height: fit-content;
 }
 
 #password-input{
     border-bottom-style: solid;
     border-bottom-color: #ab76f6;
+    margin-top: 20px;
 }
 h4{
     height: 0px;
     padding-left: 10px;
+    margin-top: 10px;
 }
 
 .footer{

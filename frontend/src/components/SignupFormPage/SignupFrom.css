@@ -29,10 +29,22 @@
     height: 25px;
     font-size: small;
     border-bottom-style: solid;
+    margin-top: 25px;
 }
 
 #confirm-input{
     border-bottom-style: solid;
     border-bottom-color: #ab76f6;
+    margin-top: 20px;
 }
+
+h4{
+    height: 0px;
+    padding-left: 10px;
+    margin-top: 10px;
+}
+
+/* input{
+    margin-top: 20px;
+} */
 
