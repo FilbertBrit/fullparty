@@ -1,11 +1,12 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import LoginFormPage from './components/LoginFormPage';
-import { Redirect, Router } from 'react-router-dom/cjs/react-router-dom.min';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'; 
 import SignupFormPage from './components/SignupFormPage';
 import { useSelector } from "react-redux"
 import { HomePage } from './components/HomePage';
 import { SplashPage } from './components/SplashPage';
+import { EventFormPage } from './components/EventFormPage';
 
 
 function App() {
@@ -29,6 +30,10 @@ function App() {
 
       <Route path="/signup">
         <SignupFormPage/>
+      </Route>
+
+      <Route path="/create">
+            <EventFormPage/>
       </Route>
 
       <Route path="/">

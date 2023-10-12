@@ -35,7 +35,7 @@ export function SplashPage () {
             <div className="splash-layout">
                 <div className="div-1">
                     <div className="phone-gif">
-                        <video src={demo} width="170" id="vid" autoPlay ></video>
+                        <video src={demo} width="170" id="vid" loop autoPlay></video>
                         <img src={phone} id="phone" alt="img"/>
                     </div>
                     <div className="div-1-header">
