@@ -20,15 +20,13 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 function Root() {
-  // let w = window.innerWidth;
-  // let h = window.innerHeight;
   return (
     <Provider store={store}>
       <BrowserRouter>
       <div className='app' >
         <App />
         <footer className='footer'>
-          <div>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
+          <div id='div-footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
           {/* <div><AiOutlineInstagram/></div> */}
         </footer> 
       </div>

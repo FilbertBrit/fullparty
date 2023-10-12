@@ -2,13 +2,12 @@ import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import { useParams } from 'react-router';
+// import { useParams } from 'react-router';
 import './Navigation.css';
 import logo from "../../images/logo.png"
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import git from "../../images/git.png"
 
 function Navigation() {
-  // let { route } = useParams()
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
@@ -16,8 +15,6 @@ function Navigation() {
   if (sessionUser) {
     sessionLinks = (
       <div id='active-session-nav'>
-        {/* <NavLink>Create</NavLink>
-        <NavLink>Home</NavLink> */}
         <button>Create</button>
         <button>Home</button>
         <button>Notifications</button>
@@ -35,10 +32,11 @@ function Navigation() {
       case "/":
         sessionLinks = ( 
           <div id='splash-nav'>
-            <button>inspo</button>
-            <NavLink exact to="/login" className="splash-login-button">
-              Login
-            </NavLink>
+            <a href="https://github.com/FilbertBrit/fullparty.git" id='github-nav' target='_blank'>
+              <img src={git} id="git-img" />
+            </a>
+            <a href="/" id='inspo-nav'>✨INSPO</a>
+            <a href="/login" id='login-nav'>LOGIN</a>
           </div>
          )
         break;
@@ -54,9 +52,13 @@ function Navigation() {
             <img className='logo' src={logo}/>
           </NavLink>
         ) : (
-          <NavLink exact to="/" className="photo-logo-home-link">
-            <img className='logo' src={logo}/>
-          </NavLink>
+          <div>
+
+            <NavLink exact to="/" className="photo-logo-home-link">
+              <img className='logo' src={logo}/>
+            </NavLink>
+            {/* <>{sessionLinks}</> */}
+          </div>
         )}
         {sessionLinks}
     </ul>

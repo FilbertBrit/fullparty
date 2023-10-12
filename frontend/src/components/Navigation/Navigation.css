@@ -7,3 +7,34 @@
 #active-session-nav{
  padding-right: 2%;
 }
+
+#login-nav{
+    border: 2px solid white;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    margin-right: 15px;
+}
+
+#splash-nav{
+    display: flex;
+    /* justify-content: space-around; */
+    font-family: Spacegrotesk,sans-serif;
+    flex-direction: row;
+    align-items: center;
+}
+
+#inspo-nav{
+    text-decoration: none;
+    color: white;
+    margin-right: 20px;
+}
+
+.photo-logo-home-link{
+    margin-left: 20px;
+}
+
+#git-img{
+    width: 60px;
+    margin-right: 20px;
+}
