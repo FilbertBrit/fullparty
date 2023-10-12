@@ -3,6 +3,11 @@ import './SplashPage.css'
 import phone from "../../images/phone.png"
 import highkeylowkey from "../../images/highkeylowkey.png"
 import goodtimes from "../../images/goodtimes.png"
+import events from "../../images/events-demo.webp"
+import effect from "../../images/effect.webp"
+import theme from "../../images/theme.webp"
+import app from "../../images/app.webp"
+
 // import logo from "../../images/logo.png"
 
 export function SplashPage () {
@@ -20,7 +25,7 @@ export function SplashPage () {
                         <div className="sexiest">
                         The sexiest way to get all your guests on the same page (literally)
                         </div>
-                        <button id="div-1-btn">CREATE YOUR PARTY</button>
+                        <button id="div-1-btn">CREATE YOUR PARTY PAGE</button>
                         <div id="div-1-already-a-host">
                             Already a host or guest?
                             <a href="/login" id="div-1-signin-btn"> Sign In </a>
@@ -43,11 +48,24 @@ export function SplashPage () {
                     </div>
                 </div>
                 <div className="div-4">
-                    <h3>PARTY PAGES FOR EVERY VIBE</h3>
-                    <div className="dive-4-photos-container">
-
+                    <div className="party-pages-container">
+                        <h3 id="party-pages">PARTY PAGES FOR EVERY VIBE</h3>
                     </div>
-                    <button>GET START</button>
+                    <div className="div-4-photos-container">
+                        <div className="div-4-events">
+                            <img src={events} id="event-photo" />
+                        </div>
+                        <div className="div-4-inner-div">
+                            <img src={app} id="app-img" />
+                            <div className="design">
+                                <img src={theme} id="theme" />
+                                <img src={effect} id="effect" />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="get-started-btn">
+                        <a href="/create" id="started-btn">GET STARTED</a>
+                    </div>
                 </div>
                 <div className="div-5">
                     <h3>PICK YOUR CROWD</h3>

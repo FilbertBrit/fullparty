@@ -16,17 +16,17 @@
     margin-top: 75px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    /* flex-direction: row; */
-    min-width: min-content ;
-    width: 90vw;
+    min-width: min-content;
+    width: 80%;
 }
 .div-1-header{
-    padding-left: 30px;
+    padding-left: 20px;
     display: flex;
     flex-direction: column;
-    
+    width: 50%;
+
 }
 #highkey{
     width: 370px;
@@ -88,7 +88,7 @@
 #div-3-header{
     margin-left: 25px;
     margin-bottom: 20px;
-    font-size: 30px;
+    font-size: 40px;
     line-height: 32px;
     font-family: Syne,sans-serif;
     font-weight: 700;
@@ -127,5 +127,81 @@
     color:  #fdf3e9;
     background-color:#fd4f30;
     font-size: 21px;
+}
 
+#party-pages{
+    /* width: 60vw; */
+    font-family: Syne,sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    margin-top: 120px;
+    margin-left: 90px;
+}
+.party-pages-container{
+    width: 100vw;
+}
+
+.div-4-events{
+    width: 90vw;
+}
+#event-photo{
+    margin-top: 20px;
+    width: 80vw;
+}
+.div-4-photos-container{
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.div-4-inner-div{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#app-img{
+    width: 320px;
+    /* height: ; */
+}
+
+.design{
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 50px;
+}
+
+#theme{
+    width: 355px;
+    margin-bottom: 15px;
+}
+
+#effect{
+    width: 330px;
+}
+
+.get-started-btn{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+#started-btn{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    width: 200px;
+    font-size: 24px;
+    line-height: 34px;
+    padding: 15px 25px;
+    font-weight: 500;
+    font-family: Spacegrotesk,sans-serif;
+    cursor: pointer;
+    text-align: center;
+}
+
+#started-btn:hover{
+    color: black;
+    background-color: white;
 }
