@@ -27,6 +27,7 @@ class Api::EventsController < ApplicationController
 
   def destroy
     @event.destroy
+    render :index
   end
 
   def update
