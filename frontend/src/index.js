@@ -28,7 +28,7 @@ function Root() {
       <div className='app' >
         <App />
         <footer className='footer'>
-          <div>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
+          <div id='div-footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
           {/* <div><AiOutlineInstagram/></div> */}
         </footer> 
       </div>
