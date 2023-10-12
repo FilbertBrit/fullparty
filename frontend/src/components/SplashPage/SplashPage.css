@@ -314,12 +314,16 @@
     width: 175px;
 }
 
+.div-6{
+    margin-top: 85px;
+}
+
 .div6-header{
     font-family: Syne,sans-serif;
     font-size: 35px;
     font-weight: 700;
-    margin-top: 50px;
-    margin-left: -120px;
+    margin-top: 120px;
+    margin-left: -320px;
     display: flex;
     justify-content: left;
     line-height: 32px;
@@ -414,6 +418,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 #img-5{
@@ -421,10 +426,11 @@
 }
 
 #header-div-7{
-    margin-bottom: 20px;
+    margin-bottom: 45px;
     font-family: Sporting Grotesque, sans-serif;
     font-size: 20px;
     font-weight: 600;
+    margin-top: 30px;
 }
 #h4-div-7{
     font-family: Spacegrotesk,sans-serif;
@@ -434,6 +440,7 @@
     text-align: center;
     margin-bottom: 20px;
     line-height: 22px;
+    height: 30px;
 }
 
 .jtw-btn{
@@ -454,7 +461,7 @@
     padding: 13px 10px;
     font-family: Spacegrotesk,sans-serif;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     margin-top: 35px;
 }
 
@@ -466,7 +473,6 @@
 .cpp-btn{
     display: grid;
     justify-content: center;
-    margin-top: 20px;
     margin-bottom: 50px;
     
 }
@@ -500,7 +506,7 @@
     margin-bottom: 45px;
 }
 
-#featire-h4{
+#feature-h4{
     font-size: 25px;
     line-height: 32px;
     font-family: Sporting Grotesque, sans-serif;
