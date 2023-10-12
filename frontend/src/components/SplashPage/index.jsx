@@ -18,6 +18,11 @@ import enjoy from "../../images/enjoy.webp"
 import camera from "../../images/camera.webp"
 import feature from "../../images/feature.webp"
 import stringy from "../../images/stringyy.png"
+import review1 from "../../images/review1.png"
+import review2 from "../../images/review2.png"
+import review3 from "../../images/review3.png"
+import review4 from "../../images/review4.png"
+import demo from "../../images/demo.mov"
 
 // import logo from "../../images/logo.png"
 
@@ -29,6 +34,7 @@ export function SplashPage () {
             <div className="splash-layout">
                 <div className="div-1">
                     <div className="phone-gif">
+                        <video src={demo} width="170" id="vid"></video>
                         <img src={phone} id="phone" />
                     </div>
                     <div className="div-1-header">
@@ -50,10 +56,15 @@ export function SplashPage () {
                 <div className="div-3">
                     <div id="div-3-header"> PEOPLE ARE SAYING...</div>
                     <div className="reviews">
-                        <h4>review 1</h4>
+                        <img src={review1} id="review" />
+                        <img src={review2} id="review" />
+                        <img src={review3} id="review" />
+                        <img src={review4} id="review" />
+
+                        {/* <h4>review 1</h4>
                         <h4>review 2</h4>
                         <h4>review 3</h4>
-                        <h4>review 4</h4>
+                        <h4>review 4</h4> */}
                     </div>
                     <div className="start-planning-btn">
                         <a href="/create" id="div-3-start-planning-btn"> START PLANNING </a>
