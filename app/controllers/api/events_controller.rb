@@ -6,7 +6,6 @@ class Api::EventsController < ApplicationController
     @event = Event.new(event_params)
     if @event.save
       render :show
-      # render json: {event: @event}
     else
       render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
@@ -14,9 +13,11 @@ class Api::EventsController < ApplicationController
   end
 
   def index
-    #events will not be simply events.all 
-    #for now
-    @events = Event.all
+    debugger
+    @user = current_user
+
+    # all events create by user
+    @events = Event.all.select { |event| event.author_id == @user.id}
     render :index
   end
 
@@ -26,7 +27,7 @@ class Api::EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    @user = current_user
+    # @user = current_user
     @events = Event.all
     # debugger
     render :index
