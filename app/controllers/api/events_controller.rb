@@ -10,7 +10,6 @@ class Api::EventsController < ApplicationController
     else
       render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
-    
     # render json: event_params
   end
 
@@ -27,7 +26,11 @@ class Api::EventsController < ApplicationController
 
   def destroy
     @event.destroy
+    @user = current_user
+    @events = Event.all
+    # debugger
     render :index
+    # render json: {events: @events}
   end
 
   def update
