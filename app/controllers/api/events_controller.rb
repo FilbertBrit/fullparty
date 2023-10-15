@@ -13,11 +13,11 @@ class Api::EventsController < ApplicationController
   end
 
   def index
-    debugger
+    # debugger
     @user = current_user
 
     # all events create by user
-    @events = Event.all.select { |event| event.author_id == @user.id}
+    @events = Event.all.where(author_id: @user.id)
     render :index
   end
 

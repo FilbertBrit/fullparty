@@ -31,9 +31,9 @@ function Root() {
 
 const renderApplication = () => {
   ReactDOM.render(
-    <React.StrictMode>
-      <Root  className="root"/>
-    </React.StrictMode>,
+    // <React.StrictMode>
+      <Root  className="root"/>,
+    // {/* </React.StrictMode>, */}
     document.getElementById('root')
   );
 }

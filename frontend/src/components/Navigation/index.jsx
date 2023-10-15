@@ -6,19 +6,30 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import logo from "../../images/logo.png"
 import git from "../../images/git.png"
+import home from "../../images/home.png"
+import notification from "../../images/notification.png"
+import { useParams } from 'react-router';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
+
+  const path = useParams()
+  // console.log('path:', path)
+  const handleClick = (e) => {
+    e.preventDefault();
+  }
 
   let sessionLinks;
 
   if (sessionUser) {
     sessionLinks = (
       <div id='active-session-nav'>
-        <button>Create</button>
-        <button>Home</button>
-        <button>Notifications</button>
-        <ProfileButton user={sessionUser} />
+        <a href="/create" id='create-btn-nav'>+ CREATE</a>
+        <a href="/events">
+          <img src={home} id="home-btn" />
+        </a>
+        <img src={notification} id="notification-btn" onClick={handleClick} />
+        <ProfileButton user={sessionUser} id="profile-btn-nav" />
       </div>
     );
   } else {

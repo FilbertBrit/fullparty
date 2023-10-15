@@ -6,20 +6,20 @@ import SignupFormPage from './components/SignupFormPage';
 import { useSelector } from "react-redux"
 import { HomePage } from './components/HomePage';
 import { SplashPage } from './components/SplashPage';
-import { EventFormPage } from './components/EventFormPage';
+// import { EventFormPage } from './components/EventFormPage';
+import { EventFormPage } from './components/Events/EventFormPage';
 
 
 function App() {
+
+  // REFACTOR TO GET RID OF THIS USESELECTOR
   const sessionUser = useSelector(state => state.session.user)
 
   return (
     <>
     <Switch>
-
-      <Route path="/login">
-        <LoginFormPage />
-      </Route>
-
+      
+      <Route path="/create" component={ EventFormPage } />
       <Route path="/events">
       {sessionUser ? (
               <HomePage/>
@@ -27,21 +27,15 @@ function App() {
               <Redirect to="/login"/>
             )}
       </Route>
-
-      <Route path="/signup">
-        <SignupFormPage/>
-      </Route>
-
-      <Route path="/create">
-            <EventFormPage/>
-      </Route>
-
+      <Route path="/events/:eventId"></Route>
+      <Route path="/login" component={ LoginFormPage} />
+      <Route path="/signup" component={ SignupFormPage } />
       <Route path="/">
       {sessionUser ? (
         <Redirect to="/events"/>
-      ) : (
-        <SplashPage/>
-      )}
+        ) : (
+          <SplashPage/>
+        )}
       </Route>
       
     </Switch>
