@@ -8,11 +8,12 @@
 #  location    :string
 #  date_time   :datetime
 #  capacity    :integer
-#  comments    :integer
 #  author_id   :bigint           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  cost        :integer
 #
+
 class Event < ApplicationRecord
     validates :title, :author_id, presence: true
     

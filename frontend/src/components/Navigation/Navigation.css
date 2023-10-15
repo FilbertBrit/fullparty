@@ -2,10 +2,13 @@
     display: flex;
     justify-content: space-between;
     padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 #active-session-nav{
  padding-right: 2%;
+ display: flex;
+ align-items: center;
 }
 
 #login-nav{
@@ -37,4 +40,34 @@
 #git-img{
     width: 60px;
     margin-right: 20px;
+}
+
+#create-btn-nav{
+    background-color: #ab76f6;
+    color: white;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    /* backdrop-filter: blur(45px); */
+    cursor: pointer;
+    font-size: 14px;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    padding: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 0;
+    text-decoration: none;
+    /* border-style: none; */
+    /* font-size: 18px; */
+}
+
+#home-btn{
+    height: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+#notification-btn{
+    height: 20px;
+    margin-right: 20px;
+}
+#profile-btn-nav{
+    margin-right: 10px;
 }
