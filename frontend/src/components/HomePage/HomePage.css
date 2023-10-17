@@ -18,6 +18,7 @@ upcoming-events-msg{
     overflow-x: scroll;
     display: flex;
     overflow-x: auto;
+    padding-bottom: 10px;
     /* scroll-snap-type: x proximity; */
     /* scroll-padding-left: 10vw; */
     /* height: auto; */

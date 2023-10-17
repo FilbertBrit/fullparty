@@ -25,6 +25,7 @@ function ProfileButton({ user }) {
 
   const logout = (e) => {
     e.preventDefault();
+    console.log('logout')
     dispatch(sessionActions.logout());
   };
 
@@ -36,9 +37,16 @@ function ProfileButton({ user }) {
       {showMenu && (
         <ul className="profile-dropdown">
           <li>{user.username}</li>
-          <li>
+          <div className="profile-create-btns">
+            <a href="/">profile-link</a>
+            <a href="/create">+ CREATE</a>
+          </div>
+          <div className="mutals-btn">
+            <a href="/mutual">Mutals</a>
+          </div>
+          <div className="logout-btn">
             <button onClick={logout}>Log Out</button>
-          </li>
+          </div>
         </ul>
       )}
     </>

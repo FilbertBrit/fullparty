@@ -1,16 +1,15 @@
 
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import Navigation from "../Navigation"
 import "./HomePage.css"
 import { EventIndex } from "../Events/EventIndex";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { AiOutlineInstagram } from "react-icons/ai"
 
-// const sessionUser = useSelector(state => state.session.user)
 export function HomePage () {
     const sessionUser = useSelector(state => state.session.user);
-    const dispatch = useDispatch();
-    const [filter, setFilter] = useState("Upcoming");
+    // const dispatch = useDispatch();
+    // const [filter, setFilter] = useState("Upcoming");
 
     //call <EventIndex> here then filter based on button choice: openI, upcoming, hosting, attended, allPast
 
