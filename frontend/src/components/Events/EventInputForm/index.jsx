@@ -14,27 +14,33 @@ export function EventInputForm () {
     const { eventId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
     const event = useSelector(getEvent(eventId));
-    console.log(event)
-    const [title, setTile] = useState( event ? event.title : '');
+
+    const [title, setTitle] = useState( event ? event.title : '');
     const [dateTime, setDateTime] = useState(event ? event.dateTime : '');
     const [location, setLocation] = useState(event ? event.location : '');
     const [capacity, setCapacity] = useState(event ? event.capacity : '');
     const [cost, setCost] = useState(event? event.cost : '');
     const [description, setDescription] = useState(event ? event.description : '')
-    console.log(eventId);
-
-    const handleSubmit = (e) => {
+    
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(eventActions.createEvent({title, authorId: sessionUser.id, dateTime, location, capacity, cost, description}))
-        history.push('/events');
+        dispatch(eventActions.createEvent({title, authorId: sessionUser.id, dateTime, location, capacity, cost, description})).then( res =>  history.push('/events/' + res.id));
     }
 
     useEffect( () => {
-        if ( eventId ) dispatch(fetchEvent(eventId));
+        if ( eventId ) dispatch(fetchEvent(eventId)).then( event => {
+            setTitle(event.title);
+            setCapacity(event.capacity);
+            setLocation(event.location);
+            setCost(event.cost);
+            setDateTime(event.dateTime);
+            setDescription(event.description);
+        });
+
     }, [dispatch, eventId])
 
     return (
-        event ?
+        eventId && !event ?
         (<></>)
         :
         ( <>
@@ -48,7 +54,7 @@ export function EventInputForm () {
                             id="title-input"
                             type="text" 
                             value={title}
-                            onChange={ (e) => setTile(e.target.value) }
+                            onChange={ (e) => setTitle(e.target.value) }
                             required
                             placeholder="Untitled Event"
                             />
@@ -159,28 +165,48 @@ export function EventInputForm () {
                         </div>
                     </div>
                     <div className="static-sidebar">
-                        <button type="submit" id="create-form-btn"> SAVE DRAFT</button>  
-                        <div className="nav-options">
-                            <div className="theme-tab">
-                                {/* <h2></h2> */}
-                                <h2>THEME</h2>
-                            </div>
-                            <div className="effect-tab">
-                                {/* <h2></h2> */}
-                                <h2>EFFECT</h2>
-                            </div>
-                            <div className="settings-tab">
-                                {/* <h2></h2> */}
-                                <h2>SETTINGS</h2>
-                            </div>
-                            <div className="preview-tab">
-                                {/* <h2></h2> */}
-                                <h2>PREVIEW</h2>
-                            </div>
-                        </div>
                     </div>
                 </div>  
+                {event ? (
+                    <></>
+                ) : (
+                    <>
+                        <button type="submit" id="create-form-btn"> PUBLISH EVENT </button> 
+                    </>
+                )}
             </form>
+            <div className="author-nav-sidebar">
+                <div className="module-invite" id='author-nav-sidebar-item'>
+                    <h2>🖌️</h2>
+                    <h2 id='author-nav-sidebar-text'>THEME</h2>
+                </div>
+                <div className="divider"></div>
+                <div className="module-invite" id='author-nav-sidebar-item'>
+                    <h2>🪄</h2>
+                    <h2 id='author-nav-sidebar-text'>EFFECT</h2>
+                </div>
+                <div className="divider"></div>
+                <div className="module-invite" id='author-nav-sidebar-item'>
+                    <h2>⚙️</h2>
+                    <h2 id='author-nav-sidebar-text'>SETTING</h2>
+                </div>
+                <div className="divider"></div>
+                {event ? (
+                    <div>
+                        <div className="module-invite" id='author-nav-sidebar-item'>
+                            <h2>☑️</h2>
+                            <h2 id='author-nav-sidebar-text'>DONE</h2>
+                        </div>
+                    </div>
+                ) : (
+                    <div>
+                        <div className="module-invite" id='author-nav-sidebar-item'>
+                            <h2>👁️</h2>
+                            <h2 id='author-nav-sidebar-text'>Preview</h2>
+                        </div>
+                    </div>
+                )}
+            </div>
         </> ) 
     )
 }

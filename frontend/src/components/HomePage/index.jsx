@@ -5,6 +5,7 @@ import "./HomePage.css"
 import { EventIndex } from "../Events/EventIndex";
 // import { useEffect, useState } from "react";
 import { AiOutlineInstagram } from "react-icons/ai"
+import { Mutuals } from "../Mutuals";
 
 export function HomePage () {
     const sessionUser = useSelector(state => state.session.user);
@@ -26,18 +27,19 @@ export function HomePage () {
                 </div>
                 {/* <h3 id="upcoming-events-msg">You have {1} upcoming event.</h3> */}
                 <nav className="event-nav-bar">
-                    <div className="event-filter-btn">
+                    {/* <div className="event-filter-btn">
                         Open Invite
-                    </div>
+                    </div> */}
                     <div className="event-filter-btn">
                         Upcoming
                     </div>
                     <div className="event-filter-btn">
                         Hosting
                     </div>
-                    <div className="event-filter-btn">
+                    {/* <div className="event-filter-btn">
                         Drafts
-                    </div><div className="event-filter-btn">
+                    </div> */}
+                    <div className="event-filter-btn">
                         Attended
                     </div>
                     <div className="event-filter-btn">
@@ -48,16 +50,7 @@ export function HomePage () {
                     <EventIndex className="events-dash"/>
                 </div>
                 <div className="Mutuals">
-                    <div id="mutuals-header">
-                        <h2 id="mutals-title">Mutuals</h2>
-                        <a href="/" id="mutuals-btn"> SEE ALL</a>
-                    </div>
-                    <div className="top-six-mutuals">
-                        <h3>Mutual 1</h3>
-                        <h3>Mutual 2</h3>
-                        <h3>Mutual 3</h3>
-
-                    </div>
+                    <Mutuals/>
                 </div>
                 <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
             </div>

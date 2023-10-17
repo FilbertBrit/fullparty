@@ -34,7 +34,7 @@ export function EventShowPage () {
             <div className="showpage-layout">
                 <div className="show-info">
                     <div className="show-title">
-                        <h2>{event.title}</h2>
+                        <h2 id='event-title-show'>{event.title}</h2>
                     </div>
                     <div className="show-date-time">
                         { event.dateTime ? 
@@ -167,26 +167,26 @@ export function EventShowPage () {
                         <img src={wazzap} alt="show-img" id='show-img'/>
                     </div>
                     <div className="show-rsvp">
-                    <div className="rsvp-options-btns-container">
-                                <div className="rsvp">
-                                    <div className="emoji-rsvp">
-                                        👍
-                                    </div>
-                                    <h4>I'm Going</h4>
+                        <div className="rsvp-options-btns-container">
+                            <div className="rsvp">
+                                <div className="emoji-rsvp">
+                                    👍
                                 </div>
-                                <div className="rsvp">
-                                    <div className="emoji-rsvp">
-                                        🤔
-                                    </div>
-                                    <h4>Maybe</h4>
-                                </div>
-                                <div className="rsvp">
-                                    <div className="emoji-rsvp">
-                                        😢
-                                    </div>
-                                    <h4>Can't Go</h4>
-                                </div>
+                                <h4>I'm Going</h4>
                             </div>
+                            <div className="rsvp">
+                                <div className="emoji-rsvp">
+                                    🤔
+                                </div>
+                                <h4>Maybe</h4>
+                            </div>
+                            <div className="rsvp">
+                                <div className="emoji-rsvp">
+                                    😢
+                                </div>
+                                <h4>Can't Go</h4>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

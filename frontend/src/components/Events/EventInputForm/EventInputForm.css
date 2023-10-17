@@ -181,18 +181,20 @@
 
 .rsvp-option-container{
     height: max-content;
+    width: max-content;
     background-color: #363d4741; /* div background trans-glossy*/
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 35px;
+    padding: 15px;
     color: hsla(0,0%,100%,.6);
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     font-weight: 325;
 }
 .rsvp-options-btns-container{
     display: flex;
-    margin-left: -30px;
+    /* margin-left: -30px; */
+    padding: 0px;
 }
 .rsvp{
     display: flex;
@@ -229,17 +231,21 @@
 #create-form-btn{
 
     background-color: #ab76f6;
-    padding: 20px;
-    /* padding-left: 10px; */
-    color: white;
-    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
-    backdrop-filter: blur(45px);
+    padding: 26px;
+    font-weight: 600;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 23px;
     border-style: none;
+    position: fixed;
+    right: 0;
+    bottom: 0%;
     display: flex;
+    align-items: center;
     justify-content: center;
-    position: sticky;
+    flex-direction: column;
+    color: #fff;
+
+
 }
 
 .static-sidebar{
@@ -248,6 +254,3 @@
     justify-content: flex-start;
 
 }
-/* .nav-bar{
-
-} */

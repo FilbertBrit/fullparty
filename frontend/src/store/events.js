@@ -63,9 +63,9 @@ export const fetchEvent = eventId => async (dispatch) => {
     if (response.ok) {
         const event = await response.json();
         dispatch(receiveEvent(event));
+        return event;
         // storeEvent(eventId)
     }
-    return response;
 };
 
 export const createEvent = event => async (dispatch) => {
@@ -79,7 +79,7 @@ export const createEvent = event => async (dispatch) => {
 
     if (response.ok) {
         const event = await response.json();
-        dispatch(receiveEvent(event));
+        dispatch(receiveEvent(event))
         return event;
     }
 };

@@ -1,5 +1,6 @@
 .showpage-layout{
     display: flex;
+    display: grid;
     justify-content: space-between;
 
     padding: 10px;
@@ -10,7 +11,7 @@
 }
 .show-info{
     width: 40%;
-    margin-left: 40px;
+    margin-left: 60px;
     position: relative;
 }
 .show-title{
@@ -19,6 +20,9 @@
     font-family: Syne,Avant Garde,Tahoma,Verdana,sans-serif;
     color: #fff;
     margin-bottom: 10px;
+}
+#event-title-show{
+    width: 90%;
 }
 .show-date-time{
     margin-top: 25px;
@@ -101,7 +105,7 @@
 .show-img{
     display: flex;
     justify-content: center;
-    margin-left: -35px;
+    margin-left: -5px;
 }
 #show-img{
     height: 350px;
@@ -115,7 +119,7 @@
     top: 150px;
     width: 460px;
     width: 45vw;
-    margin-left: 45vw;
+    margin-left: 40vw;
     max-height: calc(100% - 150px);
     /* display: flex;
     justify-content: center;
