@@ -1,31 +1,69 @@
 import { useDispatch, useSelector } from "react-redux"
 import Navigation from "../../Navigation";
 import wazzap from "../../../images/wazzap-halloween.jpeg"
-import { useState } from "react";
-import "./EventFormPage.css"
-import * as eventActions from '../../../store/event';
+import { getEvent, fetchEvent } from '../../../store/events';
+import { useEffect, useState } from "react";
+import "./EventInputForm.css"
+import * as eventActions from '../../../store/events';
+import { useHistory, useParams } from "react-router";
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
-export function EventFormPage () {
+export function EventInputForm () {
 
     const dispatch = useDispatch();
-    // const navigate = useNavigate();
-
+    const history = useHistory();
+    const { eventId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
-    const [title, setTile] = useState('');
-    const [authorId, setAuthorId] = useState(sessionUser.id);
-    const [dateTime, setDateTime] = useState();
-    const [location, setLocation] = useState();
-    const [capacity, setCapacity] = useState();
-    const [cost, setCost] = useState();
-    const [description, setDescription] = useState()
+    const event = useSelector(getEvent(eventId));
+
+    const [title, setTitle] = useState('');
+    const [dateTime, setDateTime] = useState('');
+    const [location, setLocation] = useState('');
+    const [capacity, setCapacity] = useState('');
+    const [cost, setCost] = useState('');
+    const [description, setDescription] = useState('')
+    const [selectedDate, setSelectedDate] = useState();
+
+    const filteredDate = (date) => { 
+        return (new Date() < date) || (new Date() == date)
+    };
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        return dispatch(eventActions.createEvent({title, authorId, dateTime, location, capacity, cost, description}))
-        // navigate(`/pins/${pinId}`)
+        event ? 
+        (
+            dispatch(eventActions.updateEvent({title, authorId: sessionUser.id, dateTime, location, capacity, cost, description, id: eventId})).then( res =>  history.push('/events/' + res.id))
+        ) : 
+        (
+            dispatch(eventActions.createEvent({title, authorId: sessionUser.id, dateTime, location, capacity, cost, description})).then( res =>  history.push('/events/' + res.id))
+        );
     }
 
+    const handleDateChange = (date) => {
+        console.log(date);
+        setDateTime(date);
+        setSelectedDate(date);
+        console.log(dateTime)
+    }
+
+    useEffect( () => {
+        if ( eventId ) dispatch(fetchEvent(eventId)).then( event => {
+            setTitle(event.title);
+            setCapacity(event.capacity);
+            setLocation(event.location);
+            setCost(event.cost);
+            setDateTime(event.dateTime);
+            setDescription(event.description);
+        });
+
+    }, [dispatch, eventId])
+
     return (
-        <>
+        eventId && !event ?
+        (<></>)
+        :
+        ( <>
             <Navigation/>
         
             <form onSubmit={handleSubmit}>
@@ -36,18 +74,21 @@ export function EventFormPage () {
                             id="title-input"
                             type="text" 
                             value={title}
-                            onChange={ (e) => setTile(e.target.value) }
+                            onChange={ (e) => setTitle(e.target.value) }
                             required
                             placeholder="Untitled Event"
                             />
                         </div>
                         <div className="date-time-container">
-                            <input 
-                            id="date-time-input"
-                            type="text"
-                            value={dateTime}
-                            onChange={ (e) => setDateTime(e.target.value) }
-                            placeholder="Date & Time TBD"
+        
+                            <DatePicker 
+                                showTimeSelect
+                                filterDate={filteredDate}
+                                selected={selectedDate} 
+                                onChange={ handleDateChange }
+                                placeholderText="Date & Time TBD"
+                                className="datePicker-input"
+                                dateFormat='yyyy-mm-dd hh:ii'
                             />
                         </div>
                         <div className="host-optional-inputs-container">
@@ -90,12 +131,11 @@ export function EventFormPage () {
                                 onChange={ (e) => setCost(e.target.value) }
                                 placeholder="+ Cost per person"
                                 />
-                                {/* <h2 id="cost-title"> + Cost per person</h2> */}
                             </div>
-                            <div className="custom-link-div">
+                            {/* <div className="custom-link-div">
                                 <h2 id="input-emoji">✨</h2>
                                 <div id="custom-link">+ Add custon link or text </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="description-input-container">
                             <input 
@@ -115,7 +155,7 @@ export function EventFormPage () {
                     <div className="photo-rsvp-container">
                     
                         <div className="photo-container">
-                            <img src={wazzap} id="wazzap-halloween-pic" />
+                            <img src={wazzap} id="wazzap-halloween-pic" alt="dummy-pic"/>
                         </div>
                         <div className="open-invite-div">
                             <h2 id="open-invite-title">💫 Open Invite</h2>           
@@ -148,28 +188,48 @@ export function EventFormPage () {
                         </div>
                     </div>
                     <div className="static-sidebar">
-                        <button type="submit" id="create-form-btn"> SAVE DRAFT</button>  
-                        <div className="nav-options">
-                            <div className="theme-tab">
-                                <h2></h2>
-                                <h2>THEME</h2>
-                            </div>
-                            <div className="effect-tab">
-                                <h2></h2>
-                                <h2>EFFECT</h2>
-                            </div>
-                            <div className="settings-tab">
-                                <h2></h2>
-                                <h2>SETTINGS</h2>
-                            </div>
-                            <div className="preview-tab">
-                                <h2></h2>
-                                <h2>PREVIEW</h2>
-                            </div>
-                        </div>
                     </div>
                 </div>  
+                {event ? (
+                    <></>
+                ) : (
+                    <>
+                        <button type="submit" id="create-form-btn"> PUBLISH EVENT </button> 
+                    </>
+                )}
             </form>
-        </>
+            <div className="author-nav-sidebar">
+                <div className="module-invite" id='author-nav-sidebar-item'>
+                    <h2>🖌️</h2>
+                    <h2 id='author-nav-sidebar-text'>THEME</h2>
+                </div>
+                <div className="divider"></div>
+                <div className="module-invite" id='author-nav-sidebar-item'>
+                    <h2>🪄</h2>
+                    <h2 id='author-nav-sidebar-text'>EFFECT</h2>
+                </div>
+                <div className="divider"></div>
+                <div className="module-invite" id='author-nav-sidebar-item'>
+                    <h2>⚙️</h2>
+                    <h2 id='author-nav-sidebar-text'>SETTING</h2>
+                </div>
+                <div className="divider"></div>
+                {event ? (
+                    <div onClick={handleSubmit}>
+                        <div className="module-invite" id='author-nav-sidebar-item'>
+                            <h2>☑️</h2>
+                            <h2 id='author-nav-sidebar-text' >DONE</h2>
+                        </div>
+                    </div>
+                ) : (
+                    <div>
+                        <div className="module-invite" id='author-nav-sidebar-item'>
+                            <h2>👁️</h2>
+                            <h2 id='author-nav-sidebar-text'>Preview</h2>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </> ) 
     )
 }

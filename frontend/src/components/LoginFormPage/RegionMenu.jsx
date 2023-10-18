@@ -1,25 +1,23 @@
-import React, { useState } from 'react'; //useEffect
-// import { useDispatch} from 'react-redux';
+import React, { useState, useEffect } from 'react'; 
 import "./RegionMenu.css"
 import { BsFillCaretDownFill, BsFillCaretUpFill } from "react-icons/bs"
 import countries from './countries.json'
 
 function RegionMenu(){
-    // const dispatch = useDispatch();
     const [isActive, setIsActive] = useState(false);
     // const [selectedRegion, setSelectedRegion] = useState("America/Canada")
     
-    // useEffect(() => {
-    //   if (!isActive) return;
-  
-    //   const closeMenu = () => {
-    //     setIsActive(false);
-    //   };
-  
-    //   document.addEventListener('click', closeMenu);
+    const closeMenu = () => {
+      setIsActive(false);
+    };
     
-    //   return () => document.removeEventListener("click", closeMenu);
-    // }, [isActive]);
+    useEffect(() => {
+      if (!isActive) return;
+  
+      document.addEventListener('click', closeMenu);
+    
+      return () => document.removeEventListener("click", closeMenu);
+    }, [isActive]);
   
     return (
       <>

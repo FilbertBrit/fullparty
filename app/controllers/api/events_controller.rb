@@ -1,13 +1,14 @@
 class Api::EventsController < ApplicationController
-  wrap_parameters include: Event.attribute_names + ['dateTime']
+  wrap_parameters include: Event.attribute_names + ['dateTime', 'authorId']
   before_action :set_event, only: [:show, :update, :destroy]
 
   def create
+    # debugger
     @event = Event.new(event_params)
     if @event.save
       render :show
     else
-      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @event.errors.full_messages }, status: :unprocessable_entity
     end
     # render json: event_params
   end
@@ -18,6 +19,7 @@ class Api::EventsController < ApplicationController
 
     # all events create by user
     @events = Event.all.where(author_id: @user.id)
+    # @events = Event.all
     render :index
   end
 

@@ -4,19 +4,21 @@
     height: fit-content;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
 }
 
 #event-img{
     height: 250px;
     width: 250px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 .details{
     display: flex;
     flex-direction: column;
     height: fit-content;
     /* padding-top: 5px; */
-    margin-top: 10px;
 
 }
 #event-item-title{

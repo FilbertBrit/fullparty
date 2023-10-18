@@ -6,8 +6,9 @@ import SignupFormPage from './components/SignupFormPage';
 import { useSelector } from "react-redux"
 import { HomePage } from './components/HomePage';
 import { SplashPage } from './components/SplashPage';
-// import { EventFormPage } from './components/EventFormPage';
-import { EventFormPage } from './components/Events/EventFormPage';
+import { EventShowPage } from './components/Events/EventShowPage';
+import { EventInputForm } from './components/Events/EventInputForm';
+import { UserProfile } from './components/UserProfile';
 
 
 function App() {
@@ -19,7 +20,9 @@ function App() {
     <>
     <Switch>
       
-      <Route path="/create" component={ EventFormPage } />
+      <Route path="/create" component={ EventInputForm } />
+      <Route path="/events/:eventId/edit" component={ EventInputForm }/>
+      <Route path="/events/:eventId" component={ EventShowPage }/>
       <Route path="/events">
       {sessionUser ? (
               <HomePage/>
@@ -27,9 +30,9 @@ function App() {
               <Redirect to="/login"/>
             )}
       </Route>
-      <Route path="/events/:eventId"></Route>
       <Route path="/login" component={ LoginFormPage} />
       <Route path="/signup" component={ SignupFormPage } />
+      <Route path="/users/:userId" component={ UserProfile }/>
       <Route path="/">
       {sessionUser ? (
         <Redirect to="/events"/>
