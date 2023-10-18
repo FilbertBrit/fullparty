@@ -85,7 +85,7 @@ export const createEvent = event => async (dispatch) => {
 };
 
 export const updateEvent = event => async (dispatch) => {
-    const response = await fetch(`/api/events/${event.id}`, {
+    const response = await csrfFetch(`/api/events/${event.id}`, {
         method: 'PATCH',
         headers: {
         'Content-Type': 'application/json'
@@ -96,9 +96,8 @@ export const updateEvent = event => async (dispatch) => {
     if (response.ok) {
         const event = await response.json();
         dispatch(receiveEvent(event));
+        return event;
     }
-
-    return response
 };
 
 export const deleteEvent = eventId => async (dispatch) => {

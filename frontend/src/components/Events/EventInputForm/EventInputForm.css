@@ -36,6 +36,11 @@
     width: 100%;
     background-color: #363d4741;
     margin-bottom: 10px;
+    display: flex;
+}
+.datePicker-input{
+    height: 100%;
+    padding: 10px;
 }
 
 .host-optional-inputs-container{

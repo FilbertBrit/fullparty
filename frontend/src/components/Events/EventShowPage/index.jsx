@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getEvent, fetchEvent } from '../../../store/events';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { deleteEvent } from '../../../store/events';
 import Navigation from "../../Navigation"
 import { useHistory } from 'react-router';
@@ -17,15 +17,21 @@ export function EventShowPage () {
     const event = useSelector(getEvent(eventId));
     const editLink = "/events/" + eventId + "/edit";
 
+    // const [date, setDate] = useState();
+    // const[time, setTime] = useState();
+    
+
     const handleDelete = (e) => {
         dispatch(deleteEvent(eventId));
         history.push('/events')
     }
 
 
-    useEffect( () => {
-        dispatch(fetchEvent(eventId));
+    useEffect(  () => {
+        dispatch(fetchEvent(eventId))
+        
     }, [dispatch, eventId])
+    
 
     return event ? (
         <>
@@ -38,7 +44,9 @@ export function EventShowPage () {
                     </div>
                     <div className="show-date-time">
                         { event.dateTime ? 
-                            (<h2>{event.dateTime}</h2>) 
+                            (
+                            <h2>{event.dateTime}</h2>
+                            ) 
                             : 
                             (<h2>Date & Time TBD</h2>)
                         }

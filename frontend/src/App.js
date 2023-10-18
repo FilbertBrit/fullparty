@@ -20,7 +20,6 @@ function App() {
     <>
     <Switch>
       
-      {/* <Route path="/create" component={ EventFormPage } /> */}
       <Route path="/create" component={ EventInputForm } />
       <Route path="/events/:eventId/edit" component={ EventInputForm }/>
       <Route path="/events/:eventId" component={ EventShowPage }/>

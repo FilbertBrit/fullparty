@@ -22,7 +22,7 @@
     margin-bottom: 10px;
 }
 #event-title-show{
-    width: 90%;
+    width: max-content;
 }
 .show-date-time{
     margin-top: 25px;
@@ -31,12 +31,15 @@
     color: hsla(0,0%,100%,.9);
     /* font-family: Syne,Avant Garde,Tahoma,Verdana,sans-serif; */
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    width: max-content;
 }
 .show-details{
     margin-bottom: 40px;
 }
 .show-host{
     display: flex;
+    width: max-content;
+    /* width: fit-content; */
 }
 .show-hosted-title{
     font-size: 18px;
@@ -68,18 +71,21 @@
     font-size: 18px;
     display: flex;
     margin-bottom: 20px;
+    width: max-content;
 }
 .show-cost{
     display: flex;
     font-size: 18px;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     margin-bottom: 20px;
+    width: max-content;
 }
 .show-capacity{
     display: flex;
     font-size: 18px;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     margin-bottom: 20px;
+    width: max-content;
 }
 .show-description{
     display: flex;
@@ -121,6 +127,11 @@
     width: 45vw;
     margin-left: 40vw;
     max-height: calc(100% - 150px);
+    position: fixed;
+    right: 100px;
+    top: 50%;
+    z-index: 95;
+    transform: translateY(-50%);
     /* display: flex;
     justify-content: center;
     flex-direction: column; */
@@ -167,7 +178,7 @@
     top: 50%;
     z-index: 95;
     transform: translateY(-50%);
-    width: 100px;
+    width: 108px;
     display: flex;
     align-items: center;
     justify-content: center;

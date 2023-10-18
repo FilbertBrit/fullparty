@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import "./EventInputForm.css"
 import * as eventActions from '../../../store/events';
 import { useHistory, useParams } from "react-router";
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
 export function EventInputForm () {
 
@@ -15,16 +17,34 @@ export function EventInputForm () {
     const sessionUser = useSelector(state => state.session.user);
     const event = useSelector(getEvent(eventId));
 
-    const [title, setTitle] = useState( event ? event.title : '');
-    const [dateTime, setDateTime] = useState(event ? event.dateTime : '');
-    const [location, setLocation] = useState(event ? event.location : '');
-    const [capacity, setCapacity] = useState(event ? event.capacity : '');
-    const [cost, setCost] = useState(event? event.cost : '');
-    const [description, setDescription] = useState(event ? event.description : '')
+    const [title, setTitle] = useState('');
+    const [dateTime, setDateTime] = useState('');
+    const [location, setLocation] = useState('');
+    const [capacity, setCapacity] = useState('');
+    const [cost, setCost] = useState('');
+    const [description, setDescription] = useState('')
+    const [selectedDate, setSelectedDate] = useState();
+
+    const filteredDate = (date) => { 
+        return (new Date() < date) || (new Date() == date)
+    };
     
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(eventActions.createEvent({title, authorId: sessionUser.id, dateTime, location, capacity, cost, description})).then( res =>  history.push('/events/' + res.id));
+        event ? 
+        (
+            dispatch(eventActions.updateEvent({title, authorId: sessionUser.id, dateTime, location, capacity, cost, description, id: eventId})).then( res =>  history.push('/events/' + res.id))
+        ) : 
+        (
+            dispatch(eventActions.createEvent({title, authorId: sessionUser.id, dateTime, location, capacity, cost, description})).then( res =>  history.push('/events/' + res.id))
+        );
+    }
+
+    const handleDateChange = (date) => {
+        console.log(date);
+        setDateTime(date);
+        setSelectedDate(date);
+        console.log(dateTime)
     }
 
     useEffect( () => {
@@ -60,12 +80,15 @@ export function EventInputForm () {
                             />
                         </div>
                         <div className="date-time-container">
-                            <input 
-                            id="date-time-input"
-                            type="text"
-                            value={dateTime}
-                            onChange={ (e) => setDateTime(e.target.value) }
-                            placeholder="Date & Time TBD"
+        
+                            <DatePicker 
+                                showTimeSelect
+                                filterDate={filteredDate}
+                                selected={selectedDate} 
+                                onChange={ handleDateChange }
+                                placeholderText="Date & Time TBD"
+                                className="datePicker-input"
+                                dateFormat='yyyy-mm-dd hh:ii'
                             />
                         </div>
                         <div className="host-optional-inputs-container">
@@ -192,10 +215,10 @@ export function EventInputForm () {
                 </div>
                 <div className="divider"></div>
                 {event ? (
-                    <div>
+                    <div onClick={handleSubmit}>
                         <div className="module-invite" id='author-nav-sidebar-item'>
                             <h2>☑️</h2>
-                            <h2 id='author-nav-sidebar-text'>DONE</h2>
+                            <h2 id='author-nav-sidebar-text' >DONE</h2>
                         </div>
                     </div>
                 ) : (
