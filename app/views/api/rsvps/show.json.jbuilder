@@ -1,0 +1,1 @@
+json.extract! @rsvp, :status

@@ -9,7 +9,7 @@ class Api::RsvpsController < ApplicationController
   def create
     @rsvp = Rsvp.new(rsvp_params)
     if @rsvp.save
-      # render :show
+      render :show
       # render json: rsvp_params
     else
       render json: {errors: @rsvp.errors.full_messages }, status: :unprocessable_entity
@@ -19,7 +19,7 @@ class Api::RsvpsController < ApplicationController
 
   def update
     if @rsvp.update(rsvp_params)
-      # render :show
+      render :show
     else
       render json: @rsvp.errors.full_messages, status: 422
     end
