@@ -7,6 +7,7 @@ import Navigation from "../../Navigation"
 import { useHistory } from 'react-router';
 import wazzap from "../../../images/wazzap-halloween.jpeg"
 import "./EventShowPage.css"
+import { RsvpComponent } from './RsvpComponent';
 
 
 export function EventShowPage () {
@@ -15,6 +16,8 @@ export function EventShowPage () {
     const dispatch = useDispatch();
     const history = useHistory();
     const event = useSelector(getEvent(eventId));
+    const sessionUser = useSelector(state => state.session.user)
+    // const 
     const editLink = "/events/" + eventId + "/edit";
 
     // const [date, setDate] = useState();
@@ -28,7 +31,7 @@ export function EventShowPage () {
 
 
     useEffect(  () => {
-        dispatch(fetchEvent(eventId))
+        dispatch(fetchEvent(eventId));
         
     }, [dispatch, eventId])
     
@@ -175,7 +178,8 @@ export function EventShowPage () {
                         <img src={wazzap} alt="show-img" id='show-img'/>
                     </div>
                     <div className="show-rsvp">
-                        <div className="rsvp-options-btns-container">
+                        <RsvpComponent event={event}/>
+                        {/* <div className="rsvp-options-btns-container">
                             <div className="rsvp">
                                 <div className="emoji-rsvp">
                                     👍
@@ -194,7 +198,7 @@ export function EventShowPage () {
                                 </div>
                                 <h4>Can't Go</h4>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

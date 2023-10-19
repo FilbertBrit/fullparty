@@ -1,16 +1,18 @@
 // This file will contain all the actions specific to the event's information and the event's Redux reducer.
 
 import csrfFetch from './csrf';
+import { RECEIVE_RSVP } from './rsvps';
 
 //  ACTION TYPES
-const RECEIVE_EVENT = 'events/RECIEVE_EVENT';
-const RECEIVE_EVENTS = 'events/RECIEVE_EVENTS';
+export const RECEIVE_EVENT = 'events/RECEIVE_EVENT';
+const RECEIVE_EVENTS = 'events/RECEIVE_EVENTS';
 const REMOVE_EVENT = 'events/REMOVE_EVENT';
 
 // ACTIONS
-const receiveEvent = event => ({
+const receiveEvent = payload => ({
     type: RECEIVE_EVENT,
-    event
+    // event
+    payload
 });
 
 const receiveEvents = events => ({
@@ -36,11 +38,10 @@ export const getEvents = state => {
 
 }
 
-const storeEvent = eventId => {
-    if (eventId) sessionStorage.setItem("eventId", JSON.stringify(eventId));
-    else sessionStorage.removeItem("eventId");
-}
-
+// const storeEvent = eventId => {
+//     if (eventId) sessionStorage.setItem("eventId", JSON.stringify(eventId));
+//     else sessionStorage.removeItem("eventId");
+// }
 
 
 // THUNK ACTIONS
@@ -120,11 +121,13 @@ const eventsReducer = (state = {}, action) => {
         case RECEIVE_EVENTS:
             return {...nextState, ...action.events };
         case RECEIVE_EVENT:
-            return { ...state, [action.event.id]: action.event };
+            return { ...state, [action.payload.event.id]: action.payload.event };
         case REMOVE_EVENT:
             const newState = { ...state };
             delete newState[action.eventId];
             return newState;
+        case RECEIVE_RSVP:
+            return {...state, [action.rsvp.eventId]: action.rsvp.id}
         default:
             return state;
     }
