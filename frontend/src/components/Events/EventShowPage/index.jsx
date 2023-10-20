@@ -10,6 +10,7 @@ import "./EventShowPage.css"
 import { RsvpComponent } from './RsvpComponent';
 import { fetchRsvps } from '../../../store/rsvps';
 import { RsvpShow } from './RsvpShow';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 export function EventShowPage () {
@@ -23,20 +24,19 @@ export function EventShowPage () {
     // const guestGoing = event.going;
     // const guestMaybe = event.maybe;
     const editLink = "/events/" + eventId + "/edit";
-
     
-
     const handleDelete = (e) => {
         dispatch(deleteEvent(eventId));
         history.push('/events')
     }
-
-
+    
+    
     useEffect(  () => {
         dispatch(fetchEvent(eventId));
         // dispatch(fetchRsvp)
     }, [dispatch, eventId])
     
+    if (!sessionUser) return <Redirect to="/login" />;
 
     return event ? (
         <>

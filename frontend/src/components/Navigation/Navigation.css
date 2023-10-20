@@ -154,6 +154,7 @@
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     color: hsla(0,0%,100%,.8);
     font-weight: 400;
+    cursor: pointer;
 }
 .logout-emogi-profile-btn{
     padding-right: 15px;

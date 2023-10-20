@@ -8,14 +8,15 @@ import git from "../../images/git.png"
 import home from "../../images/home.png"
 import notification from "../../images/notification.png"
 import * as sessionActions from '../../store/session';
+import { useHistory } from 'react-router';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
+  const history = useHistory();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const userInitial = sessionUser.name.slice(0,1)
-  console.log(userInitial);
   
   const openMenu = () => {
     if (showMenu) return;
@@ -38,6 +39,7 @@ function Navigation() {
     e.preventDefault();
     console.log('logout')
     dispatch(sessionActions.logout());
+    return <Redirect to="/login"/>
   };
 
   const handleClick = (e) => {
@@ -111,7 +113,7 @@ function Navigation() {
             <div className="session-user-name">
               <div className="user-profile-photo">
                     <div className="initials">
-                      {userInitial}
+                      {sessionUser.name.slice(0,1)}
                     </div>
               </div>
               <div className="user-name-profile-section">
@@ -139,10 +141,10 @@ function Navigation() {
           </div>
 
           <div className="logout-btn" onClick={logout}>
-            <div className="logout-emogi-profile-btn">
+            <div className="logout-emogi-profile-btn" onClick={logout}>
               🧳
             </div>
-            <div className="logout-profile-header">
+            <div className="logout-profile-header" onClick={logout}>
               Log Out
             </div>
           </div>
