@@ -62,7 +62,8 @@ ApplicationRecord.transaction do
       name: 'Davis', 
       phone_number: '2000111678', 
       password: 'password'
-    )User.create!(
+    )
+    User.create!(
       name: 'Shannon', 
       phone_number: '0123122349', 
       password: 'password'
@@ -173,7 +174,8 @@ ApplicationRecord.transaction do
       event_id: 1,
       user_id: 9,
       status: "Maybe"
-    )Rsvp.create!(
+    )
+    Rsvp.create!(
       event_id: 1,
       user_id: 3,
       status: "I'm Going"
