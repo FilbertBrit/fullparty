@@ -1,20 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-// import { useParams } from 'react-router';
 import './Navigation.css';
 import logo from "../../images/logo.png"
 import git from "../../images/git.png"
 import home from "../../images/home.png"
 import notification from "../../images/notification.png"
-// import { useParams } from 'react-router';
+import * as sessionActions from '../../store/session';
+import { useHistory } from 'react-router';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [showMenu, setShowMenu] = useState(false);
+  
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true);
+  };
+  
+  useEffect(() => {
+    if (!showMenu) return;
 
-  // const path = useParams()
-  // console.log('path:', path)
+    const closeMenu = () => {
+      setShowMenu(false);
+    };
+
+    document.addEventListener('click', closeMenu);
+  
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
+
+  const logout = (e) => {
+    e.preventDefault();
+    console.log('logout')
+    dispatch(sessionActions.logout());
+    return <Redirect to="/login"/>
+  };
+
   const handleClick = (e) => {
     e.preventDefault();
   }
@@ -29,7 +56,10 @@ function Navigation() {
           <img src={home} id="home-btn" alt='home-btn'/>
         </a>
         <img src={notification} id="notification-btn" onClick={handleClick} alt='notif-btn'/>
-        <ProfileButton user={sessionUser} id="profile-btn-nav" />
+        {/* <ProfileButton user={sessionUser} id="profile-btn-nav" /> */}
+        <button onClick={openMenu}> Profile
+        <i className="fa-solid fa-user-circle" />
+      </button>
       </div>
     );
   } else {
@@ -75,6 +105,52 @@ function Navigation() {
         )}
         {sessionLinks}
     </ul>
+    {showMenu && (
+      <span className="dropdown-menu">
+        <ul className="profile-dropdown">
+
+          <div className="first-div">
+            <div className="session-user-name">
+              <div className="user-profile-photo">
+                    <div className="initials">
+                      {sessionUser.name.slice(0,1)}
+                    </div>
+              </div>
+              <div className="user-name-profile-section">
+                <li id='username-profile-btn'>{sessionUser.name}</li>
+                <div className="header-profile-btn">
+                  See your profile
+                </div>
+              </div>
+            </div>
+            <div className="profile-create-btns">
+              {/* <a href="/">profile-link</a> */}
+              <a href="/create" id='profile-dropdown-create-btn'>+ CREATE</a>
+            </div>
+          </div>
+
+          <div className="mutals-btn">
+            <a href="/mutual" id='mutuals-a-link'>
+              <div className="mutual-emoji">
+                👥
+              </div>
+              <div className="mutual-header">
+                Mutals
+              </div>
+            </a>
+          </div>
+
+          <div className="logout-btn" onClick={logout}>
+            <div className="logout-emogi-profile-btn" onClick={logout}>
+              🧳
+            </div>
+            <div className="logout-profile-header" onClick={logout}>
+              Log Out
+            </div>
+          </div>
+        </ul>
+      </span>
+    )}
     </>
   );
 

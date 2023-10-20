@@ -22,7 +22,13 @@ function App() {
       
       <Route path="/create" component={ EventInputForm } />
       <Route path="/events/:eventId/edit" component={ EventInputForm }/>
-      <Route path="/events/:eventId" component={ EventShowPage }/>
+      <Route path="/events/:eventId">
+      {sessionUser ? (
+              <EventShowPage/>
+            ) : (
+              <Redirect to="/login"/>
+            )}
+      </Route>
       <Route path="/events">
       {sessionUser ? (
               <HomePage/>

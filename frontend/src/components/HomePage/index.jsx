@@ -6,9 +6,12 @@ import { EventIndex } from "../Events/EventIndex";
 // import { useEffect, useState } from "react";
 import { AiOutlineInstagram } from "react-icons/ai"
 import { Mutuals } from "../Mutuals";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 export function HomePage () {
+    // debugger
     const sessionUser = useSelector(state => state.session.user);
+    if (!sessionUser) return <Redirect to="/login" />;
     // const dispatch = useDispatch();
     // const [filter, setFilter] = useState("Upcoming");
 

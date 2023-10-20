@@ -96,11 +96,26 @@
     color: hsla(0,0%,100%,.6); 
     /* padding-bottom: 25px; */
 }
+.show-guests{
+    display: flex;
+    flex-direction: column;
+}
 .show-guests-rsvps{
     display: flex;
     flex-direction: row; font-size: 15px;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     color: hsla(0,0%,100%,.6);
+    /* justify-content: space-around; */
+    /* margin-left: -20px; */
+}
+.going{
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+.maybe{
+    margin-right: 10px;
+    margin-bottom: 5px;
+
 }
 .show-guests-profiles{
     display: flex;
@@ -126,12 +141,13 @@
     width: 460px;
     width: 45vw;
     margin-left: 40vw;
-    max-height: calc(100% - 150px);
+    /* max-height: calc(100% - 150px); */
     position: fixed;
     right: 100px;
     top: 50%;
     z-index: 95;
     transform: translateY(-50%);
+
     /* display: flex;
     justify-content: center;
     flex-direction: column; */
@@ -248,4 +264,43 @@
 }
 .edit-show-title{
     color: #fff;
+}
+.rsvp-btn{
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    /* width: 200px; */
+    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    color: hsla(0,0%,100%,.6); /* text color*/
+    /* padding: 15px; */
+    background-color: transparent;
+    border: none;
+}
+.emoji-rsvp-btn{
+    font-size: xxx-large;
+    padding: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 80px;
+    background-color: #a8afb86a;
+}
+.rsvp-options-btns-container-show{
+    display: flex;
+    /* margin-left: -30px; */
+    padding: 16px;
+    /* align-items: center; */
+    justify-content: center;
+}
+.rsvp-rsp-show{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.show-rsvp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
