@@ -12,6 +12,7 @@ class Api::RsvpsController < ApplicationController
   end
 
   def create
+    # debugger
     @rsvp = Rsvp.new(rsvp_params)
     if @rsvp.save
       render :show

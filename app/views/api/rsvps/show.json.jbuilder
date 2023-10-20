@@ -1,1 +1,4 @@
-json.extract! @rsvp, :status, :user_id, :event_id
+
+json.extract!  @rsvp, :id, :user_id, :status, :event_id
+json.user @rsvp.user.name
+

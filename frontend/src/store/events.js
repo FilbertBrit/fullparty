@@ -81,6 +81,7 @@ export const createEvent = event => async (dispatch) => {
     if (response.ok) {
         const event = await response.json();
         dispatch(receiveEvent(event))
+        
         return event;
     }
 };
@@ -127,7 +128,27 @@ const eventsReducer = (state = {}, action) => {
             delete newState[action.eventId];
             return newState;
         case RECEIVE_RSVP:
-            return {...state, [action.rsvp.eventId]: action.rsvp.id}
+            let newObj = nextState[action.rsvp.eventId]
+            // debugger
+            if(!newObj.rsvpList.includes(action.rsvp.id)){
+                newObj.rsvpList = newObj.rsvpList.concat([action.rsvp.id]);
+            }
+            newObj.userRsvp = action.rsvp.id;
+            if(action.rsvp.status === "I'm Going"){
+                newObj.going += 1;
+                if(newObj.rsvpList.length < newObj.going + newObj.maybe){
+                    newObj.maybe -= 1;
+                }
+
+            }else if(action.rsvp.status === "Maybe"){
+                newObj.maybe += 1;
+                if(newObj.rsvpList.length < newObj.going + newObj.maybe){
+                    newObj.going -= 1;
+                }
+            }else{
+                console.log(nextState);
+            }
+            return {...state, [action.rsvp.eventId]: newObj}
         default:
             return state;
     }

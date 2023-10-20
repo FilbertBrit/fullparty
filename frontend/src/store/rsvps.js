@@ -38,13 +38,14 @@ export const fetchRsvps = (eventId) => async (dispatch) => {
     }
     return response;
 };
+
 export const createRsvp = rsvp => async (dispatch) => {
     const response = await csrfFetch(`/api/events/${rsvp.eventId}/rsvps`, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
         },
-        body: JSON.stringify(rsvp.rsvp)
+        body: JSON.stringify(rsvp)
     });
 
     if (response.ok) {
@@ -76,9 +77,10 @@ const rsvpsReducer = (state = {}, action) => {
         case RECEIVE_EVENT:
             return {...nextState, ...action.payload.rsvps};
         case RECEIVE_RSVP:
+            // debugger
             return {...state, [action.rsvp.id]: action.rsvp};
-        case RECEIVE_RSVPS:
-            return {...nextState, ...action.rsvps};
+        // case RECEIVE_RSVPS:
+        //     return {...nextState, ...action.rsvps};
         default:
             return state;
     }

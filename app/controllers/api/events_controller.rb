@@ -1,18 +1,21 @@
 class Api::EventsController < ApplicationController
   wrap_parameters include: Event.attribute_names + ['dateTime', 'authorId']
-  before_action :set_event, only: [:show, :update, :destroy]
+  before_action :set_event, only: [:update, :destroy]
 
   def index
     # debugger
     @user = current_user
     
     # all events create by user
-    @events = Event.all.where(author_id: @user.id)
+    # @events = Event.all.where(author_id: @user.id)
+    @events = Event.all
     # @events = Event.all
     render :index
   end
   
   def show
+    @current_user = current_user;
+    @event = Event.find(params[:id])
     render :show
   end
 

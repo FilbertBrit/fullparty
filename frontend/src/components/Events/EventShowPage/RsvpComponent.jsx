@@ -1,47 +1,72 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
+import { createRsvp, updateRsvp } from "../../../store/rsvps";
+import { useHistory } from "react-router";
 
 
 export function RsvpComponent ({ event }) {
 
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user)
-    const [status, setStatus] = useState();
+    const history = useHistory();
+    const sessionUser = useSelector(state => state.session.user);
+    const userRsvpId = event.userRsvp;
+    const rsvps = useSelector(state => state.rsvps)
+    const userRsvp = rsvps[userRsvpId];
+    //come back to refactor rsvp to hold status of rsvp
+    const [rsvp, setRsvp] = useState(userRsvp)
+    const response = {
+        "I'm Going": "👍",
+        "going": "👍",
+        "Maybe": "🤔",
+        "Can't Go": "😢"
+    }
 
-    const handleGoing = (e) => {
-        setStatus('Going');
+    const handleClick = (e) => {
+        userRsvp ? (
+            dispatch(updateRsvp({status: e.currentTarget.value, userId: sessionUser.id, eventId: event.id, id: userRsvpId})).then( rsvp => setRsvp(rsvp))
+        ) : (
+            dispatch(createRsvp({status: e.currentTarget.value, userId: sessionUser.id, eventId: event.id})).then( rsvp => setRsvp(rsvp))
+        )
     }
-    const handleMaybe = (e) => {
-        setStatus('Maybe');
+    const handleEdit = (e) => {
+        setRsvp();
     }
-    const handleCant = (e) => {
-        setStatus("Can't Go");
-    }
-
-    console.log(event.rsvpList, sessionUser)
 
     return (
-        <>
-            <div className="rsvp-options-btns-container">
-                <div className="rsvp" onClick={handleGoing}>
-                    <div className="emoji-rsvp">
-                        👍
+        
+            rsvp ? (
+                 <>
+                 <button className="rsvp-btn" onClick={handleEdit}>
+                    <div className="emoji-rsvp-btn" id="rsvp-rsp-show">
+                        {response[rsvp.status]}
                     </div>
-                    <h4>I'm Going</h4>
-                </div>
-                <div className="rsvp" onClick={handleMaybe}>
-                    <div className="emoji-rsvp">
-                        🤔
+                    <div> {rsvp.status}</div>
+                </button>
+                 </>
+            ) : (
+                <>
+                    <div className="rsvp-options-btns-container-show">
+                        
+                        <button className="rsvp-btn" value="I'm Going" onClick={handleClick}>
+                            <div className="emoji-rsvp-btn">
+                                👍
+                            </div>
+                            <div>I'm Going</div>
+                        </button>
+                        <button className="rsvp-btn" value="Maybe" onClick={handleClick}>
+                            <div className="emoji-rsvp-btn">
+                                🤔
+                            </div>
+                            <div>Maybe</div>
+                        </button>
+                        <button className="rsvp-btn" value="Can't Go"onClick={handleClick}>
+                            <div className="emoji-rsvp-btn">
+                                😢
+                            </div>
+                            <div>Can't Go</div>
+                        </button>
                     </div>
-                    <h4>Maybe</h4>
-                </div>
-                <div className="rsvp" onClick={handleCant}>
-                    <div className="emoji-rsvp">
-                        😢
-                    </div>
-                    <h4>Can't Go</h4>
-                </div>
-            </div>
-        </>
+                </>
+            )
     )
 }

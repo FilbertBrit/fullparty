@@ -35,19 +35,21 @@ function ProfileButton({ user }) {
         <i className="fa-solid fa-user-circle" />
       </button>
       {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <div className="profile-create-btns">
-            <a href="/">profile-link</a>
-            <a href="/create">+ CREATE</a>
-          </div>
-          <div className="mutals-btn">
-            <a href="/mutual">Mutals</a>
-          </div>
-          <div className="logout-btn">
-            <button onClick={logout}>Log Out</button>
-          </div>
-        </ul>
+        <span className="dropdown-menu">
+          <ul className="profile-dropdown">
+            <li>{user.username}</li>
+            <div className="profile-create-btns">
+              <a href="/">profile-link</a>
+              <a href="/create">+ CREATE</a>
+            </div>
+            <div className="mutals-btn">
+              <a href="/mutual">Mutals</a>
+            </div>
+            <div className="logout-btn">
+              <button onClick={logout}>Log Out</button>
+            </div>
+          </ul>
+        </span>
       )}
     </>
   );
