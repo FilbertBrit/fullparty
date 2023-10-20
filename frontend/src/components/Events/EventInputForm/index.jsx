@@ -41,20 +41,18 @@ export function EventInputForm () {
     }
 
     const handleDateChange = (date) => {
-        console.log(date);
         setDateTime(date);
         setSelectedDate(date);
-        console.log(dateTime)
     }
 
     useEffect( () => {
-        if ( eventId ) dispatch(fetchEvent(eventId)).then( event => {
-            setTitle(event.title);
-            setCapacity(event.capacity);
-            setLocation(event.location);
-            setCost(event.cost);
-            setDateTime(event.dateTime);
-            setDescription(event.description);
+        if(eventId) dispatch(fetchEvent(eventId)).then( payload => {
+            setTitle(payload.event.title);
+            setCapacity(payload.event.capacity);
+            setLocation(payload.event.location);
+            setCost(payload.event.cost);
+            setDateTime(payload.event.dateTime);
+            setDescription(payload.event.description);
         });
 
     }, [dispatch, eventId])

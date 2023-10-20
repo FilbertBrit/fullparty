@@ -31,6 +31,7 @@ class Api::EventsController < ApplicationController
   end
   
   def update
+    @current_user = current_user;
     if @event.update(event_params)
       render :show
     else
