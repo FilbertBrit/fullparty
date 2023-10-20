@@ -68,7 +68,7 @@ export function SplashPage () {
                         <h4>review 4</h4> */}
                     </div>
                     <div className="start-planning-btn">
-                        <a href="/create" id="div-3-start-planning-btn"> START PLANNING </a>
+                        <a href="/login" id="div-3-start-planning-btn"> START PLANNING </a>
                     </div>
                 </div>
                 <div className="div-4">
@@ -88,7 +88,7 @@ export function SplashPage () {
                         </div>
                     </div>
                     <div className="get-started-btn">
-                        <a href="/create" id="started-btn">GET STARTED</a>
+                        <a href="/login" id="started-btn">GET STARTED</a>
                     </div>
                 </div>
                 <div className="div-5">
@@ -110,7 +110,7 @@ export function SplashPage () {
                         </div>
                     </div>
                     <div className="try-btn">
-                        <a href="/create" id="try-btn">TRY IT OUT</a>
+                        <a href="/login" id="try-btn">TRY IT OUT</a>
                     </div>
                 </div>
 
@@ -138,7 +138,7 @@ export function SplashPage () {
                     </div>
                     <img src={stringy} id="stringy" alt="img"/>
                     <div className="gtps-btn">
-                        <a href="/create" id="gtps-btn">GET THE PARTY STARTED</a>
+                        <a href="/login" id="gtps-btn">GET THE PARTY STARTED</a>
                     </div>
                 </div>
                 <div className="div-7">
@@ -156,13 +156,13 @@ export function SplashPage () {
                     </div>
                     <h4 id="h4-div-7">Why aren't you partying yet??</h4>
                     <div className="cpp-btn">
-                        <a href="/create" id="cpp-btn">CREATE PARTY PAGE</a>
+                        <a href="/login" id="cpp-btn">CREATE PARTY PAGE</a>
                     </div>
                 </div>
                 <div className="div-8">
                     <h2 id="feature-h4">OUR OTHER FEATURES</h2>
                     <img src={feature} id="features-img" alt="img"/>
-                    <a href="/create" id="cpp-btn">PRESS TO PARTY</a>
+                    <a href="/login" id="cpp-btn">PRESS TO PARTY</a>
                 </div>
 
                 <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
