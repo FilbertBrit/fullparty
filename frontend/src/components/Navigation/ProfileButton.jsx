@@ -25,7 +25,7 @@ function ProfileButton({ user }) {
 
   const logout = (e) => {
     e.preventDefault();
-    console.log('logout')
+    // console.log('logout')
     dispatch(sessionActions.logout());
   };
 

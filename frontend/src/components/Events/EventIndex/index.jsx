@@ -13,12 +13,12 @@ export const EventIndex = ({filter}) => {
     const eventsObj = useSelector(getEvents);
     const events = eventsObj ? Object.values(eventsObj) : [];
     const [filteredEvents, setFilteredEvents] = useState()
-    console.log(filter)
-    console.log(events)
+    // console.log(filter)
+    // console.log(events)
 
     useEffect( () => {
         dispatch( fetchEvents() ).then( (res) => setFilteredEvents(Object.values(res)));
-        console.log("filered:",filteredEvents)
+        // console.log("filered:",filteredEvents)
     }, [dispatch])
 
     if(filter === "Upcoming"){

@@ -108,7 +108,7 @@ export const deleteEvent = eventId => async (dispatch) => {
     });
 
     if (response.ok) {
-        console.log('check')
+        // console.log('check')
         dispatch(removeEvent(eventId));
     }
 
@@ -146,7 +146,7 @@ const eventsReducer = (state = {}, action) => {
                     newObj.going -= 1;
                 }
             }else{
-                console.log(nextState);
+                // console.log(nextState);
             }
             return {...state, [action.rsvp.eventId]: newObj}
         default:

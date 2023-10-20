@@ -6,7 +6,7 @@ export const EventIndexItem = ({ event }) => {
     const showPage = '/events/' + event.id;
     // console.log(event);
     const handleClick = (e) => {
-        console.log('clicked')
+        // console.log('clicked')
     }
     return (
         
