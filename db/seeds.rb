@@ -309,7 +309,7 @@ ApplicationRecord.transaction do
 
 
   
-    More users
+    # More users
     10.times do 
       User.create!({
         name: Faker::Internet.unique.username(specifier: 3),
