@@ -3,17 +3,31 @@ import { fetchEvents, getEvents } from "../../../store/events"
 import { useEffect } from "react";
 import { EventIndexItem } from "../EventIndexItem";
 import "./EventIndex.css"
+import { useState } from "react";
 
 
-export const EventIndex = () => {
+export const EventIndex = ({filter}) => {
 
     const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user);
     const eventsObj = useSelector(getEvents);
     const events = eventsObj ? Object.values(eventsObj) : [];
+    const [filteredEvents, setFilteredEvents] = useState()
+    console.log(filter)
+    console.log(events)
 
     useEffect( () => {
-        dispatch( fetchEvents() );
+        dispatch( fetchEvents() ).then( (res) => setFilteredEvents(Object.values(res)));
+        console.log("filered:",filteredEvents)
     }, [dispatch])
+
+    if(filter === "Upcoming"){
+        
+    }else if(filter === "Hosting"){
+        
+    }else if(filter === "Open Invite"){
+
+    }
 
     
     return events ? (

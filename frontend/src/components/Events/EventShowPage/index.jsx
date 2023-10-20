@@ -144,12 +144,12 @@ export function EventShowPage () {
                                     {/* <h2>3 Waitlist</h2>  */}
                                 </div>
                                 <div className="show-guests-profiles">
+                                    {/* <h2>prof</h2>
                                     <h2>prof</h2>
                                     <h2>prof</h2>
                                     <h2>prof</h2>
                                     <h2>prof</h2>
-                                    <h2>prof</h2>
-                                    <h2>prof</h2>
+                                    <h2>prof</h2> */}
                                 </div>
                             </div>
                         )}
@@ -167,7 +167,7 @@ export function EventShowPage () {
                         <div className="show-rsvps-comments-header">
                             <h2 id='show-activity-header'>Activity</h2>
                         </div>
-                        <div className="show-rsvps-comments-div">
+                        {/* <div className="show-rsvps-comments-div">
                             < RsvpShow/>
                             <div className="show-rsvps-comments-add-comment">
                                 <h2>prof</h2>
@@ -192,7 +192,7 @@ export function EventShowPage () {
                         <h2 id='show-rsvp-item'>rsvp</h2>
                         <h2 id='show-rsvp-item'>rsvp</h2>
                         <h2 id='show-rsvp-item'>rsvp</h2>
-                        <h2 id='show-rsvp-item'>rsvp</h2>
+                        <h2 id='show-rsvp-item'>rsvp</h2> */}
                     </div>
                 </div>
                 <div className="show-photo-rsvp">

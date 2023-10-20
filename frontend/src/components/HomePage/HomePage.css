@@ -67,6 +67,12 @@ upcoming-events-msg{
 
 .event-filter-btn{
     font-size: 15px;
+    /* height: 25px; */
+    padding: 10px;
+    border-radius: 80px;
+    border: none;
+    color: aliceblue;
+    cursor: pointer;
 }
 
 #footer{
