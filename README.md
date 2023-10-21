@@ -6,8 +6,8 @@
 - [Live Demo](#live-demo)
 - [Technologies Used](#technologies-used)
 - [Features](#features)
-  - [Efficient State Shape with Jbuilder](#efficient-state-shape-with-jbuilder)
-  - [Dynamic Shopping Cart](#dynamic-shopping-cart)
+  - [Events](#events)
+  - [RSVPs](#rsvps)
 - [Future Directions](#future-directions)
 ---
 ## Overview
@@ -25,138 +25,93 @@ Check out the live website [here](https://fullparty.onrender.com/).
 - PostgreSQL 15
 ---
 ## Features
-### Efficient State Shape with Jbuilder
+### Events
 #### Challenges
-Creating a state shape that was easily accessible by React components, readable, and efficient in terms of rendering time was a challenging task.
+
 #### Solutions
-To solve this, I used Jbuilder to structure my JSON responses from the Rails backend. This allowed me to only include the data that was absolutely necessary for the front end, thus speeding up render times. I also wanted to solve the N+1 query issue, in which multiple fetches could be made for one piece of data. This would cause a slower, less interactable app, as well as an increase of fetches, which if fetching from a paid API, could be expensive. In order to solve this, I used the .includes method to load everything needed for a product or any other type of data in one request rather then many
+
 #### Code Snippets
 #### JBuilder Code:
 ```ruby
-@products.each do |product|
-    json.set! product.id do
-        json.extract! product, :id, :title, :description, :price, :stock_quantity
-        json.photoUrl product.photo.attached? ? product.photo.url : nil
-        json.user do
-            json.id product.user.id
-            json.username product.user.username
-        end
-        json.category do
-            json.id product.category.id
-            json.name product.category.name
+
+```
+#### Products Controller Code:
+```ruby
+
+```
+##### Explanation
+
+---
+### RSVPs
+#### Challenges
+I encountered a few challenges while implementing RSVPs. The first few challenges were deciding how to handle fetching existing RSVP data and how to handle RSVP inputs. As for the fetches, I initially was fetching both event information and RSVP information relating to the specific event. I was a bit unsure on what exaclty should be store in specific slices of state. An ongoing challenge I have is handling live RSVP inputs. When a user inputs a RSVP the event show page is not refreshed and it is up to me to update the slice of state to the event page would have the updated input. The show page displays details of how many guests have RSVP going, maybe or can't go which would not update since that event slice of state is calculate upon fetching in the jbuilder. 
+#### Solutions
+To solve the issues surrounding seeded or previous event/rsvp informtion, I relied on my associations and fetched rsvp information specific to current event through my event show jbuilder. This required me to simply deploy one actoin while population two slices of state, because every reducer is hit after an action I added the event action type to my rsvp reducer that allowed rsvp slice of state to update. My current solution for handling live RSVP inputs is to update the slice of state manually before adding it to the store inside of the eventReducer.
+##### Code Snippets
+#### Event JBuilder Code:
+```ruby
+rsvps = @event.rsvps.includes(:user)
+userRsvp = nil;
+
+rsvpArr = []
+rsvpsGoing = 0;
+rsvpsMaybye = 0;
+rsvpsCant = 0;
+available = @event.capacity || 0;
+
+rsvps.each do |rsvp|
+    rsvpArr.push(rsvp.id)
+    if rsvp.status === "going" || rsvp.status === "I'm Going"
+        rsvpsGoing += 1
+        available -= 1
+    end
+    if rsvp.status === "Maybe" || rsvp.status === "maybe"
+        rsvpsMaybye += 1
+    end
+    if rsvp.user_id === @current_user.id
+        userRsvp = rsvp.id
+    end
+end
+
+json.event do 
+    json.extract! @event, :id, :title, :description, :location, :capacity, :cost
+    json.dateTime @event.date_time ? @event.date_time.strftime("%A, %b %e %l%P") : @event.date_time
+    json.host @event.user.name
+    json.hostId @event.user.id
+    json.rsvpList rsvpArr
+    json.going rsvpsGoing
+    json.maybe rsvpsMaybye
+    json.cant rsvpsCant
+    json.userRsvp userRsvp
+    json.available available
+end
+
+
+json.rsvps do
+    rsvps.each do |rsvp|
+        json.set! rsvp.id do
+        json.extract! rsvp, :id, :user_id, :status
+        json.user rsvp.user.name
         end
     end
 end
 ```
-#### Products Controller Code:
-```ruby
-  def index
-    @products = Product.includes(:category, :user).all
-    render :index
-  end
-```
-##### Explanation
-The Jbuilder code is what is sent to the front end to be used as a data base for react componenets.
-- The first step is seperating the @products into many products, and extracting the same data for each
-- Then, I extract the id, title, description, and other information about each product
-- I also extract information about the products such as the user that the proudct belongs to, as well as the category that the product belongs to
-- The above point would usually cause more fetches to get this information, but the next section of code shows how it is all being fetched at once
-The Products Controller will control what gets sent to the jbuilder when index route is called
-- The frist thing that is done is @products is being initialzed by calling Proudct.all, which is all of the products.
-- In the middle however, we are also calling .includes(:category, :user). What this will do is preload the category and user associations/information attached to the products. This will cause only one fetch as we have all the information that the Jbulider is asking for
----
-### Dynamic Shopping Cart
-#### Challenges
-Implementing a shopping cart that was both user-specific and CRUD-capable was a considerable challenge.
-#### Solutions
-For tracking cart items based on the user, I utilized Rails sessions tied to unique user IDs. CRUD operations were then handled using Rails routes and controllers to ensure a seamless user experience.
-##### Code Snippets
+##### Slice of State handling
 ```javascript
-export const fetchCart = () => async (dispatch) => {
-    const res = await fetch("/api/cart_items");
-    if(res.ok){
-        const data = await res.json();
-        dispatch(receiveCart(data));
-    }else{
-        const errorMessage = await res.json();
-        console.error("Failed to fetch cart", errorMessage.message || "Unknown Error")
-    }
-}
-export const addToCart = (productId, quantity) => async(dispatch) => {
-    const res = await csrfFetch("/api/cart_items", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({product_id: productId, quantity: quantity})
-    })
-    if(res.ok){
-        const data = await res.json();
-        dispatch(receiveCartItem(data));
-        return true;
-    }else{
-        const errorMessage = await res.json();
-        console.error("Failed to add to cart", errorMessage.message || "Unknown Error");
-        return false;
-    }
-}
-export const updateToCart = (cartItemId, quantity) => async(dispatch) => {
-    const res = await csrfFetch(`/api/cart_items/${cartItemId}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({cartItemId: cartItemId, quantity: quantity})
-    })
-    if(res.ok){
-        const data = await res.json();
-        dispatch(receiveCartItem(data));
-        return true;
-    }else{
-        const errorMessage = await res.json();
-        console.error("Failed to update cart", errorMessage.message || "Unknown Error");
-        return false;
-    }
-}
-export const deleteCartItem = (cartItemId) => async(dispatch) => {
-    const res = await csrfFetch(`/api/cart_items/${cartItemId}`, {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-    if(res.ok){
-        dispatch(removeCartItem(cartItemId));
-    }else{
-        const errorMessage = await res.json();
-        console.error("Failed to delete cart item", errorMessage.message || "Unknown Error");
-    }
-}
-export const cartReducer = (state = {}, action) => {
-    const nextState = Object.assign({}, state);
+const rsvpsReducer = (state = {}, action) => {
+    const nextState = { ...state };
     switch (action.type) {
-        case RECEIVE_CART:
-            return{...state, ...action.payload}
-        case RECEIVE_CART_ITEM:
-            nextState[action.payload.id] = action.payload;
-            return nextState;
-        case REMOVE_CART_ITEM:
-            delete nextState[action.payload]
-            return nextState;
-        case REMOVE_CURRENT_USER:
-            return {};
+        case RECEIVE_EVENT:
+            return {...nextState, ...action.payload.rsvps};
+        case RECEIVE_RSVP:
+            return {...state, [action.rsvp.id]: action.rsvp};
         default:
             return state;
     }
 }
 ```
 ##### Explanation
-These are my thunk actions and reducer for my cart
-- The first thunk action will grab everything in the cart data base (if anything exists) from the backend.
-- The second thunk action will add a data entry to the cart. A cart item is associated with a product and a user (the user who put an item in their cart), this information is added to the data base here.
-- The third thunk action will update a cart item in the data base.
-- The fourth thunk action will delete a cart item from the data base.
-- The reducer is what changes the state based on the action caused. Each case will return an appropriately updated state (changes depeding on the action dispatched to this reducer).
+The jbuilder handles RSVPs through associations, I collect a collection of rsvp associated to current event. With this collection I iterated through to store all ids and calculate the amount of going, maybe, and can't rsvps to store in the event slice of state that will all be used in the event's show page. Inside of the rsvpsReducer I update rsvps slice of state with the payload recieved from the event show jbuilder. 
 ---
 ## Future Directions
 - Implementating invites.

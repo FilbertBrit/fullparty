@@ -8,6 +8,7 @@ import * as eventActions from '../../../store/events';
 import { useHistory, useParams } from "react-router";
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 export function EventInputForm () {
 
@@ -57,6 +58,7 @@ export function EventInputForm () {
 
     }, [dispatch, eventId])
 
+    if (!sessionUser) return <Redirect to="/login" />;
     return (
         eventId && !event ?
         (<></>)

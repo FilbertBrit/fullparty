@@ -39,7 +39,6 @@ function Navigation() {
     e.preventDefault();
     console.log('logout')
     dispatch(sessionActions.logout());
-    return <Redirect to="/login"/>
   };
 
   const handleClick = (e) => {
