@@ -31,22 +31,37 @@ Check out the live website [here](https://fullparty.onrender.com/).
 #### Solutions
 
 #### Code Snippets
-#### JBuilder Code:
-```ruby
+#### Create/Edit Component Code:
+```javascript
+const handleSubmit = (e) => {
+        e.preventDefault();
+        event ? 
+        (
+            dispatch(eventActions.updateEvent({title, authorId: sessionUser.id, dateTime, location, capacity, cost, description, id: eventId})).then( res =>  history.push('/events/' + res.event.id))
+        ) : 
+        (
+            dispatch(eventActions.createEvent({title, authorId: sessionUser.id, dateTime, location, capacity, cost, description})).then( res =>  history.push('/events/' + res.event.id))
+        );
+    }
 
-```
-#### Products Controller Code:
-```ruby
+    useEffect( () => {
+        if(eventId) dispatch(fetchEvent(eventId)).then( payload => {
+            setTitle(payload.event.title);
+            setCapacity(payload.event.capacity);
+            setLocation(payload.event.location);
+            setCost(payload.event.cost);
+            setDateTime(payload.event.dateTime);
+            setDescription(payload.event.description);
+        });
+
+    }, [dispatch, eventId])
 
 ```
 ##### Explanation
 
 ---
 ### RSVPs
-#### Challenges
-I encountered a few challenges while implementing RSVPs. The first few challenges were deciding how to handle fetching existing RSVP data and how to handle RSVP inputs. As for the fetches, I initially was fetching both event information and RSVP information relating to the specific event. I was a bit unsure on what exaclty should be store in specific slices of state. An ongoing challenge I have is handling live RSVP inputs. When a user inputs a RSVP the event show page is not refreshed and it is up to me to update the slice of state to the event page would have the updated input. The show page displays details of how many guests have RSVP going, maybe or can't go which would not update since that event slice of state is calculate upon fetching in the jbuilder. 
-#### Solutions
-To solve the issues surrounding seeded or previous event/rsvp informtion, I relied on my associations and fetched rsvp information specific to current event through my event show jbuilder. This required me to simply deploy one actoin while population two slices of state, because every reducer is hit after an action I added the event action type to my rsvp reducer that allowed rsvp slice of state to update. My current solution for handling live RSVP inputs is to update the slice of state manually before adding it to the store inside of the eventReducer.
+
 ##### Code Snippets
 #### Event JBuilder Code:
 ```ruby
@@ -111,7 +126,7 @@ const rsvpsReducer = (state = {}, action) => {
 }
 ```
 ##### Explanation
-The jbuilder handles RSVPs through associations, I collect a collection of rsvp associated to current event. With this collection I iterated through to store all ids and calculate the amount of going, maybe, and can't rsvps to store in the event slice of state that will all be used in the event's show page. Inside of the rsvpsReducer I update rsvps slice of state with the payload recieved from the event show jbuilder. 
+The jbuilder handles RSVPs fetches through associations, I collect a collection of rsvp associated to current event. I iterated through this collection to store all ids and calculate the amount of going, maybe, and can't rsvps to store in the event slice of state that will all be used in the event's show page. Inside of the rsvpsReducer I update rsvps slice of state with the payload recieved from the event show jbuilder. 
 ---
 ## Future Directions
 - Implementating invites.
