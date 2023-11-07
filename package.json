@@ -6,7 +6,7 @@
   },
   "engines": {
     "node": "16.x"
-  },  
+  },
   "scripts": {
     "build": "npm install --prefix frontend && npm run build --prefix frontend"
   },
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/FilbertBrit/fullparty/issues"
   },
-  "homepage": "https://github.com/FilbertBrit/fullparty#readme"
+  "homepage": "https://github.com/FilbertBrit/fullparty#readme",
+  "dependencies": {
+    "babel-plugin-macros": "^3.1.0"
+  }
 }
