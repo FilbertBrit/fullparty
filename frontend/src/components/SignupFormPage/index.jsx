@@ -23,23 +23,31 @@ function SignupFormPage() {
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      if (password === confirmPassword) {
-        setErrors([]);
-        return dispatch(sessionActions.signup({ phoneNumber, name, password }))
-          .catch(async (res) => {
-          let data;
-          try {
-            // .clone() essentially allows you to read the response body twice
-            data = await res.clone().json();
-          } catch {
-            data = await res.text(); // Will hit this case if the server is down
-          }
-          if (data?.errors) setErrors(data.errors);
-          else if (data) setErrors([data]);
-          else setErrors([res.statusText]);
-        });
+      if(/^\d+$/.test(phoneNumber)){ //
+        if (password === confirmPassword) {
+          setErrors([]);
+          return dispatch(sessionActions.signup({ phoneNumber, name, password }))
+            .catch(async (res) => {
+            let data;
+            try {
+              // .clone() essentially allows you to read the response body twice
+              data = await res.clone().json();
+            } catch {
+              data = await res.text(); // Will hit this case if the server is down
+            }
+            if (data?.errors) setErrors(data.errors);
+            else if (data) setErrors([data]);
+            else setErrors([res.statusText]);
+          });
+        }
+        else{
+
+          return setErrors(['Confirm Password field must be the same as the Password field']);
+        }
       }
-      return setErrors(['Confirm Password field must be the same as the Password field']);
+      else{
+        return setErrors(['Invalid Phone Number']);
+      }
     };
 
     const onChange = (e) => {

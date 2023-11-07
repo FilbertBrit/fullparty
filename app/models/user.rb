@@ -15,14 +15,15 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :name, 
-    uniqueness: true, 
     length: { in: 3..30 }, 
     format: { without: URI::MailTo::EMAIL_REGEXP, message:  "can't be an email" }
+
   validates :phone_number, 
     uniqueness: true, 
     length: { minimum: 10 }
-    validates :session_token, presence: true, uniqueness: true
-    validates :password, length: { in: 6..255 }, allow_nil: true
+
+  validates :session_token, presence: true, uniqueness: true
+  validates :password, length: { in: 6..255 }, allow_nil: true
     
   has_many :events,
     foreign_key: :author_id,
