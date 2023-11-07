@@ -63,17 +63,17 @@ function LoginFormPage() {
     <>
       <Navigation/>
       <div className='layout'>
-        <ul>
-          {errors.map(error => <li key={error}>{error}</li>)}
-        </ul>
 
         <div id='login-title-container'>
-          {/* <h3 id='login-title'>Sign in or sign up</h3> */}
           <h3 id='login-title'>Sign in or </h3>
           <div id='login-title'>
             <h3 id='signup-click' onClick={handleSignupClick}> { " sign up"}</h3>
           </div>
         </div>
+
+        <ul className='errors'>
+          {errors.map(error => <li key={error}>{error}</li>)}
+        </ul>
 
         <form onSubmit={handleSubmit} className='loginForm'>
 

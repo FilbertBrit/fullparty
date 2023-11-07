@@ -23,23 +23,31 @@ function SignupFormPage() {
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      if (password === confirmPassword) {
-        setErrors([]);
-        return dispatch(sessionActions.signup({ phoneNumber, name, password }))
-          .catch(async (res) => {
-          let data;
-          try {
-            // .clone() essentially allows you to read the response body twice
-            data = await res.clone().json();
-          } catch {
-            data = await res.text(); // Will hit this case if the server is down
-          }
-          if (data?.errors) setErrors(data.errors);
-          else if (data) setErrors([data]);
-          else setErrors([res.statusText]);
-        });
+      if(/^\d+$/.test(phoneNumber)){ //
+        if (password === confirmPassword) {
+          setErrors([]);
+          return dispatch(sessionActions.signup({ phoneNumber, name, password }))
+            .catch(async (res) => {
+            let data;
+            try {
+              // .clone() essentially allows you to read the response body twice
+              data = await res.clone().json();
+            } catch {
+              data = await res.text(); // Will hit this case if the server is down
+            }
+            if (data?.errors) setErrors(data.errors);
+            else if (data) setErrors([data]);
+            else setErrors([res.statusText]);
+          });
+        }
+        else{
+
+          return setErrors(['Confirm Password field must be the same as the Password field']);
+        }
       }
-      return setErrors(['Confirm Password field must be the same as the Password field']);
+      else{
+        return setErrors(['Invalid Phone Number']);
+      }
     };
 
     const onChange = (e) => {
@@ -55,22 +63,22 @@ function SignupFormPage() {
       <>
         <Navigation/>
         <div className="layout">
-          <ul>
+          
+          <div id='signup-title-container'>
+            <div id='login-title'>
+              <h3 id='sign-in-click' onClick={handleSignupClick}> Sign in </h3>
+            </div>
+            <div id='login-title'>
+              <h3 id='login-title-sign-up'> {" or sign up"} </h3>
+            </div>
+          </div>
+
+          <ul className='errors-signup'>
             {errors.map(error => <li key={error}>{error}</li>)}
           </ul>
-          {/* <h2 id='signup-title'>Sign Up</h2> */}
-          <div id='signup-title-container'>
-          <div id='login-title'>
-            <h3 id='sign-in-click' onClick={handleSignupClick}> Sign in </h3>
-          </div>
-          <div id='login-title'>
-            <h3 id='login-title-sign-up'> {" or sign up"} </h3>
-          </div>
-        </div>
 
           <form onSubmit={handleSubmit}>
             <div className="name-container">
-              {/* <h4>NAME</h4> */}
               <input
                 id='name-input'
                 type="text"

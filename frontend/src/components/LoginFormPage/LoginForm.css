@@ -148,7 +148,10 @@ h4{
     display: flex;
     justify-content: center;
 }
-
-/* * {
+.errors{
+    margin-bottom: 20px;
+    /* color:#363d4782; */
+    color:#23282ec2;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
-} */
+
+}
