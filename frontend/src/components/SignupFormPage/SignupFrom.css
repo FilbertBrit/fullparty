@@ -4,6 +4,12 @@
     font-size: 24px;
     padding-top: 3%;
 }
+.errors-signup{
+    color:#23282ec2;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    margin-top: 25px;
+    margin-bottom: -10px;
+}
 #signup-title-container{
     display: flex;
     flex-direction: row;

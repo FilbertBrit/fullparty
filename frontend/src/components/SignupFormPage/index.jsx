@@ -55,22 +55,22 @@ function SignupFormPage() {
       <>
         <Navigation/>
         <div className="layout">
-          <ul>
+          
+          <div id='signup-title-container'>
+            <div id='login-title'>
+              <h3 id='sign-in-click' onClick={handleSignupClick}> Sign in </h3>
+            </div>
+            <div id='login-title'>
+              <h3 id='login-title-sign-up'> {" or sign up"} </h3>
+            </div>
+          </div>
+
+          <ul className='errors-signup'>
             {errors.map(error => <li key={error}>{error}</li>)}
           </ul>
-          {/* <h2 id='signup-title'>Sign Up</h2> */}
-          <div id='signup-title-container'>
-          <div id='login-title'>
-            <h3 id='sign-in-click' onClick={handleSignupClick}> Sign in </h3>
-          </div>
-          <div id='login-title'>
-            <h3 id='login-title-sign-up'> {" or sign up"} </h3>
-          </div>
-        </div>
 
           <form onSubmit={handleSubmit}>
             <div className="name-container">
-              {/* <h4>NAME</h4> */}
               <input
                 id='name-input'
                 type="text"
