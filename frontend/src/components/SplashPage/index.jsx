@@ -25,13 +25,10 @@ import review4 from "../../images/review4.png"
 import demo from "../../images/demo.mov"
 import { AiOutlineInstagram } from "react-icons/ai"
 
-// import logo from "../../images/logo.png"
-
 export function SplashPage () {
     return (
         <div>
             <Navigation/>
-            {/* <h3>Welcome to splash page</h3> */}
             <div className="splash-layout">
                 <div className="div-1">
                     <div className="phone-gif">
@@ -43,7 +40,6 @@ export function SplashPage () {
                         <div className="sexiest">
                         The sexiest way to get all your guests on the same page (literally)
                         </div>
-                        {/* <button id="div-1-btn">CREATE YOUR PARTY PAGE</button> */}
                         <a href="/create" id="div-1-btn"> CREATE YOUR PARTY PAGE </a>
                         <div id="div-1-already-a-host">
                             Already a host or guest?
@@ -61,11 +57,6 @@ export function SplashPage () {
                         <img src={review2} id="review" alt="img"/>
                         <img src={review3} id="review" alt="img"/>
                         <img src={review4} id="review" alt="img"/>
-
-                        {/* <h4>review 1</h4>
-                        <h4>review 2</h4>
-                        <h4>review 3</h4>
-                        <h4>review 4</h4> */}
                     </div>
                     <div className="start-planning-btn">
                         <a href="/login" id="div-3-start-planning-btn"> START PLANNING </a>
@@ -151,9 +142,9 @@ export function SplashPage () {
                     <h4 id="h4-div-7">Photos are sent straight to your phone, where you can upload them to your partiful party page.</h4>
                     <h4 id="h4-div-7">✨Go ahead, make some memories✨</h4>
                     <h4 id="h4-div-7">(The specs: Premium Kodak 400 ISO 35mm film with 27 exposures.)</h4>
-                    <div className="jtw-btn">
+                    {/* <div className="jtw-btn">
                         <a href="/" id="jtw-btn">JOIN THE WAITLIST</a>
-                    </div>
+                    </div> */}
                     <h4 id="h4-div-7">Why aren't you partying yet??</h4>
                     <div className="cpp-btn">
                         <a href="/login" id="cpp-btn">CREATE PARTY PAGE</a>
@@ -166,10 +157,6 @@ export function SplashPage () {
                 </div>
 
                 <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
-                {/* <div className="div-9">
-                    <h4>Ready to start partying?</h4>
-                    <h4>Create your page </h4>
-                </div> */}
             </div>
         </div>
 

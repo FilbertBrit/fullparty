@@ -75,7 +75,7 @@ function Navigation() {
             <a href="https://github.com/FilbertBrit/fullparty.git" id='github-nav' target='_blank' rel="noreferrer">
               <img src={git} id="git-img" alt='git-img' />
             </a>
-            <a href="/" id='inspo-nav'>✨INSPO</a>
+            {/* <a href="/" id='inspo-nav'>✨INSPO</a> */}
             <a href="/login" id='login-nav'>LOGIN</a>
           </div>
          )
@@ -116,10 +116,12 @@ function Navigation() {
                     </div>
               </div>
               <div className="user-name-profile-section">
-                <li id='username-profile-btn'>{sessionUser.name}</li>
-                <div className="header-profile-btn">
-                  See your profile
-                </div>
+                <a>
+                  <li id='username-profile-btn'>{sessionUser.name}</li>
+                  <div className="header-profile-btn">
+                    See your profile
+                  </div>
+                </a>
               </div>
             </div>
             <div className="profile-create-btns">
