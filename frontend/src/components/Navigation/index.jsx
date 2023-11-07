@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import logo from "../../images/logo.png"
 import git from "../../images/git.png"
@@ -9,7 +8,6 @@ import home from "../../images/home.png"
 import notification from "../../images/notification.png"
 import * as sessionActions from '../../store/session';
 import { useHistory } from 'react-router';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 function Navigation() {
@@ -37,7 +35,6 @@ function Navigation() {
 
   const logout = (e) => {
     e.preventDefault();
-    console.log('logout')
     dispatch(sessionActions.logout());
   };
 
@@ -55,10 +52,13 @@ function Navigation() {
           <img src={home} id="home-btn" alt='home-btn'/>
         </a>
         <img src={notification} id="notification-btn" onClick={handleClick} alt='notif-btn'/>
-        {/* <ProfileButton user={sessionUser} id="profile-btn-nav" /> */}
-        <button onClick={openMenu}> Profile
-        <i className="fa-solid fa-user-circle" />
-      </button>
+        <div className="profile-btn-container">
+          <button onClick={openMenu} id='profile-btn'> {sessionUser.name.slice(0,1)}</button>
+          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" id='down-arrow' fill='#cad3e2'>
+            <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/>
+          </svg>
+        
+        </div>
       </div>
     );
   } else {
@@ -75,7 +75,7 @@ function Navigation() {
             <a href="https://github.com/FilbertBrit/fullparty.git" id='github-nav' target='_blank' rel="noreferrer">
               <img src={git} id="git-img" alt='git-img' />
             </a>
-            <a href="/" id='inspo-nav'>✨INSPO</a>
+            {/* <a href="/" id='inspo-nav'>✨INSPO</a> */}
             <a href="/login" id='login-nav'>LOGIN</a>
           </div>
          )
@@ -116,10 +116,12 @@ function Navigation() {
                     </div>
               </div>
               <div className="user-name-profile-section">
-                <li id='username-profile-btn'>{sessionUser.name}</li>
-                <div className="header-profile-btn">
-                  See your profile
-                </div>
+                <a>
+                  <li id='username-profile-btn'>{sessionUser.name}</li>
+                  <div className="header-profile-btn">
+                    See your profile
+                  </div>
+                </a>
               </div>
             </div>
             <div className="profile-create-btns">

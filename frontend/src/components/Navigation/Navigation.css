@@ -92,15 +92,48 @@
     /* height: 25px; */
 }
 .initials{
-    background-color: rgba(88, 137, 226, 0.685);
+    background: linear-gradient(to right bottom,#5c5cbc 10%,40%,#d85ed4 60%,80%,#cad3e2 90%);
     border-radius: 60%;
     height: 55px;
     align-items: center;
     justify-content: center;
     display: flex;
     color: white;
+    font-size: large;
+    font-weight: 900;
+    color: #cad3e2;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
 }
-.user-name-profile-section{
+.profile-btn-container{
+    overflow: visible;
+    display: block;
+    z-index: 1;
+    /* position: relative; */
+    width: 50px;
+    /* display: flex; */
+}
+#profile-btn{
+    border-radius: 90%;
+    background: linear-gradient(to right bottom,#5c5cbc 10%,40%,#d85ed4 60%,80%,#cad3e2 90%);
+    padding: 20px;
+    border-style: hidden; 
+    position: relative;
+    color: #cad3e2;
+    font-size: large;
+    font-weight: 900;
+    width: 60px;
+}
+#down-arrow{
+    position: absolute;
+    margin-left: 40px;
+    margin-top: -15px;
+    font-size: x-small;
+    font-weight: 900;
+    background: white;
+    border-radius: 90%;
+    padding: 4px;
+}
+.user-name-profile-section{ 
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     display: flex;
     justify-content: center;
