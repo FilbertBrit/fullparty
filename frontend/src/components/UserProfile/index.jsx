@@ -9,7 +9,6 @@ export function UserProfile () {
 
     if (sessionUser.id != profile.userId) return <Redirect to="/events" />;
 
-    //  need to fecth user info
 
 
     return (
