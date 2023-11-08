@@ -17,6 +17,7 @@ function LoginFormPage() {
   const [redirectSignup, setRedirectSignup] = useState(false);
   let regionMenu = RegionMenu();
 
+  
   if (sessionUser) return <Redirect to="/events" />;
   if (redirectSignup) return <Redirect to="/signup" />;
 

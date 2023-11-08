@@ -15,7 +15,8 @@ function Navigation() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const userProfile = '/users/' + sessionUser.id;
+  const userId = sessionUser ? (sessionUser.id) : ('');
+  const userProfile = '/users/' + userId;
   
   const openMenu = () => {
     if (showMenu) return;
