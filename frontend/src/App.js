@@ -38,7 +38,12 @@ function App() {
       </Route>
       <Route path="/login" component={ LoginFormPage} />
       <Route path="/signup" component={ SignupFormPage } />
-      <Route path="/users/:userId" component={ UserProfile }/>
+      <Route path="/users/:userId">
+      {sessionUser ? (
+        <Redirect to="/events"/>
+        ) : (
+          <UserProfile/>
+        )}</Route>
       <Route path="/">
       {sessionUser ? (
         <Redirect to="/events"/>
