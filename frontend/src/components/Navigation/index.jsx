@@ -15,6 +15,7 @@ function Navigation() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const userProfile = '/users/' + sessionUser.id;
   
   const openMenu = () => {
     if (showMenu) return;
@@ -109,23 +110,20 @@ function Navigation() {
         <ul className="profile-dropdown">
 
           <div className="first-div">
-            <div className="session-user-name">
-              <div className="user-profile-photo">
-                    <div className="initials">
-                      {sessionUser.name.slice(0,1)}
-                    </div>
-              </div>
-              <div className="user-name-profile-section">
-                <a>
+            <NavLink exact to={ userProfile } className="session-user-name">
+                <div className="user-profile-photo">
+                      <div className="initials">
+                        {sessionUser.name.slice(0,1)}
+                      </div>
+                </div>
+                <div className="user-name-profile-section">
                   <li id='username-profile-btn'>{sessionUser.name}</li>
                   <div className="header-profile-btn">
                     See your profile
                   </div>
-                </a>
-              </div>
-            </div>
+                </div>
+            </NavLink>
             <div className="profile-create-btns">
-              {/* <a href="/">profile-link</a> */}
               <a href="/create" id='profile-dropdown-create-btn'>+ CREATE</a>
             </div>
           </div>
