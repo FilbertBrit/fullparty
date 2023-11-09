@@ -22,9 +22,17 @@
     padding-bottom: 0;
     font-size: 70px;
     margin-bottom: 5px;
+    color:  #fff;
+    display: flex;
+    flex-wrap: wrap;
 }
+
 #user-profile-details{
+   font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+}
+#bam-emoji{
     color: hsla(0,0%,100%,.5);
+    
 }
 .profile-details-div{
     display: flex;
