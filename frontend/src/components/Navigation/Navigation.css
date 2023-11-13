@@ -85,6 +85,7 @@
 .session-user-name{
     display: flex;
     flex-direction: row;
+    text-decoration: none;
 }
 .user-profile-photo{
     width: 20%;

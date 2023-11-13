@@ -8,6 +8,7 @@
 #  event_id   :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  type       :string           not null
 #
 class Comment < ApplicationRecord
     validates :body, :author_id, :event_id, presence: true

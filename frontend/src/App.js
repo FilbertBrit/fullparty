@@ -9,6 +9,7 @@ import { SplashPage } from './components/SplashPage';
 import { EventShowPage } from './components/Events/EventShowPage';
 import { EventInputForm } from './components/Events/EventInputForm';
 import { UserProfile } from './components/UserProfile';
+import { UserProfileEditForm } from './components/UserProfile/UserProfileEditForm';
 
 
 function App() {
@@ -38,7 +39,14 @@ function App() {
       </Route>
       <Route path="/login" component={ LoginFormPage} />
       <Route path="/signup" component={ SignupFormPage } />
-      <Route path="/users/:userId" component={ UserProfile }/>
+      <Route path="/users/:userId/edit" component={UserProfileEditForm}></Route>
+      <Route path="/users/:userId">
+      {sessionUser ? (
+        <UserProfile/>
+        ) : (
+          <Redirect to="/events"/>
+        )}
+      </Route>
       <Route path="/">
       {sessionUser ? (
         <Redirect to="/events"/>
