@@ -29,6 +29,7 @@ class Api::CommentsController < ApplicationController
         @comment.destroy
         @comments = Comment.all(where(event_id: params[:event_id]))
         render :index
+    end
 
     private
     # def set_comment
@@ -38,7 +39,7 @@ class Api::CommentsController < ApplicationController
     # end
 
     def comment_params
-        params.require(:comment).permit(:body, :author_id, :event_id)
+        params.require(:comment).permit(:body, :author_id, :event_id, :type)
     end
 
 end
