@@ -9,6 +9,7 @@ export function UserProfileEditForm () {
 
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user)
+    const userId = sessionUser.id;
     const joinedDate = sessionUser.joined;
     const profile = useParams();
 
@@ -21,7 +22,7 @@ export function UserProfileEditForm () {
                         <img src={wazzap} alt="show-img" id='profile-img'/>
                     </div>
                     <div className="profile-user-edit">
-                        <button id='edit-profile-btn' onClick={() => history.push('users/' + profile.userId)}>CANCEL</button>
+                        <button id='edit-profile-btn' onClick={() => history.goBack()}>CANCEL</button>
                         <button>SAVE ✓</button>
                     </div>
                 </div>
