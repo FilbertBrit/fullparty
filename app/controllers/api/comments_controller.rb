@@ -1,17 +1,20 @@
 class Api::CommentsController < ApplicationController
-    wrap_parameters include: Event.attribute_names + ['dateTime', 'authorId']
+    wrap_parameters include: Comment.attribute_names + ['authorId', 'eventId', 'commentType']
     # before_action :set_comment, only: [:update, :destroy]
 
     def index
-        # @event = Event.find(params[:event_id])
-        @comments = Comment.all(where(event_id: params[:event_id]))
+        @comments = Comment.all
+        # (where(event_id: params[:id]))
         render :index
     end
+    
 
     def create
-        @comment = Comment.new(event_params)
+        # debugger
+        @comment = Comment.new(comment_params)
+        # put(@comment)
         if @comment.save
-            render :index
+            render :show
         else
             render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
         end
@@ -39,7 +42,7 @@ class Api::CommentsController < ApplicationController
     # end
 
     def comment_params
-        params.require(:comment).permit(:body, :author_id, :event_id, :type)
+        params.require(:comment).permit(:body, :author_id, :event_id, :comment_type)
     end
 
 end

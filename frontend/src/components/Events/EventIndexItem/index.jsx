@@ -5,12 +5,10 @@ import wazzap from "../../../images/wazzap-halloween.jpeg"
 export const EventIndexItem = ({ event }) => {
     const showPage = '/events/' + event.id;
     // console.log(event);
-    const handleClick = (e) => {
-        // console.log('clicked')
-    }
+    
     return (
         
-        <a href={ showPage } id="event-item" onClick={handleClick}>
+        <a href={ showPage } id="event-item" >
             <img src={wazzap} id="event-img" alt="dummy-pic"/>
             <div className="details">
                 <h2 id="event-item-title">{event.title}</h2>

@@ -1,0 +1,36 @@
+.user-profile-photo{
+    width: 12%;
+    padding: 10px;
+    /* height: 25px; */
+}
+.user-profile-photo-form{
+    width: 10%;
+}
+#comment-input-form{
+    font-size: 16px;
+}
+.initials{
+    background: linear-gradient(to right bottom,#5c5cbc 10%,40%,#d85ed4 60%,80%,#cad3e2 90%);
+    border-radius: 60%;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: white;
+    font-size: large;
+    font-weight: 900;
+    color: #cad3e2;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+}
+#comment-form{
+    display: flex;
+    flex-direction: row;
+    backdrop-filter: blur(45px);
+    -webkit-backdrop-filter: blur(45px);
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* background-color: rgba(171, 118, 246, 0.09); */
+     /* background-color: rgba(219, 218, 222, 0.347); */
+     background-color: #a8afb86a;
+}

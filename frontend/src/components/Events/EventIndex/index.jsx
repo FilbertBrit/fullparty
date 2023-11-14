@@ -9,7 +9,7 @@ import { useState } from "react";
 export const EventIndex = ({filter}) => {
 
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
     const eventsObj = useSelector(getEvents);
     const events = eventsObj ? Object.values(eventsObj) : [];
     const [filteredEvents, setFilteredEvents] = useState()

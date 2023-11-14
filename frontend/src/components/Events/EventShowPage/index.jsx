@@ -9,8 +9,9 @@ import wazzap from "../../../images/wazzap-halloween.jpeg"
 import "./EventShowPage.css"
 import { RsvpComponent } from './RsvpComponent';
 import { fetchRsvps } from '../../../store/rsvps';
-import { RsvpShow } from './RsvpShow';
+// import { RsvpShow } from './RsvpShow';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { ActivityLog } from './ActivityLog';
 
 
 export function EventShowPage () {
@@ -164,9 +165,7 @@ export function EventShowPage () {
                         </button>
                     </div>
                     <div className="show-rsvps-comments">
-                        <div className="show-rsvps-comments-header">
-                            <h2 id='show-activity-header'>Activity</h2>
-                        </div>
+                        <ActivityLog/>
                         {/* <div className="show-rsvps-comments-div">
                             < RsvpShow/>
                             <div className="show-rsvps-comments-add-comment">
