@@ -1,6 +1,6 @@
 class Api::CommentsController < ApplicationController
     wrap_parameters include: Comment.attribute_names + ['authorId', 'eventId', 'commentType']
-    # before_action :set_comment, only: [:update, :destroy]
+    before_action :set_comment, only: [:update, :destroy]
 
     def index
         @comments = Comment.all
@@ -35,11 +35,11 @@ class Api::CommentsController < ApplicationController
     end
 
     private
-    # def set_comment
-    #     @comment = Comment.find(params[:id])
-    # rescue
-    #     render json: ['Comment not found'], status: :not_found
-    # end
+    def set_comment
+        @comment = Comment.find(params[:id])
+    rescue
+        render json: ['Comment not found'], status: :not_found
+    end
 
     def comment_params
         params.require(:comment).permit(:body, :author_id, :event_id, :comment_type)

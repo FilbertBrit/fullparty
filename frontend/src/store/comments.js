@@ -74,32 +74,36 @@ export const createComment = comment => async (dispatch) => {
         return comment;
     }
 };
-export const updateComment = comment => async (dispatch) => {
-    const response = await csrfFetch(`/api/events/${comment.id}`, {
-        method: 'PATCH',
-        headers: {
-        'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(comment)
-    });
+// export const updateComment = comment => async (dispatch) => {
+//     const response = await csrfFetch(`/api/events/${comment.id}`, {
+//         method: 'PATCH',
+//         headers: {
+//         'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(comment)
+//     });
         
-    if (response.ok) {
-        const comment = await response.json();
-        dispatch(receiveComment(comment));
-        return comment;
-    }
-};
-export const deleteComment = commentId => async (dispatch) => {
-    const response = await csrfFetch (`/api/events/${commentId}`, {
+//     if (response.ok) {
+//         const comment = await response.json();
+//         dispatch(receiveComment(comment));
+//         return comment;
+//     }
+// };
+export const deleteComment = payload => async (dispatch) => {
+    // debugger
+    const response = await csrfFetch (`/api/events/${payload.eventId}/comments/${payload.commentId}`, {
         method: 'DELETE'
     });
 
-    // if (response.ok) {
-    //     // console.log('check')
-    //     dispatch(removeEvent(eventId));
-    // }
+    console.log(response)
+    if (response.ok) {
+        console.log('check')
+        dispatch(removeComment(payload.commentId));
+    }else{
+        return response;
+    }
 
-    return response;
+    // return response;
 };
 
 const commentsReducer = (state = {}, action) => {

@@ -50,7 +50,7 @@ end
 json.comments do
     comments.each do |comment|
         json.set! comment.id do
-            json.extract! comment, :id, :body, :author_id, :comment_type
+            json.extract! comment, :id, :body, :author_id, :comment_type, :event_id
             json.date comment.created_at
             json.author comment.user.name
         end

@@ -16,11 +16,12 @@ export function ActivityLog () {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createComment({body: comment, authorId: sessionUser.id, eventId: eventId, commentType: 'comment'}))
+        dispatch(createComment({body: comment, authorId: sessionUser.id, eventId: eventId, commentType: 'comment'})).then( res => setComment(""))
     }
 
     useEffect( () => {
         // dispatch(fetchComments(eventId))
+        console.log('hi')
     }, [commentsObj])
 
     return comments ? (

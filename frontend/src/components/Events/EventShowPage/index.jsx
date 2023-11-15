@@ -157,12 +157,12 @@ export function EventShowPage () {
                         
                     </div>
                     <div className="show-add-pics-btn">
-                        <button id='show-add-pics-btn'>
+                        {/* <button id='show-add-pics-btn'>
 
                             + 
                             <h2 id='show-camera-btn-emoji'>📸</h2>
                             ADD PHOTOS
-                        </button>
+                        </button> */}
                     </div>
                     <div className="show-rsvps-comments">
                         <ActivityLog/>

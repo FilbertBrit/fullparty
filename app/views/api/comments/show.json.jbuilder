@@ -1,4 +1,4 @@
 
-json.extract! @comment, :id, :author_id, :body, :comment_type
+json.extract! @comment, :id, :body, :author_id, :comment_type, :event_id
 json.date @comment.created_at
-json.user @comment.user.name
+json.author @comment.user.name
