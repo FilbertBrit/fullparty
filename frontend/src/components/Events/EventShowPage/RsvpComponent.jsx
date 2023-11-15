@@ -15,11 +15,23 @@ export function RsvpComponent ({ event }) {
     const userRsvp = rsvps[userRsvpId];
     //come back to refactor rsvp to hold status of rsvp
     const [rsvp, setRsvp] = useState(userRsvp)
+    // const[hideRsvpInst, setHideRsvpInst] = useState(true)
+    let hideRsvpInst = false;
+    // Inside your component or where you handle state
+const [isHovered, setIsHovered] = useState(false);
+
+const handleHover = (hoverState) => {
+    setIsHovered(hoverState);
+};
     const response = {
         "I'm Going": "👍",
         "going": "👍",
         "Maybe": "🤔",
         "Can't Go": "😢"
+    }
+    const toggleRsvpInst = (e) => {
+        e.preventDefault();
+        hideRsvpInst === true ? hideRsvpInst = false : hideRsvpInst = true;
     }
 
     const handleClick = (e) => {
@@ -39,7 +51,13 @@ export function RsvpComponent ({ event }) {
         
             rsvp ? (
                  <>
-                 <button className="rsvp-btn" onClick={handleEdit}>
+                 <button className="rsvp-btn" onClick={handleEdit} onMouseEnter={() => handleHover(true)}
+    onMouseLeave={() => handleHover(false)}>
+                    <div className={`hover-edit-instructions ${isHovered ? 'visible' : ''}` } >
+                        <div className="rsvp-edit-instructions" >
+                            Click to change
+                        </div>
+                    </div>
                     <div className="emoji-rsvp-btn" id="rsvp-rsp-show">
                         {response[rsvp.status]}
                     </div>
@@ -48,7 +66,7 @@ export function RsvpComponent ({ event }) {
                  </>
             ) : (
                 <>
-                    <div className="rsvp-options-btns-container-show">
+                    <div className="rsvp-options-btns-container-show" >
                         
                         <button className="rsvp-btn" value="I'm Going" onClick={handleClick}>
                             <div className="emoji-rsvp-btn">
