@@ -18,11 +18,14 @@ export function Comment ({ comment }) {
     const today = new Date()
     let commentDate = ''
     const rsvps = {
-        "I'm going": "Going 👍",
+        "I'm Going": "Going 👍",
         "Maybe": "Maybe 🤔",
         "Can't Go": "Can't 😢"
     }
-    // let rsvpComment = !notRSVP ? [comment.body.split(" ").slice(0,1), ] : ('');
+    // let rsvpComment = !notRSVP ? [comment.body.split(" ").slice(0,1).join(''), rsvps[comment.body.split(" ").slice(1).join(" ")]] : ('');
+    let rsvpComment = !notRSVP ? rsvps[comment.body.split(" ").slice(1).join(" ")] : ('');
+
+    console.log(rsvpComment);
 
     if((date.getDay() === today.getDay()) && (date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
         if(today.getHours() - date.getHours() === 0){
@@ -116,8 +119,8 @@ export function Comment ({ comment }) {
                         </div>
                     </div>
                     <div className="comment-body-container">
-                        {/* <div className="comment-author-container">{comment.author} <span id='author-commented'>{comment.body.include('updated') ? (' updated their rsvp to ') : ()}</span> </div> */}
-                        <div className="comment-body">{comment.body}</div>
+                        <div className="comment-author-container">{comment.author} <span id='author-commented'>{comment.body.includes('updated') ? (' updated their rsvp to ') : (' rsvped ')}</span> <span id='rsvp-comment'> { rsvpComment }</span> </div>
+                        {/* <div className="comment-body">{comment.body}</div> */}
                         <div className="comment-date">{commentDate}</div>
                     </div>
                 </div>
