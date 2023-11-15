@@ -29,10 +29,10 @@ json.event do
     json.dateTime @event.date_time ? @event.date_time.strftime("%A, %b %e %l%P") : @event.date_time
     json.host @event.user.name
     json.hostId @event.user.id
-    json.rsvpList rsvpArr
-    json.going rsvpsGoing
-    json.maybe rsvpsMaybye
-    json.cant rsvpsCant
+    # json.rsvpList rsvpArr
+    # json.going rsvpsGoing
+    # json.maybe rsvpsMaybye
+    # json.cant rsvpsCant
     json.userRsvp userRsvp
     json.available available
 end
@@ -41,7 +41,7 @@ end
 json.rsvps do
     rsvps.each do |rsvp|
         json.set! rsvp.id do
-            json.extract! rsvp, :id, :user_id, :status
+            json.extract! rsvp, :id, :user_id, :status, :event_id
             json.user rsvp.user.name
         end
     end

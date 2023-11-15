@@ -5,7 +5,6 @@ import { RECEIVE_EVENT } from './events';
 
     //  ACTION TYPES
 export const RECEIVE_RSVP = 'rsvps/RECEIVE_RSVP';
-const RECEIVE_RSVPS = 'rsvps/RECEIVE_RSVPS';
 
     // ACTIONS
 const receiveRsvp = rsvp => ({
@@ -13,10 +12,6 @@ const receiveRsvp = rsvp => ({
     rsvp
 });
 
-const receiveRsvps = rsvps => ({
-    type: RECEIVE_RSVPS,
-    rsvps
-});
 
 //  EVENT SELECTORS
 // export const getRsvp = rsvpId => state => {
@@ -77,10 +72,7 @@ const rsvpsReducer = (state = {}, action) => {
         case RECEIVE_EVENT:
             return {...nextState, ...action.payload.rsvps};
         case RECEIVE_RSVP:
-            // debugger
             return {...state, [action.rsvp.id]: action.rsvp};
-        // case RECEIVE_RSVPS:
-        //     return {...nextState, ...action.rsvps};
         default:
             return state;
     }

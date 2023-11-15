@@ -8,8 +8,6 @@ import { useHistory } from 'react-router';
 import wazzap from "../../../images/wazzap-halloween.jpeg"
 import "./EventShowPage.css"
 import { RsvpComponent } from './RsvpComponent';
-import { fetchRsvps } from '../../../store/rsvps';
-// import { RsvpShow } from './RsvpShow';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { ActivityLog } from './ActivityLog';
 
@@ -20,17 +18,23 @@ export function EventShowPage () {
     const dispatch = useDispatch();
     const history = useHistory();
     const event = useSelector(getEvent(eventId));
-    const sessionUser = useSelector(state => state.session.user)
-    const rsvps = useSelector(state => state.rsvps )
-    // const guestGoing = event.going;
-    // const guestMaybe = event.maybe;
+    const sessionUser = useSelector(state => state.session.user);
+    const rsvps = useSelector(state => state.rsvps);
+    let rsvpGoing = 0;
+    let rsvpMaybe = 0;
+    // const [rsvpGoing, setRsvpGoing] = useState(0);
+    // const [rsvpMaybe, setRsvpMaybe] = useState(0);
     const editLink = "/events/" + eventId + "/edit";
     
+    for(let key in rsvps){
+        rsvps[key].status === "I'm Going" ? (rsvpGoing = (rsvpGoing + 1)) : (rsvpGoing = (rsvpGoing));
+        rsvps[key].status === "Maybe" ? (rsvpMaybe = (rsvpMaybe + 1)) : (rsvpMaybe = (rsvpMaybe));
+    }
+
     const handleDelete = (e) => {
         dispatch(deleteEvent(eventId));
         history.push('/events')
     }
-    
     
     useEffect(  () => {
         dispatch(fetchEvent(eventId));
@@ -94,8 +98,7 @@ export function EventShowPage () {
                                 )
                                 : 
                                 (
-                                    <>
-                                    </>
+                                    <></>
                                 ) 
                             }
                         </div>
@@ -111,46 +114,40 @@ export function EventShowPage () {
                                 )
                                 : 
                                 (
-                                    <>
-                                    </>
+                                    <></>
                                 ) 
                             }
                         </div>
                         <div className="show-description">
                             <h2>{event.description}</h2>
                         </div>
-                        {event.rsvpList.empty ? (
+                        {Object.keys(rsvps).length === 0 ? (
                             <></>
                         ) : (
                             <div className="show-guests">
                                 <div className="show-guests-rsvps">
-                                    {event.going !== 0 ? (
+                                    {rsvpGoing !== 0 ? (
                                         <>
                                             <div className="going">
-                                            {event.going} Going
+                                            {rsvpGoing} Going
                                             </div>
                                         </>
                                     ) : (
                                         <></>
                                     )}
-                                    {event.maybe !== 0 ? (
+                                    {rsvpMaybe !== 0 ? (
                                         <>
                                             <div className="maybe">
-                                                {event.maybe} Maybe
+                                                {rsvpMaybe} Maybe
                                             </div>
                                         </>
                                     ) : (
                                         <></>
                                     )}
                                     {/* <h2>3 Waitlist</h2>  */}
-                                </div>
+                                </div> 
                                 <div className="show-guests-profiles">
-                                    {/* <h2>prof</h2>
-                                    <h2>prof</h2>
-                                    <h2>prof</h2>
-                                    <h2>prof</h2>
-                                    <h2>prof</h2>
-                                    <h2>prof</h2> */}
+                                    
                                 </div>
                             </div>
                         )}
@@ -214,7 +211,7 @@ export function EventShowPage () {
                     <div className="divider"></div>
                     <div className="module-guest-list" id='author-nav-sidebar-item'>
                         <div className="container-guest-list">
-                            <div id='number-guest-going'>{event.going}</div>
+                            <div id='number-guest-going'>{rsvpGoing}</div>
                             <h2 className='going-text-show' id='author-nav-sidebar-text'>GOING</h2>
                         </div>
                     </div>
