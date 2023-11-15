@@ -23,6 +23,7 @@ export function Comment ({ comment }) {
         "Maybe": "Maybe 🤔",
         "Can't Go": "Can't 😢"
     }
+    // let rsvpComment = !notRSVP ? [comment.body.split(" ").slice(0,1), ] : ('');
 
     if((date.getDay() === today.getDay()) && (date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
         if(today.getHours() - date.getHours() === 0){
