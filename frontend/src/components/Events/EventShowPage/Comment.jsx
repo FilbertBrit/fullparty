@@ -7,7 +7,6 @@ import "./Comment.css"
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux"
 import { deleteComment } from "../../../store/comments"
-// import useParams from 'react-router-dom'
 
 export function Comment ({ comment }) {
     // console.log(eventId)
