@@ -22,8 +22,6 @@ export function EventShowPage () {
     const rsvps = useSelector(state => state.rsvps);
     let rsvpGoing = 0;
     let rsvpMaybe = 0;
-    // const [rsvpGoing, setRsvpGoing] = useState(0);
-    // const [rsvpMaybe, setRsvpMaybe] = useState(0);
     const editLink = "/events/" + eventId + "/edit";
     
     for(let key in rsvps){
@@ -38,7 +36,6 @@ export function EventShowPage () {
     
     useEffect(  () => {
         dispatch(fetchEvent(eventId));
-        // dispatch(fetchRsvp)
     }, [dispatch, eventId])
     
     if (!sessionUser) return <Redirect to="/login" />;
@@ -161,9 +158,9 @@ export function EventShowPage () {
                             ADD PHOTOS
                         </button> */}
                     </div>
-                    <div className="show-rsvps-comments">
+                    {/* <div className="show-rsvps-comments">
                         <ActivityLog/>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="show-photo-rsvp">
                     <div className="show-img">
@@ -172,6 +169,9 @@ export function EventShowPage () {
                     <div className="show-rsvp">
                         <RsvpComponent event={event}/>
                     </div>
+                </div>
+                <div className="show-rsvps-comments">
+                    <ActivityLog/>
                 </div>
             </div>
         </div>
