@@ -30,8 +30,6 @@ class Api::CommentsController < ApplicationController
 
     def destroy
         @comment.destroy
-        @comments = Comment.all(where(event_id: params[:event_id]))
-        render :index
     end
 
     private

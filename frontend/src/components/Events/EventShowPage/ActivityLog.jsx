@@ -21,7 +21,7 @@ export function ActivityLog () {
 
     useEffect( () => {
         // dispatch(fetchComments(eventId))
-        console.log('hi')
+        // console.log('hi')
     }, [commentsObj])
 
     return comments ? (
