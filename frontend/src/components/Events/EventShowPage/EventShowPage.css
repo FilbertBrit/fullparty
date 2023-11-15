@@ -305,18 +305,7 @@
     align-items: center;
     justify-content: center;
 }
-/* .rsvp-btn:hover{
-    .hover-edit-instructions{
-        display: block
-    }
-} */
-/* .hover-edit-instructions {
-    display: none; /* Initially hide the div */
-/* }
-.emoji-rsvp-btn:hover + .hover-edit-instructions,
-.hover-edit-instructions:hover {
-    display: block; /* Show div 1 when hovering over div 2 or div 3 */
-/* }  */
+
 .hover-edit-instructions {
     display: none;
 }
