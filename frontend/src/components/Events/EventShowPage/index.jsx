@@ -163,32 +163,6 @@ export function EventShowPage () {
                     </div>
                     <div className="show-rsvps-comments">
                         <ActivityLog/>
-                        {/* <div className="show-rsvps-comments-div">
-                            < RsvpShow/>
-                            <div className="show-rsvps-comments-add-comment">
-                                <h2>prof</h2>
-                                <h2> + Add a comment</h2>
-                                <h2>Gif</h2>
-                            </div>
-                            <div className="show-rsvps-comments-displayed">
-                                <h2>we be a compontent that has all the coments.rsvps</h2>
-                            </div>
-                        </div>
-                        
-                        <h2 id='show-rsvp-item'>rsvp</h2>
-                        <h2 id='show-rsvp-item'>rsvp</h2>
-                        <h2 id='show-rsvp-item'>rsvp</h2>
-                        <h2 id='show-rsvp-item'>rsvp</h2>
-                        <h2 id='show-rsvp-item'>rsvp</h2>
-                        <h2 id='show-rsvp-item'>rsvp</h2>
-                        <h2 id='show-rsvp-item'>rsvp</h2>
-                        <h2 id='show-rsvp-item'>rsvp</h2>
-                        <h2 id='show-rsvp-item'>rsvp</h2>
-                        <h2 id='show-rsvp-item'>rsvp</h2>
-                        <h2 id='show-rsvp-item'>rsvp</h2>
-                        <h2 id='show-rsvp-item'>rsvp</h2>
-                        <h2 id='show-rsvp-item'>rsvp</h2>
-                        <h2 id='show-rsvp-item'>rsvp</h2> */}
                     </div>
                 </div>
                 <div className="show-photo-rsvp">
@@ -222,7 +196,6 @@ export function EventShowPage () {
                     </div>
                     <div className="divider"></div>
                     <div className="show-settings-menu" id='author-nav-sidebar-item' onClick={ handleDelete }>
-                        {/* <div className='setting-text-show'>...</div> */}
                         <div className='setting-text-show'>DELETE</div>
                     </div>
                 </>

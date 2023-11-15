@@ -24,15 +24,16 @@ const receiveRsvp = rsvp => ({
 
 
     // THUNK ACTIONS
-export const fetchRsvps = (eventId) => async (dispatch) => {
-    const response = await csrfFetch(`/api/events/${eventId}/rsvps`);
+    
+// export const fetchRsvps = (eventId) => async (dispatch) => {
+//     const response = await csrfFetch(`/api/events/${eventId}/rsvps`);
 
-    if (response.ok) {
-        const rsvps = await response.json();
-        dispatch(receiveRsvps(rsvps));
-    }
-    return response;
-};
+//     if (response.ok) {
+//         const rsvps = await response.json();
+//         dispatch(receiveRsvps(rsvps));
+//     }
+//     return response;
+// };
 
 export const createRsvp = rsvp => async (dispatch) => {
     const response = await csrfFetch(`/api/events/${rsvp.eventId}/rsvps`, {

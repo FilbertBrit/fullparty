@@ -18,7 +18,12 @@ export function Comment ({ comment }) {
     const date = new Date(comment.date)
     const today = new Date()
     let commentDate = ''
-    // console.log(date.getDay(), today.getDay())
+    const rsvps = {
+        "I'm going": "Going 👍",
+        "Maybe": "Maybe 🤔",
+        "Can't Go": "Can't 😢"
+    }
+
     if((date.getDay() === today.getDay()) && (date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
         if(today.getHours() - date.getHours() === 0){
             commentDate = (today.getMinutes() - date.getMinutes() > 1) ? ((today.getMinutes() - date.getMinutes()) + ' minutes ago') : ('about 1 minute ago')
@@ -103,20 +108,30 @@ export function Comment ({ comment }) {
             </div>
         </div>
     ) : (
-        // comment.author ? (
             <div className="comment-container-item">
-                <div className="user-profile-photo">
-                    <div className="initials">
+                <div className="comment-container-author-body">
+                    <div className="user-profile-photo">
+                        <div className="initials">
                         {comment.author.slice(0,1)}
+                        </div>
+                    </div>
+                    <div className="comment-body-container">
+                        {/* <div className="comment-author-container">{comment.author} <span id='author-commented'>{comment.body.include('updated') ? (' updated their rsvp to ') : ()}</span> </div> */}
+                        <div className="comment-body">{comment.body}</div>
+                        <div className="comment-date">{commentDate}</div>
                     </div>
                 </div>
-                <div className="comment-body">
-                    <div className="comment-author-container">{comment.author}</div>
-                    <div className="comment-date">{comment.date}</div>
-                </div>
             </div>
-        // ):(
-        //     <></>
-        // )
+            // <div className="comment-container-item">
+            //     <div className="user-profile-photo">
+            //         <div className="initials">
+            //             {comment.author.slice(0,1)}
+            //         </div>
+            //     </div>
+            //     <div className="comment-body">
+            //         <div className="comment-author-container">{comment.author}</div>
+            //         <div className="comment-date">{comment.date}</div>
+            //     </div>
+            // </div>
     )
 }

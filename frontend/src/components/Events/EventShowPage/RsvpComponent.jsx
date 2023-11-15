@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { createRsvp, updateRsvp } from "../../../store/rsvps";
 import { useHistory } from "react-router";
+import { createComment } from "../../../store/comments";
 
 
 export function RsvpComponent ({ event }) {
@@ -22,11 +23,13 @@ export function RsvpComponent ({ event }) {
     }
 
     const handleClick = (e) => {
-        userRsvp ? (
+        if (userRsvp) {
             dispatch(updateRsvp({status: e.currentTarget.value, userId: sessionUser.id, eventId: event.id, id: userRsvpId})).then( rsvp => setRsvp(rsvp))
-        ) : (
+            dispatch(createComment({body: 'updated ' + e.currentTarget.value, authorId: sessionUser.id, eventId: event.id, commentType: 'rsvp'}))
+        }else{
             dispatch(createRsvp({status: e.currentTarget.value, userId: sessionUser.id, eventId: event.id})).then( rsvp => setRsvp(rsvp))
-        )
+            dispatch(createComment({body: 'rsvped ' + e.currentTarget.value, authorId: sessionUser.id, eventId: event.id, commentType: 'rsvp'}))
+        }
     }
     const handleEdit = (e) => {
         setRsvp();
