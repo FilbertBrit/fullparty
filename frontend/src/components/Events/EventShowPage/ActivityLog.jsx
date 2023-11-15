@@ -46,7 +46,7 @@ export function ActivityLog () {
                 </form>
             </div>
             <div className="comment-log">
-                { comments.map( (comment, i) => 
+                { comments.reverse().map( (comment, i) => 
                     <Comment comment={comment} key={i}/>)
                     // <Comment/>
                 }

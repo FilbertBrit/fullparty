@@ -109,7 +109,7 @@ export const deleteComment = payload => async (dispatch) => {
 
 const commentsReducer = (state = {}, action) => {
     // console.log(state)
-    console.log(action.payload)
+    // console.log(action.payload)
     // debugger
     const nextState = { ...state };
     switch (action.type) {

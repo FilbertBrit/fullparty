@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { createRsvp, updateRsvp } from "../../../store/rsvps";
 import { useHistory } from "react-router";
+import { createComment } from "../../../store/comments";
 
 
 export function RsvpComponent ({ event }) {
@@ -14,19 +15,33 @@ export function RsvpComponent ({ event }) {
     const userRsvp = rsvps[userRsvpId];
     //come back to refactor rsvp to hold status of rsvp
     const [rsvp, setRsvp] = useState(userRsvp)
+    // const[hideRsvpInst, setHideRsvpInst] = useState(true)
+    let hideRsvpInst = false;
+    // Inside your component or where you handle state
+const [isHovered, setIsHovered] = useState(false);
+
+const handleHover = (hoverState) => {
+    setIsHovered(hoverState);
+};
     const response = {
         "I'm Going": "👍",
         "going": "👍",
         "Maybe": "🤔",
         "Can't Go": "😢"
     }
+    const toggleRsvpInst = (e) => {
+        e.preventDefault();
+        hideRsvpInst === true ? hideRsvpInst = false : hideRsvpInst = true;
+    }
 
     const handleClick = (e) => {
-        userRsvp ? (
+        if (userRsvp) {
             dispatch(updateRsvp({status: e.currentTarget.value, userId: sessionUser.id, eventId: event.id, id: userRsvpId})).then( rsvp => setRsvp(rsvp))
-        ) : (
+            dispatch(createComment({body: 'updated ' + e.currentTarget.value, authorId: sessionUser.id, eventId: event.id, commentType: 'rsvp'}))
+        }else{
             dispatch(createRsvp({status: e.currentTarget.value, userId: sessionUser.id, eventId: event.id})).then( rsvp => setRsvp(rsvp))
-        )
+            dispatch(createComment({body: 'rsvped ' + e.currentTarget.value, authorId: sessionUser.id, eventId: event.id, commentType: 'rsvp'}))
+        }
     }
     const handleEdit = (e) => {
         setRsvp();
@@ -36,7 +51,13 @@ export function RsvpComponent ({ event }) {
         
             rsvp ? (
                  <>
-                 <button className="rsvp-btn" onClick={handleEdit}>
+                 <button className="rsvp-btn" onClick={handleEdit} onMouseEnter={() => handleHover(true)}
+    onMouseLeave={() => handleHover(false)}>
+                    <div className={`hover-edit-instructions ${isHovered ? 'visible' : ''}` } >
+                        <div className="rsvp-edit-instructions" >
+                            Click to change
+                        </div>
+                    </div>
                     <div className="emoji-rsvp-btn" id="rsvp-rsp-show">
                         {response[rsvp.status]}
                     </div>
@@ -45,7 +66,7 @@ export function RsvpComponent ({ event }) {
                  </>
             ) : (
                 <>
-                    <div className="rsvp-options-btns-container-show">
+                    <div className="rsvp-options-btns-container-show" >
                         
                         <button className="rsvp-btn" value="I'm Going" onClick={handleClick}>
                             <div className="emoji-rsvp-btn">

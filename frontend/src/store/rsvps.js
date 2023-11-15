@@ -5,7 +5,6 @@ import { RECEIVE_EVENT } from './events';
 
     //  ACTION TYPES
 export const RECEIVE_RSVP = 'rsvps/RECEIVE_RSVP';
-const RECEIVE_RSVPS = 'rsvps/RECEIVE_RSVPS';
 
     // ACTIONS
 const receiveRsvp = rsvp => ({
@@ -13,10 +12,6 @@ const receiveRsvp = rsvp => ({
     rsvp
 });
 
-const receiveRsvps = rsvps => ({
-    type: RECEIVE_RSVPS,
-    rsvps
-});
 
 //  EVENT SELECTORS
 // export const getRsvp = rsvpId => state => {
@@ -29,15 +24,16 @@ const receiveRsvps = rsvps => ({
 
 
     // THUNK ACTIONS
-export const fetchRsvps = (eventId) => async (dispatch) => {
-    const response = await csrfFetch(`/api/events/${eventId}/rsvps`);
+    
+// export const fetchRsvps = (eventId) => async (dispatch) => {
+//     const response = await csrfFetch(`/api/events/${eventId}/rsvps`);
 
-    if (response.ok) {
-        const rsvps = await response.json();
-        dispatch(receiveRsvps(rsvps));
-    }
-    return response;
-};
+//     if (response.ok) {
+//         const rsvps = await response.json();
+//         dispatch(receiveRsvps(rsvps));
+//     }
+//     return response;
+// };
 
 export const createRsvp = rsvp => async (dispatch) => {
     const response = await csrfFetch(`/api/events/${rsvp.eventId}/rsvps`, {
@@ -77,10 +73,7 @@ const rsvpsReducer = (state = {}, action) => {
         case RECEIVE_EVENT:
             return {...nextState, ...action.payload.rsvps};
         case RECEIVE_RSVP:
-            // debugger
             return {...state, [action.rsvp.id]: action.rsvp};
-        // case RECEIVE_RSVPS:
-        //     return {...nextState, ...action.rsvps};
         default:
             return state;
     }
