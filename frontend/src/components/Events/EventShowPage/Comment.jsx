@@ -20,7 +20,11 @@ export function Comment ({ comment }) {
     let commentDate = ''
     // console.log(date.getDay(), today.getDay())
     if((date.getDay() === today.getDay()) && (date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
-        commentDate = (today.getHours() - date.getHours()) > 1 ? ('about ' + (today.getHours() - date.getHours()) + ' hours ago') : ( 'about ' + (today.getHours() - date.getHours()) + ' hour ago' )
+        if(today.getHours() - date.getHours() === 0){
+            commentDate = (today.getMinutes() - date.getMinutes() > 1) ? ((today.getMinutes() - date.getMinutes()) + ' minutes ago') : ('about 1 minute ago')
+        }else{
+            commentDate = (today.getHours() - date.getHours()) > 1 ? ('about ' + (today.getHours() - date.getHours()) + ' hours ago') : ( 'about 1 hour ago' )
+        }
     }else if((date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
         commentDate = (today.getDay() - date.getDay() > 1) ? ((today.getDay() - date.getDay()) + ' days ago') : ( (today.getDay() - date.getDay()) + ' day ago' )  
     }else if(date.getFullYear() === today.getFullYear()){
