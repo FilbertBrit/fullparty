@@ -1,5 +1,5 @@
 .showpage-layout{
-    display: flex;
+    /* display: flex; */
     display: grid;
     justify-content: space-between;
 
@@ -10,7 +10,8 @@
     /* flex-direction: row; */
 }
 .show-info{
-    width: 40%;
+    width: 40vw;
+    max-width: 435px;
     margin-left: 60px;
     position: relative;
 }

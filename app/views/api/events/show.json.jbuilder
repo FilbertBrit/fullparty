@@ -1,6 +1,7 @@
 
 
 rsvps = @event.rsvps.includes(:user)
+comments = @event.comments.includes(:user)
 userRsvp = nil;
 
 rsvpArr = []
@@ -40,9 +41,18 @@ end
 json.rsvps do
     rsvps.each do |rsvp|
         json.set! rsvp.id do
-        json.extract! rsvp, :id, :user_id, :status
-        json.user rsvp.user.name
+            json.extract! rsvp, :id, :user_id, :status
+            json.user rsvp.user.name
         end
     end
 end
 
+json.comments do
+    comments.each do |comment|
+        json.set! comment.id do
+            json.extract! comment, :id, :body, :author_id, :comment_type, :event_id
+            json.date comment.created_at
+            json.author comment.user.name
+        end
+    end
+end
