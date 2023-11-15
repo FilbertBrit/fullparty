@@ -17,9 +17,9 @@ const receiveComments = comments => ({
     type: RECEIVE_COMMENTS,
     comments
 })
-const removeComment = commentId => ({
+const removeComment = payload => ({
     type: REMOVE_COMMENT,
-    commentId
+    payload
 })
 
 // COMMENT SELECTORS
@@ -91,6 +91,7 @@ export const createComment = comment => async (dispatch) => {
 // };
 export const deleteComment = payload => async (dispatch) => {
     // debugger
+    // console.log(payload)
     const response = await csrfFetch (`/api/events/${payload.eventId}/comments/${payload.commentId}`, {
         method: 'DELETE'
     });
@@ -107,8 +108,10 @@ export const deleteComment = payload => async (dispatch) => {
 };
 
 const commentsReducer = (state = {}, action) => {
+    // console.log(state)
+    console.log(action.payload)
     // debugger
-    const nextState = { ...state};
+    const nextState = { ...state };
     switch (action.type) {
         case RECEIVE_EVENT:
             return {...nextState, ...action.payload.comments};
@@ -117,7 +120,8 @@ const commentsReducer = (state = {}, action) => {
         case RECEIVE_COMMENTS:
             return {...nextState, ...action.comments}
         case REMOVE_COMMENT:
-            delete nextState[action.commentId];
+            const commentId = action.payload;
+            delete nextState[commentId];
             return nextState;
         default:
             return state;
