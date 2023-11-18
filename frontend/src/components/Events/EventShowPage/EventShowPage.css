@@ -1,13 +1,14 @@
 .showpage-layout{
     /* display: flex; */
     display: grid;
-    justify-content: space-between;
-
+    flex-direction: row;
+    flex-wrap: wrap;
     padding: 10px;
     margin-top: 30px;
     padding-bottom: 150px;
-    padding-left: 80px;
+    /* padding-left: 60px; */
     /* flex-direction: row; */
+    justify-content: center;
 }
 .show-info{
     width: 40vw;
@@ -86,6 +87,7 @@
     font-size: 18px;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     margin-bottom: 20px;
+    /* width: max-content; */
     width: max-content;
 }
 .show-description{
@@ -135,24 +137,28 @@
     padding: 10px;
 }
 .show-photo-rsvp{
-    position: fixed;
+    /* position: fixed;
     overflow-x: visible;
     overflow-y: auto;
     top: 150px;
     width: 460px;
     width: 45vw;
     margin-left: 40vw;
-    /* max-height: calc(100% - 150px); */
     position: fixed;
     right: 100px;
     top: 50%;
     z-index: 95;
-    transform: translateY(-50%);
-
+    transform: translateY(-50%); */
+    
+    /* max-height: calc(100% - 150px); */
     /* display: flex;
     justify-content: center;
     flex-direction: column; */
     /* padding: 50px 8px; */
+
+    position: relative;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 .rsvp-options-btns-container{
@@ -305,18 +311,7 @@
     align-items: center;
     justify-content: center;
 }
-/* .rsvp-btn:hover{
-    .hover-edit-instructions{
-        display: block
-    }
-} */
-/* .hover-edit-instructions {
-    display: none; /* Initially hide the div */
-/* }
-.emoji-rsvp-btn:hover + .hover-edit-instructions,
-.hover-edit-instructions:hover {
-    display: block; /* Show div 1 when hovering over div 2 or div 3 */
-/* }  */
+
 .hover-edit-instructions {
     display: none;
 }
@@ -327,6 +322,31 @@
     /* transform: ; */
 }
 
+@media screen and (min-width: 1050px) {
+    .show-photo-rsvp{
+        /* position: relative;
+        margin-left: 100px; */
 
+        position: fixed;
+        overflow-x: visible;
+        overflow-y: auto;
+        top: 150px;
+        width: 460px;
+        width: 45vw;
+        margin-left: 40vw;
+        /* max-height: calc(100% - 150px); */
+        position: fixed;
+        /* right: 100px; */
+        top: 50%;
+        z-index: 95;
+        transform: translateY(-50%);
+
+    }
+    .showpage-layout{
+        justify-content: space-between;
+        padding-left: 80px;
+        /* margin-right: 40px; */
+    }
+}
 
 

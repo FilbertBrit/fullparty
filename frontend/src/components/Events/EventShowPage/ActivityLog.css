@@ -1,10 +1,10 @@
 .user-profile-photo{
-    width: 12%;
+    width: 45px;
     padding: 10px;
     /* height: 25px; */
 }
 .user-profile-photo-form{
-    width: 10%;
+    width: 45px;
 }
 #comment-input-form{
     font-size: 16px;

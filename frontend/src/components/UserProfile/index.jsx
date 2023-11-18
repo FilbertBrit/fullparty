@@ -34,13 +34,13 @@ export function UserProfile () {
                         <h3 id="user-profile-details">{sessionUser.bio ? (sessionUser.bio) : ("")}</h3>
                     </div>
                     <div className="profile-user-socials">
-                        <h3>Socials</h3>
+                        {/* <h3>Socials</h3> */}
                     </div>
                     <div className="profile-user-join-date">
                         <h3 id="user-profile-details">💥 <span id="bam-emoji"> Joined {joinedDate}</span></h3>
                     </div>
                     <div className="profile-user-achievments">
-                        <h3>Achievments</h3>
+                        {/* <h3>Achievments</h3> */}
                     </div>
                 </div>
             </div>

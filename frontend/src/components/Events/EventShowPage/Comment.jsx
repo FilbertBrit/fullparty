@@ -24,6 +24,7 @@ export function Comment ({ comment }) {
     }
     // let rsvpComment = !notRSVP ? [comment.body.split(" ").slice(0,1).join(''), rsvps[comment.body.split(" ").slice(1).join(" ")]] : ('');
     let rsvpComment = !notRSVP ? rsvps[comment.body.split(" ").slice(1).join(" ")] : ('');
+    console.log(rsvpComment)
 
     console.log(rsvpComment);
 
@@ -113,7 +114,7 @@ export function Comment ({ comment }) {
     ) : (
             <div className="comment-container-item">
                 <div className="comment-container-author-body">
-                    <div className="user-profile-photo">
+                    <div className="user-profile-photo-rsvp">
                         <div className="initials">
                         {comment.author.slice(0,1)}
                         </div>

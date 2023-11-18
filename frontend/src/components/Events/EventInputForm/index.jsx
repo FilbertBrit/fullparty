@@ -24,7 +24,7 @@ export function EventInputForm () {
     const [capacity, setCapacity] = useState('');
     const [cost, setCost] = useState('');
     const [description, setDescription] = useState('')
-    const [selectedDate, setSelectedDate] = useState();
+    const [selectedDate, setSelectedDate] = useState('');
 
     const filteredDate = (date) => { 
         return (new Date() < date) || (new Date() == date)
@@ -199,21 +199,6 @@ export function EventInputForm () {
                 )}
             </form>
             <div className="author-nav-sidebar">
-                <div className="module-invite" id='author-nav-sidebar-item'>
-                    <h2>🖌️</h2>
-                    <h2 id='author-nav-sidebar-text'>THEME</h2>
-                </div>
-                <div className="divider"></div>
-                <div className="module-invite" id='author-nav-sidebar-item'>
-                    <h2>🪄</h2>
-                    <h2 id='author-nav-sidebar-text'>EFFECT</h2>
-                </div>
-                <div className="divider"></div>
-                <div className="module-invite" id='author-nav-sidebar-item'>
-                    <h2>⚙️</h2>
-                    <h2 id='author-nav-sidebar-text'>SETTING</h2>
-                </div>
-                <div className="divider"></div>
                 {event ? (
                     <div onClick={handleSubmit}>
                         <div className="module-invite" id='author-nav-sidebar-item'>
