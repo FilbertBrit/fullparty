@@ -409,7 +409,7 @@ end
     # Seed data for comments using Comment.create!
   comments_seed_data = [
     {
-      body: "Going",
+      body: "I'm Going",
       comment_type: "rsvp",
       author_id: 1,
       event_id: 10
@@ -427,7 +427,7 @@ end
       event_id: 8
     },
     {
-      body: "Going",
+      body: "I'm Going",
       comment_type: "rsvp",
       author_id: 4,
       event_id: 7
@@ -445,7 +445,7 @@ end
       event_id: 5
     },
     {
-      body: "Going",
+      body: "I'm Going",
       comment_type: "rsvp",
       author_id: 7,
       event_id: 4
@@ -463,7 +463,7 @@ end
       event_id: 2
     },
     {
-      body: "Going",
+      body: "I'm Going",
       comment_type: "rsvp",
       author_id: 10,
       event_id: 1
@@ -481,7 +481,7 @@ end
       event_id: 2
     },
     {
-      body: "Going",
+      body: "I'm Going",
       comment_type: "rsvp",
       author_id: 13,
       event_id: 3
@@ -499,7 +499,7 @@ end
       event_id: 5
     },
     {
-      body: "Going",
+      body: "I'm Going",
       comment_type: "rsvp",
       author_id: 16,
       event_id: 6
@@ -517,7 +517,7 @@ end
       event_id: 8
     },
     {
-      body: "Going",
+      body: "I'm Going",
       comment_type: "rsvp",
       author_id: 19,
       event_id: 9

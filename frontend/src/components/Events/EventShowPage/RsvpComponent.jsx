@@ -15,14 +15,13 @@ export function RsvpComponent ({ event }) {
     const userRsvp = rsvps[userRsvpId];
     //come back to refactor rsvp to hold status of rsvp
     const [rsvp, setRsvp] = useState(userRsvp)
-    // const[hideRsvpInst, setHideRsvpInst] = useState(true)
     let hideRsvpInst = false;
     // Inside your component or where you handle state
-const [isHovered, setIsHovered] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
 
-const handleHover = (hoverState) => {
-    setIsHovered(hoverState);
-};
+    const handleHover = (hoverState) => {
+        setIsHovered(hoverState);
+    };
     const response = {
         "I'm Going": "👍",
         "going": "👍",

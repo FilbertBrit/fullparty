@@ -24,6 +24,7 @@ export function Comment ({ comment }) {
     }
     // let rsvpComment = !notRSVP ? [comment.body.split(" ").slice(0,1).join(''), rsvps[comment.body.split(" ").slice(1).join(" ")]] : ('');
     let rsvpComment = !notRSVP ? rsvps[comment.body.split(" ").slice(1).join(" ")] : ('');
+    console.log(rsvpComment)
 
     console.log(rsvpComment);
 

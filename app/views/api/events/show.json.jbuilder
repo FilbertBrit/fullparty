@@ -7,7 +7,7 @@ userRsvp = nil;
 # rsvpArr = []
 # available = @event.capacity || 0;
 
-# rsvps.each do |rsvp|
+rsvps.each do |rsvp|
 #     # rsvpArr.push(rsvp.id)
 #     # if rsvp.status === "going" || rsvp.status === "I'm Going"
 #     #     rsvpsGoing += 1
@@ -16,10 +16,10 @@ userRsvp = nil;
 #     # if rsvp.status === "Maybe" || rsvp.status === "maybe"
 #     #     rsvpsMaybye += 1
 #     # end
-#     if rsvp.user_id === @current_user.id
-#         userRsvp = rsvp.id
-#     end
-# end
+    if rsvp.user_id === @current_user.id
+        userRsvp = rsvp.id
+    end
+end
 
 json.event do 
     json.extract! @event, :id, :title, :description, :location, :capacity, :cost
