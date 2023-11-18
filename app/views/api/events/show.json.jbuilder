@@ -5,7 +5,7 @@ comments = @event.comments.includes(:user)
 userRsvp = nil;
 
 # rsvpArr = []
-available = @event.capacity || 0;
+# available = @event.capacity || 0;
 
 # rsvps.each do |rsvp|
 #     # rsvpArr.push(rsvp.id)
@@ -31,7 +31,7 @@ json.event do
     # json.maybe rsvpsMaybye
     # json.cant rsvpsCant
     json.userRsvp userRsvp
-    json.available available
+    # json.available available
 end
 
 

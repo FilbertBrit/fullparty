@@ -105,7 +105,7 @@ export function EventShowPage () {
                                     <div className="show-capacity">
                                         <h2>👥</h2>
                                         <div id='show-host-by'>
-                                            {event.available}/{event.capacity} spots left
+                                            {rsvpGoing}/{event.capacity} spots left
                                         </div>
                                     </div>
                                 )
