@@ -87,6 +87,7 @@
     font-size: 18px;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     margin-bottom: 20px;
+    /* width: max-content; */
     width: max-content;
 }
 .show-description{

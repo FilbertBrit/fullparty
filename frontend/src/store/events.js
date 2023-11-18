@@ -58,14 +58,14 @@ export const fetchEvents = () => async (dispatch) => {
 };
 
 export const fetchEvent = eventId => async (dispatch) => {
-   
+//    debugger
+//    console.log(eventId)
     const response = await csrfFetch (`/api/events/${eventId}`);
 
     if (response.ok) {
         const event = await response.json();
         dispatch(receiveEvent(event));
         return event;
-        // storeEvent(eventId)
     }
 };
 

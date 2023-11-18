@@ -1,28 +1,25 @@
 
-
-rsvps = @event.rsvps.includes(:user)
+# debugger
+rsvps = @event.rsvps.includes(:user) || []
 comments = @event.comments.includes(:user)
 userRsvp = nil;
 
-rsvpArr = []
-rsvpsGoing = 0;
-rsvpsMaybye = 0;
-rsvpsCant = 0;
+# rsvpArr = []
 available = @event.capacity || 0;
 
-rsvps.each do |rsvp|
-    rsvpArr.push(rsvp.id)
-    if rsvp.status === "going" || rsvp.status === "I'm Going"
-        rsvpsGoing += 1
-        available -= 1
-    end
-    if rsvp.status === "Maybe" || rsvp.status === "maybe"
-        rsvpsMaybye += 1
-    end
-    if rsvp.user_id === @current_user.id
-        userRsvp = rsvp.id
-    end
-end
+# rsvps.each do |rsvp|
+#     # rsvpArr.push(rsvp.id)
+#     # if rsvp.status === "going" || rsvp.status === "I'm Going"
+#     #     rsvpsGoing += 1
+#     #     available -= 1
+#     # end
+#     # if rsvp.status === "Maybe" || rsvp.status === "maybe"
+#     #     rsvpsMaybye += 1
+#     # end
+#     if rsvp.user_id === @current_user.id
+#         userRsvp = rsvp.id
+#     end
+# end
 
 json.event do 
     json.extract! @event, :id, :title, :description, :location, :capacity, :cost
