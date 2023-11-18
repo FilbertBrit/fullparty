@@ -1,0 +1,19 @@
+#mutals-title{
+    font-size: 24px;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    font-weight: 700;
+}
+#mutuals-btn{
+    text-decoration: none;
+    color: #ab76f6;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+#mutuals-header{
+    display: flex;
+    justify-content: space-between;
+}
