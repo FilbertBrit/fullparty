@@ -4,7 +4,7 @@
     /* font-size: 70px; */
 }
 #edit-profile-save-btn{
-    width: 120px;
+    width: 117.5px;
     background-color: #ab76f6;
     color: white;
     cursor: pointer;
@@ -24,7 +24,7 @@
     padding: 16px;
     font-weight: 700;
     border: none;
-    width: 120px;
+    width: 117.5px;
     margin-bottom: 10px;
 }
 .profile-user-socials{
@@ -57,4 +57,29 @@
     border-bottom: #f273ce;
     border-top: #863ff8;
     color: #fff;
+}
+
+/* .-profile-user-photo{
+    width: 80%;
+    padding: 15px;
+    height: 25px;
+} */
+.initials-profile{
+    background: linear-gradient(to right bottom,#5c5cbc 10%,40%,#d85ed4 60%,80%,#cad3e2 90%);
+    border-radius: 60%;
+    height: 250px;
+    width: 250px;
+    margin: 15px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: white;
+    font-size: 50px;
+    font-weight: 900;
+    color: #cad3e2;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+}
+
+.profile-details-div{
+    width: 40vw;
 }

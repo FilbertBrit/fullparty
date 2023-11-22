@@ -53,3 +53,18 @@
     width: 235px;
     margin-bottom: 10px;
 }
+.initials-profile{
+    background: linear-gradient(to right bottom,#5c5cbc 10%,40%,#d85ed4 60%,80%,#cad3e2 90%);
+    border-radius: 60%;
+    height: 250px;
+    width: 250px;
+    margin: 15px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: white;
+    font-size: 50px;
+    font-weight: 900;
+    color: #cad3e2;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+}

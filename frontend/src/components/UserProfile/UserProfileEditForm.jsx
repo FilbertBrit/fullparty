@@ -22,7 +22,10 @@ export function UserProfileEditForm () {
             <div className="profile-layout">
                 <div className="profile-edit-options-div">
                     <div className="profile-user-photo">
-                        <img src={wazzap} alt="show-img" id='profile-img'/>
+                        {/* <img src={wazzap} alt="show-img" id='profile-img'/> */}
+                        <div className="initials-profile">
+                        {sessionUser.name.slice(0,1)}
+                      </div>
                     </div>
                     <div className="profile-user-edit">
                         <button className='cancel-btn-edit-form' onClick={() => history.goBack()}>CANCEL</button>
