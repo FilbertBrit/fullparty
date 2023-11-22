@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
 import Navigation from "../Navigation";
 import { useHistory, useParams } from "react-router";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import wazzap from "../../images/wazzap-halloween.jpeg"
 import "./UserProfile.css"
+import"./UserProfileEditForm.css"
+import { useState } from "react";
 
 export function UserProfileEditForm () {
 
@@ -12,6 +13,8 @@ export function UserProfileEditForm () {
     const userId = sessionUser.id;
     const joinedDate = sessionUser.joined;
     const profile = useParams();
+    const [name, setName] = useState(sessionUser.name);
+    const [bio, setBio] = useState('');
 
     return (
         <>
@@ -22,16 +25,31 @@ export function UserProfileEditForm () {
                         <img src={wazzap} alt="show-img" id='profile-img'/>
                     </div>
                     <div className="profile-user-edit">
-                        <button id='edit-profile-btn' onClick={() => history.goBack()}>CANCEL</button>
-                        <button>SAVE ✓</button>
+                        <button className='cancel-btn-edit-form' onClick={() => history.goBack()}>CANCEL</button>
+                        <button id='edit-profile-btn'>SAVE ✓</button>
                     </div>
                 </div>
                 <div className="profile-details-div">
                     <div className="profile-user-name">
+                        <textarea
+                        id="username-edit-form"
+                        value={name}
+                        onChange={e => setName(e.target.value)}>
+                        </textarea>
+                        {/* <input type="text" 
+                        // placeholder={sessionUser.name}
+                        id="username-edit-form"
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                        /> */}
                         {sessionUser.name}
                     </div>
                     <div className="profile-user-bio">  
                         <h3 id="user-profile-details">{sessionUser.bio ? (sessionUser.bio) : ("")}</h3>
+                        <input type="text"
+                        placeholder="bio"
+                        onChange={e => setBio(e.target.value)}
+                        />
                     </div>
                     <div className="profile-user-socials">
                         <h3>Socials</h3>

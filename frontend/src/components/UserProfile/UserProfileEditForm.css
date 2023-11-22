@@ -1,0 +1,20 @@
+#username-edit-form{
+    overflow-wrap: break-word;
+    background-color:hsla(0,0%,100%,.15) ;
+    /* font-size: 70px; */
+}
+#edit-profile-btn{
+    width: 120px;
+}
+.cancel-btn-edit-form{
+    background-color: hsla(0,0%,100%,.4);
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    padding: 16px;
+    font-weight: 700;
+    border: none;
+    width: 120px;
+    margin-bottom: 10px;
+}
