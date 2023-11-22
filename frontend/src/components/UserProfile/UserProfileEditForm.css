@@ -18,3 +18,28 @@
     width: 120px;
     margin-bottom: 10px;
 }
+.profile-user-socials{
+    display: flex;
+    flex-direction: row;
+}
+.social-btn{
+    /* -webkit-tap-highlight-color: rgba(242,115,206,.5); */
+    /* user-select: none; */
+    font-size: 14px;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    border: none;
+    line-height: 100%;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 99px;
+    cursor: pointer;
+    display: flex!important;
+    align-items: center;
+    padding: 6px 12px!important;
+    font-weight: 400;
+    background: transparent;
+    color: #f273ce;;
+    border: 1px solid #f273ce;;
+    /* background: (180deg,#863ff8,#f273ce); */
+    /* color: #fff; */
+}

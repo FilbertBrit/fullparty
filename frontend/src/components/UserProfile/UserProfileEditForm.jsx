@@ -52,10 +52,10 @@ export function UserProfileEditForm () {
                         />
                     </div>
                     <div className="profile-user-socials">
-                        <h3>Socials</h3>
-                        <button>add insta</button>
-                        <button>add twitter</button>
-                        <button>add snapchat</button>
+                        {/* <h3>Socials</h3> */}
+                        <button className="social-btn">add insta</button>
+                        <button className="social-btn">add twitter</button>
+                        <button className="social-btn">add snapchat</button>
                     </div>
                     <div className="profile-user-join-date">
                         <h3 id="user-profile-details">💥 <span id="bam-emoji"> Joined {joinedDate}</span></h3>
