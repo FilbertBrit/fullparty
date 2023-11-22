@@ -3,8 +3,17 @@
     background-color:hsla(0,0%,100%,.15) ;
     /* font-size: 70px; */
 }
-#edit-profile-btn{
+#edit-profile-save-btn{
     width: 120px;
+    background-color: #ab76f6;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    padding: 16px;
+    font-weight: 700;
+    border: none;
+    margin-bottom: 10px;
 }
 .cancel-btn-edit-form{
     background-color: hsla(0,0%,100%,.4);

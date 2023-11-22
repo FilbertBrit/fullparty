@@ -26,7 +26,7 @@ export function UserProfileEditForm () {
                     </div>
                     <div className="profile-user-edit">
                         <button className='cancel-btn-edit-form' onClick={() => history.goBack()}>CANCEL</button>
-                        <button id='edit-profile-btn'>SAVE ✓</button>
+                        <button id='edit-profile-save-btn'>SAVE ✓</button>
                     </div>
                 </div>
                 <div className="profile-details-div">
@@ -42,7 +42,7 @@ export function UserProfileEditForm () {
                         value={name}
                         onChange={e => setName(e.target.value)}
                         /> */}
-                        {sessionUser.name}
+                        {/* {sessionUser.name} */}
                     </div>
                     <div className="profile-user-bio">  
                         <h3 id="user-profile-details">{sessionUser.bio ? (sessionUser.bio) : ("")}</h3>
@@ -61,7 +61,7 @@ export function UserProfileEditForm () {
                         <h3 id="user-profile-details">💥 <span id="bam-emoji"> Joined {joinedDate}</span></h3>
                     </div>
                     <div className="profile-user-achievments">
-                        <h3>Achievments</h3>
+                        {/* <h3>Achievments</h3> */}
                     </div>
                 </div>
             </div>
