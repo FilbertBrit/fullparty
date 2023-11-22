@@ -23,7 +23,7 @@ export function UserProfileEditForm () {
                 <div className="profile-edit-options-div">
                     <div className="profile-user-photo">
                         {/* <img src={wazzap} alt="show-img" id='profile-img'/> */}
-                        <div className="initials">
+                        <div className="initials-profile">
                         {sessionUser.name.slice(0,1)}
                       </div>
                     </div>
