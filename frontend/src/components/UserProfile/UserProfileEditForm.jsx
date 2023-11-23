@@ -5,6 +5,14 @@ import wazzap from "../../images/wazzap-halloween.jpeg"
 import "./UserProfile.css"
 import"./UserProfileEditForm.css"
 import { useState } from "react";
+import plus from "../../images/plus-svgrepo-com.png"
+import insta from "../../images/instagram.png"
+import snap from "../../images/snapchat.png"
+import twitter from "../../images/twitter.png"
+import plusPink from "../../images/plus-pink.png"
+import instaPink from "../../images/instagram-pink.png"
+import snapPink from "../../images/snapchat-pink.png"
+import twitterPink from "../../images/twitter-pink.png"
 
 export function UserProfileEditForm () {
 
@@ -16,13 +24,16 @@ export function UserProfileEditForm () {
     const [name, setName] = useState(sessionUser.name);
     const [bio, setBio] = useState('');
 
+    const handleSocial = (e) => {
+
+    }
+
     return (
         <>
             <Navigation/>
             <div className="profile-layout">
                 <div className="profile-edit-options-div">
                     <div className="profile-user-photo">
-                        {/* <img src={wazzap} alt="show-img" id='profile-img'/> */}
                         <div className="initials-profile">
                         {sessionUser.name.slice(0,1)}
                       </div>
@@ -56,9 +67,15 @@ export function UserProfileEditForm () {
                     </div>
                     <div className="profile-user-socials">
                         {/* <h3>Socials</h3> */}
-                        <button className="social-btn">add insta</button>
-                        <button className="social-btn">add twitter</button>
-                        <button className="social-btn">add snapchat</button>
+                        <button className="social-btn" onClick={handleSocial}> 
+                            <img src={plusPink} id="social-logo"/><img src={instaPink} id="social-logo-insta"/> <span id="social-btn-words"> Instagram </span> 
+                        </button>
+                        <button className="social-btn" onClick={handleSocial}> 
+                            <img src={plusPink} id="social-logo"/><img src={twitterPink} id="social-logo"/> <span id="social-btn-words"> Twitter </span> 
+                        </button>
+                        <button className="social-btn" onClick={handleSocial}> 
+                            <img src={plusPink} id="social-logo"/><img src={snapPink} id="social-logo"/> <span id="social-btn-words"> Snapchat </span> 
+                        </button>
                     </div>
                     <div className="profile-user-join-date">
                         <h3 id="user-profile-details">💥 <span id="bam-emoji"> Joined {joinedDate}</span></h3>
