@@ -1,9 +1,20 @@
 #username-edit-form{
-    background-color:hsla(0,0%,100%,.15) ;
+    /* background-color:hsla(0,0%,100%,.15) ; */
     font-size: 90%;
     height: 80px;
     /* background-color: #363d4741; */
-    /* font-size: 70px; */
+    font-size: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+    width: 98%;
+}
+.profile-user-name{
+    background-color:hsla(0,0%,100%,.15) ;
+}
+.profile-user-bio{
+    background-color:hsla(0,0%,100%,.15) ;
+    height: 80px;
 }
 
 #edit-profile-save-btn{
@@ -34,6 +45,8 @@
 .profile-user-socials{
     display: flex;
     flex-direction: row;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .social-btn{
     /* -webkit-tap-highlight-color: rgba(242,115,206,.5); */
@@ -84,8 +97,11 @@
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
 }
 
-.profile-details-div{
+.profile-details-div-edit{
     width: 40vw;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 #social-logo{
@@ -98,4 +114,11 @@
 }
 #social-btn-words{
     padding-left: 5px;
+}
+#profile-bio-edit-input{
+    /* height: 80px; */
+    font-size: 30px;
+    width: 95%;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
 }

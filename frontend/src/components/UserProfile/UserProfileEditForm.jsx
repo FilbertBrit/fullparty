@@ -43,7 +43,7 @@ export function UserProfileEditForm () {
                         <button id='edit-profile-save-btn'>SAVE ✓</button>
                     </div>
                 </div>
-                <div className="profile-details-div">
+                <div className="profile-details-div-edit">
                     <div className="profile-user-name">
                         {/* <textarea
                         id="username-edit-form"
@@ -61,7 +61,8 @@ export function UserProfileEditForm () {
                     <div className="profile-user-bio">  
                         <h3 id="user-profile-details">{sessionUser.bio ? (sessionUser.bio) : ("")}</h3>
                         <input type="text"
-                        placeholder="bio"
+                        id="profile-bio-edit-input"
+                        placeholder="add bio"
                         onChange={e => setBio(e.target.value)}
                         />
                     </div>
