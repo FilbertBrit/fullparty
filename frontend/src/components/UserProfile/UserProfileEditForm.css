@@ -1,8 +1,11 @@
 #username-edit-form{
-    overflow-wrap: break-word;
     background-color:hsla(0,0%,100%,.15) ;
+    font-size: 90%;
+    height: 80px;
+    /* background-color: #363d4741; */
     /* font-size: 70px; */
 }
+
 #edit-profile-save-btn{
     width: 117.5px;
     background-color: #ab76f6;
@@ -26,6 +29,7 @@
     border: none;
     width: 117.5px;
     margin-bottom: 10px;
+    
 }
 .profile-user-socials{
     display: flex;

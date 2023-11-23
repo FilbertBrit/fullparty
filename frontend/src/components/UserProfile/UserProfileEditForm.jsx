@@ -45,17 +45,17 @@ export function UserProfileEditForm () {
                 </div>
                 <div className="profile-details-div">
                     <div className="profile-user-name">
-                        <textarea
+                        {/* <textarea
                         id="username-edit-form"
                         value={name}
                         onChange={e => setName(e.target.value)}>
-                        </textarea>
-                        {/* <input type="text" 
+                        </textarea> */}
+                        <input type="text" 
                         // placeholder={sessionUser.name}
                         id="username-edit-form"
                         value={name}
                         onChange={e => setName(e.target.value)}
-                        /> */}
+                        />
                         {/* {sessionUser.name} */}
                     </div>
                     <div className="profile-user-bio">  
@@ -80,9 +80,9 @@ export function UserProfileEditForm () {
                     <div className="profile-user-join-date">
                         <h3 id="user-profile-details">💥 <span id="bam-emoji"> Joined {joinedDate}</span></h3>
                     </div>
-                    <div className="profile-user-achievments">
-                        {/* <h3>Achievments</h3> */}
-                    </div>
+                    {/* <div className="profile-user-achievments">
+                        <h3>Achievments</h3>
+                    </div> */}
                 </div>
             </div>
         </>
