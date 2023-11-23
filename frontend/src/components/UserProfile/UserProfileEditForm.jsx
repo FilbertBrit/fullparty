@@ -43,25 +43,26 @@ export function UserProfileEditForm () {
                         <button id='edit-profile-save-btn'>SAVE ✓</button>
                     </div>
                 </div>
-                <div className="profile-details-div">
+                <div className="profile-details-div-edit">
                     <div className="profile-user-name">
-                        <textarea
+                        {/* <textarea
                         id="username-edit-form"
                         value={name}
                         onChange={e => setName(e.target.value)}>
-                        </textarea>
-                        {/* <input type="text" 
+                        </textarea> */}
+                        <input type="text" 
                         // placeholder={sessionUser.name}
                         id="username-edit-form"
                         value={name}
                         onChange={e => setName(e.target.value)}
-                        /> */}
+                        />
                         {/* {sessionUser.name} */}
                     </div>
                     <div className="profile-user-bio">  
                         <h3 id="user-profile-details">{sessionUser.bio ? (sessionUser.bio) : ("")}</h3>
                         <input type="text"
-                        placeholder="bio"
+                        id="profile-bio-edit-input"
+                        placeholder="add bio"
                         onChange={e => setBio(e.target.value)}
                         />
                     </div>
@@ -80,9 +81,9 @@ export function UserProfileEditForm () {
                     <div className="profile-user-join-date">
                         <h3 id="user-profile-details">💥 <span id="bam-emoji"> Joined {joinedDate}</span></h3>
                     </div>
-                    <div className="profile-user-achievments">
-                        {/* <h3>Achievments</h3> */}
-                    </div>
+                    {/* <div className="profile-user-achievments">
+                        <h3>Achievments</h3>
+                    </div> */}
                 </div>
             </div>
         </>
