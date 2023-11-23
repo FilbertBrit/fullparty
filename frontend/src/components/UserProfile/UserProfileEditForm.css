@@ -44,7 +44,7 @@
     cursor: pointer;
     display: flex!important;
     align-items: center;
-    padding: 6px 12px!important;
+    padding: 6px 10px!important;
     font-weight: 400;
     background: transparent;
     color: #f273ce;;
@@ -82,4 +82,16 @@
 
 .profile-details-div{
     width: 40vw;
+}
+
+#social-logo{
+    width: 15px;
+    height: 15px;
+}
+#social-logo-insta{
+    width: 20px;
+    height: 20px;
+}
+#social-btn-words{
+    padding-left: 5px;
 }
