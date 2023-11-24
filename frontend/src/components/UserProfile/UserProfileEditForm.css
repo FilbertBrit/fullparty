@@ -12,9 +12,22 @@
 .profile-user-name{
     background-color:hsla(0,0%,100%,.15) ;
 }
+.profile-user-name:hover{
+    /* background: linear-gradient(90deg,#351a8e,#6b429c); */
+    background: linear-gradient(90deg,#351a8ea7,#6b429c93);
+    background-color: hsla(0,0%,100%,.3);
+}
 .profile-user-bio{
     background-color:hsla(0,0%,100%,.15) ;
     height: 80px;
+}
+.profile-user-bio:active{
+    background: linear-gradient(90deg,#351a8e,#6b429c);
+    background-color: hsla(0,0%,100%,.3);
+}
+.profile-user-bio:hover{
+    background: linear-gradient(90deg,#351a8eb5,#6b429cb0);
+    background-color: hsla(0,0%,100%,.3);
 }
 
 #edit-profile-save-btn{
