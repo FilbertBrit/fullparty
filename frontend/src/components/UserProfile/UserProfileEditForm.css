@@ -17,11 +17,11 @@
     background: linear-gradient(90deg,#351a8ea8,#6b429ca5);
     background-color: hsla(0,0%,100%,.3);
 }
-.profile-user-bio{
+.profile-user-bio-edit{
     background-color:hsla(0,0%,100%,.15) ;
     height: 80px;
 }
-.profile-user-bio:hover{
+.profile-user-bio-edit:hover{
     background: linear-gradient(90deg,#351a8e9d,#6b429c99);
     background-color: hsla(0,0%,100%,.3);
 }

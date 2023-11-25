@@ -64,7 +64,7 @@ export function UserProfileEditForm () {
                         onChange={e => setName(e.target.value)}
                         />
                     </div>
-                    <div className="profile-user-bio">  
+                    <div className="profile-user-bio-edit">  
                         <h3 id="user-profile-details">{sessionUser.bio ? (sessionUser.bio) : ("")}</h3>
                         <input type="text"
                         id="profile-bio-edit-input"

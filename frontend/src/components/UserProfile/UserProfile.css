@@ -37,7 +37,7 @@
 .profile-details-div{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     max-width: 500px;
     /* height: fit-content; */
 }
@@ -67,4 +67,17 @@
     font-weight: 900;
     color: #cad3e2;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+}
+
+.profile-user-bio{
+    color: hsla(0,0%,100%,.5);
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 3px;
+}
+
+.profile-user-join-date{
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
