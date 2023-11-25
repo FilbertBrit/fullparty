@@ -74,7 +74,7 @@ export function UserProfileEditForm () {
                         />
                     </div>
                     <div className="profile-user-socials">
-                        <button className="social-btn" onClick={handleSocial}> 
+                        <button className="social-btn" onClick={handleSocial} id="insta-btn"> 
                             <img src={plusPink} id="social-logo"/><img src={instaPink} id="social-logo-insta"/> <span id="social-btn-words"> Instagram </span> 
                         </button>
                         <button className="social-btn" onClick={handleSocial}> 

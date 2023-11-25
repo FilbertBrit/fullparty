@@ -84,7 +84,9 @@
     border-top: #863ff8;
     color: #fff;
 }
-
+.social-btn-#insta-btn:hover{
+    padding: 100px;
+}
 /* .-profile-user-photo{
     width: 80%;
     padding: 15px;
@@ -111,6 +113,7 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
+    width: fit-content;
     max-width: 500px;
 }
 
