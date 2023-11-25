@@ -25,7 +25,7 @@ export function UserProfileEditForm () {
     const joinedDate = sessionUser.joined;
     const profile = useParams();
     const [name, setName] = useState(sessionUser.name);
-    const [bio, setBio] = useState('');
+    const [bio, setBio] = useState(sessionUser.bio);
 
     const handleSocial = (e) => {
 
@@ -65,7 +65,7 @@ export function UserProfileEditForm () {
                         />
                     </div>
                     <div className="profile-user-bio-edit">  
-                        <h3 id="user-profile-details">{sessionUser.bio ? (sessionUser.bio) : ("")}</h3>
+                        {/* <h3 id="user-profile-details">{sessionUser.bio ? (sessionUser.bio) : ("")}</h3> */}
                         <input type="text"
                         id="profile-bio-edit-input"
                         placeholder="add bio"
