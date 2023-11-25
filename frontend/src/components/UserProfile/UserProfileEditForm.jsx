@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Navigation from "../Navigation";
 import { useHistory, useParams } from "react-router";
 import wazzap from "../../images/wazzap-halloween.jpeg"
@@ -13,10 +13,13 @@ import plusPink from "../../images/plus-pink.png"
 import instaPink from "../../images/instagram-pink.png"
 import snapPink from "../../images/snapchat-pink.png"
 import twitterPink from "../../images/twitter-pink.png"
+import { updateUser } from "../../store/user";
 
 export function UserProfileEditForm () {
+    debugger
 
     const history = useHistory();
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id;
     const joinedDate = sessionUser.joined;
@@ -26,6 +29,11 @@ export function UserProfileEditForm () {
 
     const handleSocial = (e) => {
 
+    }
+    const handleSubmit = (e) => {
+        // debugger
+        console.log('test')
+        dispatch(updateUser({name: name, bio: bio, id: sessionUser.id})).then( res => history.push('/users/' + res.user.id))
     }
 
     return (
@@ -40,34 +48,32 @@ export function UserProfileEditForm () {
                     </div>
                     <div className="profile-user-edit">
                         <button className='cancel-btn-edit-form' onClick={() => history.goBack()}>CANCEL</button>
-                        <button id='edit-profile-save-btn'>SAVE ✓</button>
+                        <button id='edit-profile-save-btn' onClick={handleSubmit}>SAVE ✓</button>
                     </div>
                 </div>
                 <div className="profile-details-div-edit">
-                    <div className="profile-user-name">
+                    <div className="profile-user-name-edit">
                         {/* <textarea
                         id="username-edit-form"
                         value={name}
                         onChange={e => setName(e.target.value)}>
                         </textarea> */}
-                        <input type="text" 
-                        // placeholder={sessionUser.name}
+                        <input type="text"
                         id="username-edit-form"
                         value={name}
                         onChange={e => setName(e.target.value)}
                         />
-                        {/* {sessionUser.name} */}
                     </div>
                     <div className="profile-user-bio">  
                         <h3 id="user-profile-details">{sessionUser.bio ? (sessionUser.bio) : ("")}</h3>
                         <input type="text"
                         id="profile-bio-edit-input"
                         placeholder="add bio"
+                        value={bio}
                         onChange={e => setBio(e.target.value)}
                         />
                     </div>
                     <div className="profile-user-socials">
-                        {/* <h3>Socials</h3> */}
                         <button className="social-btn" onClick={handleSocial}> 
                             <img src={plusPink} id="social-logo"/><img src={instaPink} id="social-logo-insta"/> <span id="social-btn-words"> Instagram </span> 
                         </button>

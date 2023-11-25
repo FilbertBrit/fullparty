@@ -9,24 +9,20 @@
     height: fit-content;
     width: 98%;
 }
-.profile-user-name{
+.profile-user-name-edit{
     background-color:hsla(0,0%,100%,.15) ;
+    height: 75px;
 }
-.profile-user-name:hover{
-    /* background: linear-gradient(90deg,#351a8e,#6b429c); */
-    background: linear-gradient(90deg,#351a8ea7,#6b429c93);
+.profile-user-name-edit:hover{
+    background: linear-gradient(90deg,#351a8ea8,#6b429ca5);
     background-color: hsla(0,0%,100%,.3);
 }
 .profile-user-bio{
     background-color:hsla(0,0%,100%,.15) ;
     height: 80px;
 }
-.profile-user-bio:active{
-    background: linear-gradient(90deg,#351a8e,#6b429c);
-    background-color: hsla(0,0%,100%,.3);
-}
 .profile-user-bio:hover{
-    background: linear-gradient(90deg,#351a8eb5,#6b429cb0);
+    background: linear-gradient(90deg,#351a8e9d,#6b429c99);
     background-color: hsla(0,0%,100%,.3);
 }
 
@@ -115,6 +111,7 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
+    max-width: 500px;
 }
 
 #social-logo{

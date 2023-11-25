@@ -4,12 +4,14 @@ import session from './session';
 import events from './events';
 import rsvps from './rsvps'
 import comments from './comments'
+import users from './user'
 
 const rootReducer = combineReducers({
     session,
     events,
     rsvps,
-    comments
+    comments,
+    users
 });
 
 let enhancer;

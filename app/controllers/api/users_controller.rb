@@ -16,10 +16,12 @@ class Api::UsersController < ApplicationController
   end
 
   def update 
+    # debugger
     if @user.update(user_params)
       render :show
     else
       render json: @user.errors.full_messages, status: 422
+    end
   end
 
   private
@@ -31,6 +33,6 @@ class Api::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:phone_number, :name, :password)
+    params.require(:user).permit(:phone_number, :name, :password, :bio)
   end
 end
