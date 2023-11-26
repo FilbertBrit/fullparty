@@ -16,6 +16,7 @@ export function Comment ({ comment }) {
     const [showMenu, setShowMenu] = useState(false)
     const date = new Date(comment.date)
     const today = new Date()
+    console.log(comment)
     let commentDate = ''
     const rsvps = {
         "I'm Going": "Going 👍",
@@ -23,7 +24,7 @@ export function Comment ({ comment }) {
         "Can't Go": "Can't 😢"
     }
     // let rsvpComment = !notRSVP ? [comment.body.split(" ").slice(0,1).join(''), rsvps[comment.body.split(" ").slice(1).join(" ")]] : ('');
-    let rsvpComment = !notRSVP ? rsvps[comment.body.split(" ").slice(1).join(" ")] : ('');
+    let rsvpComment = !notRSVP ? rsvps[comment.body] : ('');
     console.log(rsvpComment)
 
     console.log(rsvpComment);
