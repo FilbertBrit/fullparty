@@ -61,7 +61,7 @@ function SignupFormPage() {
     }
   
     return (
-      <>
+      <div id='layout-outer'>
         <Navigation/>
         <div className="layout">
           
@@ -144,7 +144,7 @@ function SignupFormPage() {
           </form>
         </div>
       <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
-      </>
+      </div>
     );
   }
   
