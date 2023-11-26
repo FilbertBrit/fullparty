@@ -140,3 +140,6 @@
     padding-bottom: 20px;
     margin-bottom: 0px;
 }
+.modalOpen{
+    scroll-behavior: unset;
+}
