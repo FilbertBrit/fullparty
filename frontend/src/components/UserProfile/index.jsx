@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router";
 import { NavLink, Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import wazzap from "../../images/wazzap-halloween.jpeg"
 import "./UserProfile.css"
+import { AiOutlineInstagram } from "react-icons/ai"
 import { useState } from "react";
 
 export function UserProfile () {
@@ -17,7 +18,7 @@ export function UserProfile () {
     if (sessionUser.id != profile.userId) return <Redirect to="/events" />;
 
     return (
-        <>
+        <div id="layout-outer">
             <Navigation/>
             <div className="profile-layout">
                 <div className="profile-edit-options-div">
@@ -52,6 +53,7 @@ export function UserProfile () {
                     {/* </div> */}
                 </div>
             </div>
-        </>
+            <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
+        </div>
     )
 }

@@ -14,7 +14,6 @@ export const closeModal = () => {
   };
 };
 
-
 export default function modalReducer(state = null, action) {
   switch (action.type) {
     case OPEN_MODAL:

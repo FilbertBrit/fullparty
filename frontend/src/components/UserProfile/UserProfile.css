@@ -11,6 +11,7 @@
     justify-content: center;
     gap: 60px;
     margin-top: 40px;
+    /* height: 100vh; */
 }
 .profile-edit-options-div{
     display: flex;
@@ -83,4 +84,11 @@
 .profile-user-join-date{
     margin-top: 8px;
     margin-bottom: 8px;
+}
+#footer{
+    padding-bottom: 20px;
+    margin-bottom: 0px;
+}
+#layout-outer{
+    display: flex;
 }

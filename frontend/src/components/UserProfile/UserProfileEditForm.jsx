@@ -14,6 +14,8 @@ import instaPink from "../../images/instagram-pink.png"
 import snapPink from "../../images/snapchat-pink.png"
 import twitterPink from "../../images/twitter-pink.png"
 import { updateUser } from "../../store/user";
+import { openModal } from "../../store/modal";
+import { AiOutlineInstagram } from "react-icons/ai"
 
 export function UserProfileEditForm () {
     debugger
@@ -28,7 +30,8 @@ export function UserProfileEditForm () {
     const [bio, setBio] = useState(sessionUser.bio);
 
     const handleSocial = (e) => {
-
+        dispatch(openModal('social-form ' + e.currentTarget.value))
+        // console.log('social-form ' + e.currentTarget.value)
     }
     const handleSubmit = (e) => {
         // debugger
@@ -37,7 +40,7 @@ export function UserProfileEditForm () {
     }
 
     return (
-        <>
+        <div id="layout-outer">
             <Navigation/>
             <div className="profile-layout">
                 <div className="profile-edit-options-div">
@@ -74,13 +77,13 @@ export function UserProfileEditForm () {
                         />
                     </div>
                     <div className="profile-user-socials">
-                        <button className="social-btn" onClick={handleSocial} id="insta-btn"> 
+                        <button className="social-btn" onClick={handleSocial} id="insta-btn" value='insta'> 
                             <img src={plusPink} id="social-logo"/><img src={instaPink} id="social-logo-insta"/> <span id="social-btn-words"> Instagram </span> 
                         </button>
-                        <button className="social-btn" onClick={handleSocial}> 
+                        <button className="social-btn" onClick={handleSocial} value='twitter'> 
                             <img src={plusPink} id="social-logo"/><img src={twitterPink} id="social-logo"/> <span id="social-btn-words"> Twitter </span> 
                         </button>
-                        <button className="social-btn" onClick={handleSocial}> 
+                        <button className="social-btn" onClick={handleSocial} value='snap'> 
                             <img src={plusPink} id="social-logo"/><img src={snapPink} id="social-logo"/> <span id="social-btn-words"> Snapchat </span> 
                         </button>
                     </div>
@@ -92,6 +95,7 @@ export function UserProfileEditForm () {
                     </div> */}
                 </div>
             </div>
-        </>
+            <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
+        </div>
     )
 }

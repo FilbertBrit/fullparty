@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.css';
 import RegionMenu from "./RegionMenu"
-// import { AiOutlineInstagram } from "react-icons/ai"
+import { AiOutlineInstagram } from "react-icons/ai"
 import Navigation from '../Navigation';
 
 function LoginFormPage() {
@@ -61,7 +61,7 @@ function LoginFormPage() {
   }
 
   return (
-    <>
+    <div id='layout-outer'>
       <Navigation/>
       <div className='layout'>
 
@@ -128,7 +128,8 @@ function LoginFormPage() {
         </form>
 
       </div>
-    </>
+      <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
+    </div>
   );
 }
 

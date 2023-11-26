@@ -5,13 +5,15 @@ import events from './events';
 import rsvps from './rsvps'
 import comments from './comments'
 import users from './user'
+import modal from './modal'
 
 const rootReducer = combineReducers({
     session,
     events,
     rsvps,
     comments,
-    users
+    users, 
+    modal
 });
 
 let enhancer;
