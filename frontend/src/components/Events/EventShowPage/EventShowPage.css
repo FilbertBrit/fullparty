@@ -13,7 +13,7 @@
 .show-info{
     width: 40vw;
     max-width: 435px;
-    margin-left: 60px;
+    /* margin-left: 60px; */
     position: relative;
 }
 .show-title{
@@ -322,7 +322,7 @@
     /* transform: ; */
 }
 
-@media screen nd (min-width: 1050px)a {
+@media screen and (min-width: 1050px) {
     .show-photo-rsvp{
         /* position: relative;
         margin-left: 100px; */
