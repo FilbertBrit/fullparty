@@ -9,12 +9,21 @@
     height: fit-content;
     width: 98%;
 }
-.profile-user-name{
+.profile-user-name-edit{
     background-color:hsla(0,0%,100%,.15) ;
+    height: 75px;
 }
-.profile-user-bio{
+.profile-user-name-edit:hover{
+    background: linear-gradient(90deg,#351a8ea8,#6b429ca5);
+    background-color: hsla(0,0%,100%,.3);
+}
+.profile-user-bio-edit{
     background-color:hsla(0,0%,100%,.15) ;
     height: 80px;
+}
+.profile-user-bio-edit:hover{
+    background: linear-gradient(90deg,#351a8e9d,#6b429c99);
+    background-color: hsla(0,0%,100%,.3);
 }
 
 #edit-profile-save-btn{
@@ -75,7 +84,9 @@
     border-top: #863ff8;
     color: #fff;
 }
-
+.social-btn-#insta-btn:hover{
+    padding: 100px;
+}
 /* .-profile-user-photo{
     width: 80%;
     padding: 15px;
@@ -102,6 +113,8 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
+    width: fit-content;
+    max-width: 500px;
 }
 
 #social-logo{
