@@ -155,3 +155,14 @@ h4{
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
 
 }
+#footer{
+    padding-bottom: 20px;
+    margin-bottom: 0px;
+    margin-top: 100px;
+}
+#layout-outer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}

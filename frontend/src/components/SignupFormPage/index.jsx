@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import './SignupFrom.css'
 import Navigation from '../Navigation';
 import RegionMenu from '../LoginFormPage/RegionMenu';
+import { AiOutlineInstagram } from "react-icons/ai"
 
 function SignupFormPage() {
     const dispatch = useDispatch();
@@ -142,6 +143,7 @@ function SignupFormPage() {
             </div>
           </form>
         </div>
+      <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
       </>
     );
   }
