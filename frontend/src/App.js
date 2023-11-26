@@ -10,6 +10,7 @@ import { EventShowPage } from './components/Events/EventShowPage';
 import { EventInputForm } from './components/Events/EventInputForm';
 import { UserProfile } from './components/UserProfile';
 import { UserProfileEditForm } from './components/UserProfile/UserProfileEditForm';
+import { Modal } from './components/Modal/modal';
 
 
 function App() {
@@ -19,43 +20,48 @@ function App() {
 
   return (
     <>
-    <Switch>
-      
-      <Route path="/create" component={ EventInputForm } />
-      <Route path="/events/:eventId/edit" component={ EventInputForm }/>
-      <Route path="/events/:eventId">
-      {sessionUser ? (
-              <EventShowPage/>
-            ) : (
-              <Redirect to="/login"/>
-            )}
-      </Route>
-      <Route path="/events">
-      {sessionUser ? (
-              <HomePage/>
-            ) : (
-              <Redirect to="/login"/>
-            )}
-      </Route>
-      <Route path="/login" component={ LoginFormPage} />
-      <Route path="/signup" component={ SignupFormPage } />
-      <Route path="/users/:userId/edit" component={UserProfileEditForm}></Route>
-      <Route path="/users/:userId">
-      {sessionUser ? (
-        <UserProfile/>
-        ) : (
+    {/* <div> */}
+      <Modal/>
+    {/* </div> */}
+    <div>
+      <Switch>
+        
+        <Route path="/create" component={ EventInputForm } />
+        <Route path="/events/:eventId/edit" component={ EventInputForm }/>
+        <Route path="/events/:eventId">
+        {sessionUser ? (
+                <EventShowPage/>
+              ) : (
+                <Redirect to="/login"/>
+              )}
+        </Route>
+        <Route path="/events">
+        {sessionUser ? (
+                <HomePage/>
+              ) : (
+                <Redirect to="/login"/>
+              )}
+        </Route>
+        <Route path="/login" component={ LoginFormPage} />
+        <Route path="/signup" component={ SignupFormPage } />
+        <Route path="/users/:userId/edit" component={UserProfileEditForm}></Route>
+        <Route path="/users/:userId">
+        {sessionUser ? (
+          <UserProfile/>
+          ) : (
+            <Redirect to="/events"/>
+          )}
+        </Route>
+        <Route path="/">
+        {sessionUser ? (
           <Redirect to="/events"/>
-        )}
-      </Route>
-      <Route path="/">
-      {sessionUser ? (
-        <Redirect to="/events"/>
-        ) : (
-          <SplashPage/>
-        )}
-      </Route>
-      
-    </Switch>
+          ) : (
+            <SplashPage/>
+          )}
+        </Route>
+        
+      </Switch>
+    </div>
     </>
   );
 

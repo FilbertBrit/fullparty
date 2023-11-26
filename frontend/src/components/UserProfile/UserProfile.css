@@ -91,4 +91,14 @@
 }
 #layout-outer{
     display: flex;
+    justify-content: space-between;
+    /* height: max-content; */
+    max-height: max-content;
+}
+
+@media screen and (max-width: 811px){
+    #layout-outer{
+        height: max-content;
+    }
+    
 }
