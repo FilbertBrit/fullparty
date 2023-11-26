@@ -9,6 +9,7 @@ import wazzap from "../../../images/wazzap-halloween.jpeg"
 import "./EventShowPage.css"
 import { RsvpComponent } from './RsvpComponent';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { AiOutlineInstagram } from "react-icons/ai"
 import { ActivityLog } from './ActivityLog';
 
 
@@ -203,6 +204,7 @@ export function EventShowPage () {
                     <></>
                 )}
         </div>
+        <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
         </>
     ) : null;
 }

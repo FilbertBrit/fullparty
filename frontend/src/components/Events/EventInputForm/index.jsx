@@ -9,6 +9,7 @@ import { useHistory, useParams } from "react-router";
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { AiOutlineInstagram } from "react-icons/ai"
 
 export function EventInputForm () {
 
@@ -216,6 +217,7 @@ export function EventInputForm () {
                     <></>
                 )}
             </div>
+            <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
         </> ) 
     )
 }
