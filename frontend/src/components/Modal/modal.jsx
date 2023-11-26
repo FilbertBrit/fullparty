@@ -2,11 +2,16 @@ import { useDispatch, useSelector } from "react-redux"
 import { closeModal } from "../../store/modal"
 import './Modal.css'
 import { SocialForm } from "../SocialForm/SocialForm"
+import { useState } from "react"
 
 
-const Modal = () => {
+export const Modal = () => {
     const modal = useSelector(state => state.modal)
+    const [componentCall, setComponentCall] = useState('') //useState(modal.split(" ")[0])
+    const [prop, setProp] = useState('')  //useState(modal.split(" ")[1])
     const dispatch = useDispatch();
+    console.log(modal);
+    // console.log(componentCall, prop);
 
     if(!modal){
         return null;
@@ -14,9 +19,9 @@ const Modal = () => {
 
     let component;
 
-    switch (modal) {
+    switch (componentCall) {
         case 'social-form':
-            component = <SocialForm/>;
+            component = <SocialForm social={ prop }/>;
             break;
         default:
             return null;
@@ -31,7 +36,7 @@ const Modal = () => {
         className="modal-background"
         onClick={handleClick}>
             <div
-            className={setClassName()}
+            // className={setClassName()}
             onClick={e => e.stopPropagation()}>
             { component }
             </div>

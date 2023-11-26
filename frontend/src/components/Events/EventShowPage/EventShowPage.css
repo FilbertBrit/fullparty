@@ -322,7 +322,7 @@
     /* transform: ; */
 }
 
-@media screen and (min-width: 1050px) {
+@media screen nd (min-width: 1050px)a {
     .show-photo-rsvp{
         /* position: relative;
         margin-left: 100px; */

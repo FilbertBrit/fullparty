@@ -1,7 +1,8 @@
 
 
-export const SocialForm = () => {
-    
+export const SocialForm = ({social}) => {
+    console.log(social)
+    console.log('here')
 
     return(
         <div>
