@@ -18,7 +18,7 @@ export function UserProfile () {
     if (sessionUser.id != profile.userId) return <Redirect to="/events" />;
 
     return (
-        <>
+        <div id="layout-outer">
             <Navigation/>
             <div className="profile-layout">
                 <div className="profile-edit-options-div">
@@ -52,8 +52,8 @@ export function UserProfile () {
                         {/* <h3>Achievments</h3> */}
                     {/* </div> */}
                 </div>
-            <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
             </div>
-        </>
+            <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
+        </div>
     )
 }

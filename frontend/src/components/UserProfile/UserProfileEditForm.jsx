@@ -40,7 +40,7 @@ export function UserProfileEditForm () {
     }
 
     return (
-        <>
+        <div id="layout-outer">
             <Navigation/>
             <div className="profile-layout">
                 <div className="profile-edit-options-div">
@@ -96,6 +96,6 @@ export function UserProfileEditForm () {
                 </div>
             </div>
             <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
-        </>
+        </div>
     )
 }
