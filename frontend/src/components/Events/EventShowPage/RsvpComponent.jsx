@@ -36,10 +36,12 @@ export function RsvpComponent ({ event }) {
     const handleClick = (e) => {
         if (userRsvp) {
             dispatch(updateRsvp({status: e.currentTarget.value, userId: sessionUser.id, eventId: event.id, id: userRsvpId})).then( rsvp => setRsvp(rsvp))
-            dispatch(createComment({body: 'updated ' + e.currentTarget.value, authorId: sessionUser.id, eventId: event.id, commentType: 'rsvp'}))
+            // dispatch(createComment({body: 'updated ' + e.currentTarget.value, authorId: sessionUser.id, eventId: event.id, commentType: 'rsvp'}))
+            dispatch(createComment({body: e.currentTarget.value, authorId: sessionUser.id, eventId: event.id, commentType: 'rsvp'}))
         }else{
             dispatch(createRsvp({status: e.currentTarget.value, userId: sessionUser.id, eventId: event.id})).then( rsvp => setRsvp(rsvp))
-            dispatch(createComment({body: 'rsvped ' + e.currentTarget.value, authorId: sessionUser.id, eventId: event.id, commentType: 'rsvp'}))
+            dispatch(createComment({body: e.currentTarget.value, authorId: sessionUser.id, eventId: event.id, commentType: 'rsvp'}))
+            // dispatch(createComment({body: 'rsvped ' + e.currentTarget.value, authorId: sessionUser.id, eventId: event.id, commentType: 'rsvp'}))
         }
     }
     const handleEdit = (e) => {

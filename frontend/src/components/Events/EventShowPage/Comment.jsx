@@ -16,6 +16,7 @@ export function Comment ({ comment }) {
     const [showMenu, setShowMenu] = useState(false)
     const date = new Date(comment.date)
     const today = new Date()
+    console.log(comment)
     let commentDate = ''
     const rsvps = {
         "I'm Going": "Going 👍",
@@ -23,7 +24,7 @@ export function Comment ({ comment }) {
         "Can't Go": "Can't 😢"
     }
     // let rsvpComment = !notRSVP ? [comment.body.split(" ").slice(0,1).join(''), rsvps[comment.body.split(" ").slice(1).join(" ")]] : ('');
-    let rsvpComment = !notRSVP ? rsvps[comment.body.split(" ").slice(1).join(" ")] : ('');
+    let rsvpComment = !notRSVP ? rsvps[comment.body] : ('');
     console.log(rsvpComment)
 
     console.log(rsvpComment);
@@ -35,11 +36,11 @@ export function Comment ({ comment }) {
             commentDate = (today.getHours() - date.getHours()) > 1 ? ('about ' + (today.getHours() - date.getHours()) + ' hours ago') : ( 'about 1 hour ago' )
         }
     }else if((date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
-        commentDate = (today.getDay() - date.getDay() > 1) ? ((today.getDay() - date.getDay()) + ' days ago') : ( (today.getDay() - date.getDay()) + ' day ago' )  
+        commentDate = (date.getDay() - today.getDay() > 1) ? ((date.getDay() - today.getDay() ) + ' days ago') : ( '1 day ago' )  
     }else if(date.getFullYear() === today.getFullYear()){
-        commentDate = (date.getMonth() - today.getMonth() > 1) ? (date.getMonth() - today.getMonth()) + 'months ago' : (date.getMonth() - today.getMonth()) + 'months ago';
+        commentDate = (date.getMonth() - today.getMonth() > 1) ? (date.getMonth() - today.getMonth()) + 'months ago' : '1 month ago';
     }else{
-        commentDate = (date.getFullYear() - today.getFullYear() > 1) ? (date.getFullYear() - today.getFullYear()) + 'years ago' : (date.getFullYear() - today.getFullYear()) + 'year ago';
+        commentDate = (date.getFullYear() - today.getFullYear() > 1) ? (date.getFullYear() - today.getFullYear()) + 'years ago' : '1 year ago';
     }
 
     const handlePin = (e) => {
