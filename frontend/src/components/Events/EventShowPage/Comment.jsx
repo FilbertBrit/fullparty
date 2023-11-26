@@ -35,11 +35,11 @@ export function Comment ({ comment }) {
             commentDate = (today.getHours() - date.getHours()) > 1 ? ('about ' + (today.getHours() - date.getHours()) + ' hours ago') : ( 'about 1 hour ago' )
         }
     }else if((date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
-        commentDate = (today.getDay() - date.getDay() > 1) ? ((today.getDay() - date.getDay()) + ' days ago') : ( (today.getDay() - date.getDay()) + ' day ago' )  
+        commentDate = (date.getDay() - today.getDay() > 1) ? ((date.getDay() - today.getDay() ) + ' days ago') : ( '1 day ago' )  
     }else if(date.getFullYear() === today.getFullYear()){
-        commentDate = (date.getMonth() - today.getMonth() > 1) ? (date.getMonth() - today.getMonth()) + 'months ago' : (date.getMonth() - today.getMonth()) + 'months ago';
+        commentDate = (date.getMonth() - today.getMonth() > 1) ? (date.getMonth() - today.getMonth()) + 'months ago' : '1 month ago';
     }else{
-        commentDate = (date.getFullYear() - today.getFullYear() > 1) ? (date.getFullYear() - today.getFullYear()) + 'years ago' : (date.getFullYear() - today.getFullYear()) + 'year ago';
+        commentDate = (date.getFullYear() - today.getFullYear() > 1) ? (date.getFullYear() - today.getFullYear()) + 'years ago' : '1 year ago';
     }
 
     const handlePin = (e) => {
