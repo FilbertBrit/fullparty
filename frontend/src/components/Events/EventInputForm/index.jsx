@@ -207,12 +207,13 @@ export function EventInputForm () {
                         </div>
                     </div>
                 ) : (
-                    <div>
-                        <div className="module-invite" id='author-nav-sidebar-item'>
-                            <h2>👁️</h2>
-                            <h2 id='author-nav-sidebar-text'>Preview</h2>
-                        </div>
-                    </div>
+                    // <div>
+                    //     <div className="module-invite" id='author-nav-sidebar-item'>
+                    //         <h2>👁️</h2>
+                    //         <h2 id='author-nav-sidebar-text'>Preview</h2>
+                    //     </div>
+                    // </div>
+                    <></>
                 )}
             </div>
         </> ) 
