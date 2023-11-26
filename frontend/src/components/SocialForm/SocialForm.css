@@ -15,9 +15,9 @@
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
 }
 #social-input{
-    border-bottom-width: 1px;
+    /* border-bottom-width: 1px;
     border-bottom-style: solid;
-    border-bottom-color: hsla(0,0%,100%,.3);
+    border-bottom-color: hsla(0,0%,100%,.3); */
     color: #fff;
 }
 .social-confirm-btn{
@@ -35,4 +35,30 @@
     width: 117.5px;
     margin-bottom: 10px;
     margin-top: 10px;
+}
+.social-input-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: hsla(0,0%,100%,.3);
+    color: #fff;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    padding: 4px 0 3px;
+}
+.at-sym{
+    font-size: 36px;
+    /* margin-right: 0.3em; */
+}
+.exit-btn{
+    position: relative;
+    top: -10px;
+    right: 150px;
+    color: #fff;
+
+}
+#cancel-img{
+    height: 20px;
+    width: 20px;
 }
