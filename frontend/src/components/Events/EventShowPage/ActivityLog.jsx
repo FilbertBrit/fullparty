@@ -13,7 +13,7 @@ export function ActivityLog () {
     const comments = commentsObj ? Object.values(commentsObj) : [];
     // console.log(commentsObj, comments);
     const [comment, setComment] = useState("");
-    console.log('');
+    // console.log('');
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(createComment({body: comment, authorId: sessionUser.id, eventId: eventId, commentType: 'comment'})).then( res => setComment(""))

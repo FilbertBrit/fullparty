@@ -23,7 +23,8 @@ end
 
 json.event do 
     json.extract! @event, :id, :title, :description, :location, :capacity, :cost
-    json.dateTime @event.date_time ? @event.date_time.strftime("%A, %b %e %l%P") : @event.date_time
+    json.dateTime @event.date_time
+    json.date @event.date_time ? @event.date_time.strftime("%A, %b %e %l%P") : @event.date_time
     json.host @event.user.name
     json.hostId @event.user.id
     # json.rsvpList rsvpArr

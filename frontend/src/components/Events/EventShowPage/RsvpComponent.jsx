@@ -13,11 +13,15 @@ export function RsvpComponent ({ event }) {
     const userRsvpId = event.userRsvp;
     const rsvps = useSelector(state => state.rsvps)
     const userRsvp = rsvps[userRsvpId];
-    //come back to refactor rsvp to hold status of rsvp
     const [rsvp, setRsvp] = useState(userRsvp)
     let hideRsvpInst = false;
     // Inside your component or where you handle state
     const [isHovered, setIsHovered] = useState(false);
+    const date = event ? new Date(event.dateTime) : ''
+    const today = new Date()
+    const eventDone = event ? date < today : '';
+    // console.log(eventDone);
+    // console.log(date)
 
     const handleHover = (hoverState) => {
         setIsHovered(hoverState);
@@ -45,7 +49,8 @@ export function RsvpComponent ({ event }) {
         }
     }
     const handleEdit = (e) => {
-        setRsvp();
+        !eventDone && setRsvp(); //if event not past set RSVP to nothing -> trigger rsvp options
+        // setRsvp();
     }
 
     return (

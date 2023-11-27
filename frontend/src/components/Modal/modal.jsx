@@ -7,13 +7,13 @@ import { useState } from "react"
 
 export const Modal = () => {
     const modal = useSelector(state => state.modal)
-    console.log(modal)
-    modal && console.log(modal.split(" ")[0]) ;
-    modal && console.log(modal.split(" ")[1]) ;
+    // console.log(modal)
+    // modal && console.log(modal.split(" ")[0]) ;
+    // modal && console.log(modal.split(" ")[1]) ;
     const componentCall = modal ? modal.split(" ")[0] : ''
     const prop = modal ? modal.split(" ")[1] : '' 
     const dispatch = useDispatch();
-    console.log(componentCall, prop);
+    // console.log(componentCall, prop);
     
     if(!modal){
         return null;
@@ -21,7 +21,7 @@ export const Modal = () => {
 
     let component;
 
-    console.log('check')
+    // console.log('check')
     switch (componentCall) {
         case 'social-form':
             component = <SocialForm social={ prop }/>;
@@ -34,7 +34,7 @@ export const Modal = () => {
         dispatch(closeModal());
     }
 
-    console.log('check 2')
+    // console.log('check 2')
     return (
         <div
         className="modal-background"
