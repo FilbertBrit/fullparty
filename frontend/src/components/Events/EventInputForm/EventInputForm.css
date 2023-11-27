@@ -16,6 +16,7 @@
 .title-container{
     align-self: stretch;
     background-color: #363d4741;
+    background-color: hsla(0,0%,100%,.15);
     width: 100%;
     min-height: 70px;
     font-size: 30px;
@@ -35,6 +36,7 @@
 .date-time-container{
     width: 100%;
     background-color: #363d4741;
+    background-color: hsla(0,0%,100%,.15);
     margin-bottom: 10px;
     display: flex;
 }
@@ -51,6 +53,7 @@
     display: flex;
     flex-direction: column;
     background-color: #363d4741;
+    background-color: hsla(0,0%,100%,.15);
     color: hsla(0, 2%, 59%, 0.793);
     font-family: Syne,Avant Garde,Tahoma,Verdana,sans-serif;
     display: flex;
@@ -75,6 +78,7 @@
     display: flex;
     align-items: center;
     background-color: #363d4741;
+    background-color: hsla(0,0%,100%,.15);
     margin-bottom: 3px;
     padding-left: 8px;
 }
@@ -89,6 +93,7 @@
 
 .capacity-input-div{
     background-color: #363d4741;
+    background-color: hsla(0,0%,100%,.15);
     display: flex;
     align-items: center;
     color: hsla(0, 2%, 59%, 0.793);
@@ -110,6 +115,7 @@
 .cost-div{
     width: 97.8%;
     background-color: #363d4741;
+    background-color: hsla(0,0%,100%,.15);
     height: 30px;
     display: flex;
     align-items: center;
@@ -137,11 +143,13 @@
     display: flex;
     align-items: center;
     background-color: #363d4741;
+    background-color: hsla(0,0%,100%,.15);
     padding-left: 8px;
 }
 
 .description-input-container{
     background-color:  #363d4741;
+    background-color: hsla(0,0%,100%,.15);
     width: 100%;
     min-height: 90px;
     margin-top: 20px;
@@ -188,6 +196,7 @@
     height: max-content;
     width: max-content;
     background-color: #363d4741; /* div background trans-glossy*/
+    background-color: hsla(0,0%,100%,.15);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -195,6 +204,7 @@
     color: hsla(0,0%,100%,.6);
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     font-weight: 325;
+    margin-left: -13px;
 }
 .rsvp-options-btns-container{
     display: flex;
@@ -218,6 +228,7 @@
     padding: 35px;
     border-radius: 60px;
     background-color: #a8afb86a;
+    background-color: hsla(0,0%,100%,.15);
 }
 .photo-container{
     display: flex;
@@ -259,4 +270,15 @@
     flex-direction: column-reverse;
     justify-content: flex-start;
 
+}
+
+@media screen and (max-width: 1050px){
+    .event-form-layout{
+        flex-direction: column;
+        align-items: center;
+    }
+    .photo-rsvp-container{
+        margin-left: -50px;
+        margin-top: 20px;
+    }
 }
