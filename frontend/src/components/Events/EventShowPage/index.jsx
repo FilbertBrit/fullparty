@@ -21,6 +21,12 @@ export function EventShowPage () {
     const event = useSelector(getEvent(eventId));
     const sessionUser = useSelector(state => state.session.user);
     const rsvps = useSelector(state => state.rsvps);
+    const date = event ? new Date(event.dateTime) : ''
+    event && console.log(event.dateTime)
+    event && console.log(date.toLocaleTimeString())
+    console.log(date)
+    const today = new Date()
+    const eventDone = event ? date < today : '';
     let rsvpGoing = 0;
     let rsvpMaybe = 0;
     const editLink = "/events/" + eventId + "/edit";
@@ -51,9 +57,9 @@ export function EventShowPage () {
                         <h2 id='event-title-show'>{event.title}</h2>
                     </div>
                     <div className="show-date-time">
-                        { event.dateTime ? 
+                        { event.date ? 
                             (
-                            <h2>{event.dateTime}</h2>
+                            <h2>{event.date}</h2>
                             ) 
                             : 
                             (<h2>Date & Time TBD</h2>)
@@ -159,9 +165,6 @@ export function EventShowPage () {
                             ADD PHOTOS
                         </button> */}
                     </div>
-                    {/* <div className="show-rsvps-comments">
-                        <ActivityLog/>
-                    </div> */}
                 </div>
                 <div className="show-photo-rsvp">
                     <div className="show-img">

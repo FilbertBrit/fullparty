@@ -5,8 +5,8 @@ import { closeModal } from "../../store/modal";
 
 export const SocialForm = ({social}) => {
     const dispatch = useDispatch();
-    console.log(social)
-    console.log('here')
+    // console.log(social)
+    // console.log('here')
 
     const handleSubmit = () => {
 

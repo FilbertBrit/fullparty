@@ -43,6 +43,8 @@ export function EventInputForm () {
     }
 
     const handleDateChange = (date) => {
+        console.log(date)
+        console.log(new Date(date))
         setDateTime(date);
         setSelectedDate(date);
     }
