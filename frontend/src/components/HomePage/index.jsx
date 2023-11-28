@@ -13,20 +13,16 @@ export function HomePage () {
     const sessionUser = useSelector(state => state.session.user);
     // if (!sessionUser) return <Redirect to="/login" />;
     const dispatch = useDispatch();
-    const [filter, setFilter] = useState("Open Invite");
+    const [filter, setFilter] = useState("Upcoming");
+    const [upcoming, setUpcoming] = useState('');
 
     const handleClick = (e) => {
-        // console.log(e.target.value)
-        // console.log(e.currentTarget.value)
         setFilter(e.target.value)
     }
 
     useEffect(()=>{
 
     }, [dispatch, filter])
-
-    //call <EventIndex> here then filter based on button choice: openI, upcoming, hosting, attended, allPast
-
 
    return (
         <div>
@@ -35,7 +31,8 @@ export function HomePage () {
                 <h1 id="welcome-header">Welcome back, {sessionUser.name}!</h1>
                 <div className="upcoming-events-msg">
                     You have
-                    <a href="/events" id="upcoming-msg">{1} upcoming event</a>
+                    {/* <a href="/events" id="upcoming-msg">{1} upcoming event</a> */}
+                    <span id="upcoming-msg" onClick={() => setFilter('Upcoming')}>{upcoming} upcoming event</span>
                     .
                 </div>
                 {/* <h3 id="upcoming-events-msg">You have {1} upcoming event.</h3> */}
@@ -75,7 +72,8 @@ export function HomePage () {
                     </button>
                 </nav>
                 <div className="event-items">
-                    <EventIndex className="events-dash" filter={filter}/>
+                    <EventIndex className="events-dash" filter={filter} setUpcoming={setUpcoming}/> 
+                    {/* filter={filter}/> */}
                 </div>
                 <div className="Mutuals">
                     {/* <Mutuals/> */}
