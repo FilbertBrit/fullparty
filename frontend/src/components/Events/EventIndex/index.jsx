@@ -19,13 +19,13 @@ export const EventIndex = ({filter}) => {
     }, [dispatch])
 
     if(filter === "Upcoming"){
-        filteredEvents = events.filter(event => event.userRsvp === "I'm Going" || event.userRsvp === 'Maybe' );
+        filteredEvents = events.filter(event => event.userRsvp === "I'm Going" || event.userRsvp === 'Maybe');
     }else if(filter === "Hosting"){
-        
+        filteredEvents = events.filter(event => event.authorId === sessionUser.id);
     }else if(filter === "Open Invite"){
         filteredEvents = events;
-    }else if(filter === ''){
-        
+    }else if(filter === 'Attended'){
+
     }
 
     
