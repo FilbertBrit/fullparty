@@ -33,6 +33,7 @@ export function EventInputForm () {
     
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(dateTime);
         event ? 
         (
             dispatch(eventActions.updateEvent({title, authorId: sessionUser.id, dateTime, location, capacity, cost, description, id: eventId})).then( res =>  history.push('/events/' + res.event.id))

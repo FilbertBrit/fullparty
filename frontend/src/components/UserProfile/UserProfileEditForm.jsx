@@ -18,16 +18,16 @@ import { openModal } from "../../store/modal";
 import { AiOutlineInstagram } from "react-icons/ai"
 
 export function UserProfileEditForm () {
-    debugger
+    // debugger
 
     const history = useHistory();
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user)
-    const userId = sessionUser.id;
-    const joinedDate = sessionUser.joined;
+    const sessionUser = useSelector(state => state.session?.user) 
+    const userId = sessionUser?.id;
+    const joinedDate = sessionUser?.joined;
     const profile = useParams();
-    const [name, setName] = useState(sessionUser.name);
-    const [bio, setBio] = useState(sessionUser.bio);
+    const [name, setName] = useState(sessionUser?.name);
+    const [bio, setBio] = useState(sessionUser?.bio);
 
     const handleSocial = (e) => {
         dispatch(openModal('social-form ' + e.currentTarget.value))
@@ -46,7 +46,7 @@ export function UserProfileEditForm () {
                 <div className="profile-edit-options-div">
                     <div className="profile-user-photo">
                         <div className="initials-profile">
-                        {sessionUser.name.slice(0,1)}
+                        {sessionUser?.name.slice(0,1)}
                       </div>
                     </div>
                     <div className="profile-user-edit">
