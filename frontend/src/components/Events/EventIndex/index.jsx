@@ -12,12 +12,16 @@ export const EventIndex = ({filter}) => {
     const sessionUser = useSelector(state => state.session.user);
     const eventsObj = useSelector(getEvents);
     const events = eventsObj ? Object.values(eventsObj) : [];
+    const today = new Date('2023-12-05T21:00:00');
+    console.log(today, new Date(events[0]?.dateTime))
+    console.log(today < new Date(events[0]?.dateTime))
     let filteredEvents = []
 
     useEffect( () => {
         dispatch( fetchEvents() );//filteredEvents = (Object.values(res)));
     }, [dispatch])
 
+    //still need to take into account dates, old events vs current events
     if(filter === "Upcoming"){
         filteredEvents = events.filter(event => event.userRsvp !== "null");//=== "I'm Going" || event.userRsvp === 'Maybe');
     }else if(filter === "Hosting"){
@@ -27,7 +31,7 @@ export const EventIndex = ({filter}) => {
     }else if(filter === 'Attended'){
 
     }else if(filter === 'All Past Events'){
-        filteredEvents = events.filter(event => (event.authorId === sessionUser.id )|| (event.userRsvp !== 'null'));
+        filteredEvents = events.filter(event => (event.date) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== 'null')));
     }
 
     
