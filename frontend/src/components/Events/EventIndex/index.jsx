@@ -3,39 +3,37 @@ import { fetchEvents, getEvents } from "../../../store/events"
 import { useEffect } from "react";
 import { EventIndexItem } from "../EventIndexItem";
 import "./EventIndex.css"
-import { useState } from "react";
-
 
 export const EventIndex = ({filter}) => {
 
     const dispatch = useDispatch();
-    // const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session.user);
     const eventsObj = useSelector(getEvents);
     const events = eventsObj ? Object.values(eventsObj) : [];
-    const [filteredEvents, setFilteredEvents] = useState()
-    // console.log(filter)
-    // console.log(events)
+    const today = new Date();
+    let filteredEvents = []
 
     useEffect( () => {
-        dispatch( fetchEvents() ).then( (res) => setFilteredEvents(Object.values(res)));
-        // console.log("filered:",filteredEvents)
+        dispatch( fetchEvents() );
     }, [dispatch])
 
     if(filter === "Upcoming"){
-        // setFilteredEvents(events.filter(event =>  ))
-
-        // console.log(events);
+        filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp !== "null"));//=== "I'm Going" || event.userRsvp === 'Maybe');
     }else if(filter === "Hosting"){
-        
+        filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.authorId === sessionUser.id));
     }else if(filter === "Open Invite"){
-
+        filteredEvents = events.filter(event => today < new Date(event.dateTime));
+    }else if(filter === 'Attended'){
+        filteredEvents = events.filter(event => (today > new Date(event.dateTime)) && (event.userRsvp !== "null"));
+    }else if(filter === 'All Past Events'){
+        filteredEvents = events.filter(event => (today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== 'null')));
     }
 
     
     return events ? (
         <div className="events">
             {
-                events.map( (event, i) => 
+                filteredEvents.map( (event, i) => 
                     <EventIndexItem event={event} key={i}/>
                    )
             }

@@ -12,7 +12,7 @@ events.each do |event|
     end
     
     json.set! event.id do
-        json.extract! event, :title, :id, :author_id
+        json.extract! event, :title, :id, :author_id, :date_time
         json.host event.user.name
         json.userRsvp userRsvp.status
     end
