@@ -9,33 +9,28 @@ import { useState } from "react";
 export const EventIndex = ({filter}) => {
 
     const dispatch = useDispatch();
-    // const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session.user);
     const eventsObj = useSelector(getEvents);
     const events = eventsObj ? Object.values(eventsObj) : [];
-    const [filteredEvents, setFilteredEvents] = useState()
-    // console.log(filter)
-    // console.log(events)
+    let filteredEvents = []
 
     useEffect( () => {
-        dispatch( fetchEvents() ).then( (res) => setFilteredEvents(Object.values(res)));
-        // console.log("filered:",filteredEvents)
+        dispatch( fetchEvents() );//filteredEvents = (Object.values(res)));
     }, [dispatch])
 
     if(filter === "Upcoming"){
-        // setFilteredEvents(events.filter(event =>  ))
-
-        // console.log(events);
+        filteredEvents = events.filter(event => event.userRsvp === "I'm Going" || event.userRsvp === 'Maybe' );
     }else if(filter === "Hosting"){
         
     }else if(filter === "Open Invite"){
-
+        filteredEvents = events;
     }
 
     
     return events ? (
         <div className="events">
             {
-                events.map( (event, i) => 
+                filteredEvents.map( (event, i) => 
                     <EventIndexItem event={event} key={i}/>
                    )
             }
