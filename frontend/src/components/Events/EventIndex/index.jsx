@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { EventIndexItem } from "../EventIndexItem";
 import "./EventIndex.css"
 
-export const EventIndex = ({filter}) => {
+export const EventIndex = ({filter, setUpcoming}) => {
 
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
@@ -18,13 +18,14 @@ export const EventIndex = ({filter}) => {
     }, [dispatch])
 
     if(filter === "Upcoming"){
-        filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp !== "null"));//=== "I'm Going" || event.userRsvp === 'Maybe');
+        filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp !== "null"));
+        setUpcoming(filteredEvents.length)
     }else if(filter === "Hosting"){
         filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.authorId === sessionUser.id));
     }else if(filter === "Open Invite"){
         filteredEvents = events.filter(event => today < new Date(event.dateTime));
     }else if(filter === 'Attended'){
-        filteredEvents = events.filter(event => (today > new Date(event.dateTime)) && (event.userRsvp !== "null"));
+        filteredEvents = events.filter(event => (today > new Date(event.dateTime)) && (event.userRsvp === "I'm Going" || event.userRsvp === 'Maybe'));
     }else if(filter === 'All Past Events'){
         filteredEvents = events.filter(event => (today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== 'null')));
     }
