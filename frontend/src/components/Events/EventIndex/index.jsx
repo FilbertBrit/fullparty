@@ -24,6 +24,8 @@ export const EventIndex = ({filter}) => {
         
     }else if(filter === "Open Invite"){
         filteredEvents = events;
+    }else if(filter === ''){
+        
     }
 
     
