@@ -22,7 +22,9 @@ export const EventIndex = ({filter}) => {
     }, [dispatch])
 
     if(filter === "Upcoming"){
-        
+        // setFilteredEvents(events.filter(event =>  ))
+
+        // console.log(events);
     }else if(filter === "Hosting"){
         
     }else if(filter === "Open Invite"){
