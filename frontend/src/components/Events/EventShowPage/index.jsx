@@ -21,9 +21,10 @@ export function EventShowPage () {
     const event = useSelector(getEvent(eventId));
     const sessionUser = useSelector(state => state.session.user);
     const rsvps = useSelector(state => state.rsvps);
-    const date = event ? new Date(event.dateTime) : ''
-    event && console.log(event.dateTime)
-    event && console.log(date.toLocaleTimeString())
+    const date = event ? new Date(event.dateTime).toLocaleTimeString('en-US', { timeZone: 'EST' }) : ''
+    console.log(date);
+    // event && console.log(event.dateTime)
+    // event && console.log(date.toLocaleTimeString())
     console.log(date)
     const today = new Date()
     const eventDone = event ? date < today : '';
@@ -57,9 +58,9 @@ export function EventShowPage () {
                         <h2 id='event-title-show'>{event.title}</h2>
                     </div>
                     <div className="show-date-time">
-                        { event.date ? 
+                        { event ? 
                             (
-                            <h2>{event.date}</h2>
+                            <h2>{event.date + date}</h2>
                             ) 
                             : 
                             (<h2>Date & Time TBD</h2>)

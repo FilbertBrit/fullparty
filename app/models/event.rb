@@ -22,4 +22,6 @@ class Event < ApplicationRecord
         class_name: :User
     has_many :comments, dependent: :destroy
     has_many :rsvps, dependent: :destroy
+
+    has_one_attached :photot
 end

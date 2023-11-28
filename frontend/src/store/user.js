@@ -1,15 +1,15 @@
 import csrfFetch from './csrf';
-import { SET_CURRENT_USER } from './session';
+import { UPDATE_CURRENT_USER } from './session';
 
-// export const RECEIVE_USER = 'users/RECEIVE_USER';
+export const RECEIVE_USER = 'users/RECEIVE_USER';
 
 const receiveUser = user => ({
-    type: SET_CURRENT_USER,
-    user
+    type: UPDATE_CURRENT_USER,
+    payload: user
 });
 
 export const updateUser = user => async (dispatch) => {
-    // debugger
+    debugger
     const response = await csrfFetch(`/api/users/${user.id}`, {
         method: 'PATCH',
         headers: {
@@ -30,8 +30,9 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
-      case SET_CURRENT_USER:
-        return { ...state, user: action.payload };
+        case UPDATE_CURRENT_USER:
+          console.log(action.payload)
+        return { ...state, ...action.payload };
       default:
         return state;
     }

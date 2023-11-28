@@ -22,6 +22,8 @@ export function RsvpComponent ({ event }) {
     const eventDone = event ? date < today : '';
     // console.log(eventDone);
     // console.log(date)
+    
+    
 
     const handleHover = (hoverState) => {
         setIsHovered(hoverState);

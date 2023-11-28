@@ -17,7 +17,7 @@ Rails.application.configure do
   # Enable server timing
   config.server_timing = true
 
-  config.time_zone = "Pacific Time (US & Canada)"
+  # config.time_zone = "Pacific Time (US & Canada)"
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.

@@ -5,6 +5,8 @@ import { RECEIVE_EVENT } from './events';
 
 export const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
+export const UPDATE_CURRENT_USER = 'session/updateCurrentUser';
+
 
 
 const setCurrentUser = (user) => {
@@ -19,6 +21,13 @@ const removeCurrentUser = () => {
     type: REMOVE_CURRENT_USER
   };
 };
+
+const updateCurrentUser = (user) => {
+  return {
+    type: UPDATE_CURRENT_USER,
+    payload: user
+  }
+}
 
 const storeCSRFToken = response => {
     const csrfToken = response.headers.get("X-CSRF-Token");
@@ -88,12 +97,12 @@ const initialState = {
 const sessionReducer = (state = initialState, action) => {
   // const nextState = { ...state };
   switch (action.type) {
-    // case RECEIVE_EVENT:
-    //   return {...state, user: action.payload.session.user}
     case SET_CURRENT_USER:
       return { ...state, user: action.payload };
     case REMOVE_CURRENT_USER:
       return { ...state, user: null };
+    case UPDATE_CURRENT_USER:
+      return {...state, user: action.payload.user}
     default:
       return state;
   }
