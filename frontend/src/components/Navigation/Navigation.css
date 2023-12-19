@@ -41,6 +41,12 @@
     width: 60px;
     margin-right: 20px;
 }
+#linkedin-img{
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    margin-top: -10px;
+}
 
 #create-btn-nav{
     background-color: #ab76f6;
