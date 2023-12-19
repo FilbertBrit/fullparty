@@ -9,7 +9,6 @@ class Api::EventsController < ApplicationController
     # all events create by user
     # @events = Event.all.where(author_id: @user.id)
     @events = Event.all
-    # @events = Event.all
     render :index
   end
   
