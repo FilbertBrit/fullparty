@@ -1,8 +1,9 @@
 # split up into open invite, hosting, attended, all past events
 #json.set! event.id to -> "open_invite", "hosting", ...
 events = @events.includes(:user)
-userRsvp = nil;
+userRsvp = nil
 
+# debugger
 events.each do |event|
     rsvps = event.rsvps.includes(:user)
     rsvps.each do |rsvp|
@@ -14,6 +15,8 @@ events.each do |event|
     json.set! event.id do
         json.extract! event, :title, :id, :author_id, :date_time
         json.host event.user.name
-        json.userRsvp userRsvp.status
+        if userRsvp 
+            json.userRsvp userRsvp.status
+        end
     end
 end
