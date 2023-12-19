@@ -5,6 +5,7 @@ import './Navigation.css';
 import logo from "../../images/logo.png"
 import git from "../../images/git.png"
 import home from "../../images/home.png"
+import linkedin from "../../images/linkedin.png"
 import notification from "../../images/notification.png"
 import * as sessionActions from '../../store/session';
 import { useHistory } from 'react-router';
@@ -74,6 +75,9 @@ function Navigation() {
       case "/":
         sessionLinks = ( 
           <div id='splash-nav'>
+            <a href="https://linkedin.com/in/brittiny-filbert" id='linkedin-nav' target='_blank' rel="noreferrer">
+              <img src={linkedin} id="linkedin-img" alt='linkedin-img' />
+            </a>
             <a href="https://github.com/FilbertBrit/fullparty.git" id='github-nav' target='_blank' rel="noreferrer">
               <img src={git} id="git-img" alt='git-img' />
             </a>
