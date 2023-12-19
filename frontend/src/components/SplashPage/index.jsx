@@ -27,7 +27,7 @@ import { AiOutlineInstagram } from "react-icons/ai"
 
 export function SplashPage () {
     return (
-        <div>
+        <div className="splash">
             <Navigation/>
             <div className="splash-layout">
                 <div className="div-1">
