@@ -58,7 +58,7 @@ export function EventShowPage () {
                         <h2 id='event-title-show'>{event.title}</h2>
                     </div>
                     <div className="show-date-time">
-                        { event ? 
+                        { event.dateTime ? 
                             (
                             <h2>{event.date + date}</h2>
                             ) 
