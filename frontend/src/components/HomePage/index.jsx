@@ -73,7 +73,6 @@ export function HomePage () {
                 </nav>
                 <div className="event-items">
                     <EventIndex className="events-dash" filter={filter} setUpcoming={setUpcoming}/> 
-                    {/* filter={filter}/> */}
                 </div>
                 <div className="Mutuals">
                     {/* <Mutuals/> */}
