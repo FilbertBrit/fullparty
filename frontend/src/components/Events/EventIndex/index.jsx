@@ -21,7 +21,7 @@ export const EventIndex = ({filter, setUpcoming}) => {
         filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp !== "null"));
         setUpcoming(filteredEvents.length)
     }else if(filter === "Hosting"){
-        filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.authorId === sessionUser.id));
+        filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null) && (event.authorId === sessionUser.id));
     }else if(filter === "Open Invite"){
         filteredEvents = events.filter(event => today < new Date(event.dateTime));
     }else if(filter === 'Attended'){
