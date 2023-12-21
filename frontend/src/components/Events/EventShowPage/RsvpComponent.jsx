@@ -40,6 +40,7 @@ export function RsvpComponent ({ event }) {
     }
 
     const handleClick = (e) => {
+        e.preventDefault();
         if (userRsvp) {
             dispatch(updateRsvp({status: e.currentTarget.value, userId: sessionUser.id, eventId: event.id, id: userRsvpId})).then( rsvp => setRsvp(rsvp))
             // dispatch(createComment({body: 'updated ' + e.currentTarget.value, authorId: sessionUser.id, eventId: event.id, commentType: 'rsvp'}))
@@ -51,6 +52,7 @@ export function RsvpComponent ({ event }) {
         }
     }
     const handleEdit = (e) => {
+        e.preventDefault();
         !eventDone && setRsvp(); //if event not past set RSVP to nothing -> trigger rsvp options
         // setRsvp();
     }

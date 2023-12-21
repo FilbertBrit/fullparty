@@ -2,6 +2,7 @@
 
 import csrfFetch from './csrf';
 import { RECEIVE_EVENT } from './events';
+import { RECEIVE_EVENTS } from './events';
 
     //  ACTION TYPES
 export const RECEIVE_RSVP = 'rsvps/RECEIVE_RSVP';
@@ -49,6 +50,8 @@ const rsvpsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_EVENT:
             return {...nextState, ...action.payload.rsvps};
+        case RECEIVE_EVENTS:
+            return null;
         case RECEIVE_RSVP:
             return {...state, [action.rsvp.id]: action.rsvp};
         default:
