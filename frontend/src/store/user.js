@@ -9,7 +9,7 @@ const receiveUser = user => ({
 });
 
 export const updateUser = user => async (dispatch) => {
-    debugger
+    // debugger
     const response = await csrfFetch(`/api/users/${user.id}`, {
         method: 'PATCH',
         headers: {

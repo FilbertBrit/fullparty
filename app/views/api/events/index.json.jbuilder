@@ -2,7 +2,7 @@
 #json.set! event.id to -> "open_invite", "hosting", ...
 events = @events.includes(:user)
 userRsvp = nil
-
+# puts 'hi'
 # debugger
 events.each do |event|
     rsvps = event.rsvps.includes(:user)
