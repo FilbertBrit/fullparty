@@ -31,11 +31,9 @@ export function HomePage () {
                 <h1 id="welcome-header">Welcome back, {sessionUser.name}!</h1>
                 <div className="upcoming-events-msg">
                     You have
-                    {/* <a href="/events" id="upcoming-msg">{1} upcoming event</a> */}
                     <span id="upcoming-msg" onClick={() => setFilter('Upcoming')}>{upcoming} upcoming event</span>
                     .
                 </div>
-                {/* <h3 id="upcoming-events-msg">You have {1} upcoming event.</h3> */}
                 <nav className="event-nav-bar">
                     <button className="event-filter-btn" style={{
                         backgroundColor: 
