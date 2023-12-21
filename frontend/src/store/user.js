@@ -31,11 +31,14 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
+        case RECEIVE_EVENTS:
+            console.log(action.payload)
+            return { ...action.payload.users}
         case UPDATE_CURRENT_USER:
-          console.log(action.payload)
-        return { ...state, ...action.payload };
-      default:
-        return state;
+        //   console.log(action.payload)
+            return { ...state, ...action.payload };
+        default:
+            return null;
     }
   };
   

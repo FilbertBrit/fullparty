@@ -15,9 +15,9 @@ const receiveEvent = payload => ({
     payload
 });
 
-const receiveEvents = events => ({
+const receiveEvents = payload => ({
     type: RECEIVE_EVENTS,
-    events
+    payload
 });
 
 const removeEvent = eventId => ({
@@ -122,7 +122,7 @@ const eventsReducer = (state = {}, action) => {
     const nextState = { ...state };
     switch (action.type) {
         case RECEIVE_EVENTS:
-            return {...nextState, ...action.events };
+            return {...nextState, ...action.payload };
         case RECEIVE_EVENT:
             return { ...state, [action.payload.event.id]: action.payload.event };
         case REMOVE_EVENT:
