@@ -2,13 +2,19 @@
 #json.set! event.id to -> "open_invite", "hosting", ...
 events = @events.includes(:user)
 userRsvp = nil
-
+mutuals = []
 
 events.each do |event|
     rsvps = event.rsvps.includes(:user)
-    rsvps.each do |rsvp|
-        if rsvp.user_id === @current_user.id
-            userRsvp = rsvp
+    rsvp = event.rsvps.includes(:user).where('user.id' === '@current_user.id')
+    
+    if rsvp 
+        rsvps.each do |rsvp|
+            if rsvp.user_id === @current_user.id
+                userRsvp = rsvp
+            else
+                mutuals << rsvp
+            end
         end
     end
     
