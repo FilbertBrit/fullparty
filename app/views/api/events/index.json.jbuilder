@@ -25,10 +25,12 @@ events.each do |event|
         end
     end
     # puts mutuals
-    json.set! event.id do
-        json.extract! event, :title, :id, :author_id, :date_time
-        json.host event.user.name
-        json.userRsvp rsvpUser.status
+    json.events do
+        json.set! event.id do
+            json.extract! event, :title, :id, :author_id, :date_time
+            json.host event.user.name
+            json.userRsvp rsvpUser.status
+        end
     end
 end
 
