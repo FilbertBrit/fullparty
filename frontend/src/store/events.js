@@ -48,7 +48,7 @@ export const getEvents = state => {
 export const fetchEvents = () => async (dispatch) => {
     // debugger
     const response = await csrfFetch('/api/events');
-    console.log(response)
+    // console.log(response)
     if (response.ok) {
         // console.log('hi')
         const events = await response.json();
@@ -122,7 +122,7 @@ const eventsReducer = (state = {}, action) => {
     const nextState = { ...state };
     switch (action.type) {
         case RECEIVE_EVENTS:
-            return {...nextState, ...action.payload };
+            return {...nextState, ...action.payload.events };
         case RECEIVE_EVENT:
             return { ...state, [action.payload.event.id]: action.payload.event };
         case REMOVE_EVENT:
