@@ -1,5 +1,6 @@
 import csrfFetch from './csrf';
 import { UPDATE_CURRENT_USER } from './session';
+import { RECEIVE_EVENTS } from './events';
 
 export const RECEIVE_USER = 'users/RECEIVE_USER';
 

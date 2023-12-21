@@ -5,7 +5,7 @@ import { RECEIVE_RSVP } from './rsvps';
 
 //  ACTION TYPES
 export const RECEIVE_EVENT = 'events/RECEIVE_EVENT';
-const RECEIVE_EVENTS = 'events/RECEIVE_EVENTS';
+export const RECEIVE_EVENTS = 'events/RECEIVE_EVENTS';
 const REMOVE_EVENT = 'events/REMOVE_EVENT';
 
 // ACTIONS
@@ -129,28 +129,6 @@ const eventsReducer = (state = {}, action) => {
             const newState = { ...state };
             delete newState[action.eventId];
             return newState;
-        // case RECEIVE_RSVP:
-            // let newObj = nextState[action.rsvp.eventId]
-            // // debugger
-            // if(!newObj.rsvpList.includes(action.rsvp.id)){
-            //     newObj.rsvpList = newObj.rsvpList.concat([action.rsvp.id]);
-            // }
-            // newObj.userRsvp = action.rsvp.id;
-            // if(action.rsvp.status === "I'm Going"){
-            //     newObj.going += 1;
-            //     if(newObj.rsvpList.length < newObj.going + newObj.maybe){
-            //         newObj.maybe -= 1;
-            //     }
-
-            // }else if(action.rsvp.status === "Maybe"){
-            //     newObj.maybe += 1;
-            //     if(newObj.rsvpList.length < newObj.going + newObj.maybe){
-            //         newObj.going -= 1;
-            //     }
-            // }else{
-            //     // console.log(nextState);
-            // }
-            // return {...state, [action.rsvp.id]: newObj}
         default:
             return state;
     }
