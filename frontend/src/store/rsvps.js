@@ -2,6 +2,7 @@
 
 import csrfFetch from './csrf';
 import { RECEIVE_EVENT } from './events';
+import { RECEIVE_EVENTS } from './events';
 
     //  ACTION TYPES
 export const RECEIVE_RSVP = 'rsvps/RECEIVE_RSVP';
@@ -11,29 +12,6 @@ const receiveRsvp = rsvp => ({
     type: RECEIVE_RSVP,
     rsvp
 });
-
-
-//  EVENT SELECTORS
-// export const getRsvp = rsvpId => state => {
-//     return state?.rsvps ? state.rsvps[rsvpId] : null;
-// }
-
-// export const getRsvps = state => {
-//     return state?.rsvps ?  state.rsvps : [];
-// }
-
-
-    // THUNK ACTIONS
-    
-// export const fetchRsvps = (eventId) => async (dispatch) => {
-//     const response = await csrfFetch(`/api/events/${eventId}/rsvps`);
-
-//     if (response.ok) {
-//         const rsvps = await response.json();
-//         dispatch(receiveRsvps(rsvps));
-//     }
-//     return response;
-// };
 
 export const createRsvp = rsvp => async (dispatch) => {
     const response = await csrfFetch(`/api/events/${rsvp.eventId}/rsvps`, {
@@ -72,6 +50,8 @@ const rsvpsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_EVENT:
             return {...nextState, ...action.payload.rsvps};
+        case RECEIVE_EVENTS:
+            return null;
         case RECEIVE_RSVP:
             return {...state, [action.rsvp.id]: action.rsvp};
         default:

@@ -5,7 +5,7 @@ import { RECEIVE_RSVP } from './rsvps';
 
 //  ACTION TYPES
 export const RECEIVE_EVENT = 'events/RECEIVE_EVENT';
-const RECEIVE_EVENTS = 'events/RECEIVE_EVENTS';
+export const RECEIVE_EVENTS = 'events/RECEIVE_EVENTS';
 const REMOVE_EVENT = 'events/REMOVE_EVENT';
 
 // ACTIONS
@@ -15,9 +15,9 @@ const receiveEvent = payload => ({
     payload
 });
 
-const receiveEvents = events => ({
+const receiveEvents = payload => ({
     type: RECEIVE_EVENTS,
-    events
+    payload
 });
 
 const removeEvent = eventId => ({
@@ -122,35 +122,13 @@ const eventsReducer = (state = {}, action) => {
     const nextState = { ...state };
     switch (action.type) {
         case RECEIVE_EVENTS:
-            return {...nextState, ...action.events };
+            return {...nextState, ...action.payload };
         case RECEIVE_EVENT:
             return { ...state, [action.payload.event.id]: action.payload.event };
         case REMOVE_EVENT:
             const newState = { ...state };
             delete newState[action.eventId];
             return newState;
-        // case RECEIVE_RSVP:
-            // let newObj = nextState[action.rsvp.eventId]
-            // // debugger
-            // if(!newObj.rsvpList.includes(action.rsvp.id)){
-            //     newObj.rsvpList = newObj.rsvpList.concat([action.rsvp.id]);
-            // }
-            // newObj.userRsvp = action.rsvp.id;
-            // if(action.rsvp.status === "I'm Going"){
-            //     newObj.going += 1;
-            //     if(newObj.rsvpList.length < newObj.going + newObj.maybe){
-            //         newObj.maybe -= 1;
-            //     }
-
-            // }else if(action.rsvp.status === "Maybe"){
-            //     newObj.maybe += 1;
-            //     if(newObj.rsvpList.length < newObj.going + newObj.maybe){
-            //         newObj.going -= 1;
-            //     }
-            // }else{
-            //     // console.log(nextState);
-            // }
-            // return {...state, [action.rsvp.id]: newObj}
         default:
             return state;
     }
