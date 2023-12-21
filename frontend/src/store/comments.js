@@ -1,6 +1,7 @@
 
 import csrfFetch from './csrf';
 import { RECEIVE_EVENT } from './events';
+import { RECEIVE_EVENTS } from './events';
 
 // ACTION TYPES
 const RECEIVE_COMMENT = 'comments/RECEIVE_COMMENT';
@@ -108,13 +109,12 @@ export const deleteComment = payload => async (dispatch) => {
 };
 
 const commentsReducer = (state = {}, action) => {
-    // console.log(state)
-    // console.log(action.payload)
-    // debugger
     const nextState = { ...state };
     switch (action.type) {
         case RECEIVE_EVENT:
             return {...nextState, ...action.payload.comments};
+        case RECEIVE_EVENTS:
+            return null;
         case RECEIVE_COMMENT:
             return {...state, [action.comment.id]: action.comment}
         case RECEIVE_COMMENTS:
