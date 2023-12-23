@@ -16,6 +16,7 @@ export const EventIndex = ({filter, setUpcoming}) => {
     useEffect( () => {
         dispatch( fetchEvents() );
     }, [dispatch])
+    
 
     if(filter === "Upcoming"){
         filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== "null"));
@@ -31,7 +32,7 @@ export const EventIndex = ({filter, setUpcoming}) => {
     }
 
     
-    return events ? (
+    return filteredEvents ? (
         <div className="events">
             {
                 filteredEvents.map( (event, i) => 
