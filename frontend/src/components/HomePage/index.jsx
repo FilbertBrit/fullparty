@@ -79,6 +79,9 @@ export function HomePage () {
                         <h1 id="welcome-header">Mutuals</h1>
                         <a href="" id="all-mutuals-link">SEE ALL</a>
                     </div>
+                    <div id="mutuals-preview">
+                        
+                    </div>
                 </div>
                 <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
             </div>
