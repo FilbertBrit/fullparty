@@ -18,14 +18,14 @@ export const EventIndex = ({filter, setUpcoming}) => {
     }, [dispatch])
 
     if(filter === "Upcoming"){
-        filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp !== "null"));
+        filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== "null"));
         setUpcoming(filteredEvents.length)
     }else if(filter === "Hosting"){
         filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null) && (event.authorId === sessionUser.id));
     }else if(filter === "Open Invite"){
-        filteredEvents = events.filter(event => today < new Date(event.dateTime) && (event.userRsvp === "null"));
+        filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp === "null"));
     }else if(filter === 'Attended'){
-        filteredEvents = events.filter(event => (today > new Date(event.dateTime)) && (event.userRsvp === "I'm Going" || event.userRsvp === 'Maybe'));
+        filteredEvents = events.filter(event => (event.userRsvp !== "Can't Go" && event.userRsvp !== null) && (today > new Date(event.dateTime)));
     }else if(filter === 'All Past Events'){
         filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== 'null')));
     }
