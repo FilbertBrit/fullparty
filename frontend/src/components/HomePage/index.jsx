@@ -15,14 +15,15 @@ export function HomePage () {
     const dispatch = useDispatch();
     const [filter, setFilter] = useState("Upcoming");
     const [upcoming, setUpcoming] = useState('');
-
+    
     const handleClick = (e) => {
         setFilter(e.target.value)
     }
-
+    
     useEffect(()=>{
+        // upcoming === 0 ? setFilter("Open Invite") : setFilter("Upcoming");
 
-    }, [dispatch, filter])
+    }, [dispatch, upcoming])
 
    return (
         <div>
