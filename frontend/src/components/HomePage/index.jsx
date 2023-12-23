@@ -15,14 +15,15 @@ export function HomePage () {
     const dispatch = useDispatch();
     const [filter, setFilter] = useState("Upcoming");
     const [upcoming, setUpcoming] = useState('');
-
+    
     const handleClick = (e) => {
         setFilter(e.target.value)
     }
-
+    
     useEffect(()=>{
+        // upcoming === 0 ? setFilter("Open Invite") : setFilter("Upcoming");
 
-    }, [dispatch, filter])
+    }, [dispatch, upcoming])
 
    return (
         <div>
@@ -74,6 +75,13 @@ export function HomePage () {
                 </div>
                 <div className="Mutuals">
                     {/* <Mutuals/> */}
+                    {/* <div id="mutuals-header">
+                        <h1 id="welcome-header">Mutuals</h1>
+                        <a href="" id="all-mutuals-link">SEE ALL</a>
+                    </div>
+                    <div id="mutuals-preview">
+
+                    </div> */}
                 </div>
                 <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
             </div>
