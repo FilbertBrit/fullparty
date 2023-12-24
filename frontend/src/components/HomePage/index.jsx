@@ -7,11 +7,13 @@ import { useEffect, useState } from "react";
 import { AiOutlineInstagram } from "react-icons/ai"
 import { Mutuals } from "../Mutuals";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { MutualsItem } from "./MutualsItem";
 
 export function HomePage () {
     // debugger
     const sessionUser = useSelector(state => state.session.user);
-    // if (!sessionUser) return <Redirect to="/login" />;
+    const mutualsObj = useSelector(state => state.users)
+    const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
     const dispatch = useDispatch();
     const [filter, setFilter] = useState("Upcoming");
     const [upcoming, setUpcoming] = useState('');
@@ -80,7 +82,11 @@ export function HomePage () {
                         <a href="/mutuals" id="all-mutuals-link">SEE ALL</a>
                     </div>
                     <div id="mutuals-preview">
-                        
+                        {
+                            mutuals.map ( (mutual, i) => 
+                                <MutualsItem mutual={mutual} key={i}/>
+                            )
+                        }
                     </div>
                 </div>
                 <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>

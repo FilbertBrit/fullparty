@@ -1,7 +1,9 @@
 
 
-export function MutualsItem () {
+export function MutualsItem ({ mutual}) {
 
+
+    console.log(mutual)
 
 
     return (
