@@ -11,6 +11,7 @@ import { EventInputForm } from './components/Events/EventInputForm';
 import { UserProfile } from './components/UserProfile';
 import { UserProfileEditForm } from './components/UserProfile/UserProfileEditForm';
 import { Modal } from './components/Modal/modal';
+import { Mutuals } from './components/Mutuals';
 
 
 function App() {
@@ -42,7 +43,8 @@ function App() {
                 <Redirect to="/login"/>
               )}
         </Route>
-        <Route path="/login" component={ LoginFormPage} />
+        <Route path="/login" component={ LoginFormPage } />
+        <Route path="/mutuals" component={ Mutuals }/>
         <Route path="/signup" component={ SignupFormPage } />
         <Route path="/users/:userId/edit" component={UserProfileEditForm}></Route>
         <Route path="/users/:userId">
