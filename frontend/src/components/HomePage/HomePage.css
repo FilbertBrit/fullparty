@@ -89,3 +89,14 @@ upcoming-events-msg{
 #mutuals-header{
     align-items: center;
 }
+#mutuals-preview{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+#mutual-prev-item{
+    padding-left: 25px;
+    padding-right: 25px;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+
+}
