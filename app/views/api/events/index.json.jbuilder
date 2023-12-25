@@ -38,6 +38,8 @@ json.users do
             json.set! mutual.user_id do
                 json.extract! mutual, :user_id
                 json.name mutual.user.name
+                json.recentEvent 0
+                json.sharedEvents 0
             end
         end
     end
