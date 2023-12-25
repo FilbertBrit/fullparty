@@ -12,7 +12,12 @@ export function MutualsItem ({ mutual}) {
     return (
         <div id="mutual-prev-item" onClick={handleClick}>
             <div id="photo-container-mutual-prev">
-                <img src=""></img>
+                {/* <img src=""></img> */}
+                <div className="user-profile-photo">
+                      <div className="initials">
+                        {mutual.name.slice(0,1)}
+                      </div>
+                </div>
             </div>
             <div id="username-container-mutual-prev">
                 <h2>{mutual.name}</h2>
