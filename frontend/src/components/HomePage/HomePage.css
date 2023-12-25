@@ -93,6 +93,7 @@ upcoming-events-msg{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    margin-top: 35px;
 }
 #mutual-prev-item{
     padding-left: 45px;
