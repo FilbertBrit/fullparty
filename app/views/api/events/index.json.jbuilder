@@ -43,16 +43,6 @@ events.each do |event|
 end
 
 json.users do 
-    mutuals.each do |mutual|
-        # if mutual.status != "Can't Go" && mutual.user_id != @current_user.id
-        #     json.set! mutual.user_id do
-        #         json.extract! mutual, :user_id
-        #         json.name mutual.user.name
-        #         json.recentEvent 0
-        #         json.sharedEvents 0
-        #     end
-        # end
-    end
     mutualsCounter.each do |user_id, mutual|
         json.set! user_id do
             json.user_id user_id
