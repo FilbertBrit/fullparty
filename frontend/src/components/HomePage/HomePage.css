@@ -93,6 +93,7 @@ upcoming-events-msg{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    row-gap: 32px;
     margin-top: 35px;
 }
 #mutual-prev-item{
@@ -111,4 +112,18 @@ upcoming-events-msg{
     max-width: 100%;
     font-size: 12px;
     font-weight: 600;
+}
+#last-shared-event{
+    color:  hsla(0,0%,100%,.5);
+    display: flex;
+    gap: 4px;
+    padding-top: 7px;
+    max-width: 100%;
+    font-size: 12px;
+    font-weight: 600;
+}
+#profile-container-mutual-prev{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

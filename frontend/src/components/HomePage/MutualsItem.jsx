@@ -16,7 +16,7 @@ export function MutualsItem ({ mutual }) {
 
     return (
         <div id="mutual-prev-item" onClick={handleClick}>
-            <div id="photo-container-mutual-prev">
+            <div id="profile-container-mutual-prev">
                 {/* <img src=""></img> */}
                 <div className="user-profile-photo">
                       <div className="initials">
