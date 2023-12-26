@@ -14,9 +14,9 @@ export function MutualsItem ({ mutual}) {
             <div id="photo-container-mutual-prev">
                 {/* <img src=""></img> */}
                 <div className="user-profile-photo">
-                      <div className="initials">
+                      {/* <div className="initials">
                         {mutual.name.slice(0,1)}
-                      </div>
+                      </div> */}
                 </div>
             </div>
             <div id="username-container-mutual-prev">
