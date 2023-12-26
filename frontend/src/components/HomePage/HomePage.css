@@ -95,14 +95,28 @@ upcoming-events-msg{
     flex-direction: row;
     row-gap: 32px;
     margin-top: 35px;
+    width: 100%;
+    justify-content: space-around;
 }
 #mutual-prev-item{
-    padding-left: 45px;
-    padding-right: 45px;
+    /* padding-left: 45px;
+    padding-right: 45px; */
+    padding: 8px;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 25%;
+}
+@media screen and (max-width: 720px){
+   #mutuals-preview{
+    row-gap: 16px;
+    margin-top: 16px;
+   }
+   #mutual-prev-item{
+    width: 45%;
+   }
+
 }
 #num-events-container{
     color: hsla(0,0%,100%,.7);
