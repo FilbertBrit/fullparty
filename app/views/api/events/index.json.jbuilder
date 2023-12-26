@@ -1,27 +1,32 @@
 # split up into open invite, hosting, attended, all past events
 #json.set! event.id to -> "open_invite", "hosting", ...
 events = @events.includes(:user)
+# today = date.new()
+# puts today
 # rsvpUser
 mutuals = []
 
 events.each do |event|
     rsvps = event.rsvps.includes(:user)
-    rsvp = event.rsvps.includes(:user).where('user_id' === '@current_user.id')
+    # rsvp = event.rsvps.includes(:user).where('user_id' === '@current_user.id')
     rsvpUser = Rsvp.new()
-    if rsvp ##.status === "I'm Going" && event.date_time < DateTime.now
+    # if rsvp ##.status === "I'm Going" && event.date_time < DateTime.now
         # puts "rsvps", event.title
+        
         rsvps.each do |rsvp|
             # puts rsvp.user.name, rsvp.status
             if rsvp.user.id === @current_user.id
                 rsvpUser = rsvp
                 # eventMutuals = event.rsvps.includes(:user).where('user_id' !== '@current_user.id')
-                # mutuals << eventMutuals
+                # if event.date_time
+
                 mutuals.concat( rsvps.map {|rsvp| rsvp} ) ##.user_id !== @current_user.id}
+
             # else
             #     mutuals << rsvp
             end
         end
-    end
+    # end
 
     json.events do
         json.set! event.id do
