@@ -24,7 +24,7 @@ events.each do |event|
                 if event.date_time && event.date_time < today
                     rsvps.each do |rsvp|
                         if rsvp.user_id != @current_user.id && rsvp.status != "Can't Go" 
-                            mutualsCounter[rsvp.user_id] ?  mutualsCounter[rsvp.user_id].events += 1 : mutualsCounter[rsvp.user_id] = { name: rsvp.user.name, events: 1}
+                            mutualsCounter[rsvp.user_id] ?  mutualsCounter[rsvp.user_id].events += 1 && mutualsCounter[rsvp.user_id].event = rsvp.event.title: mutualsCounter[rsvp.user_id] = { name: rsvp.user.name, events: 1, event: rsvp.event.title}
                         end
                     end
                     mutuals.concat( rsvps.map {|rsvp| rsvp} ) ##.user_id !== @current_user.id}
@@ -47,7 +47,7 @@ json.users do
         json.set! user_id do
             json.user_id user_id
             json.name mutual[:name]
-            json.recentEvent 0
+            json.recentEvent mutual[:event]
             json.sharedEvents mutual[:events]
         end
     end
