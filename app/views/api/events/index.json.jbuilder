@@ -1,12 +1,15 @@
 # split up into open invite, hosting, attended, all past events
 #json.set! event.id to -> "open_invite", "hosting", ...
 events = @events.includes(:user)
-# today = date.new()
-# puts today
-# rsvpUser
+today = (Time.now).inspect
 mutuals = []
+mutualsCounter = {}
 
 events.each do |event|
+    # puts event.date_time, 'event date'
+    # if event.date_time 
+    #     puts (event.date_time < today), 'compare'
+    # end
     rsvps = event.rsvps.includes(:user)
     # rsvp = event.rsvps.includes(:user).where('user_id' === '@current_user.id')
     rsvpUser = Rsvp.new()
@@ -17,13 +20,15 @@ events.each do |event|
             # puts rsvp.user.name, rsvp.status
             if rsvp.user.id === @current_user.id
                 rsvpUser = rsvp
-                # eventMutuals = event.rsvps.includes(:user).where('user_id' !== '@current_user.id')
-                # if event.date_time
-
-                mutuals.concat( rsvps.map {|rsvp| rsvp} ) ##.user_id !== @current_user.id}
-
-            # else
-            #     mutuals << rsvp
+                
+                if event.date_time && event.date_time < today
+                    rsvps.each do |rsvp|
+                        if rsvp.user_id != @current_user.id && rsvp.status != "Can't Go" 
+                            mutualsCounter[rsvp.user_id] ?  mutualsCounter[rsvp.user_id].events += 1 : mutualsCounter[rsvp.user_id] = { name: rsvp.user.name, events: 1}
+                        end
+                    end
+                    mutuals.concat( rsvps.map {|rsvp| rsvp} ) ##.user_id !== @current_user.id}
+                end
             end
         end
     # end
@@ -38,14 +43,12 @@ events.each do |event|
 end
 
 json.users do 
-    mutuals.each do |mutual|
-        if mutual.status != "Can't Go" && mutual.user_id != @current_user.id
-            json.set! mutual.user_id do
-                json.extract! mutual, :user_id
-                json.name mutual.user.name
-                json.recentEvent 0
-                json.sharedEvents 0
-            end
+    mutualsCounter.each do |user_id, mutual|
+        json.set! user_id do
+            json.user_id user_id
+            json.name mutual[:name]
+            json.recentEvent 0
+            json.sharedEvents mutual[:events]
         end
     end
 end
