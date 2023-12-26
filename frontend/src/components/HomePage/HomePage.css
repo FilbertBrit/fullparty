@@ -93,12 +93,50 @@ upcoming-events-msg{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    row-gap: 32px;
     margin-top: 35px;
+    width: 100%;
+    justify-content: space-around;
 }
 #mutual-prev-item{
-    padding-left: 45px;
-    padding-right: 45px;
+    /* padding-left: 45px;
+    padding-right: 45px; */
+    padding: 8px;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+}
+@media screen and (max-width: 720px){
+   #mutuals-preview{
+    row-gap: 16px;
+    margin-top: 16px;
+   }
+   #mutual-prev-item{
+    width: 45%;
+   }
+
+}
+#num-events-container{
+    color: hsla(0,0%,100%,.7);
+    display: flex;
+    gap: 4px;
+    padding-top: 7px;
+    max-width: 100%;
+    font-size: 12px;
+    font-weight: 600;
+}
+#last-shared-event{
+    color:  hsla(0,0%,100%,.5);
+    display: flex;
+    gap: 4px;
+    padding-top: 7px;
+    max-width: 100%;
+    font-size: 12px;
+    font-weight: 600;
+}
+#profile-container-mutual-prev{
     display: flex;
     flex-direction: column;
     align-items: center;

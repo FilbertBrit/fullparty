@@ -16,7 +16,6 @@ export const EventIndex = ({filter, setUpcoming}) => {
     useEffect( () => {
         dispatch( fetchEvents() );
     }, [dispatch])
-    
 
     if(filter === "Upcoming"){
         filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== "null"));

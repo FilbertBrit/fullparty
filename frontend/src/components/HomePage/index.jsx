@@ -1,31 +1,25 @@
 
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import Navigation from "../Navigation"
 import "./HomePage.css"
 import { EventIndex } from "../Events/EventIndex";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AiOutlineInstagram } from "react-icons/ai"
 import { Mutuals } from "../Mutuals";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { MutualsItem } from "./MutualsItem";
 
 export function HomePage () {
-    // debugger
+    
     const sessionUser = useSelector(state => state.session.user);
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
-    const dispatch = useDispatch();
     const [filter, setFilter] = useState("Upcoming");
     const [upcoming, setUpcoming] = useState('');
     
     const handleClick = (e) => {
         setFilter(e.target.value)
     }
-    
-    useEffect(()=>{
-        // upcoming === 0 ? setFilter("Open Invite") : setFilter("Upcoming");
-
-    }, [dispatch, upcoming])
 
    return (
         <div>
@@ -73,7 +67,7 @@ export function HomePage () {
                     </button>
                 </nav>
                 <div className="event-items">
-                    <EventIndex className="events-dash" filter={filter} setUpcoming={setUpcoming}/> 
+                    <EventIndex className="events-dash" filter={filter} setUpcoming={setUpcoming} /> 
                 </div>
                 <div className="Mutuals">
                     {/* <Mutuals/> */}
