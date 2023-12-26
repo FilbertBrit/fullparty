@@ -1,12 +1,9 @@
-import { useDispatch, useSelector } from "react-redux";
-import { fetchEvents, getEvents } from "../../../store/events"
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { EventIndexItem } from "../EventIndexItem";
 import "./EventIndex.css"
 
 export const EventIndex = ({filter, setUpcoming, events}) => {
 
-    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const today = new Date();
     let filteredEvents = []
@@ -23,7 +20,6 @@ export const EventIndex = ({filter, setUpcoming, events}) => {
     }else if(filter === 'All Past Events'){
         filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)));
     }
-
     
     return filteredEvents ? (
         <div className="events">
