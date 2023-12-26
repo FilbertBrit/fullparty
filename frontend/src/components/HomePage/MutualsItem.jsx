@@ -7,8 +7,9 @@ export function MutualsItem ({ mutual }) {
     const eventsObj = useSelector(getEvents);
     const eventTitle = eventsObj[mutual.recentEvent].title
     const eventDate = new Date(eventsObj[mutual.recentEvent].dateTime)
-    console.log(eventDate.getMonth() + 1)
-    console.log(eventDate.getUTCDate())
+    if(eventTitle.length > 15){
+        eventTitle = eventTitle.slice(0,12) + '...'
+    }
 
     const handleClick = (e) => {
         e.preventDefault();
