@@ -10,19 +10,20 @@ events.each do |event|
     # if rsvp ##.status === "I'm Going" && event.date_time < DateTime.now
         # puts "rsvps", event.title
         
-        rsvps.each do |rsvp|
-            if rsvp.user.id === @current_user.id
-                rsvpUser = rsvp
-                
-                if event.date_time && event.date_time < today
+        events.each do |event|
+            rsvps = event.rsvps.includes(:user)
+        
+            rsvps.reverse().each do |rsvp|
+                if ((rsvp.user.id === @current_user.id) && (rsvp.status != "Can't Go" )) && (event.date_time && (event.date_time < today))
                     rsvps.each do |rsvp|
                         if rsvp.user_id != @current_user.id && rsvp.status != "Can't Go" 
                             mutualsCounter[rsvp.user_id] ?  mutualsCounter[rsvp.user_id].events += 1 && mutualsCounter[rsvp.user_id].event = rsvp.event_id : mutualsCounter[rsvp.user_id] = { name: rsvp.user.name, events: 1, event: rsvp.event_id}
                         end
                     end
-                    mutuals.concat( rsvps.map {|rsvp| rsvp} ) ##.user_id !== @current_user.id}
+                    break;
                 end
             end
+        
         end
     # end
 
