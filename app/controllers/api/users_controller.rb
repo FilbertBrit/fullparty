@@ -2,8 +2,9 @@ class Api::UsersController < ApplicationController
   wrap_parameters include: User.attribute_names + ['password', 'phoneNumber'] # ask about this
   before_action :set_user, only: [:update]
   def index
-    debugger
-    @user = current_user
+    # debugger
+    @current_user = current_user
+    @events = Event.all
     render :index
   end
 
