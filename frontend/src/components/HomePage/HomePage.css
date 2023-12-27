@@ -63,8 +63,6 @@ upcoming-events-msg{
     color: white;
 }
 
-
-
 .event-filter-btn{
     font-size: 15px;
     /* height: 25px; */
@@ -110,6 +108,9 @@ upcoming-events-msg{
     flex-direction: column;
     align-items: center;
     width: 25%;
+}
+#mutual-prev-item:hover{
+    background-color: rgba(255, 255, 255, 0.15);
 }
 @media screen and (max-width: 720px){
    #mutuals-preview{

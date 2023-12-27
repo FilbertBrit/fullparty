@@ -5,17 +5,23 @@
 }
 
 .empty-event{
-    height: 250px;
-    width: 250px;
+    height: 248px;
+    width: 248px;
     border: dashed;
     border-color: rgb(176, 187, 197);
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 15px;
 }
 #new-event-link{
     text-decoration: none;
     color: rgb(176, 187, 197);
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    /* padding: 15px; */
+}
+#new-event-link:hover{
+    background-color: rgba(255, 255, 255, 0.15);
+    height: 280px;
 }
 
