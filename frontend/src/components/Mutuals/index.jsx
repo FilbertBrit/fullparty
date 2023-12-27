@@ -17,7 +17,7 @@ export function Mutuals () {
     return (
         <div>
             <Navigation/>
-            <div>
+            <div id="header-mutuals">
                 <div id="mutuals-header">
                     <h1 id="welcome-header-mutuals">Mutuals</h1>
                     <p id="mutuals-msg">~everyone you've ever parties with~</p>
