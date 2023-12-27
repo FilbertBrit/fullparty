@@ -1,15 +1,9 @@
-# split up into open invite, hosting, attended, all past events
-#json.set! event.id to -> "open_invite", "hosting", ...
+
 events = @events.includes(:user)
 today = (Time.now).inspect
-mutuals = []
 mutualsCounter = {}
 
 events.each do |event|
-    # puts event.date_time, 'event date'
-    # if event.date_time 
-    #     puts (event.date_time < today), 'compare'
-    # end
     rsvps = event.rsvps.includes(:user)
     # rsvp = event.rsvps.includes(:user).where('user_id' === '@current_user.id')
     rsvpUser = Rsvp.new()
@@ -17,7 +11,6 @@ events.each do |event|
         # puts "rsvps", event.title
         
         rsvps.each do |rsvp|
-            # puts rsvp.user.name, rsvp.status
             if rsvp.user.id === @current_user.id
                 rsvpUser = rsvp
                 

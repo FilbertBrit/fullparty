@@ -31,10 +31,8 @@ export function UserProfileEditForm () {
 
     const handleSocial = (e) => {
         dispatch(openModal('social-form ' + e.currentTarget.value))
-        // console.log('social-form ' + e.currentTarget.value)
     }
     const handleSubmit = (e) => {
-        // debugger
         console.log('test')
         dispatch(updateUser({name: name, bio: bio, id: sessionUser.id})).then( res => history.push('/users/' + res.user.id))
     }
