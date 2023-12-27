@@ -35,7 +35,7 @@ upcoming-events-msg{
     justify-content: space-between;
     margin-top: 40px;
     align-items: flex-start;
-    width: 60vw;
+    width: 70vw;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     font-weight: 400;
     padding: 0.5%;
@@ -72,6 +72,21 @@ upcoming-events-msg{
     color: aliceblue;
     cursor: pointer;
 }
+.event-filter-btn-open{
+    background: linear-gradient(0deg,rgba(0,0,0,.3),rgba(0,0,0,.3)),linear-gradient(90deg,rgba(217,149,211,.6) 7.51%,rgba(100,98,239,.6) 28.85%,rgba(109,238,255,.6) 57.53%,rgba(190,254,246,.6) 68.5%,rgba(118,246,185,.6) 82.82%,rgba(191,255,224,.6) 97.32%),hsla(0,0%,100%,.15);
+    font-size: 15px;
+    /* height: 25px; */
+    padding: 10px;
+    border-radius: 80px;
+    border: none;
+    color: aliceblue;
+    cursor: pointer;
+    -webkit-text-fill-color: "transparent";
+    -webkit-background-clip: text;
+}
+/* .event-filter-btn:hover{
+    background-color: rgba(255, 255, 255, 0.15);
+} */
 
 #footer{
     display: flex;
