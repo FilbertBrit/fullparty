@@ -21,6 +21,13 @@
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     align-self: flex-start;
     color: white;
+    margin-top: 45px;
+    width: 100%;
+    top: 0px;
+    z-index: 2;
+    background-color: rgba(0,0,0,.3);
+    backdrop-filter: blur(45px);
+    padding: 20px;
 }
 #welcome-header-mutuals{
     font-size: 30px;
@@ -32,4 +39,7 @@
     color: hsla(0,0%,100%,.6);
     margin-bottom: 20px;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;;
+}
+#mutual-filters{
+    
 }

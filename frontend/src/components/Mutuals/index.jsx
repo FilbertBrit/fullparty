@@ -22,7 +22,7 @@ export function Mutuals () {
                     <h1 id="welcome-header-mutuals">Mutuals</h1>
                     <p id="mutuals-msg">~everyone you've ever parties with~</p>
                 </div>
-                <div>
+                <div id="mutual-filters">
                     <p>NAME</p>
                     <p>SHARED EVENTS</p>
                 </div>
