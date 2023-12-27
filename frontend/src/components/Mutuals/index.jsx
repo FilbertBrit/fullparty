@@ -15,25 +15,25 @@ export function Mutuals () {
     }, [dispatch])
 
     return (
-        <div>
+        <>
             <Navigation/>
-            <div id="header-mutuals">
-                <div id="mutuals-header">
-                    <h1 id="welcome-header-mutuals">Mutuals</h1>
-                    <p id="mutuals-msg">~everyone you've ever parties with~</p>
+            <div id="layout-mutuals-page">
+                <div id="header-mutuals">
+                    <div id="mutuals-header">
+                        <h1 id="welcome-header-mutuals">Mutuals</h1>
+                        <p id="mutuals-msg">~everyone you've ever parties with~</p>
+                    </div>
+                    <div id="mutual-filters">
+                        <p>NAME</p>
+                        <p>SHARED EVENTS</p>
+                    </div>
                 </div>
-                <div id="mutual-filters">
-                    <p>NAME</p>
-                    <p>SHARED EVENTS</p>
+                <div className="mutuals-list" >
+                    <h3>Mutual 1</h3>
+                    <h3>Mutual 2</h3>
+                    <h3>Mutual 3</h3>
                 </div>
-
             </div>
-            <div className="top-six-mutuals" >
-                <h3>Mutual 1</h3>
-                <h3>Mutual 2</h3>
-                <h3>Mutual 3</h3>
-            </div>
-                
-        </div>
+        </>
     )
 }

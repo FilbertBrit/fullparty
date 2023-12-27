@@ -12,21 +12,18 @@
     display: flex;
     align-items: center;
 }
-
+#layout-mutuals-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
 #mutuals-header{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    /* align-self: flex-start; */
     color: white;
-    /* margin-top: 45px;
-    width: 100%;
-    top: 0px;
-    z-index: 2;
-    background-color: rgba(0,0,0,.3);
-    backdrop-filter: blur(45px);
-    padding: 20px; */
 }
 #header-mutuals{
     color: white;
@@ -35,7 +32,7 @@
     justify-content: space-between;
     align-items: center;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
-    margin-top: 45px;
+    margin-top: 15px;
     width: 100%;
     position: relative;
     top: 0px;
@@ -66,4 +63,13 @@
     font-size: 14px;
     color: hsla(0,0%,100%,.6);
     cursor: pointer;
+}
+.mutuals-list{
+    display: flex;
+    flex-direction: column;
+    width: 540px;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    color: #ffff;
+    /* padding: 40px; */
+
 }
