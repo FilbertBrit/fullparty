@@ -71,7 +71,7 @@ export function HomePage () {
                 </div>
                 <div className="Mutuals">
                     {/* <Mutuals/> */}
-                    <div id="mutuals-header">
+                    <div id="mutuals-header-home">
                         <h1 id="welcome-header">Mutuals</h1>
                         <a href="/mutuals" id="all-mutuals-link">SEE ALL</a>
                     </div>

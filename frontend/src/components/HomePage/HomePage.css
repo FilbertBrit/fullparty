@@ -86,8 +86,11 @@ upcoming-events-msg{
     color: #AB76F6;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
 }
-#mutuals-header{
+#mutuals-header-home{
     align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 #mutuals-preview{
     display: flex;
