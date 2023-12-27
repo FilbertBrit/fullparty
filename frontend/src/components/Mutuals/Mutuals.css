@@ -15,5 +15,21 @@
 
 #mutuals-header{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    align-self: flex-start;
+    color: white;
+}
+#welcome-header-mutuals{
+    font-size: 30px;
+    font-family: Syne,Avant Garde,Tahoma,Verdana,sans-serif;
+    margin-bottom: 15px;
+}
+#mutuals-msg{
+    font-size: 14px;
+    color: hsla(0,0%,100%,.6);
+    margin-bottom: 20px;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;;
 }
