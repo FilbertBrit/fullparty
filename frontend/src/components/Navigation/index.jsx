@@ -134,7 +134,7 @@ function Navigation() {
           </div>
 
           <div className="mutals-btn">
-            <a href="/mutual" id='mutuals-a-link'>
+            <a href="/mutuals" id='mutuals-a-link'>
               <div className="mutual-emoji">
                 👥
               </div>

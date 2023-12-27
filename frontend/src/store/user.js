@@ -3,10 +3,16 @@ import { UPDATE_CURRENT_USER } from './session';
 import { RECEIVE_EVENTS } from './events';
 
 export const RECEIVE_USER = 'users/RECEIVE_USER';
+export const RECEIVE_USERS = 'users/RECEIVE_USERS';
 
 const receiveUser = user => ({
     type: UPDATE_CURRENT_USER,
     payload: user
+});
+
+const receiveUsers = users => ({
+    type: RECEIVE_USERS,
+    payload: users
 });
 
 export const updateUser = user => async (dispatch) => {
@@ -25,6 +31,17 @@ export const updateUser = user => async (dispatch) => {
     }
 };
 
+export const fetchUsers = () => async (dispatch) => {
+    const response = await csrfFetch('/api/users');
+
+    if(response.ok){
+        const users = await response.json();
+        dispatch(receiveUsers(users));
+        return users;
+    }
+    return response;
+}
+
 const initialState = { 
     user: JSON.parse(sessionStorage.getItem("currentUser"))
 };
@@ -32,9 +49,11 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case RECEIVE_EVENTS:
-            return { ...action.payload.users}
+            return { ...action.payload.users};
         case UPDATE_CURRENT_USER:
             return { ...state, ...action.payload };
+        case RECEIVE_USERS:
+            return { ...state, ...action.payload};
         default:
             return null;
     }

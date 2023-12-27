@@ -23,5 +23,5 @@ class Event < ApplicationRecord
     has_many :comments, dependent: :destroy
     has_many :rsvps, dependent: :destroy
 
-    has_one_attached :photot
+    has_one_attached :photo
 end
