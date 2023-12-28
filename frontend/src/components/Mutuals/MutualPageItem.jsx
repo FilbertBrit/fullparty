@@ -30,13 +30,13 @@ export function MutualPageItem ({ mutual }) {
                         {mutual.name.slice(0,1)}
                       </div>
                 </div>
-                <div>
+                <div className="mutual-item-info">
                     <h2>{mutual.name}</h2>
-                    <h2>{recentEventDate}</h2>
+                    <h2 className='mutual-date' id="mutual-page-info">{recentEventDate}</h2>
                 </div>
             </div>
             <div className="mutuals-num-event-container">
-                <h2>{mutual.sharedEvents}</h2>
+                <h2 id="mutual-page-info">{mutual.sharedEvents}</h2>
             </div>
         </div>
     )
