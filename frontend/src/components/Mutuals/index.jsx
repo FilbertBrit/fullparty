@@ -53,8 +53,11 @@ export function Mutuals () {
                         <div onClick={handleName} >
                             <p>NAME</p>
                             {filter === 'names' ? (nameFilter === 'up' ? (<img src={upArrow} id="filter-arrow"/>) : (<img src={downArrow} id="filter-arrow"/>)) : (<img src={upDownArrow} id="filter-arrow"/>)}
-                            </div>
-                        <p onClick={handleEvent} >SHARED EVENTS <img src={downArrow} id="filter-arrow"/></p>
+                        </div>
+                        <div onClick={handleEvent} >
+                            <p>SHARED EVENTS</p>
+                            {filter === 'events' ? (nameFilter === 'up' ? (<img src={upArrow} id="filter-arrow"/>) : (<img src={downArrow} id="filter-arrow"/>)) : (<img src={upDownArrow} id="filter-arrow"/>)}
+                        </div>
                     </div>
                 </div>
                 <div className="mutuals-list" >
