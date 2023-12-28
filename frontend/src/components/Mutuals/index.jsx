@@ -13,7 +13,6 @@ export function Mutuals () {
     const [filter, setFilter] = useState('events')
     const [nameFilter, setNameFilter] = useState('down')
     const [eventFilter, setEventFilter] = useState('up')
-    console.log(filter, nameFilter, eventFilter)
     
     const handleName = async (e) => {
         e.preventDefault();
@@ -50,13 +49,13 @@ export function Mutuals () {
                         <p id="mutuals-msg">~everyone you've ever parties with~</p>
                     </div>
                     <div id="mutual-filters">
-                        <div onClick={handleName} >
-                            <p>NAME</p>
+                        <div onClick={handleName}  id="filter-divs-mutuals">
+                            <p id="filter-header">NAME</p>
                             {filter === 'names' ? (nameFilter === 'up' ? (<img src={upArrow} id="filter-arrow"/>) : (<img src={downArrow} id="filter-arrow"/>)) : (<img src={upDownArrow} id="filter-arrow"/>)}
                         </div>
-                        <div onClick={handleEvent} >
-                            <p>SHARED EVENTS</p>
-                            {filter === 'events' ? (nameFilter === 'up' ? (<img src={upArrow} id="filter-arrow"/>) : (<img src={downArrow} id="filter-arrow"/>)) : (<img src={upDownArrow} id="filter-arrow"/>)}
+                        <div onClick={handleEvent} id="filter-divs-mutuals">
+                            <p id="filter-header">SHARED EVENTS</p>
+                            {filter === 'events' ? (eventFilter === 'down' ? (<img src={downArrow} id="filter-arrow"/>) : (<img src={upArrow} id="filter-arrow"/>)) : (<img src={upDownArrow} id="filter-arrow"/>)}
                         </div>
                     </div>
                 </div>
