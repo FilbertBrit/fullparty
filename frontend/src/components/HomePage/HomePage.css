@@ -160,3 +160,9 @@ upcoming-events-msg{
     flex-direction: column;
     align-items: center;
 }
+#initials{
+    height: 64px;
+}
+#user-profile-mutuals{
+    width: 64px;
+}
