@@ -25,7 +25,7 @@ export function MutualsItem ({ mutual }) {
                       </div>
                 </div>
                 <div id="username-container-mutual-prev">
-                    <h2>{mutual.name}</h2>
+                    <h2>{mutual.name}</h2> 
                 </div>
             </div>
             <div id="num-events-container">
