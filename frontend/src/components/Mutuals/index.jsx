@@ -6,10 +6,13 @@ import { fetchUsers } from "../../store/user"
 import upArrow from "../../images/up-arrow.png"
 import downArrow from "../../images/down-arrow.png"
 import upDownArrow from "../../images/up-and-down-arrow.png"
+import { MutualPageItem } from "./MutualPageItem"
 
 export function Mutuals () {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
+    const mutualsObj = useSelector(state => state.users)
+    const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
     const [filter, setFilter] = useState('events')
     const [nameFilter, setNameFilter] = useState('down')
     const [eventFilter, setEventFilter] = useState('up')
@@ -60,9 +63,10 @@ export function Mutuals () {
                     </div>
                 </div>
                 <div className="mutuals-list" >
-                    <h3>Mutual 1</h3>
-                    <h3>Mutual 2</h3>
-                    <h3>Mutual 3</h3>
+                    {
+                        mutuals.map ( (mutual, i) => 
+                        <MutualPageItem mutual={mutual} key={i}/>)
+                    }
                 </div>
             </div>
         </>
