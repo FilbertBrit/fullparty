@@ -13,6 +13,7 @@ export function Mutuals () {
     const sessionUser = useSelector(state => state.session.user)
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
+    console.log(mutualsObj)
     const [filter, setFilter] = useState('events')
     const [nameFilter, setNameFilter] = useState('down')
     const [eventFilter, setEventFilter] = useState('up')
@@ -65,7 +66,8 @@ export function Mutuals () {
                 <div className="mutuals-list" >
                     {
                         mutuals.map ( (mutual, i) => 
-                        <MutualPageItem mutual={mutual} key={i}/>)
+                        console.log(mutual))
+                        // <MutualPageItem mutual={mutual} key={i}/>)
                     }
                 </div>
             </div>
