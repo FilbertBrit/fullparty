@@ -21,7 +21,7 @@ events.each do |event|
 
 end
 
-json.users do 
+# json.users do 
     mutualsCounter.each do |user_id, mutual|
         json.set! user_id do
             json.user_id user_id
@@ -30,4 +30,4 @@ json.users do
             json.sharedEvents mutual[:events]
         end
     end
-end
+# end

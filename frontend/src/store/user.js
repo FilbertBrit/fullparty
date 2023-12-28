@@ -53,7 +53,7 @@ const userReducer = (state = initialState, action) => {
         case UPDATE_CURRENT_USER:
             return { ...state, ...action.payload };
         case RECEIVE_USERS:
-            return { ...state, ...action.payload.users};
+            return { ...state, ...action.payload};
         default:
             return null;
     }
