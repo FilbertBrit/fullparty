@@ -76,3 +76,9 @@
     height: 10px;
     width: 10px;
 }
+#filter-divs-mutuals{
+    display: flex;
+}
+#filter-header{
+    margin-right: 5px;
+}

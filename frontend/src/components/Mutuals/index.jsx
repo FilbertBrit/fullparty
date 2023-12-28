@@ -6,14 +6,17 @@ import { fetchUsers } from "../../store/user"
 import upArrow from "../../images/up-arrow.png"
 import downArrow from "../../images/down-arrow.png"
 import upDownArrow from "../../images/up-and-down-arrow.png"
+import { MutualPageItem } from "./MutualPageItem"
 
 export function Mutuals () {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
+    const mutualsObj = useSelector(state => state.users)
+    const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
+    console.log(mutualsObj)
     const [filter, setFilter] = useState('events')
     const [nameFilter, setNameFilter] = useState('down')
     const [eventFilter, setEventFilter] = useState('up')
-    console.log(filter, nameFilter, eventFilter)
     
     const handleName = async (e) => {
         e.preventDefault();
@@ -50,20 +53,22 @@ export function Mutuals () {
                         <p id="mutuals-msg">~everyone you've ever parties with~</p>
                     </div>
                     <div id="mutual-filters">
-                        <div onClick={handleName} >
-                            <p>NAME</p>
+                        <div onClick={handleName}  id="filter-divs-mutuals">
+                            <p id="filter-header">NAME</p>
                             {filter === 'names' ? (nameFilter === 'up' ? (<img src={upArrow} id="filter-arrow"/>) : (<img src={downArrow} id="filter-arrow"/>)) : (<img src={upDownArrow} id="filter-arrow"/>)}
                         </div>
-                        <div onClick={handleEvent} >
-                            <p>SHARED EVENTS</p>
-                            {filter === 'events' ? (nameFilter === 'up' ? (<img src={upArrow} id="filter-arrow"/>) : (<img src={downArrow} id="filter-arrow"/>)) : (<img src={upDownArrow} id="filter-arrow"/>)}
+                        <div onClick={handleEvent} id="filter-divs-mutuals">
+                            <p id="filter-header">SHARED EVENTS</p>
+                            {filter === 'events' ? (eventFilter === 'down' ? (<img src={downArrow} id="filter-arrow"/>) : (<img src={upArrow} id="filter-arrow"/>)) : (<img src={upDownArrow} id="filter-arrow"/>)}
                         </div>
                     </div>
                 </div>
                 <div className="mutuals-list" >
-                    <h3>Mutual 1</h3>
-                    <h3>Mutual 2</h3>
-                    <h3>Mutual 3</h3>
+                    {
+                        mutuals.map ( (mutual, i) => 
+                        console.log(mutual))
+                        // <MutualPageItem mutual={mutual} key={i}/>)
+                    }
                 </div>
             </div>
         </>
