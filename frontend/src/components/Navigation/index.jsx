@@ -99,7 +99,7 @@ function Navigation() {
           // <NavLink exact to="/events" className="photo-logo-home-link">
           //   <img className='logo' src={logo} alt='logo-img'/>
           // </NavLink>
-            <a href="/events">
+            <a href="/events" className="photo-logo-home-link">
               <img className='logo' src={logo} alt='logo-img'/>
             </a>
         ) : (
