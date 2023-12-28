@@ -6,16 +6,16 @@ import "./EventIndex.css"
 
 export const EventIndex = ({filter, setUpcoming}) => {
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const eventsObj = useSelector(getEvents);
     const events = eventsObj ? Object.values(eventsObj) : [];
     const today = new Date();
     let filteredEvents = []
 
-    useEffect( () => {
-        dispatch( fetchEvents() );
-    }, [dispatch])
+    // useEffect( () => {
+    //     dispatch( fetchEvents() );
+    // }, [dispatch])
 
     if(filter === "Upcoming"){
         filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== "null"));

@@ -96,9 +96,12 @@ function Navigation() {
     <>
     <ul id='nav-links'>
         {sessionUser ? (
-          <NavLink exact to="/events" className="photo-logo-home-link">
-            <img className='logo' src={logo} alt='logo-img'/>
-          </NavLink>
+          // <NavLink exact to="/events" className="photo-logo-home-link">
+          //   <img className='logo' src={logo} alt='logo-img'/>
+          // </NavLink>
+            <a href="/events">
+              <img className='logo' src={logo} alt='logo-img'/>
+            </a>
         ) : (
           <div>
 

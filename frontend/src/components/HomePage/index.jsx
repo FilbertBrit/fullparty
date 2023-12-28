@@ -3,14 +3,17 @@ import { useSelector } from "react-redux"
 import Navigation from "../Navigation"
 import "./HomePage.css"
 import { EventIndex } from "../Events/EventIndex";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineInstagram } from "react-icons/ai"
 import { Mutuals } from "../Mutuals";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { MutualsItem } from "./MutualsItem";
+import { useDispatch } from "react-redux";
+import { fetchEvents } from "../../store/events";
 
 export function HomePage () {
     
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
@@ -21,7 +24,12 @@ export function HomePage () {
         setFilter(e.target.value)
     }
 
+    useEffect( () => {
+        dispatch( fetchEvents() );
+    }, [dispatch])
+
    return (
+    mutualsObj ? 
         <div>
             <Navigation/>
             <div className="dashboard">
@@ -87,7 +95,8 @@ export function HomePage () {
                 <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
             </div>
         </div>
-
+        : 
+        null
    ) 
 }
 
