@@ -5,7 +5,7 @@ import { getEvents } from "../../store/events"
 export function MutualsItem ({ mutual }) {
 
     const eventsObj = useSelector(getEvents);
-    const eventTitle = eventsObj[mutual.recentEvent].title
+    const eventTitle = eventsObj ? eventsObj[mutual.recentEvent].title : ''
     const eventDate = new Date(eventsObj[mutual.recentEvent].dateTime)
     if(eventTitle.length > 15){
         eventTitle = eventTitle.slice(0,12) + '...'
@@ -25,7 +25,7 @@ export function MutualsItem ({ mutual }) {
                       </div>
                 </div>
                 <div id="username-container-mutual-prev">
-                    <h2>{mutual.name}</h2>
+                    <h2>{mutual.name}</h2> 
                 </div>
             </div>
             <div id="num-events-container">

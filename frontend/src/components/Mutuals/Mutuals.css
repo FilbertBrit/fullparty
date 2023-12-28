@@ -56,8 +56,9 @@
     display: flex;
     justify-content: space-between;
     text-align: start;
-    width: 540px;
+    width: 530px;
     padding: 0 40px 0 20px;
+    padding-left: 55px;
     text-transform: uppercase;
     font-weight: 400;
     font-size: 14px;
@@ -81,4 +82,17 @@
 }
 #filter-header{
     margin-right: 5px;
+}
+.profile-container-mutuals-page{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.mutual-page-item{
+    display: flex;
+    justify-content: space-between;
+}
+.mutuals-num-event-container{
+    display: flex;
+    align-items: center;
 }
