@@ -35,7 +35,8 @@ upcoming-events-msg{
     justify-content: space-between;
     margin-top: 40px;
     align-items: flex-start;
-    width: 70vw;
+    width: 85vw;
+    max-width: 600px;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     font-weight: 400;
     padding: 0.5%;
@@ -71,6 +72,10 @@ upcoming-events-msg{
     border: none;
     color: aliceblue;
     cursor: pointer;
+}
+.event-filter-btn:hover{
+    background-color: hsla(0,0%,100%,.15);
+    
 }
 .event-filter-btn-open{
     background: linear-gradient(0deg,rgba(0,0,0,.3),rgba(0,0,0,.3)),linear-gradient(90deg,rgba(217,149,211,.6) 7.51%,rgba(100,98,239,.6) 28.85%,rgba(109,238,255,.6) 57.53%,rgba(190,254,246,.6) 68.5%,rgba(118,246,185,.6) 82.82%,rgba(191,255,224,.6) 97.32%),hsla(0,0%,100%,.15);
@@ -165,4 +170,14 @@ upcoming-events-msg{
 }
 #user-profile-mutuals{
     width: 64px;
+}
+#username-container-mutual-prev{
+    font-weight: 700;
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+#shared-events-info{
+    max-width: 100%;
+    font-size: 12px;
+    font-weight: 600;
 }

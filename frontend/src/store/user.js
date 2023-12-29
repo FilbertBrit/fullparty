@@ -5,10 +5,14 @@ import { RECEIVE_EVENTS } from './events';
 export const RECEIVE_USER = 'users/RECEIVE_USER';
 export const RECEIVE_USERS = 'users/RECEIVE_USERS';
 
-const receiveUser = user => ({
+const recieveUpdateUser = user => ({
     type: UPDATE_CURRENT_USER,
     payload: user
 });
+const receiveUser = user => ({
+    type: RECEIVE_USER,
+    payload: user
+})
 
 const receiveUsers = users => ({
     type: RECEIVE_USERS,
@@ -26,7 +30,7 @@ export const updateUser = user => async (dispatch) => {
     });
     if (response.ok) {
         const user = await response.json();
-        dispatch(receiveUser(user));
+        dispatch(recieveUpdateUser(user));
         return user;
     }
 };
@@ -42,6 +46,17 @@ export const fetchUsers = () => async (dispatch) => {
     return response;
 }
 
+export const fetchUser = (userId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/users/${userId}`)
+
+    if(response.ok){
+        const user = await response.json();
+        dispatch(receiveUser(user));
+        return user;
+    }
+    return response;
+}
+
 const initialState = { 
     user: JSON.parse(sessionStorage.getItem("currentUser"))
 };
@@ -50,10 +65,12 @@ const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case RECEIVE_EVENTS:
             return { ...action.payload.users};
-        case UPDATE_CURRENT_USER:
-            return { ...state, ...action.payload };
+        case RECEIVE_USER:
+            return { ...action.payload}
         case RECEIVE_USERS:
             return { ...state, ...action.payload};
+        case UPDATE_CURRENT_USER:
+            return { ...state, ...action.payload };
         default:
             return null;
     }
