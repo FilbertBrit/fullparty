@@ -17,7 +17,8 @@ export function MutualsItem ({ mutual }) {
     const handleClick = (e) => {
         e.preventDefault();
         
-        dispatch(fetchUser(mutual.id))
+        
+        // dispatch(fetchUser(mutual.id))
     }
 
     return (
