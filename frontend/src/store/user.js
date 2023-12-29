@@ -5,7 +5,7 @@ import { RECEIVE_EVENTS } from './events';
 export const RECEIVE_USER = 'users/RECEIVE_USER';
 export const RECEIVE_USERS = 'users/RECEIVE_USERS';
 
-const receiveUpdateUser = user => ({
+const recieveUpdateUser = user => ({
     type: UPDATE_CURRENT_USER,
     payload: user
 });
