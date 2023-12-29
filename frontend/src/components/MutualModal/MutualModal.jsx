@@ -1,6 +1,7 @@
 
 import { useDispatch } from "react-redux"
 import { closeModal } from "../../store/modal";
+import { useEffect } from "react";
 
 export const MutualModal = () => {
 
@@ -9,6 +10,10 @@ export const MutualModal = () => {
     const handleCancel = () => {
         dispatch(closeModal());
     }
+
+    useEffect(() => {
+        
+    })
 
     return (
         <div></div>
