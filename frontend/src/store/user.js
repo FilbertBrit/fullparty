@@ -35,6 +35,20 @@ export const updateUser = user => async (dispatch) => {
     }
 };
 
+export const fetchUser = userId => async (dispatch) => {
+    console.log(userId)
+    // debugger
+    const response = await csrfFetch(`/api/users/${userId}`);
+
+    if(response.ok){
+        const user = await response.json();
+        dispatch(receiveUser(user))
+        console.log(user)
+        return user;
+    }
+    return response;
+}
+
 export const fetchUsers = () => async (dispatch) => {
     const response = await csrfFetch('/api/users');
 
@@ -42,17 +56,6 @@ export const fetchUsers = () => async (dispatch) => {
         const users = await response.json();
         dispatch(receiveUsers(users));
         return users;
-    }
-    return response;
-}
-
-export const fetchUser = (userId) => async (dispatch) => {
-    const response = await csrfFetch(`/api/users/${userId}`)
-
-    if(response.ok){
-        const user = await response.json();
-        dispatch(receiveUser(user));
-        return user;
     }
     return response;
 }
@@ -66,7 +69,7 @@ const userReducer = (state = initialState, action) => {
         case RECEIVE_EVENTS:
             return { ...action.payload.users};
         case RECEIVE_USER:
-            return { ...action.payload}
+            return { ...action.payload.users}
         case RECEIVE_USERS:
             return { ...state, ...action.payload};
         case UPDATE_CURRENT_USER:

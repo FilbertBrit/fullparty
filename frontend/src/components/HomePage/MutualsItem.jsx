@@ -1,9 +1,12 @@
 import { useSelector } from "react-redux";
 import { getEvents } from "../../store/events"
+import { useDispatch } from "react-redux";
+import { fetchUser } from "../../store/user";
 
 
 export function MutualsItem ({ mutual }) {
 
+    const dispatch = useDispatch();
     const eventsObj = useSelector(getEvents);
     const eventTitle = eventsObj ? eventsObj[mutual.recentEvent].title : ''
     const eventDate = new Date(eventsObj[mutual.recentEvent].dateTime)
@@ -13,6 +16,9 @@ export function MutualsItem ({ mutual }) {
 
     const handleClick = (e) => {
         e.preventDefault();
+        
+        
+        // dispatch(fetchUser(mutual.id))
     }
 
     return (
