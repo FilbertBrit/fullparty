@@ -2,6 +2,7 @@
 
 import csrfFetch from './csrf';
 import { RECEIVE_RSVP } from './rsvps';
+import { RECEIVE_USER } from './user';
 
 //  ACTION TYPES
 export const RECEIVE_EVENT = 'events/RECEIVE_EVENT';
@@ -125,6 +126,8 @@ const eventsReducer = (state = {}, action) => {
             return {...nextState, ...action.payload.events };
         case RECEIVE_EVENT:
             return { ...state, [action.payload.event.id]: action.payload.event };
+        case RECEIVE_USER:
+            return { ...action.payload.events}
         case REMOVE_EVENT:
             const newState = { ...state };
             delete newState[action.eventId];

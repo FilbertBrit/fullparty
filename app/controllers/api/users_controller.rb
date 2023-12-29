@@ -9,10 +9,11 @@ class Api::UsersController < ApplicationController
   end
 
   def show
+    # debugger
     @user
     @current_user = current_user
     @events = Event.all
-    render :index
+    render :show
   end
 
   def create

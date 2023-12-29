@@ -1,13 +1,14 @@
+# debugger
+
 events = @events.includes(:user)
 today = (Time.now).inspect
-sharedEvents = []
 
 if @user.id != @current_user.id
 
     events.each do |event|
 
-        userRsvp 
-        currentUserRsvp
+        userRsvp = nil
+        currentUserRsvp = nil
         rsvps = event.rsvps.includes(:user)
 
         rsvps.each do |rsvp|
@@ -18,14 +19,14 @@ if @user.id != @current_user.id
                 userRsvp = rsvp
             end
 
-            if userRsvp && currentUserRsvp
+            if userRsvp && currentUserRsvp &&  event.date_time < today
                 json.events do
                     json.set! event.id do
                         json.extract! event, :title, :id, :date_time
                     end
                 end
                 
-                sharedEvents.push(event)
+                # sharedEvents.push(event)
                 break
             end
 
@@ -35,9 +36,11 @@ if @user.id != @current_user.id
 
 end
 
-json.user do
-    json.extract! @user, :id, :phone_number, :name, :bio
-    json.joined @user.created_at.strftime("%b '%y")
+json.users do
+    json.set! @user.id do 
+        json.extract! @user, :id, :phone_number, :name, :bio
+        json.joined @user.created_at.strftime("%b '%y")
+    end
 end
 
   
