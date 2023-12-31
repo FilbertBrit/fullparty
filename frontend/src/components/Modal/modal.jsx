@@ -2,11 +2,11 @@ import { useDispatch, useSelector } from "react-redux"
 import { closeModal } from "../../store/modal"
 import './Modal.css'
 import { SocialForm } from "../SocialForm/SocialForm"
-import { useState } from "react"
 import { MutualModal } from "../MutualModal/MutualModal"
 
 
 export const Modal = () => {
+    // debugger
     const modal = useSelector(state => state.modal)
     const componentCall = modal ? modal[0] : '';
     const prop = modal ? modal[1] : '';
@@ -24,7 +24,9 @@ export const Modal = () => {
             component = <SocialForm social={ prop }/>;
             break;
         case 'mutual-modal':
-            component = <MutualModal />
+            // console.log('hi')
+            component = <MutualModal mutualId={ prop }/>;
+            break;
         default:
             return null;
     }

@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { getEvents } from "../../store/events"
 import { useDispatch } from "react-redux";
 import { fetchUser } from "../../store/user";
+import { openModal } from "../../store/modal";
 
 
 export function MutualsItem ({ mutual }) {
@@ -16,8 +17,7 @@ export function MutualsItem ({ mutual }) {
 
     const handleClick = (e) => {
         e.preventDefault();
-        
-        
+        dispatch(openModal(['mutual-modal', mutual.id]));
         // dispatch(fetchUser(mutual.id))
     }
 

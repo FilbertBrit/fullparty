@@ -1,20 +1,35 @@
 import cancel from "../../images/cancel.png"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { closeModal } from "../../store/modal";
+import { useEffect } from "react";
+import { fetchUser } from "../../store/user";
+import '../Modal/Modal.css'
 
-export const MutualModal = ({ mutual }) => {
 
+export const MutualModal = ({ mutualId }) => {
+
+    // console.log('hi')
+    // debugger
     const dispatch = useDispatch();
+    // const mutual = useSelector(state => state.users)
+    // mutual ? console.log(mutual.name.slice(0,1)) : console.log('hi')
 
-    const handleCancel = () => {
+    const handleCancel = (e) => {
+        e.preventDefault()
         dispatch(closeModal());
     }
 
+    useEffect(() => {
+        // dispatch(fetchUser(mutualId))
+    }, [dispatch])
+
     return (
+        // mutual ? 
         <div className="mutual-modal">
-            <div className="exit-btn" onClick={handleCancel}><img src={cancel} id="cancel-img" /></div>
+            <div className="exit-btn" onClick={handleCancel}>HELLO<img src={cancel} id="cancel-img" /></div>
+
             <div className="mutual-modal-profile">
-                <div className="user-profile-photo" id="user-profile-mutuals">
+                {/* <div className="user-profile-photo" id="user-profile-mutuals">
                       <div className="initials" id="initials">
                         {mutual.name.slice(0,1)}
                       </div>
@@ -27,9 +42,9 @@ export const MutualModal = ({ mutual }) => {
                 </div>
                 <div className="mutual-modal-events">
 
-                </div>
+                </div> */}
             </div>
-
         </div>
+        // : null
     )
 }

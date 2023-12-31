@@ -1,9 +1,9 @@
 # debugger
 
-events = @events.includes(:user)
+events = @events ? @events.includes(:user) || nil
 today = (Time.now).inspect
 
-if @user.id != @current_user.id
+if @user.id != @current_user.id && events
 
     events.each do |event|
 
