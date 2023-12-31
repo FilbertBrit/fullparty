@@ -190,15 +190,6 @@ function Navigation() {
               </div>
             </a>
           </div>
-
-          <div className="logout-btn" onClick={logout}>
-            <div className="logout-emogi-profile-btn" >
-            🔔
-            </div>
-            <div className="logout-profile-header" >
-            notification 2
-            </div>
-          </div>
         </ul>
       </span>
     )}

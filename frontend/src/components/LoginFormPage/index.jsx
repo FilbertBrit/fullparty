@@ -22,6 +22,7 @@ function LoginFormPage() {
   if (redirectSignup) return <Redirect to="/signup" />;
 
   const handleSubmit = (e) => {
+    debugger
     e.preventDefault();
     setErrors([]);
     return dispatch(sessionActions.login({ phoneNumber, password }))
@@ -73,7 +74,7 @@ function LoginFormPage() {
         </div>
 
         <ul className='errors'>
-          {errors.map(error => <li key={error}>{error}</li>)}
+          {/* {errors.map(error => <li key={error}>{error}</li>)} */}
         </ul>
 
         <form onSubmit={handleSubmit} className='loginForm'>
