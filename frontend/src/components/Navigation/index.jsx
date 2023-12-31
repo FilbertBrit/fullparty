@@ -179,30 +179,24 @@ function Navigation() {
     {showNotifications && (
       <span className="dropdown-menu">
         <ul className="profile-dropdown">
-
-          <div className="first-div">
-            <div className="profile-create-btns">
-              <a href="/create" id='profile-dropdown-create-btn'>+ CREATE</a>
-            </div>
-          </div>
-
+\
           <div className="mutals-btn">
-            <a href="/mutuals" id='mutuals-a-link'>
+            <a href="/" id='mutuals-a-link'>
               <div className="mutual-emoji">
-                👥
+                🔔
               </div>
               <div className="mutual-header">
-                Mutals
+                notification 1
               </div>
             </a>
           </div>
 
           <div className="logout-btn" onClick={logout}>
-            <div className="logout-emogi-profile-btn" onClick={logout}>
-              🧳
+            <div className="logout-emogi-profile-btn" >
+            🔔
             </div>
-            <div className="logout-profile-header" onClick={logout}>
-              Log Out!
+            <div className="logout-profile-header" >
+            notification 2
             </div>
           </div>
         </ul>
