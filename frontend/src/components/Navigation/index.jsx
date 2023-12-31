@@ -16,6 +16,7 @@ function Navigation() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
   const userId = sessionUser ? (sessionUser.id) : ('');
   const userProfile = '/users/' + userId;
   
@@ -23,6 +24,11 @@ function Navigation() {
     if (showMenu) return;
     setShowMenu(true);
   };
+
+  const openNotifications = () => {
+    if (showNotifications) return;
+    setShowNotifications(true);
+  }
   
   useEffect(() => {
     if (!showMenu) return;
@@ -36,14 +42,26 @@ function Navigation() {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
+  useEffect(() => {
+    if (!showNotifications) return;
+
+    const closeMenu = () => {
+      setShowNotifications(false);
+    };
+
+    document.addEventListener('click', closeMenu);
+  
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showNotifications]);
+
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
   };
 
-  const handleClick = (e) => {
-    e.preventDefault();
-  }
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  // }
 
   let sessionLinks;
 
@@ -54,7 +72,7 @@ function Navigation() {
         <a href="/events">
           <img src={home} id="home-btn" alt='home-btn'/>
         </a>
-        <img src={notification} id="notification-btn" onClick={handleClick} alt='notif-btn'/>
+        <img onClick={openNotifications} src={notification} id="notification-btn"  alt='notif-btn'/>
         <div className="profile-btn-container">
           <button onClick={openMenu} id='profile-btn'> {sessionUser.name.slice(0,1)}</button>
           <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" id='down-arrow' fill='#cad3e2'>
@@ -152,7 +170,39 @@ function Navigation() {
               🧳
             </div>
             <div className="logout-profile-header" onClick={logout}>
-              Log Out
+              Log Out!
+            </div>
+          </div>
+        </ul>
+      </span>
+    )}
+    {showNotifications && (
+      <span className="dropdown-menu">
+        <ul className="profile-dropdown">
+
+          <div className="first-div">
+            <div className="profile-create-btns">
+              <a href="/create" id='profile-dropdown-create-btn'>+ CREATE</a>
+            </div>
+          </div>
+
+          <div className="mutals-btn">
+            <a href="/mutuals" id='mutuals-a-link'>
+              <div className="mutual-emoji">
+                👥
+              </div>
+              <div className="mutual-header">
+                Mutals
+              </div>
+            </a>
+          </div>
+
+          <div className="logout-btn" onClick={logout}>
+            <div className="logout-emogi-profile-btn" onClick={logout}>
+              🧳
+            </div>
+            <div className="logout-profile-header" onClick={logout}>
+              Log Out!
             </div>
           </div>
         </ul>
