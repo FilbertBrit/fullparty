@@ -7,12 +7,11 @@ export const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 export const UPDATE_CURRENT_USER = 'session/updateCurrentUser';
 
-
-
 const setCurrentUser = (user) => {
+ console.log(user)
   return {
     type: SET_CURRENT_USER,
-    payload: user
+    user
   };
 };
 
@@ -50,8 +49,10 @@ export const login = (user) => async (dispatch) => {
     })
   });
   const data = await response.json();
-  storeCurrentUser(data.user)
-  dispatch(setCurrentUser(data.user));
+  console.log(data)
+  storeCurrentUser(data)
+  dispatch(setCurrentUser(data));
+
   return response;
 };
 
@@ -96,9 +97,10 @@ const initialState = {
 
 const sessionReducer = (state = initialState, action) => {
   // const nextState = { ...state };
+  // console.log(action.payload)
   switch (action.type) {
     case SET_CURRENT_USER:
-      return { ...state, user: action.payload };
+      return { ...state, user: action.user};
     case REMOVE_CURRENT_USER:
       return { ...state, user: null };
     case UPDATE_CURRENT_USER:
