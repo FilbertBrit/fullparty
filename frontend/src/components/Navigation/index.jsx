@@ -59,11 +59,8 @@ function Navigation() {
     dispatch(sessionActions.logout());
   };
 
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  // }
-
   let sessionLinks;
+  console.log(sessionUser)
 
   if (sessionUser) {
     sessionLinks = (

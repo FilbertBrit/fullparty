@@ -11,8 +11,8 @@
     justify-content: center;
 }
 .show-info{
-    width: 40vw;
-    max-width: 435px;
+    /* width: 40vw; */
+    max-width: 465px;
     /* margin-left: 60px; */
     position: relative;
 }
