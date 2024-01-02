@@ -24,7 +24,7 @@ function App() {
     {/* <div> */}
       <Modal/>
     {/* </div> */}
-    <div>
+    {/* <div> */}
       <Switch>
         
         <Route path="/create" component={ EventInputForm } />
@@ -63,7 +63,7 @@ function App() {
         </Route>
         
       </Switch>
-    </div>
+    {/* </div> */}
     </>
   );
 

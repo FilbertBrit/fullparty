@@ -64,7 +64,7 @@ const initialState = {
     user: JSON.parse(sessionStorage.getItem("currentUser"))
 };
 
-const userReducer = (state = initialState, action) => {
+const userReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_EVENTS:
             return { ...action.payload.users};
@@ -75,7 +75,7 @@ const userReducer = (state = initialState, action) => {
         case UPDATE_CURRENT_USER:
             return { ...state, ...action.payload };
         default:
-            return null;
+            return state;
     }
   };
   
