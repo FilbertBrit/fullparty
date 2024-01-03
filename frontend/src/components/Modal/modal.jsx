@@ -3,6 +3,7 @@ import { closeModal } from "../../store/modal"
 import './Modal.css'
 import { SocialForm } from "../SocialForm/SocialForm"
 import { MutualModal } from "../MutualModal/MutualModal"
+import { useState } from "react"
 
 
 export const Modal = () => {
@@ -10,6 +11,7 @@ export const Modal = () => {
     const modal = useSelector(state => state.modal)
     const componentCall = modal ? modal[0] : '';
     const prop = modal ? modal[1] : '';
+    let div = ''
     const dispatch = useDispatch();
     // console.log(componentCall, prop);
     
@@ -22,10 +24,12 @@ export const Modal = () => {
     switch (componentCall) {
         case 'social-form':
             component = <SocialForm social={ prop }/>;
+            div = 'modal-child';
             break;
         case 'mutual-modal':
             // console.log('hi')
             component = <MutualModal mutualId={ prop }/>;
+            div = 'modal-mutual';
             break;
         default:
             return null;
@@ -40,7 +44,7 @@ export const Modal = () => {
         className="modal-background"
         onClick={handleClick}>
             <div
-            className="modal-child"
+            className={div}
             onClick={e => e.stopPropagation()}>
             { component }
             </div>
