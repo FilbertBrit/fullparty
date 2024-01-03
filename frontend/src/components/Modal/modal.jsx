@@ -3,7 +3,7 @@ import { closeModal } from "../../store/modal"
 import './Modal.css'
 import { SocialForm } from "../SocialForm/SocialForm"
 import { MutualModal } from "../MutualModal/MutualModal"
-import { useState } from "react"
+// import {RemoveScroll} from 'react-remove-scroll';
 
 
 export const Modal = () => {
@@ -18,6 +18,7 @@ export const Modal = () => {
     if(!modal){
         return null;
     }
+    modal ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"; 
 
     let component;
 
@@ -40,14 +41,14 @@ export const Modal = () => {
     }
 
     return (
-        <div
-        className="modal-background"
-        onClick={handleClick}>
             <div
-            className={div}
-            onClick={e => e.stopPropagation()}>
-            { component }
+                className="modal-background"
+                onClick={handleClick}>
+                    <div
+                    className={div}
+                    onClick={e => e.stopPropagation()}>
+                    { component }
+                    </div>
             </div>
-      </div>
     )
 }

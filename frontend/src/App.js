@@ -12,6 +12,8 @@ import { UserProfile } from './components/UserProfile';
 import { UserProfileEditForm } from './components/UserProfile/UserProfileEditForm';
 import { Modal } from './components/Modal/modal';
 import { Mutuals } from './components/Mutuals';
+// import "../Modal/Modal.css"
+import "./components/Modal/Modal.css"
 
 
 function App() {
@@ -20,7 +22,7 @@ function App() {
   const sessionUser = useSelector(state => state.session.user)
 
   return (
-    <>
+    <div className='app'>
     {/* <div> */}
       <Modal/>
     {/* </div> */}
@@ -64,7 +66,7 @@ function App() {
         
       </Switch>
     {/* </div> */}
-    </>
+    </div>
   );
 
 }

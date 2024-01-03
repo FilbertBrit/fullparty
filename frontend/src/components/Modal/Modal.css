@@ -1,12 +1,12 @@
 .modal-background {
-    position: fixed;
+  position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     /* backdrop-filter: blur(100%) brightness(100%); */
-    backdrop-filter: blur(0.5px) brightness(80%);
-    z-index: 80;
+    /* backdrop-filter: blur(0.5px) brightness(80%); */
+    z-index: 100;
     /* background-color: hsla(0, 0%, 22%, 0.076); */
     /* scroll-behavior: none; */
     overflow: hidden;
@@ -33,32 +33,29 @@
     box-shadow: 0 8px 40px 0 rgba(0,0,0,.3),0 4px 16px 0 rgba(0,0,0,.2);
   }
   .modal-mutual{
-
-    /* top: 0; */
-    left: 0;
-    right: 100;
-    width: 800px;
-    bottom: 0;
+    position: fixed;
+    right: 0;
+    width: 700px;
     z-index: 100;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 30px;
-    padding: 40px 30px 30px;
-    align-items: center;
-    justify-content: flex-start;
+    /* padding: 40px 30px 30px; */
     background-color: hsla(0,0%,100%,.1);
-    background-color: rgba(0,0,0,.4);;
-    animation: .2s ease-in;
-    animation-duration: 0.2s;
-    animation-timing-function: ease-in;
-    animation-delay: 0s;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    animation-fill-mode: none;
-    animation-play-state: running;
-    animation-timeline: auto;
-    animation-range-start: normal;
+    background-color: rgba(0,0,0,.4);
+    box-shadow: 0 0 30px rgba(0,0,0,.1);
+    opacity: 1;
+    backdrop-filter: blur(100px) brightness(1.05);
+    height: 100%;
+  }
+  
+  @media screen and (max-width: 770px){
+    .modal-mutual{
+      width: 92vw;
+    }
+  }
 
+  .app{
+    overflow: hidden;
   }

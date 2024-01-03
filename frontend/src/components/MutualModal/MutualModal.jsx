@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { closeModal } from "../../store/modal";
 import { useEffect } from "react";
 import { fetchUser } from "../../store/user";
-import '../Modal/Modal.css'
+import "./MutualModal.css"
 
 
 export const MutualModal = ({ mutualId }) => {
@@ -25,8 +25,8 @@ export const MutualModal = ({ mutualId }) => {
 
     return (
         // mutual ? 
-        <div className="mutual-modal">
-            <div className="exit-btn" onClick={handleCancel}>HELLO<img src={cancel} id="cancel-img" /></div>
+        <div className="mutual-modal-component">
+            <div className="exit-btn-mutual-component" onClick={handleCancel}><img src={cancel} id="cancel-img" /></div>
 
             <div className="mutual-modal-profile">
                 {/* <div className="user-profile-photo" id="user-profile-mutuals">
