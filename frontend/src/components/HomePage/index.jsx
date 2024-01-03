@@ -30,7 +30,7 @@ export function HomePage () {
 
    return (
     mutualsObj ? 
-        <div>
+        <div className="homepage-component">
             <Navigation/>
             <div className="dashboard">
                 <h1 id="welcome-header">Welcome back, {sessionUser.name}!</h1>
