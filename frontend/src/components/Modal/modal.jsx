@@ -5,12 +5,11 @@ import { SocialForm } from "../SocialForm/SocialForm"
 import { MutualModal } from "../MutualModal/MutualModal"
 // import {RemoveScroll} from 'react-remove-scroll';
 
-
 export const Modal = () => {
     // debugger
     const modal = useSelector(state => state.modal)
-    const componentCall = modal ? modal[0] : '';
-    const prop = modal ? modal[1] : '';
+    const componentCall = modal ? modal['command'] : '';
+    const prop = modal ? modal['mutual'] ? modal['mutual'] : modal['prop'] : '';
     let div = ''
     const dispatch = useDispatch();
     // console.log(componentCall, prop);
