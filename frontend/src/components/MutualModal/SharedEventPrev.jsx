@@ -22,11 +22,11 @@ export const SharedEventPrev = ({ event }) => {
     }
 
     return (
-        <a href={ showPage } id="event-item" >
-            <img src={wazzap} id="event-img" alt="dummy-pic"/>
+        <a href={ showPage } id="shared-event-item" >
+            <img src={wazzap} id="shared-event-img" alt="dummy-pic"/>
             <div className="details">
-                <h2 id="event-item-title">{event.title}</h2>
-                <h2 id="event-item-host">{eventDate}</h2>
+                <h2 id="shared-event-item-title">{event.title}</h2>
+                <h2 id="shared-event-item-date">{eventDate}</h2>
             </div>
         </a>
     )

@@ -2,7 +2,7 @@ import cancel from "../../images/cancel.png"
 import { useDispatch, useSelector } from "react-redux"
 import { getEvents } from "../../store/events";
 import { closeModal } from "../../store/modal";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import "./MutualModal.css"
 import { SharedEventPrev } from "./SharedEventPrev";
 
@@ -10,10 +10,8 @@ export const MutualModal = ({ mutualId }) => {
 
     const dispatch = useDispatch();
     const mutual = useSelector(state => state.users[mutualId]);
-    // const sharedEventIds = useSelector(state => state.users[mutualId].sharedEvents);
     const eventsObj = useSelector(getEvents);
     const events = eventsObj ? Object.values(eventsObj) : [];
-    let sharedEvents = []
     
     const fetchSharedEvents = () => {
         const eventsArr = []
@@ -24,16 +22,16 @@ export const MutualModal = ({ mutualId }) => {
         return eventsArr
     }
     
-    sharedEvents = eventsObj ? fetchSharedEvents() : [];
+    let sharedEvents = eventsObj ? fetchSharedEvents() : [];
 
     const handleCancel = (e) => {
         e.preventDefault()
         dispatch(closeModal());
     }
 
-    useEffect(() => {
-        // dispatch(fetchUser(mutualId))
-    }, [dispatch])
+    // useEffect(() => {
+    //     // dispatch(fetchUser(mutualId))
+    // }, [dispatch])
 
     return (
         // mutual ? 
@@ -41,8 +39,8 @@ export const MutualModal = ({ mutualId }) => {
             <div className="exit-btn-mutual-component" onClick={handleCancel}><img src={cancel} id="cancel-img" /></div>
 
             <div className="mutual-modal-profile">
-                <div className="user-profile-photo" id="user-profile-mutuals">
-                      <div className="initials" id="initials">
+                <div className="user-profile-photo" id="user-profile-shared-events">
+                      <div className="initials" id="initials-shared-events">
                         {mutual.name.slice(0,1)}
                       </div>
                 </div>
@@ -59,11 +57,11 @@ export const MutualModal = ({ mutualId }) => {
                     
                 </div>
                 <section className="mutual-modal-shared-events-container">
-                    <h2>Shared Events</h2>
+                    <h2 id="shared-events-container-header">Shared Events</h2>
                     <div className="events-container-mutual-modal">
                         {
                             sharedEvents.map( (event, i) => 
-                                <SharedEventPrev event={event} key={i}/>
+                                <SharedEventPrev event={event} key={i} id="event-prev-item"/>
                             )
                         }
                     </div>

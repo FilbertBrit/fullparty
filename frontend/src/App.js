@@ -12,9 +12,6 @@ import { UserProfile } from './components/UserProfile';
 import { UserProfileEditForm } from './components/UserProfile/UserProfileEditForm';
 import { Modal } from './components/Modal/modal';
 import { Mutuals } from './components/Mutuals';
-// import "../Modal/Modal.css"
-import "./components/Modal/Modal.css"
-
 
 function App() {
 
@@ -26,7 +23,7 @@ function App() {
     {/* <div> */}
       <Modal/>
     {/* </div> */}
-    {/* <div> */}
+    <div>
       <Switch>
         
         <Route path="/create" component={ EventInputForm } />
@@ -65,7 +62,7 @@ function App() {
         </Route>
         
       </Switch>
-    {/* </div> */}
+    </div>
     </div>
   );
 
