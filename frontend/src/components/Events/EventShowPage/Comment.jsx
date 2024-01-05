@@ -37,8 +37,8 @@ export function Comment ({ comment }) {
         }
     }else if((date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
         commentDate = (date.getDay() - today.getDay() > 1) ? ((date.getDay() - today.getDay() ) + ' days ago') : ( '1 day ago' )  
-    }else if(date.getFullYear() === today.getFullYear()){
-        commentDate = (date.getMonth() - today.getMonth() > 1) ? (date.getMonth() - today.getMonth()) + 'months ago' : '1 month ago';
+    }else if(date.getFullYear() === today.getFullYear() || (today.getMonth() - date.getMonth() < 0)){
+        eventDate = ((today.getMonth() - date.getMonth() + 12) > 1) ? (today.getMonth() - date.getMonth() + 12) + ' months ago' : '1 month ago';
     }else{
         commentDate = (date.getFullYear() - today.getFullYear() > 1) ? (date.getFullYear() - today.getFullYear()) + 'years ago' : '1 year ago';
     }
