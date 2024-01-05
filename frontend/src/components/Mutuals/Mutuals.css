@@ -1,0 +1,117 @@
+#mutals-title{
+    font-size: 24px;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    font-weight: 700;
+}
+#mutuals-btn{
+    text-decoration: none;
+    color: #ab76f6;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+#layout-mutuals-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+#mutuals-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+#header-mutuals{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    margin-top: 15px;
+    width: 100%;
+    position: relative;
+    top: 0px;
+    z-index: 2;
+    background-color: rgba(0,0,0,.3);
+    backdrop-filter: blur(45px);
+    padding: 20px;
+}
+#welcome-header-mutuals{
+    font-size: 30px;
+    font-family: Syne,Avant Garde,Tahoma,Verdana,sans-serif;
+    margin-bottom: 15px;
+}
+#mutuals-msg{
+    font-size: 14px;
+    color: hsla(0,0%,100%,.6);
+    margin-bottom: 20px;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;;
+}
+#mutual-filters{
+    display: flex;
+    justify-content: space-between;
+    text-align: start;
+    width: 530px;
+    padding: 0 40px 0 20px;
+    padding-left: 55px;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 14px;
+    color: hsla(0,0%,100%,.6);
+    cursor: pointer;
+}
+.mutuals-list{
+    display: flex;
+    flex-direction: column;
+    width: 570px;
+    margin-left: 15px;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    color: #ffff;
+    /* padding: 40px; */
+}
+#filter-arrow{
+    height: 10px;
+    width: 10px;
+}
+#filter-divs-mutuals{
+    display: flex;
+}
+#filter-header{
+    margin-right: 5px;
+}
+.profile-container-mutuals-page{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.mutual-page-item{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 20px;
+}
+.mutual-page-item:hover{
+    background-color: rgba(255, 255, 255, 0.15);
+}
+.mutuals-num-event-container{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+#mutual-page-info{
+    color: hsla(0,0%,100%,.6);
+}
+.mutual-date{
+    font-size: 14px;
+}
+.mutual-item-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50%;
+}
