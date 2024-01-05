@@ -19,14 +19,17 @@ export function HomePage () {
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
     const [filter, setFilter] = useState("Upcoming");
-    let upcoming = '';
+    // let upcoming = '';
+    const upcoming = useSelector(state => state.session.user.upcomingEvents)
     const today = new Date();
     let filteredEvents = []
 
     if(filter === "Upcoming"){
         filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== "null"));
-        upcoming = (filteredEvents.length)
+        // upcoming = (filteredEvents.length)
+        // setUpcoming(filteredEvents.length);
     }else if(filter === "Hosting"){
+        console.log('hi')
         filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null) && (event.authorId === sessionUser.id));
     }else if(filter === "Open Invite"){
         filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp === null));
@@ -52,8 +55,8 @@ export function HomePage () {
                 <h1 id="welcome-header">Welcome back, {sessionUser.name}!</h1>
                 <div className="upcoming-events-msg">
                     You have
-                    <span id="upcoming-msg" onClick={() => setFilter('Upcoming')}>{upcoming} upcoming event</span>
-                    .
+                    <span id="upcoming-msg" onClick={() => setFilter('Upcoming')}>{upcoming }</span>
+                    upcoming event.
                 </div>
                 <nav className="event-nav-bar">
                     <button className="event-filter-btn-open" style={{

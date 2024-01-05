@@ -1,11 +1,22 @@
 
 events = @events.includes(:user)
+# upcomingEvents = []
+upcomingEvents = 0
+test = 0
 today = (Time.now).inspect
 mutualsCounter = {}
 
 events.each do |event|
+
+    if (event.author_id == @current_user.id || event.rsvps.includes(:user).where(users:{id: @current_user.id}).pluck(:user_id) == @current_user.id) && (!event.date_time || event.date_time < today)
+        upcomingEvents += 1
+    end
+
     rsvps = event.rsvps.includes(:user)
     # rsvp = event.rsvps.includes(:user).where('user_id' === '@current_user.id')
+    # puts 'test'
+    # puts event.rsvps.includes(:user).where(users:{id: @current_user.id}).pluck(:event_id) ==  @current_user.id
+
     rsvpUser = Rsvp.new()
     # if rsvp ##.status === "I'm Going" && event.date_time < DateTime.now
         # puts "rsvps", event.title
@@ -45,4 +56,7 @@ json.users do
             json.joined mutual[:created_at].strftime("%b '%y")
         end
     end
+end
+json.user do 
+    json.upcomingEvents upcomingEvents
 end
