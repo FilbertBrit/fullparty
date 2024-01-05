@@ -44,7 +44,7 @@ export const MutualModal = ({ mutualId }) => {
                         {mutual.name.slice(0,1)}
                       </div>
                 </div>
-                <div id="username-container-mutual-prev">
+                <div id="username-container-mutual-prev-modal">
                     <h2>{mutual.name}</h2> 
                 </div>
                 <div className="profile-user-join-date">
