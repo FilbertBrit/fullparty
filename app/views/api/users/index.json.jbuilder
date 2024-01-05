@@ -1,6 +1,6 @@
 # users = @user.includes(:event)
 # puts @events
-debugger
+# debugger
 events = @events.includes(:user)
 mutualsCounter = {}
 today = (Time.now).inspect

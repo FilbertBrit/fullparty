@@ -2,23 +2,39 @@
 import { useSelector } from "react-redux"
 import Navigation from "../Navigation"
 import "./HomePage.css"
-import { EventIndex } from "../Events/EventIndex";
 import { useEffect, useState } from "react";
 import { AiOutlineInstagram } from "react-icons/ai"
-import { Mutuals } from "../Mutuals";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { MutualsItem } from "./MutualsItem";
 import { useDispatch } from "react-redux";
 import { fetchEvents } from "../../store/events";
+import { getEvents } from "../../store/events";
+import { EventIndexItem } from "../Events/EventIndexItem";
 
 export function HomePage () {
     
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const eventsObj = useSelector(getEvents);
+    const events = eventsObj ? Object.values(eventsObj) : [];
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
     const [filter, setFilter] = useState("Upcoming");
-    const [upcoming, setUpcoming] = useState('');
+    let upcoming = '';
+    const today = new Date();
+    let filteredEvents = []
+
+    if(filter === "Upcoming"){
+        filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== "null"));
+        upcoming = (filteredEvents.length)
+    }else if(filter === "Hosting"){
+        filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null) && (event.authorId === sessionUser.id));
+    }else if(filter === "Open Invite"){
+        filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp === null));
+    }else if(filter === 'Attended'){
+        filteredEvents = events.filter(event => (event.userRsvp !== "Can't Go" && event.userRsvp !== null) && (today > new Date(event.dateTime)));
+    }else if(filter === 'All Past Events'){
+        filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)));
+    }
     
     const handleClick = (e) => {
         setFilter(e.target.value)
@@ -29,7 +45,7 @@ export function HomePage () {
     }, [dispatch])
 
    return (
-    mutualsObj ? 
+    upcoming ? 
         <div className="homepage-component">
             <Navigation/>
             <div className="dashboard">
@@ -76,10 +92,20 @@ export function HomePage () {
                     </button>
                 </nav>
                 <div className="event-items">
-                    <EventIndex className="events-dash" filter={filter} setUpcoming={setUpcoming} /> 
+                    <div className="events">
+                        {
+                            filteredEvents.map( (event, i) => 
+                                <EventIndexItem event={event} key={i}/>
+                            )
+                        }
+                        <a href="/create" id="new-event-link">
+                            <div className="empty-event">
+                                <h4 id="empty-event-title">+ New Event</h4>
+                            </div>
+                        </a>
+                    </div>
                 </div>
                 <div className="Mutuals">
-                    {/* <Mutuals/> */}
                     <div id="mutuals-header-home">
                         <h1 id="welcome-header">Mutuals</h1>
                         <a href="/mutuals" id="all-mutuals-link">SEE ALL</a>
