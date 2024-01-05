@@ -20,7 +20,7 @@ export function HomePage () {
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
     const [filter, setFilter] = useState("Upcoming");
     // let upcoming = '';
-    const [upcoming, setUpcoming] = useState(1)
+    const upcoming = useSelector(state => state.session.user.upcomingEvents)
     const today = new Date();
     let filteredEvents = []
 

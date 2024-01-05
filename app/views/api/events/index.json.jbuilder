@@ -14,7 +14,8 @@ events.each do |event|
 
     rsvps = event.rsvps.includes(:user)
     # rsvp = event.rsvps.includes(:user).where('user_id' === '@current_user.id')
-    # rsvp = event.rsvps.includes(:user).where('user_id' === '@current_user.id')
+    # puts 'test'
+    # puts event.rsvps.includes(:user).where(users:{id: @current_user.id}).pluck(:event_id) ==  @current_user.id
 
     rsvpUser = Rsvp.new()
     # if rsvp ##.status === "I'm Going" && event.date_time < DateTime.now
