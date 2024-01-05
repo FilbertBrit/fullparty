@@ -6,7 +6,6 @@ export const SharedEventPrev = ({ event }) => {
     const date = new Date(event.dateTime)
     const today = new Date()
     let eventDate = ''
-    console.log(today.getMonth() - date.getMonth())
 
     if((date.getDay() === today.getDay()) && (date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
         if(today.getHours() - date.getHours() === 0){
@@ -21,8 +20,6 @@ export const SharedEventPrev = ({ event }) => {
     }else{
         eventDate = (date.getFullYear() - today.getFullYear() > 1) ? (date.getFullYear() - today.getFullYear()) + 'years ago' : '1 year ago';
     }
-
-    console.log(date,eventDate)
 
     return (
         <a href={ showPage } id="event-item" >
