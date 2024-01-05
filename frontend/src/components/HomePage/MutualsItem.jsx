@@ -17,7 +17,7 @@ export function MutualsItem ({ mutual }) {
 
     const handleClick = (e) => {
         e.preventDefault();
-        dispatch(openModal({command: 'mutual-modal',mutual: mutual.id}));
+        dispatch(openModal({command: 'mutual-modal',prop: mutual.id}));
         // dispatch(fetchUser(mutual.id))
     }
 

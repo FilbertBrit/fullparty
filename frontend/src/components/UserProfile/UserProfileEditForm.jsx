@@ -30,7 +30,7 @@ export function UserProfileEditForm () {
     const [bio, setBio] = useState(sessionUser?.bio);
 
     const handleSocial = (e) => {
-        dispatch(openModal(['social-form', e.currentTarget.value]))
+        dispatch(openModal({component: 'social-form', prop: e.currentTarget.value}))
     }
     const handleSubmit = (e) => {
         console.log('test')
