@@ -4,6 +4,7 @@ import { getEvents } from "../../store/events";
 import { closeModal } from "../../store/modal";
 import { useEffect } from "react";
 import "./MutualModal.css"
+import { SharedEventPrev } from "./SharedEventPrev";
 
 export const MutualModal = ({ mutualId }) => {
 
@@ -60,7 +61,11 @@ export const MutualModal = ({ mutualId }) => {
                 <section className="mutual-modal-shared-events-container">
                     <h2>Shared Events</h2>
                     <div className="events-container-mutual-modal">
-
+                        {
+                            sharedEvents.map( (event, i) => 
+                                <SharedEventPrev event={event} key={i}/>
+                            )
+                        }
                     </div>
                 </section>
             </div>
