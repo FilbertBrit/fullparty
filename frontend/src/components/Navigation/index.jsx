@@ -60,7 +60,7 @@ function Navigation() {
   };
 
   let sessionLinks;
-  console.log(sessionUser)
+  // console.log(sessionUser)
 
   if (sessionUser) {
     sessionLinks = (

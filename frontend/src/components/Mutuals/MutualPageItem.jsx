@@ -21,7 +21,6 @@ export function MutualPageItem ({ mutual }) {
     }
 
 
-
     return (
         <div className="mutual-page-item">
             <div className="profile-container-mutuals-page">
