@@ -7,19 +7,18 @@ import { MutualModal } from "../MutualModal/MutualModal"
 
 export const Modal = () => {
     // debugger
+    const dispatch = useDispatch();
     const modal = useSelector(state => state.modal)
     const componentCall = modal ? modal['command'] : '';
     const prop = modal ? modal['prop'] : '';
+    let component;
     let div = ''
-    const dispatch = useDispatch();
-    // console.log(componentCall, prop);
+    modal ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"; 
     
     if(!modal){
         return null;
     }
-    modal ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"; 
 
-    let component;
 
     switch (componentCall) {
         case 'social-form':
