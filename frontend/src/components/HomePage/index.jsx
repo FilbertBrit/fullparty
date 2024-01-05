@@ -46,9 +46,6 @@ export function HomePage () {
     useEffect( () => {
         dispatch( fetchEvents() );
     }, [dispatch])
-    useEffect( () => {
-        dispatch( fetchEvents() );
-    }, [filter])
 
    return (
     upcoming ? 
@@ -58,8 +55,8 @@ export function HomePage () {
                 <h1 id="welcome-header">Welcome back, {sessionUser.name}!</h1>
                 <div className="upcoming-events-msg">
                     You have
-                    <span id="upcoming-msg" onClick={() => setFilter('Upcoming')}>{upcoming} upcoming event</span>
-                    .
+                    <span id="upcoming-msg" onClick={() => setFilter('Upcoming')}>{upcoming }</span>
+                    upcoming event.
                 </div>
                 <nav className="event-nav-bar">
                     <button className="event-filter-btn-open" style={{
