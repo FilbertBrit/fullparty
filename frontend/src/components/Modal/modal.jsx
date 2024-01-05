@@ -3,10 +3,8 @@ import { closeModal } from "../../store/modal"
 import './Modal.css'
 import { SocialForm } from "../SocialForm/SocialForm"
 import { MutualModal } from "../MutualModal/MutualModal"
-// import {RemoveScroll} from 'react-remove-scroll';
 
 export const Modal = () => {
-    // debugger
     const dispatch = useDispatch();
     const modal = useSelector(state => state.modal)
     const componentCall = modal ? modal['command'] : '';
@@ -19,14 +17,12 @@ export const Modal = () => {
         return null;
     }
 
-
     switch (componentCall) {
         case 'social-form':
             component = <SocialForm social={ prop }/>;
             div = 'modal-child';
             break;
         case 'mutual-modal':
-            // console.log('hi')
             component = <MutualModal mutualId={ prop }/>;
             div = 'modal-mutual';
             break;
