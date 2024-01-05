@@ -19,14 +19,17 @@ export function HomePage () {
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
     const [filter, setFilter] = useState("Upcoming");
-    let upcoming = '';
+    // let upcoming = '';
+    const [upcoming, setUpcoming] = useState(1)
     const today = new Date();
     let filteredEvents = []
 
     if(filter === "Upcoming"){
         filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== "null"));
-        upcoming = (filteredEvents.length)
+        // upcoming = (filteredEvents.length)
+        // setUpcoming(filteredEvents.length);
     }else if(filter === "Hosting"){
+        console.log('hi')
         filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null) && (event.authorId === sessionUser.id));
     }else if(filter === "Open Invite"){
         filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp === null));
@@ -43,6 +46,9 @@ export function HomePage () {
     useEffect( () => {
         dispatch( fetchEvents() );
     }, [dispatch])
+    useEffect( () => {
+        dispatch( fetchEvents() );
+    }, [filter])
 
    return (
     upcoming ? 

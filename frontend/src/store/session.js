@@ -1,7 +1,7 @@
 // This file will contain all the actions specific to the session user's information and the session user's Redux reducer.
 
 import csrfFetch from './csrf';
-import { RECEIVE_EVENT } from './events';
+import { RECEIVE_EVENTS } from './events';
 
 export const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
@@ -99,10 +99,12 @@ const sessionReducer = (state = initialState, action) => {
   // const nextState = { ...state };
   // console.log(action.payload)
   switch (action.type) {
-    case SET_CURRENT_USER:
-      return { ...state, user: action.user};
+    case RECEIVE_EVENTS:
+      return { ...state, user: {...state.user, ...action.payload.user}};
     case REMOVE_CURRENT_USER:
       return { ...state, user: null };
+    case SET_CURRENT_USER:
+      return { ...state, user: action.user};
     case UPDATE_CURRENT_USER:
       return {...state, user: action.payload.user}
     default:
