@@ -52,6 +52,7 @@ export function HomePage () {
         <div className="homepage-component">
             <Navigation/>
             <div className="dashboard">
+                <section className="top-dashboard">
                 <h1 id="welcome-header">Welcome back, {sessionUser.name}!</h1>
                 <div className="upcoming-events-msg">
                     You have
@@ -94,6 +95,8 @@ export function HomePage () {
                         All Past Events
                     </button>
                 </nav>
+                </section>
+                
                 <div className="event-items">
                     <div className="events">
                         {
@@ -108,7 +111,7 @@ export function HomePage () {
                         </a>
                     </div>
                 </div>
-                <div className="Mutuals">
+                <div className="mutuals">
                     <div id="mutuals-header-home">
                         <h1 id="welcome-header">Mutuals</h1>
                         <a href="/mutuals" id="all-mutuals-link">SEE ALL</a>
