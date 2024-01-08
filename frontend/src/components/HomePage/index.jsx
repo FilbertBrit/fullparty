@@ -19,10 +19,12 @@ export function HomePage () {
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
     const [filter, setFilter] = useState("Upcoming");
-    // let upcoming = '';
     const upcoming = useSelector(state => state.session.user.upcomingEvents)
     const today = new Date();
     let filteredEvents = []
+    console.log(events)
+    console.log(filteredEvents)
+    console.log(mutuals)
 
     if(filter === "Upcoming"){
         filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== "null"));
