@@ -42,10 +42,16 @@ export function HomePage () {
     const handleClick = (e) => {
         setFilter(e.target.value)
     }
+    function chbg(color){
+        console.log(color)
+    //    let div = document.getElementById("new-event-link")
+    //    div.style.backgroundColor = color;
+    }
 
     useEffect( () => {
         dispatch( fetchEvents() );
     }, [dispatch])
+
 
    return (
     upcoming ? 
@@ -105,7 +111,7 @@ export function HomePage () {
                             )
                         }
                         <a href="/create" id="new-event-link">
-                            <div className="empty-event">
+                            <div className="empty-event" onMouseOver={chbg("rgba(255, 255, 255, 0.15)")} onMouseLeave={chbg("transparent")}>
                                 <h4 id="empty-event-title">+ New Event</h4>
                             </div>
                         </a>
