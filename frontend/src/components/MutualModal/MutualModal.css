@@ -1,6 +1,8 @@
 .mutual-modal-component{
-    width: 100%;
+    /* width: 100%; */
+    max-width: min(800px,100vw);
     display: flex;
+    justify-content: center;
     flex-direction: column;
     /* width: 100vw; */
     /* overflow-x: hidden!important;
@@ -29,8 +31,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 92%;
+    /* width: 92%; */
     padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 #event-prev-item{
     width: 50%;
@@ -67,4 +71,29 @@
     display: flex;
     justify-content: center;
     padding-top: 8px;
+}
+
+@media screen and (min-width: 720px){
+    .mutual-modal-shared-events-container{
+        /* padding: 35px; */
+    }
+    .mutual-modal-profile{
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+}
+/* .mutual-modal-shared-events-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+
+.events-container-mutual-modal{
+    display: grid;
+    grid-template-rows: auto;
+    grid-auto-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 8px;
+    padding: 0;
 }
