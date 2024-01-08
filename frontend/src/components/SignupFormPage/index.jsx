@@ -63,88 +63,90 @@ function SignupFormPage() {
     return (
       <div id='layout-outer'>
         <Navigation/>
-        <div className="layout">
-          
-          <div id='signup-title-container'>
-            <div id='login-title'>
-              <h3 id='sign-in-click' onClick={handleSignupClick}> Sign in </h3>
-            </div>
-            <div id='login-title'>
-              <h3 id='login-title-sign-up'> {" or sign up"} </h3>
-            </div>
-          </div>
-
-          <ul className='errors-signup'>
-            {errors.map(error => <li key={error}>{error}</li>)}
-          </ul>
-
-          <form onSubmit={handleSubmit}>
-            <div className="name-container">
-              <input
-                id='name-input'
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                placeholder='NAME'
-              />
-            </div>
-            <div id='phone-container'>
-              <div id='phone-div'>
-                <span id='region-menu'>
-                  {regionMenu}
-                </span>
-                <input
-                  type="text"
-                  value={phoneNumber}
-                  onChange={(e) => onChange(e)}
-                  name='phoneNumber'
-                  placeholder='XXXXXXXXXX'
-                  required
-                />
+        <div id='log-container'>
+            <div className="layout">
+              
+              <div id='signup-title-container'>
+                <div id='login-title'>
+                  <h3 id='sign-in-click' onClick={handleSignupClick}> Sign in </h3>
+                </div>
+                <div id='login-title'>
+                  <h3 id='login-title-sign-up'> {" or sign up"} </h3>
+                </div>
               </div>
-            </div>
-            <br />
-            <div className="password-container">
-            { isLengthTen ? (
-              <>
-              <div >
-                <div id='password-container'>
-                  <h4>PASSWORD</h4>
+
+              <ul className='errors-signup'>
+                {errors.map(error => <li key={error}>{error}</li>)}
+              </ul>
+
+              <form onSubmit={handleSubmit}>
+                <div className="name-container">
                   <input
-                      id='password-input'
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                      name='password'
-                      placeholder='XXXXXXXX'
-                    />
-                  <h4>CONFIRM PASSWORD</h4>
-                  <input
-                    id='confirm-input'
-                    type="password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    id='name-input'
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     required
-                    name='password'
-                    placeholder='XXXXXXXX'
+                    placeholder='NAME'
                   />
                 </div>
-                <br />
-                <div id='login-button-div'>
-                  <button type="submit" id='login-button'>Submit</button> 
+                <div id='phone-container'>
+                  <div id='phone-div'>
+                    <span id='region-menu'>
+                      {regionMenu}
+                    </span>
+                    <input
+                      type="text"
+                      value={phoneNumber}
+                      onChange={(e) => onChange(e)}
+                      name='phoneNumber'
+                      placeholder='XXXXXXXXXX'
+                      required
+                    />
+                  </div>
                 </div>
-              </div>
-              </>
-            ) : (
-              <></>
-            )}
+                <br />
+                <div className="password-container">
+                { isLengthTen ? (
+                  <>
+                  <div >
+                    <div id='password-container'>
+                      <h4>PASSWORD</h4>
+                      <input
+                          id='password-input'
+                          type="password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          required
+                          name='password'
+                          placeholder='XXXXXXXX'
+                        />
+                      <h4>CONFIRM PASSWORD</h4>
+                      <input
+                        id='confirm-input'
+                        type="password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
+                        name='password'
+                        placeholder='XXXXXXXX'
+                      />
+                    </div>
+                    <br />
+                    <div id='login-button-div'>
+                      <button type="submit" id='login-button'>Submit</button> 
+                    </div>
+                  </div>
+                  </>
+                ) : (
+                  <></>
+                )}
+                </div>
+              </form>
             </div>
-          </form>
+          <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
+          </div>
         </div>
-      <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
-      </div>
     );
   }
   

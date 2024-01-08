@@ -43,7 +43,7 @@ export function HomePage () {
         setFilter(e.target.value)
     }
     function chbg(color){
-        console.log(color)
+        // console.log(color)
     //    let div = document.getElementById("new-event-link")
     //    div.style.backgroundColor = color;
     }

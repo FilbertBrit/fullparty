@@ -8,7 +8,7 @@ const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 export const UPDATE_CURRENT_USER = 'session/updateCurrentUser';
 
 const setCurrentUser = (user) => {
- console.log(user)
+//  console.log(user)
   return {
     type: SET_CURRENT_USER,
     user
@@ -49,7 +49,7 @@ export const login = (user) => async (dispatch) => {
     })
   });
   const data = await response.json();
-  console.log(data)
+  // console.log(data)
   storeCurrentUser(data)
   dispatch(setCurrentUser(data));
 
