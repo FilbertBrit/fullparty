@@ -63,73 +63,75 @@ function LoginFormPage() {
   return (
     <div id='layout-outer'>
       <Navigation/>
-      <div className='layout'>
+      <div id='log-container'>
+          <div className='layout'>
 
-        <div id='login-title-container'>
-          <h3 id='login-title'>Sign in or </h3>
-          <div id='login-title'>
-            <h3 id='signup-click' onClick={handleSignupClick}> { " sign up"}</h3>
-          </div>
-        </div>
-
-        <ul className='errors'>
-          {/* {errors.map(error => <li key={error}>{error}</li>)} */}
-        </ul>
-
-        <form onSubmit={handleSubmit} className='loginForm'>
-
-          <div id='phone-container'>
-            <div id='phone-div'>
-              <span id='region-menu'>
-                {regionMenu}
-              </span>
-              <input
-                type="text"
-                value={phoneNumber}
-                onChange={(e) => onChange(e)}
-                name='phoneNumber'
-                placeholder='XXXXXXXXXX'
-                required
-              />
+            <div id='login-title-container'>
+              <h3 id='login-title'>Sign in or </h3>
+              <div id='login-title'>
+                <h3 id='signup-click' onClick={handleSignupClick}> { " sign up"}</h3>
+              </div>
             </div>
-          </div>
-          <br />
-          <div id='submit-buttons'>
-            { isLengthTen ? (
-              <>
-              <div >
-                <div id='password-container'>
-                  <h4>PASSWORD</h4>
-                  <input
-                      id='password-input'
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                      name='password'
-                      placeholder='XXXXXXXX'
-                      
-                    />
-                </div>
-                <br />
-                <div id='login-button-div'>
-                  <button type="submit" id='login-button'>Login</button> 
-                </div>
-              </div>
-              </>
-            ) : (
-              <>
-              <div id='space-div'>
-                <button id='demo-user' onClick={handleClick}>Demo User</button>
-              </div>
-              </>
-            )}
-          </div>
-        </form>
 
+            <ul className='errors'>
+              {/* {errors.map(error => <li key={error}>{error}</li>)} */}
+            </ul>
+
+            <form onSubmit={handleSubmit} className='loginForm'>
+
+              <div id='phone-container'>
+                <div id='phone-div'>
+                  <span id='region-menu'>
+                    {regionMenu}
+                  </span>
+                  <input
+                    type="text"
+                    value={phoneNumber}
+                    onChange={(e) => onChange(e)}
+                    name='phoneNumber'
+                    placeholder='XXXXXXXXXX'
+                    required
+                  />
+                </div>
+              </div>
+              <br />
+              <div id='submit-buttons'>
+                { isLengthTen ? (
+                  <>
+                  <div >
+                    <div id='password-container'>
+                      <h4>PASSWORD</h4>
+                      <input
+                          id='password-input'
+                          type="password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          required
+                          name='password'
+                          placeholder='XXXXXXXX'
+                          
+                        />
+                    </div>
+                    <br />
+                    <div id='login-button-div'>
+                      <button type="submit" id='login-button'>Login</button> 
+                    </div>
+                  </div>
+                  </>
+                ) : (
+                  <>
+                  <div id='space-div'>
+                    <button id='demo-user' onClick={handleClick}>Demo User</button>
+                  </div>
+                  </>
+                )}
+              </div>
+            </form>
+
+          </div>
+          <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
+        </div>
       </div>
-      <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
-    </div>
   );
 }
 
