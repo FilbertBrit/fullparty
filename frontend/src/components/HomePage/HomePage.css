@@ -14,7 +14,7 @@ upcoming-events-msg{
 
 .event-items{
     height: fit-content;
-    width: 95vw;
+    /* width: 95vw; */
     /* width: 100%; */
     margin-bottom: 40px;
     overflow-x: scroll;
@@ -22,19 +22,14 @@ upcoming-events-msg{
     overflow-x: overlay;
     padding-bottom: 10px;
     padding-left: 5%;
-    margin-top: -60px;
+    /* margin-top: -60px; */
     margin-left: -15px;
-    /* scroll-snap-type: x proximity; */
-    /* scroll-padding-left: 10vw; */
-    /* height: auto; */
-    /* max-width: calc(100% + 40px); */
-    /* position: relative; */
-    /* touch-action: pan-x pan-y; */
-    /* overscroll-behavior-x:auto; */
-    /* scrollbar-arrow-color: blue; */
 }
 .top-dashboard{
-    padding: 5%;
+    /* padding: 5%; */
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .event-nav-bar{
