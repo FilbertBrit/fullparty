@@ -23,9 +23,8 @@ export function HomePage () {
     const today = new Date();
     let filteredEvents = []
     console.log(events)
-    console.log(filteredEvents)
     console.log(mutuals)
-
+    
     if(filter === "Upcoming"){
         filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== "null"));
         // upcoming = (filteredEvents.length)
@@ -40,6 +39,7 @@ export function HomePage () {
     }else if(filter === 'All Past Events'){
         filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)));
     }
+    console.log(filteredEvents)
     
     const handleClick = (e) => {
         setFilter(e.target.value)
