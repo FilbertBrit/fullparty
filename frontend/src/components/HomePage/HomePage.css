@@ -22,8 +22,9 @@ upcoming-events-msg{
     overflow-x: overlay;
     padding-bottom: 10px;
     padding-left: 5%;
-    /* margin-top: -60px; */
+    padding-right: 55vw;
     margin-left: -15px;
+
 }
 .top-dashboard{
     /* padding: 5%; */
