@@ -118,7 +118,7 @@
 .maybe{
     margin-right: 10px;
     margin-bottom: 5px;
-
+    
 }
 .show-guests-profiles{
     display: flex;
@@ -132,8 +132,8 @@
     margin-left: -5px;
 }
 #show-img{
-    height: 350px;
-    width: 350px;
+    height: 400px;
+    width: 400px;
     padding: 10px;
 }
 .show-photo-rsvp{
@@ -155,7 +155,7 @@
     justify-content: center;
     flex-direction: column; */
     /* padding: 50px 8px; */
-
+    
     position: relative;
     margin-left: 25px;
     margin-right: 25px;
@@ -171,6 +171,7 @@
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     margin-bottom: 25px;
 }
+
 #show-add-pics-btn{
     cursor: pointer;
     background-color: hsla(0,0%,100%,.4);
@@ -321,6 +322,15 @@
     height: 0px;
     /* transform: ; */
 }
+.location-no-rsvp{
+    color: #ab76f6;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#rsvp-location-h2-event-show{
+    color: hsla(0,0%,100%,.6);
+    font-style: italic;
+}
 
 @media screen and (min-width: 1050px) {
     .show-photo-rsvp{
@@ -346,6 +356,11 @@
         justify-content: space-between;
         padding-left: 80px;
         /* margin-right: 40px; */
+    }
+
+    #show-img{
+        height: 300px;
+        width: 300px;
     }
 }
 

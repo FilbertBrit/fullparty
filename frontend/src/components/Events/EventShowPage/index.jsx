@@ -22,15 +22,14 @@ export function EventShowPage () {
     const sessionUser = useSelector(state => state.session.user);
     const rsvps = useSelector(state => state.rsvps);
     const date = event ? new Date(event.dateTime).toLocaleTimeString('en-US', { timeZone: 'EST' }) : ''
-    console.log(date);
-    // event && console.log(event.dateTime)
-    // event && console.log(date.toLocaleTimeString())
-    console.log(date)
     const today = new Date()
     const eventDone = event ? date < today : '';
     let rsvpGoing = 0;
     let rsvpMaybe = 0;
     const editLink = "/events/" + eventId + "/edit";
+
+    let location = event?.location || "No Location Set";
+
     
     for(let key in rsvps){
         rsvps[key].status === "I'm Going" ? (rsvpGoing = (rsvpGoing + 1)) : (rsvpGoing = (rsvpGoing));
@@ -77,18 +76,18 @@ export function EventShowPage () {
                             </div>
                         </div>
                         <div className="show-location">
-                            { event.location ? 
+                            { event.userRsvp ? 
                                 (
                                     <>
                                         <h2 >📍</h2>
-                                        <h2 id='show-host-by'>{event.location}</h2>
+                                        <h2 id='show-host-by'>{location}</h2>
                                     </>
                                 )
                                 : 
                                 (
                                     <>
                                         <h2>📍</h2>
-                                        <h2 id='show-host-by'>No Location Set</h2>
+                                        <h2 id='' className='location-no-rsvp'> RSVP <span id='rsvp-location-h2-event-show'>to see location</span></h2>
                                     </>
                                 ) 
                             }
