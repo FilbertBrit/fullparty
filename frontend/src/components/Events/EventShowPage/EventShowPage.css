@@ -27,6 +27,11 @@
     width: max-content;
     font-size: 56px;
 }
+#event-time-h2{
+   color: hsla(0,0%,100%,.6);
+    margin-top: 8px;
+    font-size: 22px;
+}
 #capacity-num-event-show{
     color: #ab76f6;
     font-weight: 700;

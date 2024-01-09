@@ -21,8 +21,9 @@ export function EventShowPage () {
     const event = useSelector(getEvent(eventId));
     const sessionUser = useSelector(state => state.session.user);
     const rsvps = useSelector(state => state.rsvps);
-    const date = event ? new Date(event.dateTime).toLocaleTimeString('en-US', { timeZone: 'EST' }) : ''
+    const date = event ? new Date(event.dateTime).toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" ") : ''
     const today = new Date()
+    console.log(date)
     const eventDone = event ? date < today : '';
     let rsvpGoing = 0;
     let rsvpMaybe = 0;
@@ -59,7 +60,10 @@ export function EventShowPage () {
                     <div className="show-date-time">
                         { event.dateTime ? 
                             (
-                            <h2>{event.date + date}</h2>
+                                <div>
+                                    <h2>{event.date}</h2>
+                                    <h2 id='event-time-h2'>{date[0].slice(0,4) + date[1].toLocaleLowerCase()}</h2>
+                                </div>
                             ) 
                             : 
                             (<h2>Date & Time TBD</h2>)
