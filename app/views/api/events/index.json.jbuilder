@@ -8,9 +8,13 @@ mutualsCounter = {}
 
 events.each do |event|
 
-    if (event.author_id == @current_user.id || event.rsvps.includes(:user).where(users:{id: @current_user.id}).pluck(:user_id) == @current_user.id) && (!event.date_time || event.date_time < today)
-        upcomingEvents += 1
-    end
+    # puts event.rsvps.includes(:user).where(users:{id: @current_user.id}).pluck(:user_id) == @current_user.id
+    # # puts event.date_time , event.date_time < today
+
+    # if (event.author_id == @current_user.id || event.rsvps.includes(:user).where(users:{id: @current_user.id}).pluck(:user_id) == @current_user.id) && (!event.date_time || event.date_time < today)
+    #     puts event.title
+    #     upcomingEvents += 1
+    # end
 
     rsvps = event.rsvps.includes(:user)
     # rsvp = event.rsvps.includes(:user).where('user_id' === '@current_user.id')
@@ -34,6 +38,10 @@ events.each do |event|
                     # mutuals.concat( rsvps.map {|rsvp| rsvp} ) ##.user_id !== @current_user.id}
                 end
             end
+        end
+
+        if rsvpUser.status || event.author_id == @current_user.id
+            upcomingEvents += 1
         end
     # end
 
