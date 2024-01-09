@@ -26,9 +26,9 @@ export function ActivityLog () {
 
     return comments ? (
         <>
-            <div className="show-rsvps-comments-header">
+            {/* <div className="show-rsvps-comments-header">
                 <h2 id='show-activity-header'>Activity</h2>
-            </div>
+            </div> */}
             <div>
                 <form onSubmit={handleSubmit} id="comment-form">
                     <div className="user-profile-photo-form">

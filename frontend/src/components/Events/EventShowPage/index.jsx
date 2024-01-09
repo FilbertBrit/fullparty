@@ -187,7 +187,25 @@ export function EventShowPage () {
                     </div>
                 </div> */}
                 <div className="show-rsvps-comments">
-                    <ActivityLog/>
+                    <div className="show-rsvps-comments-header">
+                        <h2 id='show-activity-header'>Activity</h2>
+                    </div>
+                    {!event.userRsvp ? 
+                        <div>
+                            <div className='restrict-activity-log'>
+                                <h2>🔒 Restricted Access</h2>
+                                <h2>Only RSVP'd guests can view event activity & see who's going</h2>
+                                <h2>RSVP FOR ACCESS</h2>
+                                <h2>ℹ︎ Not sure if you'll go? Pick “Maybe”</h2>
+
+                            </div>
+                            <div id='log-restricted'>
+                                <ActivityLog />
+                            </div>
+                        </div>
+                        : <ActivityLog/>
+                    }
+                    {/* <ActivityLog/> */}
                 </div>
             </div>
         </div>

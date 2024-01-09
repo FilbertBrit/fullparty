@@ -345,6 +345,30 @@
     color: hsla(0,0%,100%,.6);
     font-style: italic;
 }
+.restrict-activity-log{
+    background-color: rgba(0,0,0,.8);
+    margin: 30px auto;
+    position: sticky;
+    /* bottom: -45px; */
+    transform: translateY(-35px);
+    z-index: 3;
+    min-height: 200px;
+    justify-content: center;
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 360px;
+    color: #fff;
+}
+#log-restricted{
+    margin-top: -310px;
+    filter: blur(6px);
+}
+.show-rsvps-comments{
+    height: min-content;
+}
 
 @media screen and (min-width: 1050px) {
     .show-photo-rsvp{
