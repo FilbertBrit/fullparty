@@ -1,6 +1,5 @@
 
 events = @events.includes(:user)
-# upcomingEvents = []
 upcomingEvents = 0
 test = 0
 today = (Time.now).inspect
@@ -8,22 +7,14 @@ mutualsCounter = {}
 
 events.each do |event|
 
-    # puts event.rsvps.includes(:user).where(users:{id: @current_user.id}).pluck(:user_id) == @current_user.id
-    # # puts event.date_time , event.date_time < today
-
     # if (event.author_id == @current_user.id || event.rsvps.includes(:user).where(users:{id: @current_user.id}).pluck(:user_id) == @current_user.id) && (!event.date_time || event.date_time < today)
     #     puts event.title
     #     upcomingEvents += 1
     # end
 
     rsvps = event.rsvps.includes(:user)
-    # rsvp = event.rsvps.includes(:user).where('user_id' === '@current_user.id')
-    # puts 'test'
-    # puts event.rsvps.includes(:user).where(users:{id: @current_user.id}).pluck(:event_id) ==  @current_user.id
 
     rsvpUser = Rsvp.new()
-    # if rsvp ##.status === "I'm Going" && event.date_time < DateTime.now
-        # puts "rsvps", event.title
         
         rsvps.each do |rsvp|
             if rsvp.user.id === @current_user.id
@@ -35,7 +26,6 @@ events.each do |event|
                             mutualsCounter[rsvp.user_id] ?  mutualsCounter[rsvp.user_id].events.push(event.id) && mutualsCounter[rsvp.user_id].event = event.id : mutualsCounter[rsvp.user_id] = { name: rsvp.user.name, events: [event.id], event: event.id, created_at: rsvp.user.created_at}
                         end
                     end
-                    # mutuals.concat( rsvps.map {|rsvp| rsvp} ) ##.user_id !== @current_user.id}
                 end
             end
         end
