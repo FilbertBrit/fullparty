@@ -22,11 +22,11 @@ export function HomePage () {
     const upcoming = useSelector(state => state.session.user.upcomingEvents)
     const today = new Date();
     let filteredEvents = []
-    console.log(events)
-    console.log(mutuals)
+    // console.log(events)
+    // console.log(mutuals)
     
     if(filter === "Upcoming"){
-        filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== "null"));
+        filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== null || (event.authorId === sessionUser.id)));
     }else if(filter === "Hosting"){
         console.log('hi')
         filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null) && (event.authorId === sessionUser.id));
