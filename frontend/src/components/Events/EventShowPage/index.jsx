@@ -21,16 +21,16 @@ export function EventShowPage () {
     const event = useSelector(getEvent(eventId));
     const sessionUser = useSelector(state => state.session.user);
     const rsvps = useSelector(state => state.rsvps);
-    const date = event ? new Date(event.dateTime).toLocaleTimeString('en-US', { timeZone: 'EST' }) : ''
-    console.log(date);
-    // event && console.log(event.dateTime)
-    // event && console.log(date.toLocaleTimeString())
-    console.log(date)
+    const date = event ? new Date(event.dateTime).toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" ") : ''
     const today = new Date()
+    console.log(date)
     const eventDone = event ? date < today : '';
     let rsvpGoing = 0;
     let rsvpMaybe = 0;
     const editLink = "/events/" + eventId + "/edit";
+
+    let location = event?.location || "No Location Set";
+
     
     for(let key in rsvps){
         rsvps[key].status === "I'm Going" ? (rsvpGoing = (rsvpGoing + 1)) : (rsvpGoing = (rsvpGoing));
@@ -53,14 +53,25 @@ export function EventShowPage () {
         <div id='page-layout-showpage'>
             <Navigation/>
             <div className="showpage-layout">
-                <div className="show-info">
                     <div className="show-title">
                         <h2 id='event-title-show'>{event.title}</h2>
                     </div>
+                    <div className="show-photo-rsvp">
+                    <div className="show-img">
+                        <img src={wazzap} alt="show-img" id='show-img'/>
+                    </div>
+                    <div className="show-rsvp">
+                        <RsvpComponent event={event}/>
+                    </div>
+                </div>
+                <div className="show-info">
                     <div className="show-date-time">
                         { event.dateTime ? 
                             (
-                            <h2>{event.date + date}</h2>
+                                <div>
+                                    <h2>{event.date}</h2>
+                                    <h2 id='event-time-h2'>{date[0].slice(0,4) + date[1].toLocaleLowerCase()}</h2>
+                                </div>
                             ) 
                             : 
                             (<h2>Date & Time TBD</h2>)
@@ -77,18 +88,18 @@ export function EventShowPage () {
                             </div>
                         </div>
                         <div className="show-location">
-                            { event.location ? 
+                            { event.userRsvp ? 
                                 (
                                     <>
                                         <h2 >📍</h2>
-                                        <h2 id='show-host-by'>{event.location}</h2>
+                                        <h2 id='show-host-by'>{location}</h2>
                                     </>
                                 )
                                 : 
                                 (
                                     <>
                                         <h2>📍</h2>
-                                        <h2 id='show-host-by'>No Location Set</h2>
+                                        <h2 id='' className='location-no-rsvp'> RSVP <span id='rsvp-location-h2-event-show'>to see location</span></h2>
                                     </>
                                 ) 
                             }
@@ -113,7 +124,7 @@ export function EventShowPage () {
                                     <div className="show-capacity">
                                         <h2>👥</h2>
                                         <div id='show-host-by'>
-                                            {event.capacity - rsvpGoing}/{event.capacity} spots left
+                                            <span id='capacity-num-event-show'>{event.capacity - rsvpGoing}</span>/{event.capacity} spots left
                                         </div>
                                     </div>
                                 )
@@ -167,16 +178,34 @@ export function EventShowPage () {
                         </button> */}
                     </div>
                 </div>
-                <div className="show-photo-rsvp">
+                {/* <div className="show-photo-rsvp">
                     <div className="show-img">
                         <img src={wazzap} alt="show-img" id='show-img'/>
                     </div>
                     <div className="show-rsvp">
                         <RsvpComponent event={event}/>
                     </div>
-                </div>
+                </div> */}
                 <div className="show-rsvps-comments">
-                    <ActivityLog/>
+                    <div className="show-rsvps-comments-header">
+                        <h2 id='show-activity-header'>Activity</h2>
+                    </div>
+                    {!event.userRsvp ? 
+                        <div>
+                            <div className='restrict-activity-log'>
+                                <h2>🔒 Restricted Access</h2>
+                                <h2>Only RSVP'd guests can view event activity & see who's going</h2>
+                                <h2>RSVP FOR ACCESS</h2>
+                                <h2>ℹ︎ Not sure if you'll go? Pick “Maybe”</h2>
+
+                            </div>
+                            <div id='log-restricted'>
+                                <ActivityLog />
+                            </div>
+                        </div>
+                        : <ActivityLog/>
+                    }
+                    {/* <ActivityLog/> */}
                 </div>
             </div>
         </div>

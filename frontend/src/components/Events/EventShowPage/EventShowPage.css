@@ -22,9 +22,23 @@
     font-family: Syne,Avant Garde,Tahoma,Verdana,sans-serif;
     color: #fff;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
 }
 #event-title-show{
     width: max-content;
+    font-size: 56px;
+}
+#event-time-h2{
+   color: hsla(0,0%,100%,.6);
+    margin-top: 8px;
+    font-size: 22px;
+}
+#capacity-num-event-show{
+    color: #ab76f6;
+    font-weight: 700;
+    /* padding-right: 2%; */
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
 }
 .show-date-time{
     margin-top: 25px;
@@ -118,7 +132,7 @@
 .maybe{
     margin-right: 10px;
     margin-bottom: 5px;
-
+    
 }
 .show-guests-profiles{
     display: flex;
@@ -132,8 +146,8 @@
     margin-left: -5px;
 }
 #show-img{
-    height: 350px;
-    width: 350px;
+    height: 400px;
+    width: 400px;
     padding: 10px;
 }
 .show-photo-rsvp{
@@ -155,7 +169,7 @@
     justify-content: center;
     flex-direction: column; */
     /* padding: 50px 8px; */
-
+    
     position: relative;
     margin-left: 25px;
     margin-right: 25px;
@@ -171,6 +185,7 @@
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     margin-bottom: 25px;
 }
+
 #show-add-pics-btn{
     cursor: pointer;
     background-color: hsla(0,0%,100%,.4);
@@ -321,6 +336,39 @@
     height: 0px;
     /* transform: ; */
 }
+.location-no-rsvp{
+    color: #ab76f6;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#rsvp-location-h2-event-show{
+    color: hsla(0,0%,100%,.6);
+    font-style: italic;
+}
+.restrict-activity-log{
+    background-color: rgba(0,0,0,.8);
+    margin: 30px auto;
+    position: sticky;
+    /* bottom: -45px; */
+    transform: translateY(-35px);
+    z-index: 3;
+    min-height: 200px;
+    justify-content: center;
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 360px;
+    color: #fff;
+}
+#log-restricted{
+    margin-top: -310px;
+    filter: blur(6px);
+}
+.show-rsvps-comments{
+    height: min-content;
+}
 
 @media screen and (min-width: 1050px) {
     .show-photo-rsvp{
@@ -346,6 +394,17 @@
         justify-content: space-between;
         padding-left: 80px;
         /* margin-right: 40px; */
+    }
+
+    #show-img{
+        height: 300px;
+        width: 300px;
+    }
+    #event-title-show{
+        font-size: 100%;
+    }
+    .show-title{
+        justify-content: flex-start;
     }
 }
 
