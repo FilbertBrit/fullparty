@@ -22,7 +22,7 @@ upcoming-events-msg{
     overflow-x: overlay;
     padding-bottom: 10px;
     padding-left: 5%;
-    padding-right: 55vw;
+    padding-right: 100vw + -200px;
     margin-left: -15px;
 
 }
