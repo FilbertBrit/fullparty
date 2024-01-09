@@ -37,7 +37,7 @@ export function HomePage () {
     }else if(filter === 'All Past Events'){
         filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)));
     }
-    console.log(filteredEvents)
+    // console.log(filteredEvents)
     
     const handleClick = (e) => {
         setFilter(e.target.value)
