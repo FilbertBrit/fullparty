@@ -25,6 +25,13 @@
 }
 #event-title-show{
     width: max-content;
+    font-size: 56px;
+}
+#capacity-num-event-show{
+    color: #ab76f6;
+    font-weight: 700;
+    /* padding-right: 2%; */
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
 }
 .show-date-time{
     margin-top: 25px;
@@ -361,6 +368,9 @@
     #show-img{
         height: 300px;
         width: 300px;
+    }
+    #event-title-show{
+        font-size: 100%;
     }
 }
 
