@@ -22,6 +22,8 @@
     font-family: Syne,Avant Garde,Tahoma,Verdana,sans-serif;
     color: #fff;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
 }
 #event-title-show{
     width: max-content;
@@ -376,6 +378,9 @@
     }
     #event-title-show{
         font-size: 100%;
+    }
+    .show-title{
+        justify-content: flex-start;
     }
 }
 

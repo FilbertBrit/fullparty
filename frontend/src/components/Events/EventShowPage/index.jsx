@@ -53,10 +53,18 @@ export function EventShowPage () {
         <div id='page-layout-showpage'>
             <Navigation/>
             <div className="showpage-layout">
-                <div className="show-info">
                     <div className="show-title">
                         <h2 id='event-title-show'>{event.title}</h2>
                     </div>
+                    <div className="show-photo-rsvp">
+                    <div className="show-img">
+                        <img src={wazzap} alt="show-img" id='show-img'/>
+                    </div>
+                    <div className="show-rsvp">
+                        <RsvpComponent event={event}/>
+                    </div>
+                </div>
+                <div className="show-info">
                     <div className="show-date-time">
                         { event.dateTime ? 
                             (
@@ -170,14 +178,14 @@ export function EventShowPage () {
                         </button> */}
                     </div>
                 </div>
-                <div className="show-photo-rsvp">
+                {/* <div className="show-photo-rsvp">
                     <div className="show-img">
                         <img src={wazzap} alt="show-img" id='show-img'/>
                     </div>
                     <div className="show-rsvp">
                         <RsvpComponent event={event}/>
                     </div>
-                </div>
+                </div> */}
                 <div className="show-rsvps-comments">
                     <ActivityLog/>
                 </div>
