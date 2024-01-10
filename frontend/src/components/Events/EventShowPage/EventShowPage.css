@@ -354,7 +354,7 @@
     z-index: 3;
     min-height: 200px;
     justify-content: center;
-    width: 80%;
+    width: 300px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -368,6 +368,10 @@
 }
 .show-rsvps-comments{
     height: min-content;
+    width: 500px;
+}
+#restricted-log-container{
+    /* max-width: 360px; */
 }
 
 @media screen and (min-width: 1050px) {
@@ -405,6 +409,9 @@
     }
     .show-title{
         justify-content: flex-start;
+    }
+    .show-rsvps-comments{
+        width: 400px;
     }
 }
 
