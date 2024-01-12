@@ -24,8 +24,8 @@ function App() {
       <Modal/>
     {/* </div> */}
     <div>
+      {!sessionUser ? <Redirect to="/login"/> : 
       <Switch>
-        
         <Route path="/create" component={ EventInputForm } />
         <Route path="/events/:eventId/edit" component={ EventInputForm }/>
         <Route path="/events/:eventId">
@@ -62,6 +62,7 @@ function App() {
         </Route>
         
       </Switch>
+      }
     </div>
     </div>
   );
