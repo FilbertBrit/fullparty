@@ -134,6 +134,7 @@ upcoming-events-msg{
     align-items: center;
     width: 25%;
     cursor: pointer;
+
 }
 #mutual-prev-item:hover{
     background-color: rgba(255, 255, 255, 0.15);
@@ -191,6 +192,8 @@ upcoming-events-msg{
 .events{
     display: flex;
     /* padding-top: 15px; */
+    padding-right: calc(100vw - 325px);
+    /* scroll-padding-right: calc(100vw - 260px); */
 }
 
 .empty-event{
