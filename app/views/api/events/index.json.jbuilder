@@ -23,7 +23,7 @@ events.each do |event|
                 if event.date_time && event.date_time < today
                     rsvps.each do |rsvp|
                         if rsvp.user_id != @current_user.id && rsvp.status != "Can't Go" 
-                            mutualsCounter[rsvp.user_id] ?  mutualsCounter[rsvp.user_id].events.push(event.id) && mutualsCounter[rsvp.user_id].event = event.id : mutualsCounter[rsvp.user_id] = { name: rsvp.user.name, events: [event.id], event: event.id, created_at: rsvp.user.created_at}
+                            mutualsCounter[rsvp.user_id] ?  mutualsCounter[rsvp.user_id][:events].push(event.id) && mutualsCounter[rsvp.user_id][:event] = event.id : mutualsCounter[rsvp.user_id] = { name: rsvp.user.name, events: [event.id], event: event.id, created_at: rsvp.user.created_at}
                         end
                     end
                 end
