@@ -9,7 +9,7 @@ export function MutualsItem ({ mutual }) {
 
     const dispatch = useDispatch();
     const eventsObj = useSelector(getEvents);
-    const eventTitle = eventsObj ? eventsObj[mutual.recentEvent].title : ''
+    let eventTitle = eventsObj ? eventsObj[mutual.recentEvent].title : ''
     const eventDate = new Date(eventsObj[mutual.recentEvent].dateTime)
     if(eventTitle.length > 15){
         eventTitle = eventTitle.slice(0,12) + '...'

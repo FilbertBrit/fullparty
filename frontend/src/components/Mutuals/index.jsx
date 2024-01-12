@@ -16,6 +16,17 @@ export function Mutuals () {
     const [filter, setFilter] = useState('events')
     const [nameFilter, setNameFilter] = useState('down')
     const [eventFilter, setEventFilter] = useState('up')
+
+    switch (filter) {
+        case 'events':
+            
+            break;
+        case 'names':
+            
+            break;
+    
+    }
+    
     
     const handleName = async (e) => {
         e.preventDefault();
