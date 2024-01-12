@@ -19,7 +19,7 @@ export default function modalReducer(state = null, action) {
     case OPEN_MODAL:
       return action.modal;
     case CLOSE_MODAL:
-      return null;
+      return state;
     default:
       return state;
   }

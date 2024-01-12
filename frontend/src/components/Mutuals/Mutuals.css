@@ -26,6 +26,7 @@
     color: white;
 }
 #header-mutuals{
+    /* width: 100vw; */
     color: white;
     display: flex;
     flex-direction: column;
@@ -33,7 +34,7 @@
     align-items: center;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     margin-top: 15px;
-    width: 100%;
+    width: 97%;
     position: relative;
     top: 0px;
     z-index: 2;

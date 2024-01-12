@@ -35,7 +35,7 @@ export function MutualPageItem ({ mutual }) {
                 </div>
             </div>
             <div className="mutuals-num-event-container">
-                <h2 id="mutual-page-info">{mutual.sharedEvents}</h2>
+                <h2 id="mutual-page-info">{mutual.sharedEvents.length}</h2>
             </div>
         </div>
     )
