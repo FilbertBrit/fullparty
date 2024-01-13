@@ -31,7 +31,16 @@ events.each do |event|
         end
 
         if rsvpUser.status || event.author_id == @current_user.id
-            upcomingEvents += 1
+            if event.date_time
+
+                if event.date_time > today
+                    upcomingEvents += 1
+                end
+
+            else
+                upcomingEvents += 1
+            end
+
         end
     # end
 
