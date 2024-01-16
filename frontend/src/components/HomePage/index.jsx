@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { fetchEvents } from "../../store/events";
 import { getEvents } from "../../store/events";
 import { EventIndexItem } from "../Events/EventIndexItem";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 export function HomePage () {
     
@@ -22,6 +23,8 @@ export function HomePage () {
     const upcoming = useSelector(state => state.session.user.upcomingEvents)
     const today = new Date();
     let filteredEvents = []
+
+    // if(!sessionUser.user) return <Redirect to="/login"/>
     // console.log(events)
     // console.log(mutuals)
     
