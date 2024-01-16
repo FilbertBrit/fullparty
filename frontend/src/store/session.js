@@ -51,6 +51,7 @@ export const login = (user) => async (dispatch) => {
   });
   const data = await response.json();
   // console.log(data)
+
   storeCurrentUser(data)
   dispatch(setCurrentUser(data));
 
@@ -69,34 +70,30 @@ export const signup = (user) => async (dispatch) => {
       })
   });
   const data = await response.json();
-  storeCurrentUser(data.user)
-  dispatch(setCurrentUser(data.user));
+  storeCurrentUser(data)
+  dispatch(setCurrentUser(data));
   return response;
 }
 
 export const logout = () => async (dispatch) => {
+  // debugger
   const response = await csrfFetch('/api/session', {
     method: 'DELETE'
   });
+
+  console.log(response)
   storeCurrentUser(null);
   dispatch(removeCurrentUser());
   return response;
 }
 
-// export const restoreSession = () => async (dispatch) => {
-//     const response = await csrfFetch("/api/session");
-//     storeCSRFToken(response)
-//     const data = await response.json();
-//     storeCurrentUser(data.user);
-//     dispatch(setCurrentUser(data.user));
-//     return response;
-// }
 
 export const restoreSession = () => async (dispatch) => {
   // debugger
   const response = await csrfFetch('/api/session')
   storeCSRFToken(response)
   const data = await response.json()
+  console.log(data)
   storeCurrentUser(data)
   dispatch(setCurrentUser(data))
   return response;
@@ -108,7 +105,7 @@ const initialState = {
 
 const sessionReducer = (state = initialState, action) => {
   // const nextState = { ...state };
-  // console.log(action.payload)
+  // console.log(action, action.user)
   switch (action.type) {
     case RECEIVE_EVENTS:
       return { ...state, user: {...state.user, ...action.payload.user}};

@@ -16,7 +16,8 @@ import { Mutuals } from './components/Mutuals';
 function App() {
 
   // REFACTOR TO GET RID OF THIS USESELECTOR
-  const sessionUser = useSelector(state => state.session.user)
+  const sessionUser = useSelector(state => state.session)
+  // console.log(sessionUser.user)
 
   return (
     <div className='app'>
@@ -24,19 +25,19 @@ function App() {
       <Modal/>
     {/* </div> */}
     <div>
-      {!sessionUser ? <Redirect to="/login"/> : 
       <Switch>
+        
         <Route path="/create" component={ EventInputForm } />
         <Route path="/events/:eventId/edit" component={ EventInputForm }/>
         <Route path="/events/:eventId">
-        {sessionUser ? (
+        {sessionUser.user ? (
                 <EventShowPage/>
               ) : (
                 <Redirect to="/login"/>
               )}
         </Route>
         <Route path="/events">
-        {sessionUser ? (
+        {sessionUser.user ? (
                 <HomePage/>
               ) : (
                 <Redirect to="/login"/>
@@ -62,7 +63,6 @@ function App() {
         </Route>
         
       </Switch>
-      }
     </div>
     </div>
   );

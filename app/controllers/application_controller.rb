@@ -31,12 +31,14 @@ class ApplicationController < ActionController::API
     end
     
     def login!(user)
+        # debugger
         # reset `user`'s `session_token` and store in `session` cookie
         session[:session_token] = user.reset_session_token! # token in db == token in browser cookie
         @current_user = user
     end
     
     def logout!
+        # debugger
         # reset the `current_user`'s session cookie, if one exists
         # clear out token from `session` cookie
         current_user.reset_session_token! if current_user# remove token from db
@@ -82,6 +84,7 @@ class ApplicationController < ActionController::API
     end
 
     def unhandled_error(error)
+        # debugger
         if request.accepts.first.html?
             raise error
         else
