@@ -28,13 +28,10 @@ const removeEvent = eventId => ({
 
 //  EVENT SELECTORS
 export const getEvent = eventId => state => {
-    // console.log('state: ',state.events[eventId])
     return state?.events ? state.events[eventId] : null;
 }
 
 export const getEvents = state => {
-    // console.log(state)
-    // return state?.events ? Object.values(state.events) : [];
     return state?.events ?  state.events : [];
 
 }
@@ -51,7 +48,6 @@ export const fetchEvents = () => async (dispatch) => {
     const response = await csrfFetch('/api/events');
     console.log(response)
     if (response.ok) {
-        console.log('hi')
         const events = await response.json();
         dispatch(receiveEvents(events));
         // storeEvents(events)
@@ -129,6 +125,7 @@ const eventsReducer = (state = {}, action) => {
         case RECEIVE_USER:
             return { ...action.payload.events}
         case REMOVE_EVENT:
+            // debugger
             const newState = { ...state };
             delete newState[action.eventId];
             return newState;

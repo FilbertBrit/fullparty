@@ -37,9 +37,8 @@ export function EventShowPage () {
         rsvps[key].status === "Maybe" ? (rsvpMaybe = (rsvpMaybe + 1)) : (rsvpMaybe = (rsvpMaybe));
     }
 
-    const handleDelete = (e) => {
-        dispatch(deleteEvent(eventId));
-        history.push('/events')
+    const handleDelete = async(e) => {
+        dispatch(deleteEvent(eventId)).then(history.push('/events'));
     }
     
     useEffect(  () => {

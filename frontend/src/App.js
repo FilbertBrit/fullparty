@@ -16,8 +16,9 @@ import { Mutuals } from './components/Mutuals';
 function App() {
 
   // REFACTOR TO GET RID OF THIS USESELECTOR
+  // debugger
   const sessionUser = useSelector(state => state.session)
-  // console.log(sessionUser.user)
+  console.log(sessionUser)
 
   return (
     <div className='app'>
@@ -55,7 +56,7 @@ function App() {
           )}
         </Route>
         <Route path="/">
-        {sessionUser ? (
+        {sessionUser.user ? (
           <Redirect to="/events"/>
           ) : (
             <SplashPage/>

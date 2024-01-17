@@ -4,7 +4,7 @@ import wazzap from "../../../images/wazzap-halloween.jpeg"
 
 export const EventIndexItem = ({ event }) => {
     const showPage = '/events/' + event.id;
-    // console.log(event);
+    //on click use history push or Link component
     
     return (
         
