@@ -1,14 +1,13 @@
 // This file will contain all the actions specific to the session user's information and the session user's Redux reducer.
-
 import csrfFetch from './csrf';
 import { RECEIVE_EVENTS } from './events';
 
 export const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 export const UPDATE_CURRENT_USER = 'session/updateCurrentUser';
+debugger
 
 const setCurrentUser = (user) => {
-//  console.log(user)
   return {
     type: SET_CURRENT_USER,
     user
@@ -34,7 +33,6 @@ const storeCSRFToken = response => {
 }
   
 const storeCurrentUser = user => {
-  // debugger
     if (user) sessionStorage.setItem("currentUser", JSON.stringify(user));
     else sessionStorage.removeItem("currentUser");
 }
@@ -50,11 +48,8 @@ export const login = (user) => async (dispatch) => {
     })
   });
   const data = await response.json();
-  // console.log(data)
-
   storeCurrentUser(data)
   dispatch(setCurrentUser(data));
-
   return response;
 };
 
@@ -76,12 +71,10 @@ export const signup = (user) => async (dispatch) => {
 }
 
 export const logout = () => async (dispatch) => {
-  // debugger
   const response = await csrfFetch('/api/session', {
     method: 'DELETE'
   });
 
-  console.log(response)
   storeCurrentUser(null);
   dispatch(removeCurrentUser());
   return response;
@@ -89,7 +82,7 @@ export const logout = () => async (dispatch) => {
 
 
 export const restoreSession = () => async (dispatch) => {
-  // debugger
+  debugger
   const response = await csrfFetch('/api/session')
   storeCSRFToken(response)
   const data = await response.json()
@@ -100,18 +93,18 @@ export const restoreSession = () => async (dispatch) => {
 }
 
 const initialState = { 
-    user: JSON.parse(sessionStorage.getItem("currentUser"))
+  user: JSON.parse(sessionStorage.getItem("currentUser"))
 };
 
 const sessionReducer = (state = initialState, action) => {
   // const nextState = { ...state };
-  // console.log(action, action.user)
   switch (action.type) {
     case RECEIVE_EVENTS:
       return { ...state, user: {...state.user, ...action.payload.user}};
     case REMOVE_CURRENT_USER:
       return { ...state, user: null };
     case SET_CURRENT_USER:
+      // debugger
       return { ...state, user: action.user};
     case UPDATE_CURRENT_USER:
       return {...state, user: action.payload.user}

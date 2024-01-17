@@ -27,12 +27,7 @@ json.event do
     json.date @event.date_time ? @event.date_time.strftime("%A, %b %e ") : @event.date_time
     json.host @event.user.name
     json.hostId @event.user.id
-    # json.rsvpList rsvpArr
-    # json.going rsvpsGoing
-    # json.maybe rsvpsMaybye
-    # json.cant rsvpsCant
     json.userRsvp userRsvp
-    # json.available available
 end
 
 

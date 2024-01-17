@@ -39,11 +39,11 @@ class Api::EventsController < ApplicationController
   end
 
   def destroy
+    # debugger
     @event.destroy
     # @user = current_user
     @events = Event.all
-    # debugger
-    render :index
+    render :show
     # render json: {events: @events}
   end
 
