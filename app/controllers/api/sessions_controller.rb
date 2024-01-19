@@ -1,7 +1,6 @@
 class Api::SessionsController < ApplicationController
   def show
     # debugger
-    # banana
     if current_user
       @user = current_user
       # render json: { user: current_user }

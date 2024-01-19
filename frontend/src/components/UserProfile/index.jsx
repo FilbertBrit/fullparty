@@ -45,7 +45,7 @@ export function UserProfile () {
                         {/* <h3>Socials</h3> */}
                     </div>
                     }
-                    <div className="profile-user-join-date">
+                    <div className="profile-user-join-date-profile">
                         <h3 id="user-profile-details">💥 <span id="bam-emoji"> Joined {joinedDate}</span></h3>
                     </div>
                     {/* <div className="profile-user-achievments"> */}
