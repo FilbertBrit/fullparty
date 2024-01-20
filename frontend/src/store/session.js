@@ -5,7 +5,7 @@ import { RECEIVE_EVENTS } from './events';
 export const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 export const UPDATE_CURRENT_USER = 'session/updateCurrentUser';
-debugger
+// debugger
 
 const setCurrentUser = (user) => {
   return {
@@ -82,7 +82,7 @@ export const logout = () => async (dispatch) => {
 
 
 export const restoreSession = () => async (dispatch) => {
-  debugger
+  // debugger
   const response = await csrfFetch('/api/session')
   storeCSRFToken(response)
   const data = await response.json()
