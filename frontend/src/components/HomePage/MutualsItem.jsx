@@ -34,7 +34,7 @@ export function MutualsItem ({ mutual }) {
                 </div>
             </div>
             <div id="num-events-container">
-                {mutual.sharedEvents === 1 ? <h2 id='shared-events-info'>🗓️ 1 shared event</h2> : <h2 id='shared-events-info'>🗓️ {mutual.sharedEvents} shared events</h2> }
+                {mutual.sharedEvents.length === 1 ? <h2 id='shared-events-info'>🗓️ 1 shared event</h2> : <h2 id='shared-events-info'>🗓️ {mutual.sharedEvents.length} shared events</h2> }
             </div>
             <div id="last-shared-event">
                 <h2>🕓 {eventTitle} • {eventDate.getMonth() + 1}/{eventDate.getUTCDate()}</h2>
