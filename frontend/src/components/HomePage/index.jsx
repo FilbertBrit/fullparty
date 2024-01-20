@@ -24,6 +24,9 @@ export function HomePage () {
     const today = new Date();
     let filteredEvents = []
 
+    mutuals.sort( (a,b) => b.sharedEvents.length - a.sharedEvents.length  )
+    // console.log(mutuals)
+
     // if(!sessionUser.user) return <Redirect to="/login"/>
     // console.log(events)
     // console.log(mutuals)
