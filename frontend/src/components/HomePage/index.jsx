@@ -10,6 +10,7 @@ import { fetchEvents } from "../../store/events";
 import { getEvents } from "../../store/events";
 import { EventIndexItem } from "../Events/EventIndexItem";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { useRef } from "react";
 
 export function HomePage () {
     
@@ -19,16 +20,17 @@ export function HomePage () {
     const events = eventsObj ? Object.values(eventsObj) : [];
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
+    const [mutualPreview, setMutualPreview] = useState([]);
     const [filter, setFilter] = useState("Upcoming");
     const upcoming = useSelector(state => state.session.user.upcomingEvents)
     const today = new Date();
+    const [windowSize, setWindowSize] = useState({width: window.innerWidth, height: window.innerHeight})
     let filteredEvents = []
 
     mutuals.sort( (a,b) => b.sharedEvents.length - a.sharedEvents.length  )
-    // console.log(mutuals)
-
-    // if(!sessionUser.user) return <Redirect to="/login"/>
-    // console.log(events)
+    // setMutualPreview(mutuals.slice(0,8))
+    // const windowSize = useRef([window.innerWidth, window.innerHeight]);
+    // console.log(windowSize)
     // console.log(mutuals)
     
     if(filter === "Upcoming"){
@@ -58,7 +60,23 @@ export function HomePage () {
         dispatch( fetchEvents() );
     }, [dispatch])
 
+    useEffect(() => {
+        const handleWindowResize = async () => {
+            await setWindowSize({width: window.innerWidth, height: window.innerHeight});
 
+            windowSize.width < 715 ? setMutualPreview(mutuals.slice(0,6)) : setMutualPreview(mutuals.slice(0,8))
+            console.log(mutualPreview)
+        };
+
+        // windowSize.width < 715 ? setMutualPreview(mutuals.slice(0,6)) : setMutualPreview(mutuals.slice(0,8))
+        // console.log(mutualPreview)
+    
+        window.addEventListener('resize', handleWindowResize);
+    
+        return () => {
+          window.removeEventListener('resize', handleWindowResize);
+        };
+      }, []);
    return (
     upcoming ? 
         <div className="homepage-component">
