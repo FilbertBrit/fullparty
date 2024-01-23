@@ -20,21 +20,14 @@ export function HomePage () {
     const events = eventsObj ? Object.values(eventsObj) : [];
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
-    let mutualPreview;
     const [filter, setFilter] = useState("Upcoming");
     const upcoming = useSelector(state => state.session.user.upcomingEvents)
     const today = new Date();
     const [windowSize, setWindowSize] = useState({width: window.innerWidth, height: window.innerHeight})
     const [mutualSize, setMutualSize] = useState(8)
-    // const [updateMutuals, setUpdateMutuals] = useState('f')
     let filteredEvents = []
 
     mutuals.sort( (a,b) => b.sharedEvents.length - a.sharedEvents.length  )
-    mutualPreview ||= (mutuals.slice(0,8))
-    // setMutualPreview(mutuals.slice(0,8))
-    // const windowSize = useRef([window.innerWidth, window.innerHeight]);
-    // console.log(windowSize)
-    // console.log(mutuals)
     
     if(filter === "Upcoming"){
         filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== null || (event.authorId === sessionUser.id)));
@@ -48,7 +41,6 @@ export function HomePage () {
     }else if(filter === 'All Past Events'){
         filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)));
     }
-    // console.log(filteredEvents)
     
     const handleClick = (e) => {
         setFilter(e.target.value)
@@ -66,16 +58,7 @@ export function HomePage () {
     useEffect(() => {
         const handleWindowResize = () => {
             setWindowSize({width: window.innerWidth, height: window.innerHeight})
-            // .then(() => {
-                
-            //     windowSize.width < 715 ? mutualPreview = (mutuals.slice(0,6)) : mutualPreview = (mutuals.slice(0,8))
-            //     console.log(mutualPreview)
-
-            // });
-
         };
-
-    
         window.addEventListener('resize', handleWindowResize);
     
         return () => {
@@ -84,10 +67,9 @@ export function HomePage () {
       }, []);
 
       useEffect(() => {
-
         windowSize.width <= 715 ? setMutualSize(6) : setMutualSize(8)
-
       }, [windowSize.width])
+
    return (
     upcoming ? 
         <div className="homepage-component">
