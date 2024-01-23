@@ -20,7 +20,7 @@ export function HomePage () {
     const events = eventsObj ? Object.values(eventsObj) : [];
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
-    const [mutualPreview, setMutualPreview] = useState([]);
+    let mutualPreview = [];
     const [filter, setFilter] = useState("Upcoming");
     const upcoming = useSelector(state => state.session.user.upcomingEvents)
     const today = new Date();
@@ -28,6 +28,7 @@ export function HomePage () {
     let filteredEvents = []
 
     mutuals.sort( (a,b) => b.sharedEvents.length - a.sharedEvents.length  )
+    mutualPreview = (mutuals.slice(0,8))
     // setMutualPreview(mutuals.slice(0,8))
     // const windowSize = useRef([window.innerWidth, window.innerHeight]);
     // console.log(windowSize)
@@ -64,7 +65,7 @@ export function HomePage () {
         const handleWindowResize = async () => {
             await setWindowSize({width: window.innerWidth, height: window.innerHeight});
 
-            windowSize.width < 715 ? setMutualPreview(mutuals.slice(0,6)) : setMutualPreview(mutuals.slice(0,8))
+            windowSize.width < 715 ? mutualPreview = (mutuals.slice(0,6)) : mutualPreview = (mutuals.slice(0,8))
             console.log(mutualPreview)
         };
 
@@ -77,6 +78,13 @@ export function HomePage () {
           window.removeEventListener('resize', handleWindowResize);
         };
       }, []);
+
+      useEffect(() => {
+
+        windowSize.width <= 715 ? mutualPreview = mutuals.slice(0,6) : mutualPreview = mutuals.slice(0,8)
+        console.log(mutualPreview)
+
+      }, [windowSize.width])
    return (
     upcoming ? 
         <div className="homepage-component">
@@ -148,7 +156,7 @@ export function HomePage () {
                     </div>
                     <div id="mutuals-preview">
                         {
-                            mutuals.map ( (mutual, i) => 
+                            mutualPreview.map ( (mutual, i) => 
                                 <MutualsItem mutual={mutual} key={i}/>
                             )
                         }
