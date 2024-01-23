@@ -67,7 +67,7 @@ export function HomePage () {
       }, []);
 
       useEffect(() => {
-        windowSize.width <= 715 ? setMutualSize(6) : setMutualSize(8)
+        windowSize.width <= 720 ? setMutualSize(6) : setMutualSize(8)
       }, [windowSize.width])
 
    return (
