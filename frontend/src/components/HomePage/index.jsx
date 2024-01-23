@@ -20,15 +20,17 @@ export function HomePage () {
     const events = eventsObj ? Object.values(eventsObj) : [];
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
-    let mutualPreview = [];
+    let mutualPreview;
     const [filter, setFilter] = useState("Upcoming");
     const upcoming = useSelector(state => state.session.user.upcomingEvents)
     const today = new Date();
     const [windowSize, setWindowSize] = useState({width: window.innerWidth, height: window.innerHeight})
+    const [mutualSize, setMutualSize] = useState(8)
+    // const [updateMutuals, setUpdateMutuals] = useState('f')
     let filteredEvents = []
 
     mutuals.sort( (a,b) => b.sharedEvents.length - a.sharedEvents.length  )
-    mutualPreview = (mutuals.slice(0,8))
+    mutualPreview ||= (mutuals.slice(0,8))
     // setMutualPreview(mutuals.slice(0,8))
     // const windowSize = useRef([window.innerWidth, window.innerHeight]);
     // console.log(windowSize)
@@ -62,15 +64,17 @@ export function HomePage () {
     }, [dispatch])
 
     useEffect(() => {
-        const handleWindowResize = async () => {
-            await setWindowSize({width: window.innerWidth, height: window.innerHeight});
+        const handleWindowResize = () => {
+            setWindowSize({width: window.innerWidth, height: window.innerHeight})
+            // .then(() => {
+                
+            //     windowSize.width < 715 ? mutualPreview = (mutuals.slice(0,6)) : mutualPreview = (mutuals.slice(0,8))
+            //     console.log(mutualPreview)
 
-            windowSize.width < 715 ? mutualPreview = (mutuals.slice(0,6)) : mutualPreview = (mutuals.slice(0,8))
-            console.log(mutualPreview)
+            // });
+
         };
 
-        // windowSize.width < 715 ? setMutualPreview(mutuals.slice(0,6)) : setMutualPreview(mutuals.slice(0,8))
-        // console.log(mutualPreview)
     
         window.addEventListener('resize', handleWindowResize);
     
@@ -81,8 +85,7 @@ export function HomePage () {
 
       useEffect(() => {
 
-        windowSize.width <= 715 ? mutualPreview = mutuals.slice(0,6) : mutualPreview = mutuals.slice(0,8)
-        console.log(mutualPreview)
+        windowSize.width <= 715 ? setMutualSize(6) : setMutualSize(8)
 
       }, [windowSize.width])
    return (
@@ -156,7 +159,7 @@ export function HomePage () {
                     </div>
                     <div id="mutuals-preview">
                         {
-                            mutualPreview.map ( (mutual, i) => 
+                            mutuals.slice(0,mutualSize).map ( (mutual, i) => 
                                 <MutualsItem mutual={mutual} key={i}/>
                             )
                         }
