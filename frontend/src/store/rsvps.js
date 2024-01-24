@@ -53,7 +53,7 @@ const rsvpsReducer = (state = {}, action) => {
         case RECEIVE_EVENTS:
             return null;
         case RECEIVE_RSVP:
-            return {...state, [action.rsvp.id]: action.rsvp};
+            return {...state, [action.rsvp.id]: action.rsvps};
         default:
             return state;
     }

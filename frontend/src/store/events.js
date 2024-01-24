@@ -57,8 +57,6 @@ export const fetchEvents = () => async (dispatch) => {
 };
 
 export const fetchEvent = eventId => async (dispatch) => {
-//    debugger
-//    console.log(eventId)
     const response = await csrfFetch (`/api/events/${eventId}`);
 
     if (response.ok) {
@@ -107,7 +105,6 @@ export const deleteEvent = eventId => async (dispatch) => {
     });
 
     if (response.ok) {
-        // console.log('check')
         dispatch(removeEvent(eventId));
     }
 
@@ -125,7 +122,6 @@ const eventsReducer = (state = {}, action) => {
         case RECEIVE_USER:
             return { ...action.payload.events}
         case REMOVE_EVENT:
-            // debugger
             const newState = { ...state };
             delete newState[action.eventId];
             return newState;
