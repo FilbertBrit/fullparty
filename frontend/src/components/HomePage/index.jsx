@@ -32,7 +32,6 @@ export function HomePage () {
     if(filter === "Upcoming"){
         filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== null || (event.authorId === sessionUser.id)));
     }else if(filter === "Hosting"){
-        console.log('hi')
         filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null) && (event.authorId === sessionUser.id));
     }else if(filter === "Open Invite"){
         filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp === null));
