@@ -126,7 +126,6 @@ const eventsReducer = (state = {}, action) => {
             delete newState[action.eventId];
             return newState;
         case RECEIVE_RSVP:
-            console.log(action.rsvp.status)
             const eventId = action.rsvp.eventId;
             const updateEvent = {...state[eventId], userRsvp: action.rsvp.status};
             return {...state, [eventId]: updateEvent}

@@ -20,7 +20,6 @@ export function EventShowPage () {
     const history = useHistory();
     const event = useSelector(getEvent(eventId));
     const sessionUser = useSelector(state => state.session.user);
-    // const []
     const rsvps = useSelector(state => state.rsvps);
     const date = event ? new Date(event.dateTime).toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" ") : ''
     const today = new Date()
