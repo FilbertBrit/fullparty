@@ -20,15 +20,14 @@ export function EventShowPage () {
     const history = useHistory();
     const event = useSelector(getEvent(eventId));
     const sessionUser = useSelector(state => state.session.user);
+    // const []
     const rsvps = useSelector(state => state.rsvps);
     const date = event ? new Date(event.dateTime).toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" ") : ''
     const today = new Date()
-    console.log(date)
     const eventDone = event ? date < today : '';
     let rsvpGoing = 0;
     let rsvpMaybe = 0;
     const editLink = "/events/" + eventId + "/edit";
-
     let location = event?.location || "No Location Set";
 
     

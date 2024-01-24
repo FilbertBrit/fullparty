@@ -18,7 +18,6 @@ function App() {
   // REFACTOR TO GET RID OF THIS USESELECTOR
   // debugger
   const sessionUser = useSelector(state => state.session)
-  console.log(sessionUser)
 
   return (
     <div className='app'>
@@ -49,7 +48,7 @@ function App() {
         <Route path="/signup" component={ SignupFormPage } />
         <Route path="/users/:userId/edit" component={UserProfileEditForm}></Route>
         <Route path="/users/:userId">
-        {sessionUser ? (
+        {sessionUser.user ? (
           <UserProfile/>
           ) : (
             <Redirect to="/events"/>
