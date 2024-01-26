@@ -142,9 +142,7 @@
     color: #ab76f6;
 }
 .show-img{
-    display: flex;
-    justify-content: center;
-    margin-left: -25px;
+    margin-left: 12px;
     margin-top: 55px;
 }
 #show-img{
