@@ -142,8 +142,11 @@
     color: #ab76f6;
 }
 .show-img{
-    margin-left: 12px;
-    margin-top: 55px;
+    /* margin-left: 12px;
+    margin-top: 55px; */
+    margin-top: 56px;
+    display: flex;
+    justify-content: center;
 }
 #show-img{
     height: 400px;
@@ -415,4 +418,9 @@
     }
 }
 
-
+.event-description-showpage{
+    max-width: 300px;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+}
