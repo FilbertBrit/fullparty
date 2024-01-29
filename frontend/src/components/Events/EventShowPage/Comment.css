@@ -12,7 +12,8 @@
 .comment-container-author-body{
     display: flex;
     flex-direction: row;
-    width: 80%;
+    width: fit-content;
+    min-width: 80%;
 }
 .comment-body-container{
     padding-top: 5px;
