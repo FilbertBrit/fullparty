@@ -16,21 +16,23 @@
     min-width: 80%;
 }
 .comment-body-container{
-    padding-top: 5px;
+    padding-top: 15px;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    height: 70px;
+    /* justify-content: space-evenly; */
+    /* height: 70px; */
 }
 #author-commented{
     color: hsla(0,0%,100%,.6);
 }
 .comment-date{
     color: hsla(0,0%,100%,.4);
+    padding-top: 5px;
 }
 .comment-body{
     color: white;
+    padding-top: 5px;
 }
 .comment-menu{
     display: flex;
