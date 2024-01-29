@@ -115,7 +115,7 @@ export function Comment ({ comment }) {
     ) : (
             <div className="comment-container-item">
                 <div className="comment-container-author-body">
-                    <div className="user-profile-photo-rsvp">
+                    <div className="user-profile-photo-rsvp" id="user-profile-photo-container">
                         <div className="initials">
                         {comment.author.slice(0,1)}
                         </div>
