@@ -20,6 +20,7 @@
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     display: flex;
     flex-direction: column;
+    max-width: 300px;
     /* justify-content: space-evenly; */
     /* height: 70px; */
 }
