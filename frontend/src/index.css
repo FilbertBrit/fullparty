@@ -79,6 +79,7 @@ table {
     width: 100%;
     background: url(https://assets.getpartiful.com/backgrounds/aquatica/web.jpg), linear-gradient(to right bottom, rgb(3, 3, 13) 40%, 55.4731%, rgb(12, 42, 114) 65.9463%, 80%, rgb(60, 111, 192) 100%);
 
+    background-size: 100%;
 
     /* animation: slide 3s linear infinite; */
 }
