@@ -45,8 +45,10 @@
     text-transform: uppercase;
     font-size: 14px;
     position: absolute;
-    bottom: 0;
+    bottom: 0.9%;
     right: 0;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    font-weight: 350;
 }
 #photo-rsvp-container{
     position: relative;
