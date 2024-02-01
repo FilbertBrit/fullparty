@@ -17,13 +17,16 @@ export function Mutuals () {
     const [filter, setFilter] = useState('events')
     const [nameFilter, setNameFilter] = useState('down')
     const [eventFilter, setEventFilter] = useState('up')
+    let mutualfilter = mutuals;
 
     switch (filter) {
         case 'events':
-            
+            console.log(eventFilter)
+            eventFilter === 'up' ? mutualfilter = mutuals.sort((a,b) => b.sharedEvents.length - a.sharedEvents.length) : mutualfilter = mutuals.sort((a,b) => a.sharedEvents.length - b.sharedEvents.length);
             break;
         case 'names':
-            
+            console.log(nameFilter)
+            nameFilter === 'down' ? mutualfilter = mutuals.sort((a,b) => a.name - b.name) : mutualfilter = mutuals.sort((a,b) => b.name - a.name);
             break;
         default:
             break;
