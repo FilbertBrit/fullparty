@@ -79,7 +79,7 @@ export function HomePage () {
                 <div className="upcoming-events-msg">
                     You have
                     <span id="upcoming-msg" onClick={() => setFilter('Upcoming')}>{upcoming }</span>
-                    upcoming event.
+                    upcoming {upcoming > 1 ? 'events' : 'event'}.
                 </div>
                 <nav className="event-nav-bar">
                     <button className="event-filter-btn-open" style={{
