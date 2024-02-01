@@ -78,6 +78,7 @@
     font-weight: 500;
     box-shadow: 0 0 6px rgba(0,0,0,.3);
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    font-size: 12.5px;
 }
 #dots-options-btn{
     height: 15px
