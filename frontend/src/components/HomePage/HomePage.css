@@ -223,10 +223,8 @@ upcoming-events-msg{
     border-color: #AB76F6;
 }
 .empty-event:hover  #new-event-link{
-    /* #new-event-link{ */
-        background-color: rgba(255, 255, 255, 0.15);
-        height: 280px;
-    /* } */
+    background-color: rgba(255, 255, 255, 0.15);
+    height: 280px;
 }
 
 .mutuals{

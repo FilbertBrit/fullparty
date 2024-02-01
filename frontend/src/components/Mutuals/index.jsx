@@ -7,6 +7,7 @@ import upArrow from "../../images/up-arrow.png"
 import downArrow from "../../images/down-arrow.png"
 import upDownArrow from "../../images/up-and-down-arrow.png"
 import { MutualPageItem } from "./MutualPageItem"
+import { AiOutlineInstagram } from "react-icons/ai" 
 
 export function Mutuals () {
     const dispatch = useDispatch();
@@ -80,6 +81,8 @@ export function Mutuals () {
                         <MutualPageItem mutual={mutual} key={i}/>)
                     }
                 </div>
+                <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
+                
             </div>
         </>
     )
