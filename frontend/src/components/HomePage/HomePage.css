@@ -230,3 +230,7 @@ upcoming-events-msg{
     padding: 5%;
     margin-top: -40px;
 }
+#welcome-header-span{
+    color:  hsla(0,0%,100%,.8);
+    font-weight: 345;
+}
