@@ -13,9 +13,11 @@ export const EventIndexItem = ({ event }) => {
     const today = new Date();
     let rsvpStatus= '';
     let date = new Date(event.dateTime);
-    let eventDate = date.toString().split(' ')[0] + ' ' + (date.getMonth() + 1) + '/' + date.getDate();
-    console.log(date, eventDate)
-    console.log(date.getTimezoneOffset())
+    let eventTime = date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" ")
+    let time = eventTime[0].slice(0,1) + eventTime[1].toLocaleLowerCase()
+    let eventDate = date.toString().split(' ')[0] + ' ' + (date.getMonth() + 1) + '/' + date.getDate() + '・' + time;
+    // console.log(date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" "), eventDate)
+    // console.log(date.getTimezoneOffset())
 
 
     if( ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)) ){
