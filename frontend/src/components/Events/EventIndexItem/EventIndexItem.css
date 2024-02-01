@@ -12,6 +12,9 @@
 #event-item:hover{
     background-color: rgba(255, 255, 255, 0.15);
 }
+#event-item:hover #event-item-title{
+    color: #ab76f6;
+}
 
 #event-img{
     height: 250px;

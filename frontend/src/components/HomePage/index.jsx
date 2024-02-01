@@ -128,7 +128,7 @@ export function HomePage () {
                         }
                         <a href="/create" id="new-event-link">
                             <div className="empty-event" onMouseOver={chbg("rgba(255, 255, 255, 0.15)")} onMouseLeave={chbg("transparent")}>
-                                <h4 id="empty-event-title">+ New Event</h4>
+                                <p id="empty-event-title">+ New Event</p>
                             </div>
                         </a>
                     </div>
