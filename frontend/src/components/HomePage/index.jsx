@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import Navigation from "../Navigation"
 import "./HomePage.css"
 import { useEffect, useState } from "react";
-import { AiOutlineInstagram } from "react-icons/ai"
+import { AiOutlineInstagram } from "react-icons/ai" 
 import { MutualsItem } from "./MutualsItem";
 import { useDispatch } from "react-redux";
 import { fetchEvents } from "../../store/events";
@@ -118,7 +118,11 @@ export function HomePage () {
                     </button>
                 </nav>
                 </section>
-                
+                {filter === 'Open Invite' ?
+                <div>
+
+                </div>
+                : ''}
                 <div className="event-items">
                     <div className="events">
                         {
