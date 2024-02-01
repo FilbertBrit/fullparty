@@ -20,11 +20,9 @@ export function Mutuals () {
 
     switch (filter) {
         case 'events':
-            console.log(eventFilter)
             eventFilter === 'up' ? mutuals.sort((a,b) => b.sharedEvents.length - a.sharedEvents.length) : mutuals.sort((a,b) => a.sharedEvents.length - b.sharedEvents.length);
             break;
         case 'names':
-            console.log(nameFilter, 'name')
             nameFilter === 'down' ? mutuals.sort((a,b) => a.name.localeCompare(b.name) ): mutuals.sort((a,b) => b.name.localeCompare(a.name));
             break;
         default:
