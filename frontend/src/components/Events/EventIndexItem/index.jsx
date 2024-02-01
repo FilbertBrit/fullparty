@@ -12,34 +12,42 @@ export const EventIndexItem = ({ event }) => {
     let rsvpStatus= '';
 
     if( ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)) ){
-        switch (userRsvp) {
-            case "I'm Going":
-                rsvpStatus = '👍 WENT'
-                break;
-            case "Maybe":
-                rsvpStatus = '🤔 MAYBE'
-                break;
-            case "Can't Go":
-                rsvpStatus = "😢 DIDN'T GO"
-                break;
-            default:
-                break;
+        if(event.authorId === sessionUser.id){
+            rsvpStatus = "👑 HOSTED";
+        }else{
+            switch (userRsvp) {
+                case "I'm Going":
+                    rsvpStatus = '👍 WENT'
+                    break;
+                case "Maybe":
+                    rsvpStatus = '🤔 MAYBE'
+                    break;
+                case "Can't Go":
+                    rsvpStatus = "😢 DIDN'T GO"
+                    break;
+                default:
+                    break;
+            }
         }
     }
     else{
-        
-        switch (userRsvp) {
-            case "I'm Going":
-                rsvpStatus = '👍 GOING'
-                break;
-            case "Maybe":
-                rsvpStatus = '🤔 MAYBE'
-                break;
-            case "Can't Go":
-                rsvpStatus = "😢 CAN'T"
-                break;
-            default:
-                break;
+        if(event.authorId === sessionUser.id){
+            rsvpStatus = "👑 HOSTING"
+        }
+        else{
+            switch (userRsvp) {
+                case "I'm Going":
+                    rsvpStatus = '👍 GOING'
+                    break;
+                case "Maybe":
+                    rsvpStatus = '🤔 MAYBE'
+                    break;
+                case "Can't Go":
+                    rsvpStatus = "😢 CAN'T"
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -48,7 +56,7 @@ export const EventIndexItem = ({ event }) => {
         
         <a href={ showPage } id="event-item" >
             <img src={wazzap} id="event-img" alt="dummy-pic"/>
-            <div id="user-rsvp-details">{}</div>
+            <div id="user-rsvp-details">{rsvpStatus}</div>
             <div className="details">
                 <h2 id="event-item-title">{event.title}</h2>
                 <h2 id="event-item-host">Hosted by {event.host}</h2>
