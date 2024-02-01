@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { getEvents } from "../../store/events"
 import { useDispatch } from "react-redux";
-import { fetchUser } from "../../store/user";
+// import { fetchUser } from "../../store/user";
 import { openModal } from "../../store/modal";
 
 

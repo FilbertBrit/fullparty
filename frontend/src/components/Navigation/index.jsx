@@ -8,12 +8,12 @@ import home from "../../images/home.png"
 import linkedin from "../../images/linkedin.png"
 import notification from "../../images/notification.png"
 import * as sessionActions from '../../store/session';
-import { useHistory } from 'react-router';
+// import { useHistory } from 'react-router';
 
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
-  const history = useHistory();
+  // const history = useHistory();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);

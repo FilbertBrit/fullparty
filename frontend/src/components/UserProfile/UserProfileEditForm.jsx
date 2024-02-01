@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import Navigation from "../Navigation";
-import { useHistory, useParams } from "react-router";
-import wazzap from "../../images/wazzap-halloween.jpeg"
+import { useHistory } from "react-router";
+// import wazzap from "../../images/wazzap-halloween.jpeg"
 import "./UserProfile.css"
 import"./UserProfileEditForm.css"
 import { useState } from "react";
-import plus from "../../images/plus-svgrepo-com.png"
-import insta from "../../images/instagram.png"
-import snap from "../../images/snapchat.png"
-import twitter from "../../images/twitter.png"
+// import plus from "../../images/plus-svgrepo-com.png"
+// import insta from "../../images/instagram.png"
+// import snap from "../../images/snapchat.png"
+// import twitter from "../../images/twitter.png"
 import plusPink from "../../images/plus-pink.png"
 import instaPink from "../../images/instagram-pink.png"
 import snapPink from "../../images/snapchat-pink.png"
@@ -23,9 +23,9 @@ export function UserProfileEditForm () {
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session?.user) 
-    const userId = sessionUser?.id;
+    // const userId = sessionUser?.id;
     const joinedDate = sessionUser?.joined;
-    const profile = useParams();
+    // const profile = useParams();
     const [name, setName] = useState(sessionUser?.name);
     const [bio, setBio] = useState(sessionUser?.bio);
 
@@ -76,13 +76,13 @@ export function UserProfileEditForm () {
                     </div>
                     <div className="profile-user-socials">
                         <button className="social-btn" onClick={handleSocial} id="insta-btn" value='insta'> 
-                            <img src={plusPink} id="social-logo"/><img src={instaPink} id="social-logo-insta"/> <span id="social-btn-words"> Instagram </span> 
+                            <img src={plusPink} id="social-logo" alt=""/><img src={instaPink} id="social-logo-insta" alt=""/> <span id="social-btn-words"> Instagram </span> 
                         </button>
                         <button className="social-btn" onClick={handleSocial} value='twitter'> 
-                            <img src={plusPink} id="social-logo"/><img src={twitterPink} id="social-logo"/> <span id="social-btn-words"> Twitter </span> 
+                            <img src={plusPink} id="social-logo" alt=""/><img src={twitterPink} id="social-logo" alt=""/> <span id="social-btn-words"> Twitter </span> 
                         </button>
                         <button className="social-btn" onClick={handleSocial} value='snap'> 
-                            <img src={plusPink} id="social-logo"/><img src={snapPink} id="social-logo"/> <span id="social-btn-words"> Snapchat </span> 
+                            <img src={plusPink} id="social-logo" alt=""/><img src={snapPink} id="social-logo" alt=""/> <span id="social-btn-words"> Snapchat </span> 
                         </button>
                     </div>
                     <div className="profile-user-join-date">

@@ -10,7 +10,7 @@ import { MutualPageItem } from "./MutualPageItem"
 
 export function Mutuals () {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user)
+    // const sessionUser = useSelector(state => state.session.user)
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
     const [filter, setFilter] = useState('events')
@@ -24,7 +24,8 @@ export function Mutuals () {
         case 'names':
             
             break;
-    
+        default:
+            break;
     }
     
     
@@ -65,11 +66,11 @@ export function Mutuals () {
                     <div id="mutual-filters">
                         <div onClick={handleName}  id="filter-divs-mutuals">
                             <p id="filter-header">NAME</p>
-                            {filter === 'names' ? (nameFilter === 'up' ? (<img src={upArrow} id="filter-arrow"/>) : (<img src={downArrow} id="filter-arrow"/>)) : (<img src={upDownArrow} id="filter-arrow"/>)}
+                            {filter === 'names' ? (nameFilter === 'up' ? (<img src={upArrow} id="filter-arrow" alt=""/>) : (<img src={downArrow} id="filter-arrow" alt="arrow"/>)) : (<img src={upDownArrow} id="filter-arrow" alt=""/>)}
                         </div>
                         <div onClick={handleEvent} id="filter-divs-mutuals">
                             <p id="filter-header">SHARED EVENTS</p>
-                            {filter === 'events' ? (eventFilter === 'down' ? (<img src={downArrow} id="filter-arrow"/>) : (<img src={upArrow} id="filter-arrow"/>)) : (<img src={upDownArrow} id="filter-arrow"/>)}
+                            {filter === 'events' ? (eventFilter === 'down' ? (<img src={downArrow} id="filter-arrow" alt=""/>) : (<img src={upArrow} id="filter-arrow" alt=""/>)) : (<img src={upDownArrow} id="filter-arrow" alt=""/>)}
                         </div>
                     </div>
                 </div>

@@ -36,7 +36,9 @@ export const MutualModal = ({ mutualId }) => {
     return (
         // mutual ? 
         <div className="mutual-modal-component">
-            <div className="exit-btn-mutual-component" onClick={handleCancel}><img src={cancel} id="cancel-img" /></div>
+            <div className="exit-btn-mutual-component" onClick={handleCancel}>
+                <img src={cancel} id="cancel-img" alt="cancel"/>
+            </div>
 
             <div className="mutual-modal-profile">
                 <div className="user-profile-photo" id="user-profile-shared-events">

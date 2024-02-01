@@ -9,8 +9,8 @@ import { useDispatch } from "react-redux";
 import { fetchEvents } from "../../store/events";
 import { getEvents } from "../../store/events";
 import { EventIndexItem } from "../Events/EventIndexItem";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
-import { useRef } from "react";
+// import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+// import { useRef } from "react";
 
 export function HomePage () {
     
