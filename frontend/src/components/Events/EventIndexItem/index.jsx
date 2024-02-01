@@ -2,23 +2,45 @@
 import "./EventIndexItem.css"
 import wazzap from "../../../images/wazzap-halloween.jpeg"
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export const EventIndexItem = ({ event }) => {
+    const sessionUser = useSelector(state => state.session.user);
     const showPage = '/events/' + event.id;
-    const [rsvpStatus, setRsvpStatus] = useState('')
+    const userRsvp = event.userRsvp;
+    const today = new Date();
+    let rsvpStatus= '';
 
-    switch (event.userRsvp) {
-        case "I'm Going":
-            setRsvpStatus('')
-            break;
-        case "Maybe":
-
-            break;
-        case "Can't Go":
-
-            break;
-        default:
-            break;
+    if( ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)) ){
+        switch (userRsvp) {
+            case "I'm Going":
+                rsvpStatus = '👍 WENT'
+                break;
+            case "Maybe":
+                rsvpStatus = '🤔 MAYBE'
+                break;
+            case "Can't Go":
+                rsvpStatus = "😢 DIDN'T GO"
+                break;
+            default:
+                break;
+        }
+    }
+    else{
+        
+        switch (userRsvp) {
+            case "I'm Going":
+                rsvpStatus = '👍 GOING'
+                break;
+            case "Maybe":
+                rsvpStatus = '🤔 MAYBE'
+                break;
+            case "Can't Go":
+                rsvpStatus = "😢 CAN'T"
+                break;
+            default:
+                break;
+        }
     }
 
     
