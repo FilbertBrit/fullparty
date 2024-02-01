@@ -1,6 +1,7 @@
 // import { useDispatch } from "react-redux"
 import "./EventIndexItem.css"
 import wazzap from "../../../images/wazzap-halloween.jpeg"
+import dots from "../../../images/dots-horizontal-svgrepo-com.png"
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -58,6 +59,13 @@ export const EventIndexItem = ({ event }) => {
             <div id="photo-rsvp-container">
                 <img src={wazzap} id="event-img" alt="dummy-pic"/>
                 <div id="user-rsvp-details">{rsvpStatus}</div>
+                <div id="event-date-details"> </div>
+                {event.authorId !== sessionUser.id ? 
+                <div id="event-item-option-btn"> 
+                    <img src={dots} id="dots-options-btn" alt="options-btn-event-item" />
+                </div> :
+                <div></div>
+                }
             </div>
             <div className="details">
                 <h2 id="event-item-title">{event.title}</h2>
