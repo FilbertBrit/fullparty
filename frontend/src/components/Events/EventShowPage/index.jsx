@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getEvent, fetchEvent } from '../../../store/events';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { deleteEvent } from '../../../store/events';
 import Navigation from "../../Navigation"
 import { useHistory } from 'react-router';
@@ -22,8 +22,8 @@ export function EventShowPage () {
     const sessionUser = useSelector(state => state.session.user);
     const rsvps = useSelector(state => state.rsvps);
     const date = event ? new Date(event.dateTime).toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" ") : ''
-    const today = new Date()
-    const eventDone = event ? date < today : '';
+    // const today = new Date()
+    // const eventDone = event ? date < today : '';
     let rsvpGoing = 0;
     let rsvpMaybe = 0;
     const editLink = "/events/" + eventId + "/edit";

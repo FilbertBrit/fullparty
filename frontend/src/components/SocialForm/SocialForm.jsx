@@ -17,7 +17,7 @@ export const SocialForm = ({social}) => {
 
     return(
         <div className="social-compnt">
-            <div className="exit-btn" onClick={handleCancel}><img src={cancel} id="cancel-img" /></div>
+            <div className="exit-btn" onClick={handleCancel}><img src={cancel} id="cancel-img" alt=""/></div>
             <form id="social-form">
                 <h5 id="social-header">{social}</h5>
                 <div className="social-input-container">

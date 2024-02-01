@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import Navigation from "../Navigation";
 import { useHistory, useParams } from "react-router";
-import { NavLink, Redirect } from "react-router-dom/cjs/react-router-dom.min";
-import wazzap from "../../images/wazzap-halloween.jpeg"
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+// import wazzap from "../../images/wazzap-halloween.jpeg"
 import "./UserProfile.css"
 import { AiOutlineInstagram } from "react-icons/ai"
 import { useState } from "react";
@@ -15,7 +15,7 @@ export function UserProfile () {
     const profile = useParams();
     const [socials, setSocials] = useState(false);
 
-    if (sessionUser.id != profile.userId) return <Redirect to="/events" />;
+    if (sessionUser.id !== profile.userId) return <Redirect to="/events" />;
 
     return (
         <div id="layout-outer">

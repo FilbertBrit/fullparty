@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { createRsvp, updateRsvp } from "../../../store/rsvps";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 import { createComment } from "../../../store/comments";
 
 
 export function RsvpComponent ({ event }) {
 
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const userRsvpId = event.userRsvp;
     const rsvps = useSelector(state => state.rsvps)
     const userRsvp = rsvps[userRsvpId];
     const [rsvp, setRsvp] = useState(userRsvp)
-    let hideRsvpInst = false;
+    // let hideRsvpInst = false;
     // Inside your component or where you handle state
     const [isHovered, setIsHovered] = useState(false);
     const date = event ? new Date(event.dateTime) : ''
@@ -34,10 +34,10 @@ export function RsvpComponent ({ event }) {
         "Maybe": "🤔",
         "Can't Go": "😢"
     }
-    const toggleRsvpInst = (e) => {
-        e.preventDefault();
-        hideRsvpInst === true ? hideRsvpInst = false : hideRsvpInst = true;
-    }
+    // const toggleRsvpInst = (e) => {
+    //     e.preventDefault();
+    //     hideRsvpInst === true ? hideRsvpInst = false : hideRsvpInst = true;
+    // }
 
     const handleClick = (e) => {
         e.preventDefault();

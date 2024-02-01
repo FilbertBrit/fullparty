@@ -2,15 +2,21 @@
 import "./EventIndexItem.css"
 import wazzap from "../../../images/wazzap-halloween.jpeg"
 import dots from "../../../images/dots-horizontal-svgrepo-com.png"
-import { useState } from "react";
+// import { useState } from "react";
 import { useSelector } from "react-redux";
 
 export const EventIndexItem = ({ event }) => {
     const sessionUser = useSelector(state => state.session.user);
+    // const [showOptions, setShowOptions] = useState(false)
     const showPage = '/events/' + event.id;
     const userRsvp = event.userRsvp;
     const today = new Date();
     let rsvpStatus= '';
+    let date = new Date(event.dateTime);
+    let eventDate = date.toString().split(' ')[0] + ' ' + (date.getMonth() + 1) + '/' + date.getDate();
+    console.log(date, eventDate)
+    console.log(date.getTimezoneOffset())
+
 
     if( ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)) ){
         if(event.authorId === sessionUser.id){
@@ -52,6 +58,9 @@ export const EventIndexItem = ({ event }) => {
         }
     }
 
+    // const handleLeaveEvent = () => {
+
+    // }
     
     return (
         
@@ -61,11 +70,14 @@ export const EventIndexItem = ({ event }) => {
                 <div id="user-rsvp-details">{rsvpStatus}</div>
                 <div id="event-date-details"> </div>
                 {event.authorId !== sessionUser.id ? 
-                <div id="event-item-option-btn"> 
-                    <img src={dots} id="dots-options-btn" alt="options-btn-event-item" />
+                <div id="event-item-option-btn" onClick={()=>{console.log('hi')}}> 
+                    <img src={dots} id="dots-options-btn" alt="options-btn-event-item">
+                    </img>
                 </div> :
                 <div></div>
                 }
+                <div id="event-item-date"> {eventDate} </div>
+                {/* <div id="event-item-option-menu" onClick={handleLeaveEvent()}>{showOptions? 'Remove Me From Event': ''}</div> */}
             </div>
             <div className="details">
                 <h2 id="event-item-title">{event.title}</h2>

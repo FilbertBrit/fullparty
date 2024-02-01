@@ -28,7 +28,7 @@ export function EventInputForm () {
     const [selectedDate, setSelectedDate] = useState('');
 
     const filteredDate = (date) => { 
-        return (new Date() < date) || (new Date() == date)
+        return (new Date() < date) || (new Date() === date)
     };
     
     const handleSubmit = (e) => {

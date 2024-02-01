@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router"
-import { createComment, fetchComments } from "../../../store/comments";
+import { createComment } from "../../../store/comments";
 import "./ActivityLog.css"
 import { Comment } from "./Comment";
 

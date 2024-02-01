@@ -65,6 +65,20 @@
     box-shadow: 0 0 6px rgba(0,0,0,.3);
     display: flex;
 }
+#event-item-date{
+    position: absolute;
+    top: 0;
+    left: 0;
+    top: 10px;
+    left: 10px;
+    background: #fff;
+    border-radius: 99px;
+    padding: 5px 5px 5px;
+    color: rgba(0,0,0,.8);
+    font-weight: 500;
+    box-shadow: 0 0 6px rgba(0,0,0,.3);
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+}
 #dots-options-btn{
     height: 15px
 }
