@@ -55,8 +55,10 @@ export const EventIndexItem = ({ event }) => {
     return (
         
         <a href={ showPage } id="event-item" >
-            <img src={wazzap} id="event-img" alt="dummy-pic"/>
-            <div id="user-rsvp-details">{rsvpStatus}</div>
+            <div id="photo-rsvp-container">
+                <img src={wazzap} id="event-img" alt="dummy-pic"/>
+                <div id="user-rsvp-details">{rsvpStatus}</div>
+            </div>
             <div className="details">
                 <h2 id="event-item-title">{event.title}</h2>
                 <h2 id="event-item-host">Hosted by {event.host}</h2>
