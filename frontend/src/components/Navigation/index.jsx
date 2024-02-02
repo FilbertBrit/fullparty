@@ -68,6 +68,7 @@ function Navigation() {
         <a href="/create" id='create-btn-nav'>+ CREATE</a>
         <a href="/events">
           <img src={home} id="home-btn" alt='home-btn'/>
+          {/* <p id="home-btn">HOME</p> */}
         </a>
         <img onClick={openNotifications} src={notification} id="notification-btn"  alt='notif-btn'/>
         <div className="profile-btn-container">
