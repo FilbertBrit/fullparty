@@ -67,11 +67,11 @@ export function Mutuals () {
                     <div id="mutual-filters">
                         <div onClick={handleName}  id="filter-divs-mutuals">
                             <p id="filter-header">NAME</p>
-                            {filter === 'names' ? (nameFilter === 'up' ? (<img src={upArrow} id="filter-arrow" alt=""/>) : (<img src={downArrow} id="filter-arrow" alt="arrow"/>)) : (<img src={upDownArrow} id="filter-arrow" alt=""/>)}
+                            {filter === 'names' ? (nameFilter === 'up' ? (<img src={upArrow} id="filter-arrow" alt=""/>) : (<img src={downArrow} id="filter-arrow" alt="arrow"/>)) : (<img src={upDownArrow} id="filter-arrow-updown" alt=""/>)}
                         </div>
                         <div onClick={handleEvent} id="filter-divs-mutuals">
                             <p id="filter-header">SHARED EVENTS</p>
-                            {filter === 'events' ? (eventFilter === 'down' ? (<img src={downArrow} id="filter-arrow" alt=""/>) : (<img src={upArrow} id="filter-arrow" alt=""/>)) : (<img src={upDownArrow} id="filter-arrow" alt=""/>)}
+                            {filter === 'events' ? (eventFilter === 'down' ? (<img src={downArrow} id="filter-arrow" alt=""/>) : (<img src={upArrow} id="filter-arrow" alt=""/>)) : (<img src={upDownArrow} id="filter-arrow-updown" alt=""/>)}
                         </div>
                     </div>
                 </div>

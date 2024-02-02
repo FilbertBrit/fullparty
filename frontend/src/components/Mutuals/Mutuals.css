@@ -80,7 +80,13 @@
     /* padding: 40px; */
 }
 #filter-arrow{
+    height: 8px;
+    width: 10px;
+    padding-top: 3px;
+}
+#filter-arrow-updown{
     height: 10px;
+    padding-top: 3px;
     width: 10px;
 }
 #filter-divs-mutuals{
