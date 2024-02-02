@@ -24,8 +24,8 @@ export function MutualPageItem ({ mutual }) {
     return (
         <div className="mutual-page-item">
             <div className="profile-container-mutuals-page">
-                <div className="user-profile-photo" >
-                      <div className="initials">
+                <div className="user-profile-photo" id="initial-container-mutual" >
+                      <div className="initials" id="initials-mutual-page">
                         {mutual.name.slice(0,1)}
                       </div>
                 </div>
