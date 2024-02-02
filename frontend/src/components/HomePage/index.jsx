@@ -117,12 +117,13 @@ export function HomePage () {
                         All Past Events
                     </button>
                 </nav>
+                
+                    {filter === 'Open Invite' ?
+                    <div id="open-invite-msg">
+                        <p>Hosted by people you've partied with 🥳</p>
+                    </div>
+                    : null}
                 </section>
-                {filter === 'Open Invite' ?
-                <div>
-
-                </div>
-                : ''}
                 <div className="event-items">
                     <div className="events">
                         {

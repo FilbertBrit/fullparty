@@ -67,13 +67,28 @@
 
 #home-btn{
     height: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
+    /* margin-right: 20px; */
+    padding: 15px;
+    border-radius: 90%;
+    /* font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    text-decoration: none;
+    text-decoration: none; */
 }
+#home-btn:hover{
+    background-color: hsla(0,0%,100%,.15);
+}
+
 #notification-btn{
     height: 20px;
-    margin-right: 20px;
+    margin-right: 10px;
     cursor: pointer;
+    padding: 15px;
+    border-radius: 90%;
+}
+#notification-btn:hover{
+    background-color: hsla(0,0%,100%,.15);
+    /* margin: 5px; */
 }
 #profile-btn-nav{
     margin-right: 10px;
