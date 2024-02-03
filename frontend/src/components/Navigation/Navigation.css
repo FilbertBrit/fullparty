@@ -21,7 +21,6 @@
 
 #splash-nav{
     display: flex;
-    /* justify-content: space-around; */
     font-family: Spacegrotesk,sans-serif;
     flex-direction: row;
     align-items: center;
@@ -61,8 +60,6 @@
     border: none;
     border-radius: 0;
     text-decoration: none;
-    /* border-style: none; */
-    /* font-size: 18px; */
 }
 
 #home-btn{
