@@ -13,7 +13,7 @@
 }
 .show-info{
     /* width: 40vw; */
-    max-width: 465px;
+    width: 660px;
     position: relative;
 }
 .show-title{
@@ -419,6 +419,9 @@
     }
     .show-rsvps-comments{
         width: 400px;
+    }
+    .show-info{
+        max-width: 465px;
     }
 }
 
