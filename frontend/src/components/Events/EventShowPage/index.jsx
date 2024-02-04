@@ -62,7 +62,7 @@ export function EventShowPage () {
                     </div>
                 </div>
                 <div className="show-info">
-                    <div className="show-date-time">
+                    <div className="show-date-time" id='dateTime-show'>
                         { event.dateTime ? 
                             (
                                 <div>

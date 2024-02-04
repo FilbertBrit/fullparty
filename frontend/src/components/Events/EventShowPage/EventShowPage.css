@@ -379,8 +379,44 @@
 #restricted-log-container{
     /* max-width: 360px; */
 }
-@media screen and (min-width: 1025px) {
-    
+@media screen and (max-width: 725px) {
+    .show-title{
+        font-family: 'Courier New', Courier, monospace;
+        /* max-width: 90vw; */
+    }
+    #event-title-show{
+        font-size: 50px;
+    }
+    .show-rsvps-comments{
+        width: fit-content;
+    }
+    .show-details{
+        width: 450px;
+    }
+    .show-info{
+        /* width: 95vw; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #dateTime-show{
+        width: 450px;
+    }
+    .show-rsvps-comments{
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        width: 450px;
+    }
+    /* .show-rsvps-comments-header{
+        width: 450px;
+    }
+    .comment-form{
+        width: 450px;
+    }
+    .comment-log{
+        width: 450px;
+    } */
 }
 
 @media screen and (min-width: 1025px) {
