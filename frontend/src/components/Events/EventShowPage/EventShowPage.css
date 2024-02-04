@@ -374,10 +374,13 @@
 }
 .show-rsvps-comments{
     height: min-content;
-    width: 500px;
+    width: 660px;
 }
 #restricted-log-container{
     /* max-width: 360px; */
+}
+@media screen and (min-width: 1025px) {
+    
 }
 
 @media screen and (min-width: 1025px) {
@@ -419,6 +422,7 @@
     }
     .show-rsvps-comments{
         width: 400px;
+        width: 450px;
     }
     .show-info{
         max-width: 465px;
