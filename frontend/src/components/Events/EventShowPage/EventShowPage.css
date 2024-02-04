@@ -35,6 +35,7 @@
    color: hsla(0,0%,100%,.6);
     margin-top: 8px;
     font-size: 22px;
+    font-weight: 300;
 }
 #capacity-num-event-show{
     color: #ab76f6;
