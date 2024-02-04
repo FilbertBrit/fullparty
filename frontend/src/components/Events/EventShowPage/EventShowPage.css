@@ -13,7 +13,7 @@
 }
 .show-info{
     /* width: 40vw; */
-    max-width: 465px;
+    width: 660px;
     position: relative;
 }
 .show-title{
@@ -24,7 +24,8 @@
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
-    margin-left: -20px;
+    width: 660px;
+    /* margin-left: -20px; */
 }
 #event-title-show{
     width: max-content;
@@ -414,9 +415,13 @@
     }
     .show-title{
         justify-content: flex-start;
+        width: fit-content;
     }
     .show-rsvps-comments{
         width: 400px;
+    }
+    .show-info{
+        max-width: 465px;
     }
 }
 
