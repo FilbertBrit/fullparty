@@ -380,10 +380,6 @@
     /* max-width: 360px; */
 }
 @media screen and (max-width: 725px) {
-    .show-title{
-        font-family: 'Courier New', Courier, monospace;
-        /* max-width: 90vw; */
-    }
     #event-title-show{
         font-size: 50px;
     }
