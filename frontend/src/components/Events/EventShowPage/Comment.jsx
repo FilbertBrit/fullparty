@@ -26,31 +26,26 @@ export function Comment ({ comment }) {
     // console.log(date, today)
     // console.log(date.getMonth(), today.getMonth())
     // console.log(date.getMonth() <= today.getMonth())
+    console.log((today.getMonth() - date.getMonth()))
 
-    if( today.getFullYear() - date.getFullYear() > 1 || (today.getFullYear() - date.getFullYear() === 1 && date.getMonth() <= today.getMonth()) ){
+    if( today.getFullYear() - date.getFullYear() > 1 || (today.getFullYear() - date.getFullYear() === 1 && date.getMonth() <= today.getMonth()) ){ //in the years
         commentDate = (date.getFullYear() - today.getFullYear() > 1) ? (today.getFullYear() - date.getFullYear()) + 'years ago' : '1 year ago';
     }else{
-
-    }
-
-    if((date.getFullYear() === today.getFullYear())){
-        
-        if((date.getDay() === today.getDay()) && (date.getMonth() === today.getMonth())){
+        if( date.getMonth() < today.getMonth() || (today.getFullYear() - date.getFullYear() === 1 && date.getMonth() > today.getMonth()) ){ //still in the months
+            if(today.getFullYear() - date.getFullYear() === 1){
+                commentDate = ((today.getMonth() - date.getMonth()) + 12 > 1) ? (today.getMonth() - date.getMonth() + 12) + ' months ago' : '1 month ago';
+            }else{
+                commentDate = ((today.getMonth() - date.getMonth()) > 1) ? (today.getMonth() - date.getMonth() ) + ' months ago' : '1 month ago';
+            }
+        }else if( date.getDay() === today.getDay() && date.getMonth() === today.getMonth() ){
             if(today.getHours() - date.getHours() === 0){
                 commentDate = (today.getMinutes() - date.getMinutes() > 1) ? ((today.getMinutes() - date.getMinutes()) + ' minutes ago') : ('about 1 minute ago')
             }else{
                 commentDate = (today.getHours() - date.getHours()) > 1 ? ('about ' + (today.getHours() - date.getHours()) + ' hours ago') : ( 'about 1 hour ago' )
             }
-        }
-
-        if((date.getMonth() === today.getMonth()) ){
-
+        }else{
             commentDate = (date.getDay() - today.getDay() > 1) ? ((date.getDay() - today.getDay() ) + ' days ago') : ( '1 day ago' )  
         }
-    }else if(date.getFullYear() === today.getFullYear() || (today.getMonth() - date.getMonth() < 0)){
-        commentDate = ((today.getMonth() - date.getMonth() + 12) > 1) ? (today.getMonth() - date.getMonth() + 12) + ' months ago' : '1 month ago';
-    }else{
-        commentDate = (date.getFullYear() - today.getFullYear() > 1) ? (date.getFullYear() - today.getFullYear()) + 'years ago' : '1 year ago';
     }
 
     const handlePin = (e) => {
