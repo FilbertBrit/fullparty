@@ -9,14 +9,12 @@ import { useDispatch } from "react-redux"
 import { deleteComment } from "../../../store/comments"
 
 export function Comment ({ comment }) {
-    // console.log(eventId)
     const dispatch = useDispatch();
     // const sessionUser = useSelector(state => state.session.user)
     const notRSVP = (comment.commentType === "comment" ? true : false);
     const [showMenu, setShowMenu] = useState(false)
     const date = new Date(comment.date)
     const today = new Date()
-    // console.log(comment)
     let commentDate = ''
     const rsvps = {
         "I'm Going": "Going 👍",
@@ -25,18 +23,30 @@ export function Comment ({ comment }) {
     }
     // let rsvpComment = !notRSVP ? [comment.body.split(" ").slice(0,1).join(''), rsvps[comment.body.split(" ").slice(1).join(" ")]] : ('');
     let rsvpComment = !notRSVP ? rsvps[comment.body] : ('');
-    // console.log(rsvpComment)
+    // console.log(date, today)
+    // console.log(date.getMonth(), today.getMonth())
+    // console.log(date.getMonth() <= today.getMonth())
 
-    // console.log(rsvpComment);
+    if( today.getFullYear() - date.getFullYear() > 1 || (today.getFullYear() - date.getFullYear() === 1 && date.getMonth() <= today.getMonth()) ){
+        commentDate = (date.getFullYear() - today.getFullYear() > 1) ? (today.getFullYear() - date.getFullYear()) + 'years ago' : '1 year ago';
+    }else{
 
-    if((date.getDay() === today.getDay()) && (date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
-        if(today.getHours() - date.getHours() === 0){
-            commentDate = (today.getMinutes() - date.getMinutes() > 1) ? ((today.getMinutes() - date.getMinutes()) + ' minutes ago') : ('about 1 minute ago')
-        }else{
-            commentDate = (today.getHours() - date.getHours()) > 1 ? ('about ' + (today.getHours() - date.getHours()) + ' hours ago') : ( 'about 1 hour ago' )
+    }
+
+    if((date.getFullYear() === today.getFullYear())){
+        
+        if((date.getDay() === today.getDay()) && (date.getMonth() === today.getMonth())){
+            if(today.getHours() - date.getHours() === 0){
+                commentDate = (today.getMinutes() - date.getMinutes() > 1) ? ((today.getMinutes() - date.getMinutes()) + ' minutes ago') : ('about 1 minute ago')
+            }else{
+                commentDate = (today.getHours() - date.getHours()) > 1 ? ('about ' + (today.getHours() - date.getHours()) + ' hours ago') : ( 'about 1 hour ago' )
+            }
         }
-    }else if((date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
-        commentDate = (date.getDay() - today.getDay() > 1) ? ((date.getDay() - today.getDay() ) + ' days ago') : ( '1 day ago' )  
+
+        if((date.getMonth() === today.getMonth()) ){
+
+            commentDate = (date.getDay() - today.getDay() > 1) ? ((date.getDay() - today.getDay() ) + ' days ago') : ( '1 day ago' )  
+        }
     }else if(date.getFullYear() === today.getFullYear() || (today.getMonth() - date.getMonth() < 0)){
         commentDate = ((today.getMonth() - date.getMonth() + 12) > 1) ? (today.getMonth() - date.getMonth() + 12) + ' months ago' : '1 month ago';
     }else{
