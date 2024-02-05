@@ -69,14 +69,16 @@ export const EventIndexItem = ({ event }) => {
         <a href={ showPage } id="event-item" >
             <div id="photo-rsvp-container">
                 <img src={wazzap} id="event-img" alt="dummy-pic"/>
-                <div id="user-rsvp-details">{rsvpStatus}</div>
+                { rsvpStatus ? 
+                    <div id="user-rsvp-details">{rsvpStatus}</div> : null
+                }
                 <div id="event-date-details"> </div>
-                {event.authorId !== sessionUser.id ? 
-                <div id="event-item-option-btn" onClick={()=>{console.log('hi')}}> 
-                    <img src={dots} id="dots-options-btn" alt="options-btn-event-item">
-                    </img>
-                </div> :
-                <div></div>
+                {
+                    event.authorId !== sessionUser.id ? 
+                        <div id="event-item-option-btn" onClick={()=>{console.log('hi')}}> 
+                            <img src={dots} id="dots-options-btn" alt="options-btn-event-item">
+                            </img>
+                        </div> : null
                 }
                 <div id="event-item-date"> {eventDate} </div>
                 {/* <div id="event-item-option-menu" onClick={handleLeaveEvent()}>{showOptions? 'Remove Me From Event': ''}</div> */}
