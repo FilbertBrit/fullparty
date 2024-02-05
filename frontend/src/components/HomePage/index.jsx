@@ -36,7 +36,7 @@ export function HomePage () {
     }else if(filter === "Open Invite"){
         filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp === null));
     }else if(filter === 'Attended'){
-        filteredEvents = events.filter(event => (event.userRsvp !== "Can't Go" && event.userRsvp !== null) && (today > new Date(event.dateTime)));
+        filteredEvents = events.filter(event => (event.userRsvp === "I'm Going") && (today > new Date(event.dateTime) && event.dateTime !== null));
     }else if(filter === 'All Past Events'){
         filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)));
     }
