@@ -75,8 +75,7 @@ export const EventIndexItem = ({ event }) => {
                 <div id="event-date-details"> </div>
                 { event.authorId !== sessionUser.id ? 
                     <div id="event-item-option-btn" onClick={()=>{console.log('hi')}}> 
-                        <img src={dots} id="dots-options-btn" alt="options-btn-event-item">
-                        </img>
+                        <img src={dots} id="dots-options-btn" alt="options-btn-event-item"/>
                     </div> : null
                 }
                 { event.dateTime ? 
