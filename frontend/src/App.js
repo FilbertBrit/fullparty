@@ -16,7 +16,7 @@ import { Mutuals } from './components/Mutuals';
 function App() {
 
   // REFACTOR TO GET RID OF THIS USESELECTOR
-  // debugger
+ 
   const sessionUser = useSelector(state => state.session)
 
   return (
