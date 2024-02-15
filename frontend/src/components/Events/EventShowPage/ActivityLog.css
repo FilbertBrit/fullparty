@@ -8,6 +8,7 @@
 }
 #comment-input-form{
     font-size: 16px;
+    width: 85%;
 }
 .initials{
     background: linear-gradient(to right bottom,#5c5cbc 10%,40%,#d85ed4 60%,80%,#cad3e2 90%);
