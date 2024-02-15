@@ -36,7 +36,9 @@ export function ActivityLog () {
                             {sessionUser.name.slice(0,1)}
                             </div>
                     </div>
-                    <input type="text" 
+                    {/* <input  */}
+                    <textarea
+                        type="text" 
                         value={comment}
                         onChange={ (e) => setComment(e.target.value) }
                         required
