@@ -11,9 +11,14 @@
     width: 85%;
     background-color: transparent;
     border: none;
-    border-style: none;
+    outline: none;
+    border-radius: 0;
     resize: none;
-    height: fit-content;
+    overflow: hidden;
+    margin-left: 8px;
+    padding-top: 10px;
+    color: white;
+    /* height: 5px; */
 }
 .initials{
     background: linear-gradient(to right bottom,#5c5cbc 10%,40%,#d85ed4 60%,80%,#cad3e2 90%);

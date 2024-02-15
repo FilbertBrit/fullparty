@@ -23,6 +23,12 @@ export function ActivityLog () {
         // dispatch(fetchComments(eventId))
         // console.log('hi')
     }, [commentsObj])
+    // Function to dynamically adjust the height of the textarea based on content
+    const autoResizeTextarea = (event) => {
+        const textarea = event.target;
+        textarea.style.height = 'auto';
+        textarea.style.height = (textarea.scrollHeight - 20) + 'px';
+    };
 
     return comments ? (
         <>
@@ -41,9 +47,11 @@ export function ActivityLog () {
                         type="text" 
                         value={comment}
                         onChange={ (e) => setComment(e.target.value) }
+                        onInput={autoResizeTextarea}
                         required
                         placeholder="+ Add a comment"
                         id='comment-input-form'
+                        style={{ height: '20px' }}
                     />
                 </form>
             </div>
