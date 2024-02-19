@@ -187,7 +187,7 @@ export function EventShowPage () {
                     <div className="show-rsvps-comments-header">
                         <h2 id='show-activity-header'>Activity</h2>
                     </div>
-                    {!event.userRsvp ? 
+                    {!event.userRsvp && sessionUser.id !== event.hostId? 
                         <div id='restricted-log-container'>
                             <div className='restrict-activity-log'>
                                 <h2>🔒 Restricted Access</h2>
