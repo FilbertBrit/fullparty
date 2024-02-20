@@ -15,7 +15,7 @@ export function UserProfile () {
     const profile = useParams();
     const [socials, setSocials] = useState(false);
 
-    if (sessionUser.id !== profile.userId) return <Redirect to="/events" />;
+    // if (sessionUser.id !== profile.userId) return <Redirect to="/events" />;
 
     return (
         <div id="layout-outer">
