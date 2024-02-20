@@ -103,10 +103,12 @@ export function Comment ({ comment }) {
                     <>
                         <div className="comment-menu">
                             <div className="comment-menu-inner-div">
-                                <div className="comment-menu-option-container" onClick={handlePin}>
-                                    <img id='comment-menu-img' src={pin} alt="pin"/>
-                                    <h3 id="comment-menu-h3-pin">Pin</h3>
-                                </div>
+                                { sessionUser.id === hostId && 
+                                    <div className="comment-menu-option-container" onClick={handlePin}>
+                                        <img id='comment-menu-img' src={pin} alt="pin"/>
+                                        <h3 id="comment-menu-h3-pin">Pin</h3>
+                                    </div>
+                                }
                                 <div className="comment-menu-option-container" onClick={handleDelete}>
                                     <img id='comment-menu-img' src={trash} alt="trash"/>
                                     <h3 id='comment-menu-h3-trash'>Remove</h3>
