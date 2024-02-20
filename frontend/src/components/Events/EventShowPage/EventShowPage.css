@@ -426,8 +426,8 @@
         overflow-y: auto;
         top: 150px;
         width: 460px;
-        width: 45vw;
-        margin-left: 45vw;
+        width: 35vw;
+        margin-left: 55vw;
         /* max-height: calc(100% - 150px); */
         position: fixed;
         /* right: 100px; */

@@ -4,13 +4,14 @@ import pin from "../../../images/pin.png"
 import trash from "../../../images/trash.png"
 import triangle from "../../../images/triangle.png"
 import "./Comment.css"
-// import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux"
 import { deleteComment } from "../../../store/comments"
+import { useSelector } from "react-redux"
 
 export function Comment ({ comment }) {
     const dispatch = useDispatch();
-    // const sessionUser = useSelector(state => state.session.user)
+    const sessionUser = useSelector(state => state.session.user)
+    const hostId  = useSelector(state => state.events[comment.eventId].hostId)
     const notRSVP = (comment.commentType === "comment" ? true : false);
     const [showMenu, setShowMenu] = useState(false)
     const date = new Date(comment.date)
@@ -90,19 +91,24 @@ export function Comment ({ comment }) {
                         <div className="comment-body">{comment.body}</div>
                     </div>
                 </div>
-                <div className="edit-comment-btn" onClick={openMenu}>
-                    <img src={dots} width='20px' height='20px' alt="edit"/>
-                </div>
+                {comment.authorId === sessionUser.id || sessionUser.id === hostId ?
+                    <div className="edit-comment-btn" onClick={openMenu}>
+                        <img src={dots} width='20px' height='20px' alt="edit"/>
+                    </div>
+                    : null
+                }
             </div>
             <div>
                 { showMenu && (
                     <>
                         <div className="comment-menu">
                             <div className="comment-menu-inner-div">
-                                <div className="comment-menu-option-container" onClick={handlePin}>
-                                    <img id='comment-menu-img' src={pin} alt="pin"/>
-                                    <h3 id="comment-menu-h3-pin">Pin</h3>
-                                </div>
+                                { sessionUser.id === hostId && 
+                                    <div className="comment-menu-option-container" onClick={handlePin}>
+                                        <img id='comment-menu-img' src={pin} alt="pin"/>
+                                        <h3 id="comment-menu-h3-pin">Pin</h3>
+                                    </div>
+                                }
                                 <div className="comment-menu-option-container" onClick={handleDelete}>
                                     <img id='comment-menu-img' src={trash} alt="trash"/>
                                     <h3 id='comment-menu-h3-trash'>Remove</h3>
