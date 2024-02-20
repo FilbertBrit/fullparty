@@ -23,6 +23,7 @@ export function ActivityLog () {
         // dispatch(fetchComments(eventId))
         // console.log('hi')
     }, [commentsObj])
+    
     // Function to dynamically adjust the height of the textarea based on content
     const autoResizeTextarea = (event) => {
         const textarea = event.target;
