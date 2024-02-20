@@ -15,7 +15,7 @@ export function ActivityLog () {
     const [comment, setComment] = useState("");
     // console.log('');
     const handleSubmit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         dispatch(createComment({body: comment, authorId: sessionUser.id, eventId: eventId, commentType: 'comment'})).then( res => setComment(""))
     }
 
@@ -23,6 +23,12 @@ export function ActivityLog () {
         // dispatch(fetchComments(eventId))
         // console.log('hi')
     }, [commentsObj])
+    const onEnterPress = (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            handleSubmit(); // this won't be triggered
+          }
+      }
     
     // Function to dynamically adjust the height of the textarea based on content
     const autoResizeTextarea = (event) => {
@@ -33,11 +39,8 @@ export function ActivityLog () {
 
     return comments ? (
         <>
-            {/* <div className="show-rsvps-comments-header">
-                <h2 id='show-activity-header'>Activity</h2>
-            </div> */}
             <div>
-                <form onSubmit={handleSubmit} id="comment-form">
+                <form  id="comment-form">
                     <div className="user-profile-photo-form">
                             <div className="initials">
                             {sessionUser.name.slice(0,1)}
@@ -53,13 +56,13 @@ export function ActivityLog () {
                         placeholder="+ Add a comment"
                         id='comment-input-form'
                         style={{ height: '20px' }}
+                        onKeyDown={onEnterPress}
                     />
                 </form>
             </div>
             <div className="comment-log">
                 { comments.reverse().map( (comment, i) => 
                     <Comment comment={comment} key={i}/>)
-                    // <Comment/>
                 }
                 
             </div>
