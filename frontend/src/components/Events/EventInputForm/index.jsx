@@ -162,8 +162,8 @@ export function EventInputForm () {
                             <img src={wazzap} id="wazzap-halloween-pic" alt="dummy-pic"/>
                         </div>
                         <div className="open-invite-div">
-                            <h2 id="open-invite-title">💫 Open Invite</h2>           
-                            <h2 id="open-invite-btn"> Turned Off </h2>
+                            <h2 id="open-invite-title">💫 Open Invite</h2> 
+                            <h2 id="open-invite-btn"> Turned On </h2>
                         </div>
                         <div className="rsvp-option-container">
                             <div className="rsvp-option-title-div">

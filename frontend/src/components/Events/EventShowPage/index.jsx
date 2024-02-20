@@ -85,7 +85,7 @@ export function EventShowPage () {
                             </div>
                         </div>
                         <div className="show-location">
-                            { event.userRsvp ? 
+                            { event.userRsvp || sessionUser.id === event.hostId? 
                                 (
                                     <>
                                         <h2 >📍</h2>
