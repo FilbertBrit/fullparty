@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import Navigation from "../Navigation";
 import { useHistory, useParams } from "react-router";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+// import { Redirect } from "react-router-dom/cjs/react-rout/er-dom.min";
 // import wazzap from "../../images/wazzap-halloween.jpeg"
 import "./UserProfile.css"
 import { AiOutlineInstagram } from "react-icons/ai"
@@ -12,7 +12,7 @@ export function UserProfile () {
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
     const joinedDate = sessionUser.joined;
-    const profile = useParams();
+    // const profile = useParams();
     const [socials, setSocials] = useState(false);
 
     // if (sessionUser.id !== profile.userId) return <Redirect to="/events" />;
