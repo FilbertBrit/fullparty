@@ -2,10 +2,8 @@
 import "./EventIndexItem.css"
 import wazzap from "../../../images/wazzap-halloween.jpeg"
 import dots from "../../../images/dots-horizontal-svgrepo-com.png"
-// import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 
 export const EventIndexItem = ({ event }) => {
@@ -92,8 +90,8 @@ export const EventIndexItem = ({ event }) => {
     
     return (
         
-        // <a href={ showPage } id="event-item" >
-        <div onClick={ handleEventClick } id="event-item" >
+        <a href={ showMenu === false ? showPage : null } id="event-item" >
+        {/* <div onClick={ handleEventClick } id="event-item" > */}
             <div id="photo-rsvp-container">
                 <img src={wazzap} id="event-img" alt="dummy-pic"/>
                 { rsvpStatus ? 
@@ -120,7 +118,7 @@ export const EventIndexItem = ({ event }) => {
                 <h2 id="event-item-title">{event.title}</h2>
                 <h2 id="event-item-host">Hosted by {event.host}</h2>
             </div>
-        </div>
-        // </a>
+        {/* </div> */}
+        </a>
     )
 }

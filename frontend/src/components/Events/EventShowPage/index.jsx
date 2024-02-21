@@ -11,7 +11,6 @@ import { RsvpComponent } from './RsvpComponent';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { AiOutlineInstagram } from "react-icons/ai"
 import { ActivityLog } from './ActivityLog';
-import { useState } from 'react';
 
 
 export function EventShowPage () {
@@ -19,7 +18,7 @@ export function EventShowPage () {
     const { eventId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
-    const [event, setEvent] = useState()
+    const event = useSelector(getEvent(eventId));
     const sessionUser = useSelector(state => state.session.user);
     const rsvps = useSelector(state => state.rsvps);
     const date = event ? new Date(event.dateTime).toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" ") : ''
@@ -41,13 +40,12 @@ export function EventShowPage () {
     }
     
     useEffect(  () => {
-        dispatch(fetchEvent(eventId)).then(() => setEvent(useSelector(state => state.events[eventId])));
+        dispatch(fetchEvent(eventId));
     }, [dispatch, eventId])
-    console.log(event)
     
     if (!sessionUser) return <Redirect to="/login" />;
 
-    return event != {} ? (
+    return event ? (
         <>
         <div id='page-layout-showpage'>
             <Navigation/>
