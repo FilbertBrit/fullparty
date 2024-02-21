@@ -2,10 +2,12 @@
 import "./EventIndexItem.css"
 import wazzap from "../../../images/wazzap-halloween.jpeg"
 import dots from "../../../images/dots-horizontal-svgrepo-com.png"
-// import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 
 export const EventIndexItem = ({ event }) => {
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     // const [showOptions, setShowOptions] = useState(false)
     const showPage = '/events/' + event.id;
@@ -13,6 +15,8 @@ export const EventIndexItem = ({ event }) => {
     const today = new Date();
     let rsvpStatus= '';
     let date = new Date(event.dateTime);
+    const [showMenu, setShowMenu] = useState(false);
+    console.log(showMenu);
     let eventTime = date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" ")
     let time = eventTime[0].slice(0,1) + eventTime[1].toLocaleLowerCase()
     let eventDate = date.toString().split(' ')[0] + ' ' + (date.getMonth() + 1) + '/' + date.getDate() + '・' + time;
@@ -59,14 +63,35 @@ export const EventIndexItem = ({ event }) => {
             }
         }
     }
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true);
+    };
+    
+    useEffect(() => {
+        if (!showMenu) return;
+    
+        const closeMenu = () => {
+          setShowMenu(false);
+        };
+    
+        document.addEventListener('click', closeMenu);
+      
+        return () => document.removeEventListener("click", closeMenu);
+      }, [showMenu]);
 
-    // const handleLeaveEvent = () => {
-
-    // }
+    const handleEventClick = (e) => {
+        e.preventDefault();
+        console.log('hi')
+        if(openMenu){
+            history.push( showPage );
+        }
+    }
     
     return (
         
-        <a href={ showPage } id="event-item" >
+        <a href={ showMenu === false ? showPage : null } id="event-item" >
+        {/* <div onClick={ handleEventClick } id="event-item" > */}
             <div id="photo-rsvp-container">
                 <img src={wazzap} id="event-img" alt="dummy-pic"/>
                 { rsvpStatus ? 
@@ -74,9 +99,14 @@ export const EventIndexItem = ({ event }) => {
                 }
                 <div id="event-date-details"> </div>
                 { event.authorId !== sessionUser.id  && userRsvp? 
-                    <div id="event-item-option-btn" onClick={()=>{console.log('hi')}}> 
-                        <img src={dots} id="dots-options-btn" alt="options-btn-event-item"/>
+                    <div id="event-item-option-btn" onClick={openMenu}> 
+                        <img src={dots} id="dots-options-btn" alt="options-btn-event-item" />
                     </div> : null
+                }
+                { openMenu === true &&
+                    <div>
+                        <p>mute/delete</p>
+                    </div>
                 }
                 { event.dateTime ? 
                     <div id="event-item-date"> {eventDate} </div> :
@@ -88,6 +118,7 @@ export const EventIndexItem = ({ event }) => {
                 <h2 id="event-item-title">{event.title}</h2>
                 <h2 id="event-item-host">Hosted by {event.host}</h2>
             </div>
+        {/* </div> */}
         </a>
     )
 }
