@@ -11,6 +11,7 @@ import { RsvpComponent } from './RsvpComponent';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { AiOutlineInstagram } from "react-icons/ai"
 import { ActivityLog } from './ActivityLog';
+import { useState } from 'react';
 
 
 export function EventShowPage () {
@@ -18,7 +19,7 @@ export function EventShowPage () {
     const { eventId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
-    const event = useSelector(getEvent(eventId));
+    const [event, setEvent] = useState()
     const sessionUser = useSelector(state => state.session.user);
     const rsvps = useSelector(state => state.rsvps);
     const date = event ? new Date(event.dateTime).toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" ") : ''
@@ -40,12 +41,13 @@ export function EventShowPage () {
     }
     
     useEffect(  () => {
-        dispatch(fetchEvent(eventId));
+        dispatch(fetchEvent(eventId)).then(() => setEvent(useSelector(state => state.events[eventId])));
     }, [dispatch, eventId])
+    console.log(event)
     
     if (!sessionUser) return <Redirect to="/login" />;
 
-    return event ? (
+    return event != {} ? (
         <>
         <div id='page-layout-showpage'>
             <Navigation/>
@@ -132,7 +134,9 @@ export function EventShowPage () {
                             }
                         </div>
                         <div className="show-description">
-                            <h2 className='event-description-showpage'>{event.description || ''}</h2>
+                            { event && event.description ? 
+                                <h2 className='event-description-showpage'>{event.description}</h2> : null
+                            }
                         </div>
                         {Object.keys(rsvps).length === 0 ? (
                             <></>
