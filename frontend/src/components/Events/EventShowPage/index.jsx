@@ -132,9 +132,7 @@ export function EventShowPage () {
                             }
                         </div>
                         <div className="show-description">
-                            { event && event.description ? 
-                                <h2 className='event-description-showpage'>{event.description}</h2> : null
-                            }
+                                <h2 className='event-description-showpage'>{event.description ? event.description : ''}</h2>
                         </div>
                         {Object.keys(rsvps).length === 0 ? (
                             <></>

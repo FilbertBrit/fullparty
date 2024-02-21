@@ -16,7 +16,7 @@ export const EventIndexItem = ({ event }) => {
     let rsvpStatus= '';
     let date = new Date(event.dateTime);
     const [showMenu, setShowMenu] = useState(false);
-    console.log(showMenu);
+    // console.log(showMenu);
     let eventTime = date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" ")
     let time = eventTime[0].slice(0,1) + eventTime[1].toLocaleLowerCase()
     let eventDate = date.toString().split(' ')[0] + ' ' + (date.getMonth() + 1) + '/' + date.getDate() + '・' + time;
@@ -80,18 +80,10 @@ export const EventIndexItem = ({ event }) => {
         return () => document.removeEventListener("click", closeMenu);
       }, [showMenu]);
 
-    const handleEventClick = (e) => {
-        e.preventDefault();
-        console.log('hi')
-        if(openMenu){
-            history.push( showPage );
-        }
-    }
     
     return (
         
         <a href={ showMenu === false ? showPage : null } id="event-item" >
-        {/* <div onClick={ handleEventClick } id="event-item" > */}
             <div id="photo-rsvp-container">
                 <img src={wazzap} id="event-img" alt="dummy-pic"/>
                 { rsvpStatus ? 
@@ -118,7 +110,6 @@ export const EventIndexItem = ({ event }) => {
                 <h2 id="event-item-title">{event.title}</h2>
                 <h2 id="event-item-host">Hosted by {event.host}</h2>
             </div>
-        {/* </div> */}
         </a>
     )
 }
