@@ -27,7 +27,7 @@ export function Comment ({ comment }) {
     // console.log(date, today)
     // console.log(date.getMonth(), today.getMonth())
     // console.log(date.getMonth() <= today.getMonth())
-    console.log((today.getMonth() - date.getMonth()))
+    // console.log((today.getMonth() - date.getMonth()))
 
     if( today.getFullYear() - date.getFullYear() > 1 || (today.getFullYear() - date.getFullYear() === 1 && date.getMonth() <= today.getMonth()) ){ //in the years
         commentDate = (date.getFullYear() - today.getFullYear() > 1) ? (today.getFullYear() - date.getFullYear()) + 'years ago' : '1 year ago';
