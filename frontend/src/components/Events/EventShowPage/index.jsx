@@ -190,11 +190,10 @@ export function EventShowPage () {
                     {!event.userRsvp && sessionUser.id !== event.hostId? 
                         <div id='restricted-log-container'>
                             <div className='restrict-activity-log'>
-                                <h2>🔒 Restricted Access</h2>
-                                <h2>Only RSVP'd guests can view event activity & see who's going</h2>
-                                <h2>RSVP FOR ACCESS</h2>
-                                <h2>ℹ︎ Not sure if you'll go? Pick “Maybe”</h2>
-
+                                <h2 id='restricted-header'>🔒 Restricted Access</h2>
+                                <p>Only RSVP'd guests can view event activity & see who's going</p>
+                                <button>RSVP FOR ACCESS</button>
+                                <p> Not sure if you'll go? Pick “Maybe”</p>
                             </div>
                             <div id='log-restricted'>
                                 <ActivityLog />
