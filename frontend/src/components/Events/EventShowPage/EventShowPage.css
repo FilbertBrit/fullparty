@@ -369,6 +369,9 @@
     max-width: 360px;
     color: #fff;
 }
+#restricted-header{
+    font-size: 25px;
+}
 #log-restricted{
     margin-top: -310px;
     filter: blur(6px);
