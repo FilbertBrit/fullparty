@@ -3,6 +3,7 @@
 import csrfFetch from './csrf';
 import { RECEIVE_RSVP } from './rsvps';
 import { RECEIVE_USER } from './user';
+import { RECEIVE_USERS } from './user';
 
 //  ACTION TYPES
 export const RECEIVE_EVENT = 'events/RECEIVE_EVENT';
@@ -110,6 +111,7 @@ export const deleteEvent = eventId => async (dispatch) => {
     return response;
 };
 
+
 // REDUCER
 const eventsReducer = (state = {}, action) => {
     const nextState = { ...state };
@@ -119,6 +121,9 @@ const eventsReducer = (state = {}, action) => {
         case RECEIVE_EVENT:
             return { ...state, [action.payload.event.id]: action.payload.event };
         case RECEIVE_USER:
+            return { ...action.payload.events}
+            case RECEIVE_USERS:
+                // debugger
             return { ...action.payload.events}
         case REMOVE_EVENT:
             const newState = { ...state };

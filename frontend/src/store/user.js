@@ -37,7 +37,6 @@ export const updateUser = user => async (dispatch) => {
 
 export const fetchUser = userId => async (dispatch) => {
     console.log(userId)
-    // debugger
     const response = await csrfFetch(`/api/users/${userId}`);
 
     if(response.ok){
@@ -51,11 +50,11 @@ export const fetchUser = userId => async (dispatch) => {
 
 export const fetchUsers = () => async (dispatch) => {
     const response = await csrfFetch('/api/users');
-
+    debugger
     if(response.ok){
         const users = await response.json();
         dispatch(receiveUsers(users));
-        return users;
+        // return users;
     }
     return response;
 }
@@ -71,7 +70,7 @@ const userReducer = (state = {}, action) => {
         case RECEIVE_USER:
             return { ...action.payload.users}
         case RECEIVE_USERS:
-            return { ...state, ...action.payload};
+            return { ...state, ...action.payload.users};
         case UPDATE_CURRENT_USER:
             return { ...state, ...action.payload };
         default:

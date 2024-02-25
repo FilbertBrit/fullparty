@@ -8,11 +8,13 @@ today = (Time.now).inspect
 
 events.each do |event|
     rsvps = event.rsvps.includes(:user)
+    userRsvp = false
 
     rsvps.each do |rsvp|
         if ((rsvp.user.id === @current_user.id) && (rsvp.status != "Can't Go" )) && event.date_time && (event.date_time < today)
             rsvps.each do |rsvp|
                 if rsvp.user_id != @current_user.id && rsvp.status != "Can't Go" 
+                    userRsvp = true
                     if mutualsCounter[rsvp.user_id]
                         mutualsCounter[rsvp.user_id][:events].push(event.id)
                         mutualsCounter[rsvp.user_id][:event] = event.date_time
@@ -25,10 +27,27 @@ events.each do |event|
             break;
         end
     end
+    if userRsvp
+        json.events do
+            json.set! event.id do
+                json.extract! event, :title, :id, :author_id, :date_time
+                json.host event.user.name
+                # json.userRsvp rsvpUser.status
+            end
+        end
+    end
+
+    # json.events do
+    #     json.set! event.id do
+    #         json.extract! event, :title, :id, :author_id, :date_time
+    #         json.host event.user.name
+    #         # json.userRsvp rsvpUser.status
+    #     end
+    # end
 
 end
 
-# json.users do 
+json.users do 
     mutualsCounter.each do |user_id, mutual|
         # puts mutual
         json.set! user_id do
@@ -40,4 +59,4 @@ end
             # json.test 'test'
         end
     end
-# end
+end
