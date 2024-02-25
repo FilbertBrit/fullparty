@@ -31,19 +31,9 @@ events.each do |event|
         json.events do
             json.set! event.id do
                 json.extract! event, :title, :id, :author_id, :date_time
-                json.host event.user.name
-                # json.userRsvp rsvpUser.status
             end
         end
     end
-
-    # json.events do
-    #     json.set! event.id do
-    #         json.extract! event, :title, :id, :author_id, :date_time
-    #         json.host event.user.name
-    #         # json.userRsvp rsvpUser.status
-    #     end
-    # end
 
 end
 
