@@ -78,8 +78,8 @@ export function HomePage () {
                 <h1 id="welcome-header">Welcome back, {sessionUser.name}!</h1>
                 <div className="upcoming-events-msg">
                     <span id="welcome-header-span">You have</span>
-                    <span id="upcoming-msg" onClick={() => setFilter('Upcoming')}>{upcoming }</span>
-                    upcoming {upcoming > 1 ? 'events' : 'event'}.
+                    <span id="upcoming-msg" onClick={() => setFilter('Upcoming')}>{upcoming } upcoming {upcoming > 1 ? 'events' : 'event'}.</span>
+                    {/* upcoming {upcoming > 1 ? 'events' : 'event'}. */}
                 </div>
                 <nav className="event-nav-bar">
                     <button className="event-filter-btn-open" style={{
