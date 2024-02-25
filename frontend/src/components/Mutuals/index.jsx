@@ -17,7 +17,7 @@ export function Mutuals () {
     const [filter, setFilter] = useState('events')
     const [nameFilter, setNameFilter] = useState('down')
     const [eventFilter, setEventFilter] = useState('up')
-
+    // debugger
     switch (filter) {
         case 'events':
             eventFilter === 'up' ? mutuals.sort((a,b) => b.sharedEvents.length - a.sharedEvents.length) : mutuals.sort((a,b) => a.sharedEvents.length - b.sharedEvents.length);
@@ -28,7 +28,6 @@ export function Mutuals () {
         default:
             break;
     }
-    
     
     const handleName = async (e) => {
         e.preventDefault();
