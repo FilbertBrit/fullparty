@@ -1,7 +1,11 @@
 
+import { useDispatch } from "react-redux";
+import { openModal } from "../../store/modal";
+
 export function MutualPageItem ({ mutual }) {
 
     // const recentEvent = mutual.recentEvent
+    const dispatch = useDispatch();
     const date = new Date(mutual.recentEvent)
     const today = new Date()
     let recentEventDate = '';
@@ -20,9 +24,13 @@ export function MutualPageItem ({ mutual }) {
         recentEventDate = (date.getFullYear() - today.getFullYear() > 1) ? (date.getFullYear() - today.getFullYear()) + 'years ago' : '1 year ago';
     }
 
+    const handleClick = (e) => {
+        e.preventDefault();
+        dispatch(openModal({command: 'mutual-modal',prop: mutual.id}));
+    }
 
     return (
-        <div className="mutual-page-item">
+        <div className="mutual-page-item" onClick={handleClick}>
             <div className="profile-container-mutuals-page">
                 <div className="user-profile-photo" id="initial-container-mutual" >
                       <div className="initials" id="initials-mutual-page">
