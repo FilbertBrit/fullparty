@@ -36,13 +36,13 @@ export const updateUser = user => async (dispatch) => {
 };
 
 export const fetchUser = userId => async (dispatch) => {
-    console.log(userId)
+    // console.log(userId)
     const response = await csrfFetch(`/api/users/${userId}`);
 
     if(response.ok){
         const user = await response.json();
         dispatch(receiveUser(user))
-        console.log(user)
+        // console.log(user)
         return user;
     }
     return response;
@@ -50,7 +50,7 @@ export const fetchUser = userId => async (dispatch) => {
 
 export const fetchUsers = () => async (dispatch) => {
     const response = await csrfFetch('/api/users');
-    debugger
+    // debugger
     if(response.ok){
         const users = await response.json();
         dispatch(receiveUsers(users));
