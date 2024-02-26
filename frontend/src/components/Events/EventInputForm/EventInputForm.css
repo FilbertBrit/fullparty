@@ -17,20 +17,29 @@
     align-self: stretch;
     background-color: #363d4741;
     background-color: hsla(0,0%,100%,.15);
-    width: 100%;
-    min-height: 70px;
+    width: 93.5%;
+    min-height: 45px;
     font-size: 30px;
     font-weight: 700;
     margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
+    padding: 15px;
+    height: fit-content;
 }
 #title-input{
 
     font-family: Syne,Avant Garde,Tahoma,Verdana,sans-serif;
     display: flex;
     flex-wrap: wrap;
-    width: 95%;
+    width: 100%;
+    font-size: xx-large;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    border-radius: 0;
 
 }
 .date-time-container{

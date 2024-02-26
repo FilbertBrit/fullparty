@@ -59,9 +59,6 @@ export const fetchUsers = () => async (dispatch) => {
     return response;
 }
 
-// const initialState = { 
-//     user: JSON.parse(sessionStorage.getItem("currentUser"))
-// };
 
 const userReducer = (state = {}, action) => {
     switch (action.type) {

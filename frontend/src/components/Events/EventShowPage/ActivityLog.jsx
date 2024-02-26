@@ -27,8 +27,8 @@ export function ActivityLog () {
         if (e.key === "Enter" && !e.shiftKey) {
             e.preventDefault();
             handleSubmit(); // this won't be triggered
-          }
-      }
+        }
+    }
     
     // Function to dynamically adjust the height of the textarea based on content
     const autoResizeTextarea = (event) => {

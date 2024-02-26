@@ -18,6 +18,7 @@
     margin-left: 8px;
     padding-top: 10px;
     color: white;
+    scroll-behavior: none;
 }
 .initials{
     background: linear-gradient(to right bottom,#5c5cbc 10%,40%,#d85ed4 60%,80%,#cad3e2 90%);
