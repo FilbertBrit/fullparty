@@ -81,9 +81,9 @@ export function EventInputForm () {
 
     if (!sessionUser) return <Redirect to="/login" />;
     return (
-        eventId && !event ?
-        (<></>)
-        :
+        // eventId && !event ?
+        // (<></>)
+        // :
         ( <>
             <Navigation/>
         
@@ -111,7 +111,7 @@ export function EventInputForm () {
                                 filterDate={filteredDate}
                                 selected={selectedDate} 
                                 onChange={ handleDateChange }
-                                placeholderText="Date & Time TBD"
+                                placeholderText="Set a date..."
                                 className="datePicker-input"
                                 dateFormat='yyyy-mm-dd hh:ii'
                             />
