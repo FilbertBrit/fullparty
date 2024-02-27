@@ -33,7 +33,7 @@ export function EventInputForm () {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(dateTime);
+        // console.log(dateTime);
         event ? 
         (
             dispatch(eventActions.updateEvent({title, authorId: sessionUser.id, dateTime, location, capacity, cost, description, id: eventId})).then( res =>  history.push('/events/' + res.event.id))
@@ -44,8 +44,8 @@ export function EventInputForm () {
     }
 
     const handleDateChange = (date) => {
-        console.log(date)
-        console.log(new Date(date))
+        // console.log(date)
+        // console.log(new Date(date))
         setDateTime(date);
         setSelectedDate(date);
     }
@@ -62,6 +62,23 @@ export function EventInputForm () {
 
     }, [dispatch, eventId])
 
+    // const onEnterPress = (e) => {
+    //     if (e.key === "Enter" && !e.shiftKey) {
+    //         e.preventDefault();
+    //         handleSubmit(); // this won't be triggered
+    //     }
+    // }
+
+    // Function to dynamically adjust the height of the textarea based on content
+    const autoResizeTextarea = (event) => {
+        setTitle(event.target.value) 
+        const textarea = event.target; 
+        // console.log(title, title.length) 
+        textarea.style.height = 'auto';
+        textarea.style.height = title.length < 30 ? (textarea.scrollHeight - 40) + 'px' : (textarea.scrollHeight) + 'px';
+    };
+
+
     if (!sessionUser) return <Redirect to="/login" />;
     return (
         eventId && !event ?
@@ -74,13 +91,17 @@ export function EventInputForm () {
                 <div className="event-form-layout">
                     <div className="title-options-container">
                         <div className="title-container">
-                            <input 
+                            <textarea
                             id="title-input"
                             type="text" 
                             value={title}
-                            onChange={ (e) => setTitle(e.target.value) }
+                            onChange={ autoResizeTextarea }
                             required
                             placeholder="Untitled Event"
+                            // onInput={autoResizeTextarea}
+                            // onKeyDown={onEnterPress}
+                            style={{ height: '30px' }}
+                            maxLength={'50'}
                             />
                         </div>
                         <div className="date-time-container">
@@ -150,10 +171,6 @@ export function EventInputForm () {
                             placeholder="Add a description of your event"
                             />
                         </div>
-                        {/* <div className="covid-setting-div">
-                            <h4>COVID_19 SAFETY SETTINGS</h4>
-                            <div>+</div>
-                        </div> */}
                     </div>
 
                     <div className="photo-rsvp-container">

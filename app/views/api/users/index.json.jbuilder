@@ -21,7 +21,6 @@ events.each do |event|
                     elsif 
                         mutualsCounter[rsvp.user_id] = { name: rsvp.user.name, events: [event.id], event: event.date_time, created_at: rsvp.user.created_at}
                     end
-                    # mutualsCounter[rsvp.user_id] ? (mutualsCounter[rsvp.user_id][:events] += 1 && mutualsCounter[rsvp.user_id][:event] = event.date_time) : (mutualsCounter[rsvp.user_id] = { name: rsvp.user.name, events: 1, event: event.date_time})
                 end
             end
             break;
@@ -39,14 +38,12 @@ end
 
 json.users do 
     mutualsCounter.each do |user_id, mutual|
-        # puts mutual
         json.set! user_id do
             json.id user_id
             json.name mutual[:name]
             json.joined mutual[:created_at].strftime("%b '%y")
             json.recentEvent mutual[:event]
             json.sharedEvents mutual[:events]
-            # json.test 'test'
         end
     end
 end

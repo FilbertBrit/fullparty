@@ -56,6 +56,8 @@ export function Mutuals () {
 
     return (
         <>
+        {mutuals &&
+        <>
             <Navigation/>
             <div id="layout-mutuals-page">
                 <div id="header-mutuals">
@@ -84,5 +86,8 @@ export function Mutuals () {
                 
             </div>
         </>
+        }
+        </>
+
     )
 }
