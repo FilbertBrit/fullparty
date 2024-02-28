@@ -123,12 +123,16 @@ export function EventInputForm () {
                             </div>
                             <div className="location-input-div">
                                 <h2 id="input-emoji">📍</h2>
-                                <input 
-                                id="location-input"
-                                type="text"
-                                value={location}
-                                onChange={ (e) => setLocation(e.target.value) }
-                                placeholder="Place name, address, or link"
+                                {/* <input  */}
+                                <textarea
+                                    id="location-input"
+                                    type="text"
+                                    value={location}
+                                    onChange={ (e) => setLocation(e.target.value) }
+                                    placeholder="Place name, address, or link"
+                                    maxLength={'120'}
+                                    style={{ height: 'fit-content'}}
+
                                 />
                             </div>
                             <div className="capacity-input-div">
