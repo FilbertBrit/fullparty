@@ -27,6 +27,9 @@
     padding: 15px;
     height: fit-content;
 }
+.title-container:hover{
+    background-color: hsla(234.56deg 63.96% 50.92% / 31%);;
+}
 #title-input{
 
     font-family: Syne,Avant Garde,Tahoma,Verdana,sans-serif;
@@ -51,6 +54,9 @@
     margin-bottom: 10px;
     display: flex;
 }
+.date-time-container:hover{
+    background-color: hsla(234.56deg 63.96% 50.92% / 31%);;
+}
 .datePicker-input{
     height: 100%;
     padding: 10px;
@@ -73,6 +79,9 @@
     font-family: Syne,Avant Garde,Tahoma,Verdana,sans-serif;
     display: flex;
     margin-bottom: 3px;
+}
+.host-container:hover{
+    background-color: hsla(234.56deg 63.96% 50.92% / 31%);;
 }
 
 #host-title{
@@ -97,6 +106,9 @@
     margin-bottom: 3px;
     padding-left: 8px;
     height: fit-content;
+}
+.location-input-div:hover{
+    background-color: hsla(234.56deg 63.96% 50.92% / 31%);;
 }
 #location-input{
     margin-left: -0.2px;
@@ -130,11 +142,13 @@
 }
 
 #capacity-input{
-    width: fit-content;
-    width: 18%;
+    /* width: max-content; */
+    max-width: 18%;
     font-size: 17px;
 }
-
+.capacity-input-div:hover{
+    background-color: hsla(234.56deg 63.96% 50.92% / 31%);;
+}
 .cost-div{
     width: 97.8%;
     background-color: #363d4741;
@@ -147,9 +161,12 @@
     margin-bottom: 3px;
     font-family: Syne,Avant Garde,Tahoma,Verdana,sans-serif;
 }
+.cost-div:hover{
+    background-color: hsla(234.56deg 63.96% 50.92% / 31%);;
+}
 #cost-input{
     width: fit-content;
-    width: 18%;
+    width: 100%;
     font-size: 17px;
 }
 
@@ -179,7 +196,9 @@
     padding-top: 5px;
     font-family: Syne,Avant Garde,Tahoma,Verdana,sans-serif;
 }
-
+.description-input-container:hover{
+    background-color: hsla(234.56deg 63.96% 50.92% / 31%);;
+}
 #description-input{
     width: 100%;
     font-size: larger;
