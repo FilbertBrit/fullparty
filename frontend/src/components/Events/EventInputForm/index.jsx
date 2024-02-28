@@ -47,7 +47,7 @@ export function EventInputForm () {
         // console.log(date)
         // console.log(new Date(date))
         setDateTime(date);
-        setSelectedDate(date);
+        setSelectedDate(new Date(date));
     }
 
     useEffect( () => {
@@ -62,12 +62,6 @@ export function EventInputForm () {
 
     }, [dispatch, eventId])
 
-    // const onEnterPress = (e) => {
-    //     if (e.key === "Enter" && !e.shiftKey) {
-    //         e.preventDefault();
-    //         handleSubmit(); // this won't be triggered
-    //     }
-    // }
 
     // Function to dynamically adjust the height of the textarea based on content
     const autoResizeTextarea = (event) => {
@@ -75,7 +69,7 @@ export function EventInputForm () {
         const textarea = event.target; 
         // console.log(title, title.length) 
         textarea.style.height = 'auto';
-        textarea.style.height = title.length < 30 ? (textarea.scrollHeight - 40) + 'px' : (textarea.scrollHeight) + 'px';
+        textarea.style.height = title.length < 28 ? (textarea.scrollHeight - 40) + 'px' : (textarea.scrollHeight) + 'px';
     };
 
 
@@ -113,7 +107,7 @@ export function EventInputForm () {
                                 onChange={ handleDateChange }
                                 placeholderText="Set a date..."
                                 className="datePicker-input"
-                                dateFormat='yyyy-mm-dd hh:ii'
+                                dateFormat='EEEE, MMMM dd, yyyy hh:mm a'
                             />
                         </div>
                         <div className="host-optional-inputs-container">
