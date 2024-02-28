@@ -107,7 +107,8 @@ export function EventInputForm () {
                                 onChange={ handleDateChange }
                                 placeholderText="Set a date..."
                                 className="datePicker-input"
-                                dateFormat='EEEE, MMMM dd, yyyy hh:mm a'
+                                dateFormat='EEEE, MMM dd, h:mm a'
+                                style={{width: '100%'}}
                             />
                         </div>
                         <div className="host-optional-inputs-container">
