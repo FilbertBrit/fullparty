@@ -72,7 +72,7 @@ export function EventInputForm () {
 
     // Function to dynamically adjust the height of the textarea based on content
     const autoResizeTextarea = (event) => {
-        setTitle(event.target) 
+        setTitle(event.target.value) 
         const textarea = event.target; 
         // console.log(title, title.length) 
         textarea.style.height = 'auto';
