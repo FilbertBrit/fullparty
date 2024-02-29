@@ -51,6 +51,12 @@ export function EventInputForm () {
         setSelectedDate(new Date(date));
     }
 
+    // const handleSelect = (e) => {
+    //     e.parent.stopPropagation()
+    //     console.log(e.target.value)
+    //     // setSelectedInput('title')
+    // }
+
     useEffect( () => {
         if(eventId) dispatch(fetchEvent(eventId)).then( payload => {
             setTitle(payload.event.title);
@@ -66,7 +72,7 @@ export function EventInputForm () {
 
     // Function to dynamically adjust the height of the textarea based on content
     const autoResizeTextarea = (event) => {
-        setTitle(event.target.value) 
+        setTitle(event.target) 
         const textarea = event.target; 
         // console.log(title, title.length) 
         textarea.style.height = 'auto';
@@ -82,13 +88,17 @@ export function EventInputForm () {
         ( <>
             <Navigation/>
         
-            <form onSubmit={handleSubmit} >
+            <form onSubmit={handleSubmit} 
+                            // onClick={e => setSelectedInput('date')}
+                            >
                 <div className="event-form-layout">
                     <div className="title-options-container">
                         <div className="title-container" style={{
                                 backgroundColor: 
                                     selectedInput === "title" ? "hsla(234.56deg 63.96% 50.92% / 31%)" : null,
-                                }}>
+                                }}
+                            onClick={e => setSelectedInput('title')} value='title'
+                            >
                             <textarea
                             id="title-input"
                             type="text" 
@@ -98,7 +108,7 @@ export function EventInputForm () {
                             placeholder="Untitled Event"
                             // onInput={autoResizeTextarea}
                             // onKeyDown={onEnterPress}
-                            onSelect={e => setSelectedInput('title')}
+                            // onSelect={e => { e.stopPropagation() && setSelectedInput('title') }}
                             on
                             style={{ height: '30px'}}
                             maxLength={'50'}
