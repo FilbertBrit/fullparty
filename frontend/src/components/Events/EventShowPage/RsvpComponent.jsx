@@ -41,7 +41,7 @@ export function RsvpComponent ({ event }) {
 
     const handleClick = (e) => {
         e.preventDefault();
-        debugger
+        // debugger
         if (userRsvp) {
             dispatch(updateRsvp({status: e.currentTarget.value, userId: sessionUser.id, eventId: event.id, id: userRsvpId})).then( rsvp => setRsvp(rsvp))
             // dispatch(createComment({body: 'updated ' + e.currentTarget.value, authorId: sessionUser.id, eventId: event.id, commentType: 'rsvp'}))

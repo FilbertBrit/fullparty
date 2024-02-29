@@ -71,12 +71,26 @@ export function EventInputForm () {
 
 
     // Function to dynamically adjust the height of the textarea based on content
-    const autoResizeTextarea = (event) => {
-        setTitle(event.target.value) 
+    const autoResizeTextarea = (event, input) => {
         const textarea = event.target; 
-        // console.log(title, title.length) 
-        textarea.style.height = 'auto';
-        textarea.style.height = title.length < 28 ? (textarea.scrollHeight - 40) + 'px' : (textarea.scrollHeight) + 'px';
+        switch (input) {
+            case 'title':
+
+                setTitle(event.target.value);
+                textarea.style.height = 'auto';
+                textarea.style.height = title.length < 28 ? (textarea.scrollHeight - 40) + 'px' : (textarea.scrollHeight) + 'px';
+                
+                break;
+            case 'description':
+                setDescription(event.target.value);
+                textarea.style.height = 'auto';
+                textarea.style.height = title.length < 28 ? (textarea.scrollHeight - 20) + 'px' : (textarea.scrollHeight) + 'px';
+                
+                break;
+            default:
+                
+                break;
+        }
     };
 
 
@@ -103,7 +117,7 @@ export function EventInputForm () {
                             id="title-input"
                             type="text" 
                             value={title}
-                            onChange={ autoResizeTextarea }
+                            onChange={ e => autoResizeTextarea(e, 'title') }
                             required
                             placeholder="Untitled Event"
                             // onInput={autoResizeTextarea}
@@ -202,8 +216,11 @@ export function EventInputForm () {
                             id="description-input"
                             type="text" 
                             value={description}
-                            onChange={ (e) => setDescription(e.target.value) }
+                            // onChange={ (e) => setDescription(e.target.value) }
+                            onChange={ e => autoResizeTextarea(e, 'description') }
+
                             placeholder="Add a description of your event"
+                            // style={{ height: 'fit-content'}}
                             
                             />
                         </div>
