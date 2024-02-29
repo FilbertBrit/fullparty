@@ -26,6 +26,7 @@ export function EventInputForm () {
     const [cost, setCost] = useState('');
     const [description, setDescription] = useState('')
     const [selectedDate, setSelectedDate] = useState('');
+    const [selectedInput, setSelectedInput] = useState('')
 
     const filteredDate = (date) => { 
         return (new Date() < date) || (new Date() === date)
@@ -50,6 +51,12 @@ export function EventInputForm () {
         setSelectedDate(new Date(date));
     }
 
+    // const handleSelect = (e) => {
+    //     e.parent.stopPropagation()
+    //     console.log(e.target.value)
+    //     // setSelectedInput('title')
+    // }
+
     useEffect( () => {
         if(eventId) dispatch(fetchEvent(eventId)).then( payload => {
             setTitle(payload.event.title);
@@ -65,7 +72,7 @@ export function EventInputForm () {
 
     // Function to dynamically adjust the height of the textarea based on content
     const autoResizeTextarea = (event) => {
-        setTitle(event.target.value) 
+        setTitle(event.target) 
         const textarea = event.target; 
         // console.log(title, title.length) 
         textarea.style.height = 'auto';
@@ -81,10 +88,17 @@ export function EventInputForm () {
         ( <>
             <Navigation/>
         
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} 
+                            // onClick={e => setSelectedInput('date')}
+                            >
                 <div className="event-form-layout">
                     <div className="title-options-container">
-                        <div className="title-container">
+                        <div className="title-container" style={{
+                                backgroundColor: 
+                                    selectedInput === "title" ? "hsla(234.56deg 63.96% 50.92% / 31%)" : null,
+                                }}
+                            onClick={e => setSelectedInput('title')} value='title'
+                            >
                             <textarea
                             id="title-input"
                             type="text" 
@@ -94,11 +108,17 @@ export function EventInputForm () {
                             placeholder="Untitled Event"
                             // onInput={autoResizeTextarea}
                             // onKeyDown={onEnterPress}
-                            style={{ height: '30px' }}
+                            // onSelect={e => { e.stopPropagation() && setSelectedInput('title') }}
+                            on
+                            style={{ height: '30px'}}
                             maxLength={'50'}
+
                             />
                         </div>
-                        <div className="date-time-container">
+                        <div className="date-time-container" style={{
+                                backgroundColor: 
+                                    selectedInput === "date" ? "hsla(234.56deg 63.96% 50.92% / 31%)" : null,
+                                }} onSelect={e => setSelectedInput('date')}>
         
                             <DatePicker 
                                 showTimeSelect
@@ -112,7 +132,10 @@ export function EventInputForm () {
                             />
                         </div>
                         <div className="host-optional-inputs-container">
-                            <div className="host-container">
+                            <div className="host-container" onClick={e => setSelectedInput('host')} style={{
+                                backgroundColor: 
+                                    selectedInput === "host" ? "hsla(234.56deg 63.96% 50.92% / 31%)" : null,
+                                }}>
                                 <div className="host-title">
                                     <h2 id="input-emoji">👑</h2>
                                     <h4 id="host-title">Hosted by the wonderful...</h4>
@@ -121,7 +144,10 @@ export function EventInputForm () {
                                     {sessionUser.name}
                                 </div>
                             </div>
-                            <div className="location-input-div">
+                            <div className="location-input-div" style={{
+                                backgroundColor: 
+                                    selectedInput === "location" ? "hsla(234.56deg 63.96% 50.92% / 31%)" : null,
+                                }} onSelect={e => setSelectedInput('location')}>
                                 <h2 id="input-emoji">📍</h2>
                                 {/* <input  */}
                                 <textarea
@@ -135,7 +161,10 @@ export function EventInputForm () {
 
                                 />
                             </div>
-                            <div className="capacity-input-div">
+                            <div className="capacity-input-div" onClick={e => setSelectedInput('capacity')} style={{
+                                backgroundColor: 
+                                    selectedInput === "capacity" ? "hsla(234.56deg 63.96% 50.92% / 31%)" : null,
+                                }}>
                                 <h2 id="input-emoji">👥</h2>
                                 <input 
                                 id="capacity-input"
@@ -146,7 +175,10 @@ export function EventInputForm () {
                                 />
                                 <div> spots</div>
                             </div>
-                            <div className="cost-div">
+                            <div className="cost-div" onSelect={e => setSelectedInput('cost')} style={{
+                                backgroundColor: 
+                                    selectedInput === "cost" ? "hsla(234.56deg 63.96% 50.92% / 31%)" : null,
+                                }}>
                                 <h2 id="input-emoji">🎟️</h2>
                                 <input 
                                 id="cost-input"
@@ -161,13 +193,18 @@ export function EventInputForm () {
                                 <div id="custom-link">+ Add custon link or text </div>
                             </div> */}
                         </div>
-                        <div className="description-input-container">
-                            <input 
+                        <div className="description-input-container" onClick={e => setSelectedInput('description')} style={{
+                                backgroundColor: 
+                                    selectedInput === "description" ? "hsla(234.56deg 63.96% 50.92% / 31%)" : null,
+                                }}>
+                            {/* <input  */}
+                            <textarea
                             id="description-input"
                             type="text" 
                             value={description}
                             onChange={ (e) => setDescription(e.target.value) }
                             placeholder="Add a description of your event"
+                            
                             />
                         </div>
                     </div>

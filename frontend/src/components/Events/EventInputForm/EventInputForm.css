@@ -147,7 +147,7 @@
     font-size: 17px;
 }
 .capacity-input-div:hover{
-    background-color: hsla(234.56deg 63.96% 50.92% / 31%);;
+    background-color: hsla(234.56deg 63.96% 50.92% / 31%);
 }
 .cost-div{
     width: 97.8%;
@@ -202,6 +202,16 @@
 #description-input{
     width: 100%;
     font-size: larger;
+    height: 100%;
+    /* margin-top: -30px; */
+    padding: 8px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    border-radius: 0;  
+    color: hsla(0, 2%, 59%, 0.793);
 }
 
 .photo-rsvp-container{
