@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import Navigation from "../../Navigation";
 import wazzap from "../../../images/wazzap-halloween.jpeg"
 import { getEvent, fetchEvent } from '../../../store/events';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./EventInputForm.css"
 import * as eventActions from '../../../store/events';
 import { useHistory, useParams } from "react-router";
@@ -10,6 +10,8 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { AiOutlineInstagram } from "react-icons/ai"
+// import useAutosizeTextArea from "./useAutosizeTextArea";
+
 
 export function EventInputForm () {
 
@@ -27,6 +29,17 @@ export function EventInputForm () {
     const [description, setDescription] = useState('')
     const [selectedDate, setSelectedDate] = useState('');
     const [selectedInput, setSelectedInput] = useState('')
+    const textareaRef = useRef(null); // Ref for textarea element
+    const [load, setLoad] = useState( eventId ? false : true);
+
+     // Effect to adjust textarea height on text change
+    useEffect(() => {
+        if (textareaRef.current) {
+        textareaRef.current.style.height = 'auto'; // Reset height to auto
+        textareaRef.current.style.height = -20 +textareaRef.current.scrollHeight + 'px'; // Set new height
+        }
+    }, [description]);
+
 
     const filteredDate = (date) => { 
         return (new Date() < date) || (new Date() === date)
@@ -65,18 +78,33 @@ export function EventInputForm () {
             setCost(payload.event.cost);
             setDateTime(payload.event.dateTime);
             setDescription(payload.event.description);
+            setLoad(true)
         });
 
     }, [dispatch, eventId])
 
 
     // Function to dynamically adjust the height of the textarea based on content
-    const autoResizeTextarea = (event) => {
-        setTitle(event.target.value) 
+    const autoResizeTextarea = (event, input) => {
         const textarea = event.target; 
-        // console.log(title, title.length) 
-        textarea.style.height = 'auto';
-        textarea.style.height = title.length < 28 ? (textarea.scrollHeight - 40) + 'px' : (textarea.scrollHeight) + 'px';
+        switch (input) {
+            case 'title':
+
+                setTitle(event.target.value);
+                textarea.style.height = 'auto';
+                textarea.style.height = title.length < 28 ? (textarea.scrollHeight - 40) + 'px' : (textarea.scrollHeight) + 'px';
+                
+                break;
+            case 'description':
+                setDescription(event.target.value);
+                textarea.style.height = 'auto';
+                textarea.style.height = title.length < 28 ? (textarea.scrollHeight - 20) + 'px' : (textarea.scrollHeight) + 'px';
+                
+                break;
+            default:
+                
+                break;
+        }
     };
 
 
@@ -85,7 +113,7 @@ export function EventInputForm () {
         // eventId && !event ?
         // (<></>)
         // :
-        ( <>
+        ( <> 
             <Navigation/>
         
             <form onSubmit={handleSubmit} 
@@ -103,7 +131,7 @@ export function EventInputForm () {
                             id="title-input"
                             type="text" 
                             value={title}
-                            onChange={ autoResizeTextarea }
+                            onChange={ e => autoResizeTextarea(e, 'title') }
                             required
                             placeholder="Untitled Event"
                             // onInput={autoResizeTextarea}
@@ -157,7 +185,7 @@ export function EventInputForm () {
                                     onChange={ (e) => setLocation(e.target.value) }
                                     placeholder="Place name, address, or link"
                                     maxLength={'120'}
-                                    style={{ height: 'fit-content'}}
+                                    // style={{ height: scrollHeight + 'px'}}
 
                                 />
                             </div>
@@ -199,11 +227,15 @@ export function EventInputForm () {
                                 }}>
                             {/* <input  */}
                             <textarea
+                            ref={textareaRef}
                             id="description-input"
                             type="text" 
                             value={description}
                             onChange={ (e) => setDescription(e.target.value) }
+                            // onChange={ e => autoResizeTextarea(e, 'description') }
+
                             placeholder="Add a description of your event"
+                            // style={{ height: autoResizeTextarea('description')}}
                             
                             />
                         </div>
