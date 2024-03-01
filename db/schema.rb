@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_01_073518) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_01_074341) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -85,6 +85,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_073518) do
     t.index ["sender_id"], name: "index_invites_on_sender_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "type", null: false
+    t.string "content", null: false
+    t.bigint "reciever_id", null: false
+    t.bigint "sender_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_notifications_on_event_id"
+    t.index ["reciever_id"], name: "index_notifications_on_reciever_id"
+    t.index ["sender_id"], name: "index_notifications_on_sender_id"
+  end
+
   create_table "rsvps", force: :cascade do |t|
     t.string "status", null: false
     t.bigint "user_id", null: false
@@ -127,6 +140,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_073518) do
   add_foreign_key "invites", "events"
   add_foreign_key "invites", "users", column: "reciever_id"
   add_foreign_key "invites", "users", column: "sender_id"
+  add_foreign_key "notifications", "events"
+  add_foreign_key "notifications", "users", column: "reciever_id"
+  add_foreign_key "notifications", "users", column: "sender_id"
   add_foreign_key "rsvps", "events"
   add_foreign_key "rsvps", "users"
   add_foreign_key "socials", "users"
