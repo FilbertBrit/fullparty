@@ -451,6 +451,8 @@
     #show-img{
         height: 325px;
         width: 325px;
+        height: 100%;
+        width: 100%;
     }
     #event-title-show{
         font-size: 100%;
