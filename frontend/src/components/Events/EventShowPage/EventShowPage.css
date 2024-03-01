@@ -14,6 +14,7 @@
 .show-info{
     /* width: 40vw; */
     width: 660px;
+    min-width: 75%;
     position: relative;
 }
 .show-title{
@@ -30,6 +31,7 @@
 #event-title-show{
     width: max-content;
     font-size: 56px;
+    max-width: 590px;
 }
 #event-time-h2{
    color: hsla(0,0%,100%,.6);
@@ -114,6 +116,7 @@
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     margin-bottom: 20px;
     color: hsla(0,0%,100%,.6); 
+    width: 100%;
     /* padding-bottom: 25px; */
 }
 .show-guests{
@@ -430,7 +433,7 @@
         top: 150px;
         width: 460px;
         width: 35vw;
-        margin-left: 55vw;
+        margin-left: 50vw;
         /* max-height: calc(100% - 150px); */
         position: fixed;
         /* right: 100px; */
@@ -442,19 +445,23 @@
     .showpage-layout{
         /* justify-content: space-between; */
         /* padding-left: 80px; */
-        margin-right: 455px;
+        /* margin-right: 455px; */
+        margin-right: 40%;
     }
 
     #show-img{
         height: 325px;
         width: 325px;
+        height: 80%;
+        width: 80%;
     }
     #event-title-show{
         font-size: 100%;
+        max-width: 450px;
     }
     .show-title{
         justify-content: flex-start;
-        width: fit-content;
+        max-width: min-content;
     }
     .show-rsvps-comments{
         width: 400px;
@@ -466,8 +473,12 @@
 }
 
 .event-description-showpage{
-    max-width: 400px;
+    max-width: 650px;
+    width: 100%;
     height: fit-content;
     display: flex;
     flex-wrap: wrap;
 }
+/* .show-info{
+    max-width: 550px;
+} */
