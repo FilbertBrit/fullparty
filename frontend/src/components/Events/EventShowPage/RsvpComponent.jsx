@@ -34,6 +34,12 @@ export function RsvpComponent ({ event }) {
         "Maybe": "🤔",
         "Can't Go": "😢"
     }
+    const pastResponse = {
+        "I'm Going": "You Went",
+        "going": "You Went",
+        "Maybe": "Maybe Went",
+        "Can't Go": "Didn't Go"
+    }
     // const toggleRsvpInst = (e) => {
     //     e.preventDefault();
     //     hideRsvpInst === true ? hideRsvpInst = false : hideRsvpInst = true;
@@ -64,7 +70,7 @@ export function RsvpComponent ({ event }) {
                  <>
                  <button className="rsvp-btn" onClick={handleEdit} onMouseEnter={() => handleHover(true)}
     onMouseLeave={() => handleHover(false)}>
-                    <div className={`hover-edit-instructions ${isHovered ? 'visible' : ''}` } >
+                    <div className={`hover-edit-instructions ${isHovered && !eventDone? 'visible' : ''}` } >
                         <div className="rsvp-edit-instructions" >
                             Click to change
                         </div>
@@ -72,7 +78,7 @@ export function RsvpComponent ({ event }) {
                     <div className="emoji-rsvp-btn" id="rsvp-rsp-show">
                         {response[rsvp.status]}
                     </div>
-                    <div> {rsvp.status}</div>
+                    <div> {eventDone ? pastResponse[rsvp.status]: rsvp.status}</div>
                 </button>
                  </>
             ) : (
