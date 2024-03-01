@@ -64,7 +64,7 @@ export function RsvpComponent ({ event }) {
                  <>
                  <button className="rsvp-btn" onClick={handleEdit} onMouseEnter={() => handleHover(true)}
     onMouseLeave={() => handleHover(false)}>
-                    <div className={`hover-edit-instructions ${isHovered ? 'visible' : ''}` } >
+                    <div className={`hover-edit-instructions ${isHovered && !eventDone? 'visible' : ''}` } >
                         <div className="rsvp-edit-instructions" >
                             Click to change
                         </div>
