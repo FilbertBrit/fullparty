@@ -16,7 +16,8 @@ export const SharedEventPrev = ({ event }) => {
     }else if((date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
         eventDate = (date.getDay() - today.getDay() > 1) ? ((date.getDay() - today.getDay() ) + ' days ago') : ( '1 day ago' )  
     }else if(date.getFullYear() === today.getFullYear() || (today.getMonth() - date.getMonth() < 0)){
-        eventDate = ((today.getMonth() - date.getMonth() + 12) > 1) ? (today.getMonth() - date.getMonth() + 12) + ' months ago' : '1 month ago';
+        console.log(today.getMonth(), date.getMonth())
+        eventDate = ((today.getMonth() - date.getMonth()) > 1) ? (today.getMonth() - date.getMonth() - 1) + ' months ago' : '1 month ago';
     }else{
         eventDate = (date.getFullYear() - today.getFullYear() > 1) ? (date.getFullYear() - today.getFullYear()) + 'years ago' : '1 year ago';
     }
