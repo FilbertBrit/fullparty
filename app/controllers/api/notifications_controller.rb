@@ -7,9 +7,9 @@ class Api::NotificationsController < ApplicationController
       render :index
     end
   
-    def show 
-      render :show
-    end
+    # def show 
+    #   render :show
+    # end
   
     def create
       # debugger

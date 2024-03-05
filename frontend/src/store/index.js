@@ -6,6 +6,8 @@ import rsvps from './rsvps'
 import comments from './comments'
 import users from './user'
 import modal from './modal'
+import invites from './invites'
+import notifications from './notifications'
 
 const rootReducer = combineReducers({
     session,
@@ -13,7 +15,9 @@ const rootReducer = combineReducers({
     rsvps,
     comments,
     users, 
-    modal
+    modal,
+    notifications,
+    invites
 });
 
 let enhancer;

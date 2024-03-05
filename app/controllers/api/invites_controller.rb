@@ -7,9 +7,9 @@ class Api::InvitesController < ApplicationController
       render :index
     end
   
-    def show 
-      render :show
-    end
+    # def show 
+    #   render :show
+    # end
   
     def create
       # debugger
