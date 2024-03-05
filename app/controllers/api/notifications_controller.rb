@@ -1,6 +1,6 @@
 class Api::NotificationsController < ApplicationController
-    wrap_parameters include: Rsvp.attribute_names + ['recieverId', 'senderId', 'eventId']
-    before_action :set_rsvp, only: [:show, :update]
+    wrap_parameters include: Notification.attribute_names + ['recieverId', 'senderId', 'eventId']
+    # before_action :set_rsvp, only: [:show, :update]
   
     def index
       @notifications = Notification.where(reciever_id: params[:reciever_id])

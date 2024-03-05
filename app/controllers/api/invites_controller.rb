@@ -1,9 +1,9 @@
 class Api::InvitesController < ApplicationController
-    wrap_parameters include: Rsvp.attribute_names + ['userId', 'eventId']
-    before_action :set_rsvp, only: [:show, :update]
+    wrap_parameters include: Invite.attribute_names + ['senderId', 'recieverId', 'eventId']
+    # before_action :set_rsvp, only: [:show, :update]
   
     def index
-      @rsvps = Rsvp.where(event_id: params[:event_id])
+      @invites = Invite.where(reciever_id: params[:reciever_id])
       render :index
     end
   
@@ -13,8 +13,8 @@ class Api::InvitesController < ApplicationController
   
     def create
       # debugger
-      @rsvp = Rsvp.new(rsvp_params)
-      if @rsvp.save
+      @invite = Invite.new(invite_params)
+      if @invite.save
         render :show
         # render json: rsvp_params
       else
@@ -23,25 +23,25 @@ class Api::InvitesController < ApplicationController
       # render json: rsvp_params
     end
   
-    def update
-      if @rsvp.update(rsvp_params)
-        render :show
-      else
-        render json: @rsvp.errors.full_messages, status: 422
-      end
-    end
+    # def update
+    #   if @rsvp.update(rsvp_params)
+    #     render :show
+    #   else
+    #     render json: @rsvp.errors.full_messages, status: 422
+    #   end
+    # end
   
     private 
   
-    def set_rsvp
-      @rsvp = Rsvp.find(params[:id])
+    def set_invite
+      @invite = Invite.find(params[:id])
   
       rescue
-        render json: ['RSVP not found'], status: :not_found
+        render json: ['Invite not found'], status: :not_found
     end
   
-    def rsvp_params
-      params.require(:rsvp).permit(:status, :user_id, :event_id)
+    def invite_params
+      params.require(:invite).permit(:sender_id, :reciever_id, :event_id)
     end
   end
   
