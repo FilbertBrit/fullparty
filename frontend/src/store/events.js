@@ -123,7 +123,6 @@ const eventsReducer = (state = {}, action) => {
         case RECEIVE_USER:
             return { ...action.payload.events}
             case RECEIVE_USERS:
-                // debugger
             return { ...action.payload.events}
         case REMOVE_EVENT:
             const newState = { ...state };
