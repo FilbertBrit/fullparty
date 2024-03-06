@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getEvent, fetchEvent } from '../../../store/events';
+import { restoreUsers } from '../../../store/user';
 import { useEffect } from 'react';
 import { deleteEvent } from '../../../store/events';
 import Navigation from "../../Navigation"
@@ -12,7 +13,6 @@ import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { AiOutlineInstagram } from "react-icons/ai"
 import { ActivityLog } from './ActivityLog';
 
-
 export function EventShowPage () {
 
     const { eventId } = useParams();
@@ -22,7 +22,6 @@ export function EventShowPage () {
     const sessionUser = useSelector(state => state.session.user);
     const rsvps = useSelector(state => state.rsvps);
     const date = event ? new Date(event.dateTime).toLocaleTimeString('en-US', { timeZone: 'PST' }).split(" ") : ''
-    console.log(date)
     // const today = new Date()
     // const eventDone = event ? date < today : '';
     let rsvpGoing = 0;
@@ -30,6 +29,7 @@ export function EventShowPage () {
     const editLink = "/events/" + eventId + "/edit";
     let location = event?.location || "No Location Set";
 
+    const savedState = JSON.parse(localStorage.getItem('usersState'));
     
     for(let key in rsvps){
         rsvps[key].status === "I'm Going" ? (rsvpGoing = (rsvpGoing + 1)) : (rsvpGoing = (rsvpGoing));
@@ -41,8 +41,14 @@ export function EventShowPage () {
     }
     
     useEffect(  () => {
-        dispatch(fetchEvent(eventId));
+        // debugger
+        dispatch(fetchEvent(eventId)).then(() => dispatch(restoreUsers(savedState)));
+        
     }, [dispatch, eventId])
+    // useEffect( () => {
+    //     debugger
+    //     store.dispatch({ type: 'RESTORE_STATE', payload: savedState });
+    // }, [event])
     
     if (!sessionUser) return <Redirect to="/login" />;
 

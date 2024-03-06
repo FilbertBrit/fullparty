@@ -1,9 +1,10 @@
 import csrfFetch from './csrf';
 import { UPDATE_CURRENT_USER } from './session';
-import { RECEIVE_EVENTS } from './events';
+import { RECEIVE_EVENTS, RECEIVE_EVENT } from './events';
 
 export const RECEIVE_USER = 'users/RECEIVE_USER';
 export const RECEIVE_USERS = 'users/RECEIVE_USERS';
+export const RESTORE_USERS = 'users/RESTORE_USERS';
 
 const recieveUpdateUser = user => ({
     type: UPDATE_CURRENT_USER,
@@ -19,8 +20,12 @@ const receiveUsers = users => ({
     payload: users
 });
 
+export const restoreUsers = users => ({
+    type: RESTORE_USERS,
+    payload: users
+})
+
 export const updateUser = user => async (dispatch) => {
-    // debugger
     const response = await csrfFetch(`/api/users/${user.id}`, {
         method: 'PATCH',
         headers: {
@@ -36,13 +41,11 @@ export const updateUser = user => async (dispatch) => {
 };
 
 export const fetchUser = userId => async (dispatch) => {
-    // console.log(userId)
     const response = await csrfFetch(`/api/users/${userId}`);
 
     if(response.ok){
         const user = await response.json();
-        dispatch(receiveUser(user))
-        // console.log(user)
+        dispatch(receiveUser(user));
         return user;
     }
     return response;
@@ -50,26 +53,31 @@ export const fetchUser = userId => async (dispatch) => {
 
 export const fetchUsers = () => async (dispatch) => {
     const response = await csrfFetch('/api/users');
-    // debugger
     if(response.ok){
         const users = await response.json();
         dispatch(receiveUsers(users));
-        // return users;
     }
     return response;
 }
 
+const initialState = { 
+    
+};
 
 const userReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_EVENTS:
             return { ...action.payload.users};
+        case RECEIVE_EVENT:
+            return {...state, ...initialState}
         case RECEIVE_USER:
             return { ...action.payload.users}
         case RECEIVE_USERS:
             return { ...state, ...action.payload.users};
         case UPDATE_CURRENT_USER:
             return { ...state, ...action.payload };
+        case RESTORE_USERS:
+            return {...action.payload}
         default:
             return state;
     }
