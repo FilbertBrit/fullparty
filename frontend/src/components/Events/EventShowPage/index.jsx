@@ -12,6 +12,8 @@ import { RsvpComponent } from './RsvpComponent';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { AiOutlineInstagram } from "react-icons/ai"
 import { ActivityLog } from './ActivityLog';
+import { openModal } from '../../../store/modal';
+import { useState } from 'react';
 
 export function EventShowPage () {
 
@@ -28,8 +30,10 @@ export function EventShowPage () {
     let rsvpMaybe = 0;
     const editLink = "/events/" + eventId + "/edit";
     let location = event?.location || "No Location Set";
+    const [usersState, setUsersState] = useState()
 
     const savedState = JSON.parse(localStorage.getItem('usersState'));
+    // setUsersState(JSON.parse(localStorage.getItem('usersState')))
     // localStorage.removeItem('userState');
     
     for(let key in rsvps){
@@ -40,10 +44,16 @@ export function EventShowPage () {
     const handleDelete = async(e) => {
         dispatch(deleteEvent(eventId)).then(history.push('/events'));
     }
+
+    const handleInvite = (e) => {
+        e.preventDefault();
+        dispatch(openModal({command: 'invite-modal', prop: eventId}));
+    }
     
     useEffect(  () => {
         // debugger
-        dispatch(fetchEvent(eventId)).then(() => dispatch(restoreUsers(savedState))).then(localStorage.removeItem('usersState'));
+        dispatch(fetchEvent(eventId)).then(() => dispatch(restoreUsers(savedState)))
+        // .then(localStorage.removeItem('usersState'));
         
     }, [dispatch, eventId])
     // useEffect( () => {
@@ -54,7 +64,7 @@ export function EventShowPage () {
     if (!sessionUser) return <Redirect to="/login" />;
 
     return event ? (
-        <>
+        <div className='show-page'>
         <div id='page-layout-showpage'>
             <Navigation/>
             <div className="showpage-layout">
@@ -229,7 +239,7 @@ export function EventShowPage () {
                         </div>
                     </div>
                     <div className="divider"></div>
-                    <div className="module-invite" id='author-nav-sidebar-item'>
+                    <div className="module-invite" id='author-nav-sidebar-item' onClick={handleInvite}>
                         <h2>👥</h2>
                         <h2 id='author-nav-sidebar-text'>INVITE</h2>
                     </div>
@@ -243,6 +253,6 @@ export function EventShowPage () {
                 )}
         </div>
         <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
-        </>
+        </div>
     ) : null;
 }
