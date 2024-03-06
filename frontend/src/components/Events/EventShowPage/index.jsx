@@ -30,6 +30,7 @@ export function EventShowPage () {
     let location = event?.location || "No Location Set";
 
     const savedState = JSON.parse(localStorage.getItem('usersState'));
+    // localStorage.removeItem('userState');
     
     for(let key in rsvps){
         rsvps[key].status === "I'm Going" ? (rsvpGoing = (rsvpGoing + 1)) : (rsvpGoing = (rsvpGoing));
@@ -42,7 +43,7 @@ export function EventShowPage () {
     
     useEffect(  () => {
         // debugger
-        dispatch(fetchEvent(eventId)).then(() => dispatch(restoreUsers(savedState)));
+        dispatch(fetchEvent(eventId)).then(() => dispatch(restoreUsers(savedState))).then(localStorage.removeItem('usersState'));
         
     }, [dispatch, eventId])
     // useEffect( () => {

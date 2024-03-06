@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 
-export const EventIndexItem = ({ event }) => {
+export const EventIndexItem = ({ event, usersState }) => {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     // const [showOptions, setShowOptions] = useState(false)
@@ -83,7 +83,7 @@ export const EventIndexItem = ({ event }) => {
     
     return (
         
-        <a href={ showMenu === false ? showPage : null } id="event-item" >
+        <a href={ showMenu === false ? showPage : null } id="event-item" onClick={() => localStorage.setItem('usersState', JSON.stringify(usersState))} >
             <div id="photo-rsvp-container">
                 <img src={wazzap} id="event-img" alt="dummy-pic"/>
                 { rsvpStatus ? 
