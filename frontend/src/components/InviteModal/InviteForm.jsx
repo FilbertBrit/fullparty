@@ -3,28 +3,34 @@ import { useParams } from "react-router-dom";
 import { closeModal } from "../../store/modal";
 import cancel from "../../images/cancel.png"
 import "./InviteForm.css"
+import { useState, useEffect  } from "react";
+import { MutualInvitee } from "./MutualInvitee";
 
 export const InviteForm = ({ eventId }) => {
 
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const event = useSelector(state => state.events[eventId]);
-    let filteredMutuals = []
+    const mutualsObj = useSelector(state => state.users)
+    const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
+    let filteredMutuals = mutuals;
+    const [mutualFilter, setMutualFilter] = useState();
 
     const handleCancel = (e) => {
         e.preventDefault()
         dispatch(closeModal());
     }
 
+    useEffect( () => {
+
+    }, [mutualFilter])
+
     return (
         <div className="invite-modal-component">
             <div className="invite-select">
-                <div className="exit-btn-mutual-component" onClick={handleCancel}>
-                    <img src={cancel} id="cancel-img" alt="cancel"/>
-                </div>
-                <header>
-                    <h2>Invite</h2>
-                    <button>COPY LINK</button>
+                <header id="invite-select-header">
+                    <h2 id="invite-select-header-text">Invite</h2>
+                    <button id="invite-select-header-btn">COPY LINK</button>
                 </header>
                 <div className="invitees-menu">
                     <input 
@@ -34,8 +40,8 @@ export const InviteForm = ({ eventId }) => {
                     <button>fiter by event</button>
                     <div className="invitees-mutuals">
                         {
-                            filteredMutuals.map( (event, i) =>
-                                {}
+                            filteredMutuals.map( (mutual, i) =>
+                                <MutualInvitee mutual={mutual} key={i}/>
                             )
                         }
                     </div>
@@ -58,6 +64,9 @@ export const InviteForm = ({ eventId }) => {
                     <button>CANCEL</button>
                     <button>SEND TEXTS</button>
                 </div>
+            </div>
+            <div className="exit-btn-mutual-component" onClick={handleCancel}>
+                <img src={cancel} id="cancel-img" alt="cancel"/>
             </div>
         </div>
     )

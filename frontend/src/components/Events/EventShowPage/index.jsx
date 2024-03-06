@@ -64,7 +64,7 @@ export function EventShowPage () {
     if (!sessionUser) return <Redirect to="/login" />;
 
     return event ? (
-        <>
+        <div className='show-page'>
         <div id='page-layout-showpage'>
             <Navigation/>
             <div className="showpage-layout">
@@ -253,6 +253,6 @@ export function EventShowPage () {
                 )}
         </div>
         <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
-        </>
+        </div>
     ) : null;
 }

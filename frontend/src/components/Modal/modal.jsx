@@ -30,7 +30,7 @@ export const Modal = () => {
             break;
         case 'invite-modal':
             component = <InviteForm eventId={ prop }/>
-            div = 'modal-child';
+            div = 'modal-invite';
             break;
         default:
             return null;
