@@ -13,6 +13,7 @@ import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { AiOutlineInstagram } from "react-icons/ai"
 import { ActivityLog } from './ActivityLog';
 import { openModal } from '../../../store/modal';
+import { useState } from 'react';
 
 export function EventShowPage () {
 
@@ -29,8 +30,10 @@ export function EventShowPage () {
     let rsvpMaybe = 0;
     const editLink = "/events/" + eventId + "/edit";
     let location = event?.location || "No Location Set";
+    const [usersState, setUsersState] = useState()
 
     const savedState = JSON.parse(localStorage.getItem('usersState'));
+    // setUsersState(JSON.parse(localStorage.getItem('usersState')))
     // localStorage.removeItem('userState');
     
     for(let key in rsvps){
@@ -44,12 +47,13 @@ export function EventShowPage () {
 
     const handleInvite = (e) => {
         e.preventDefault();
-        dispatch(openModal({command: 'invite-modal'}));
+        dispatch(openModal({command: 'invite-modal', prop: eventId}));
     }
     
     useEffect(  () => {
         // debugger
-        dispatch(fetchEvent(eventId)).then(() => dispatch(restoreUsers(savedState))).then(localStorage.removeItem('usersState'));
+        dispatch(fetchEvent(eventId)).then(() => dispatch(restoreUsers(savedState)))
+        // .then(localStorage.removeItem('usersState'));
         
     }, [dispatch, eventId])
     // useEffect( () => {

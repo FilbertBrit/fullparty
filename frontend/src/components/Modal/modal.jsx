@@ -29,8 +29,8 @@ export const Modal = () => {
             div = 'modal-mutual';
             break;
         case 'invite-modal':
-            component = <InviteForm />
-            div = 'modal-mutual';
+            component = <InviteForm eventId={ prop }/>
+            div = 'modal-child';
             break;
         default:
             return null;
