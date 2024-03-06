@@ -26,7 +26,6 @@ export const restoreUsers = users => ({
 })
 
 export const updateUser = user => async (dispatch) => {
-    // debugger
     const response = await csrfFetch(`/api/users/${user.id}`, {
         method: 'PATCH',
         headers: {
@@ -42,13 +41,11 @@ export const updateUser = user => async (dispatch) => {
 };
 
 export const fetchUser = userId => async (dispatch) => {
-    // console.log(userId)
     const response = await csrfFetch(`/api/users/${userId}`);
 
     if(response.ok){
         const user = await response.json();
-        dispatch(receiveUser(user))
-        // console.log(user)
+        dispatch(receiveUser(user));
         return user;
     }
     return response;
@@ -56,11 +53,9 @@ export const fetchUser = userId => async (dispatch) => {
 
 export const fetchUsers = () => async (dispatch) => {
     const response = await csrfFetch('/api/users');
-    // debugger
     if(response.ok){
         const users = await response.json();
         dispatch(receiveUsers(users));
-        // return users;
     }
     return response;
 }
@@ -82,7 +77,6 @@ const userReducer = (state = {}, action) => {
         case UPDATE_CURRENT_USER:
             return { ...state, ...action.payload };
         case RESTORE_USERS:
-            debugger
             return {...action.payload}
         default:
             return state;

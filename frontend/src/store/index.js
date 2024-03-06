@@ -19,7 +19,6 @@ import notifications from './notifications'
     notifications,
     invites
 });
-export const store = createStore(rootReducer);
 
 let enhancer;
 

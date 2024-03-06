@@ -9,9 +9,6 @@ import { useDispatch } from "react-redux";
 import { fetchEvents } from "../../store/events";
 import { getEvents } from "../../store/events";
 import { EventIndexItem } from "../Events/EventIndexItem";
-import { store } from "../../store";
-// import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
-// import { useRef } from "react";
 
 export function HomePage () {
     
@@ -55,7 +52,14 @@ export function HomePage () {
     }
 
     useEffect( () => {
-        dispatch( fetchEvents() ).then( res => setUsersState(res.users));
+        dispatch( fetchEvents() ).then( res => {
+            const users = res.users
+            for(let key in users){
+                const user = {id: users[key].id, name: users[key].name, recentEvent: (res.events[users[key].recentEvent]).title}
+                users[key]= user;
+            }
+            setUsersState(users)
+        });
     }, [dispatch])
 
     useEffect(() => {
