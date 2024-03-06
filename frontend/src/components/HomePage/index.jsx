@@ -24,7 +24,6 @@ export function HomePage () {
     const [windowSize, setWindowSize] = useState({width: window.innerWidth, height: window.innerHeight})
     const [mutualSize, setMutualSize] = useState(8)
     const [usersState, setUsersState] = useState()
-    localStorage.setItem('usersState', JSON.stringify(usersState));
 
     let filteredEvents = []
 
@@ -136,7 +135,7 @@ export function HomePage () {
                     <div className="events">
                         {
                             filteredEvents.map( (event, i) => 
-                                <EventIndexItem event={event} key={i}/>
+                                <EventIndexItem event={event} usersState={usersState} key={i}/>
                             )
                         }
                         <a href="/create" id="new-event-link">
