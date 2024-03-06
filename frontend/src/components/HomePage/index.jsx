@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { fetchEvents } from "../../store/events";
 import { getEvents } from "../../store/events";
 import { EventIndexItem } from "../Events/EventIndexItem";
+import { store } from "../../store";
 // import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 // import { useRef } from "react";
 
@@ -25,6 +26,9 @@ export function HomePage () {
     const today = new Date();
     const [windowSize, setWindowSize] = useState({width: window.innerWidth, height: window.innerHeight})
     const [mutualSize, setMutualSize] = useState(8)
+    const [usersState, setUsersState] = useState()
+    localStorage.setItem('usersState', JSON.stringify(usersState));
+
     let filteredEvents = []
 
     mutuals.sort( (a,b) => b.sharedEvents.length - a.sharedEvents.length  )
@@ -51,7 +55,7 @@ export function HomePage () {
     }
 
     useEffect( () => {
-        dispatch( fetchEvents() );
+        dispatch( fetchEvents() ).then( res => setUsersState(res.users));
     }, [dispatch])
 
     useEffect(() => {

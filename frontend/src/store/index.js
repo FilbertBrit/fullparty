@@ -9,7 +9,7 @@ import modal from './modal'
 import invites from './invites'
 import notifications from './notifications'
 
-const rootReducer = combineReducers({
+ const rootReducer = combineReducers({
     session,
     events,
     rsvps,
@@ -19,6 +19,7 @@ const rootReducer = combineReducers({
     notifications,
     invites
 });
+export const store = createStore(rootReducer);
 
 let enhancer;
 

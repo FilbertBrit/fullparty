@@ -18,7 +18,17 @@ const removeInvite = inviteId => ({
 });
 
 // THUNK ACTIONS
-
+// export const fetchInvites = () => async (dispatch) => {
+//     // debugger
+//     const response = await csrfFetch('/api/events');
+//     if (response.ok) {
+//         const events = await response.json();
+//         dispatch(receiveEvents(events));
+//         // storeEvents(events)
+//         return events;
+//     }
+//     return response;
+// };
 export const createInvite = invite => async (dispatch) => {
     const response = await csrfFetch(`/api/users/${invite.userId}/invites`, {
         method: 'POST',
@@ -33,6 +43,17 @@ export const createInvite = invite => async (dispatch) => {
         dispatch(receiveInvite(invite))
         return invite;
     }
+};
+export const deleteEvent = inviteId => async (dispatch) => {
+    const response = await csrfFetch (`/api/users/${inviteId}/invites`, {
+        method: 'DELETE'
+    });
+
+    if (response.ok) {
+        dispatch(removeInvite(inviteId));
+    }
+
+    return response;
 };
 
 // REDUCER

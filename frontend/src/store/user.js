@@ -1,9 +1,10 @@
 import csrfFetch from './csrf';
 import { UPDATE_CURRENT_USER } from './session';
-import { RECEIVE_EVENTS } from './events';
+import { RECEIVE_EVENTS, RECEIVE_EVENT } from './events';
 
 export const RECEIVE_USER = 'users/RECEIVE_USER';
 export const RECEIVE_USERS = 'users/RECEIVE_USERS';
+export const RESTORE_USERS = 'users/RESTORE_USERS';
 
 const recieveUpdateUser = user => ({
     type: UPDATE_CURRENT_USER,
@@ -18,6 +19,11 @@ const receiveUsers = users => ({
     type: RECEIVE_USERS,
     payload: users
 });
+
+export const restoreUsers = users => ({
+    type: RESTORE_USERS,
+    payload: users
+})
 
 export const updateUser = user => async (dispatch) => {
     // debugger
@@ -59,17 +65,25 @@ export const fetchUsers = () => async (dispatch) => {
     return response;
 }
 
+const initialState = { 
+    
+};
 
 const userReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_EVENTS:
             return { ...action.payload.users};
+        case RECEIVE_EVENT:
+            return {...state, ...initialState}
         case RECEIVE_USER:
             return { ...action.payload.users}
         case RECEIVE_USERS:
             return { ...state, ...action.payload.users};
         case UPDATE_CURRENT_USER:
             return { ...state, ...action.payload };
+        case RESTORE_USERS:
+            debugger
+            return {...action.payload}
         default:
             return state;
     }
