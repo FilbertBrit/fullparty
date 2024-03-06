@@ -12,6 +12,7 @@ import { RsvpComponent } from './RsvpComponent';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { AiOutlineInstagram } from "react-icons/ai"
 import { ActivityLog } from './ActivityLog';
+import { openModal } from '../../../store/modal';
 
 export function EventShowPage () {
 
@@ -39,6 +40,11 @@ export function EventShowPage () {
 
     const handleDelete = async(e) => {
         dispatch(deleteEvent(eventId)).then(history.push('/events'));
+    }
+
+    const handleInvite = (e) => {
+        e.preventDefault();
+        dispatch(openModal({command: 'invite-modal'}));
     }
     
     useEffect(  () => {
@@ -229,7 +235,7 @@ export function EventShowPage () {
                         </div>
                     </div>
                     <div className="divider"></div>
-                    <div className="module-invite" id='author-nav-sidebar-item'>
+                    <div className="module-invite" id='author-nav-sidebar-item' onClick={handleInvite}>
                         <h2>👥</h2>
                         <h2 id='author-nav-sidebar-text'>INVITE</h2>
                     </div>

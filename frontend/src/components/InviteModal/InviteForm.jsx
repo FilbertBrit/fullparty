@@ -2,8 +2,10 @@ import { useDispatch, useSelector } from "react-redux"
 import { closeModal } from "../../store/modal";
 import "./InviteForm.css"
 
-export const MutualModal = () => {
+export const InviteForm = () => {
 
+    const dispatch = useDispatch();
+    console.log('hi')
 
 
 
@@ -13,7 +15,8 @@ export const MutualModal = () => {
     }
 
     return (
-        <>
-        </>
+        <div className="invite-modal-component">
+            hi
+        </div>
     )
 }

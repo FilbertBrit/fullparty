@@ -3,6 +3,7 @@ import { closeModal } from "../../store/modal"
 import './Modal.css'
 import { SocialForm } from "../SocialForm/SocialForm"
 import { MutualModal } from "../MutualModal/MutualModal"
+import { InviteForm } from "../InviteModal/InviteForm"
 
 export const Modal = () => {
     const dispatch = useDispatch();
@@ -16,6 +17,7 @@ export const Modal = () => {
     if(!modal){
         return null;
     }
+    // debugger
 
     switch (componentCall) {
         case 'social-form':
@@ -24,6 +26,10 @@ export const Modal = () => {
             break;
         case 'mutual-modal':
             component = <MutualModal mutualId={ prop }/>;
+            div = 'modal-mutual';
+            break;
+        case 'invite-modal':
+            component = <InviteForm />
             div = 'modal-mutual';
             break;
         default:
