@@ -33,11 +33,15 @@ export const InviteForm = ({ eventId }) => {
                     <button id="invite-select-header-btn">COPY LINK</button>
                 </header>
                 <div className="invitees-menu">
-                    <input 
-                        type="text"
-                        placeholder="🔍 Find a Mutual"
-                    />
-                    <button>fiter by event</button>
+                    <div id="invtite-search-bar">
+                        <p>🔍</p>
+                        <input 
+                            id="invtite-search-bar-input"
+                            type="text"
+                            placeholder="Find a Mutual"
+                        />
+                    </div>
+                    <button>⑆</button>
                     <div className="invitees-mutuals">
                         {
                             filteredMutuals.map( (mutual, i) =>
