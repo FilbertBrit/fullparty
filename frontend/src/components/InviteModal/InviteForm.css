@@ -9,7 +9,7 @@
     max-width: calc(100vw - 60px);
     display: flex;
     flex-direction: row;
-    padding: 30px;
+    /* padding: 30px; */
     font-family: Lausanne, Helvetica Neue, Helvetica, sans-serif;
 }
 .invite-msg-inv-container{
@@ -72,4 +72,25 @@
 
 .invite-invitees{
     border-top: 1px solid hsla(0, 0%, 100%, .15);
+}
+.MutualInvitee{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px;
+}
+#invitee-info{
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40px;
+    width: 250px;
+
+}
+#invitee-name{
+    display: flex;
+}
+#invitee-event{
+    display: flex;
 }
