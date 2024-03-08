@@ -10,8 +10,8 @@ export const MutualInvitee = ({ mutual }) => {
         <div className="MutualInvitee" onClick={ () => clicked === false ? setClicked(true) : setClicked(false)}>
             <div id="invitee-user-photo"></div>
             <div id="invitee-info">
-                <h2>{mutual.name}</h2>
-                <p>🕔 {mutual.recentEvent}</p>
+                <h2 id='invitee-name'>{mutual.name}</h2>
+                <p id='invitee-event'>🕔 {mutual.recentEvent}</p>
             </div>
             <div id="invitee-checkbox">
                 {clicked ? '✓' : null}
