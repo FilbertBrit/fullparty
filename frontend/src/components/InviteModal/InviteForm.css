@@ -17,11 +17,12 @@
 }
 .invite-select{
     height: 100%;
-    padding: 0 16px;
+    /* padding: 0 16px; */
 }
 #invite-select-header{
     display: flex;
     justify-content: space-between;
+    padding: 0 16px;
 }
 #invite-select-header-text{
     font-size: 24px;
@@ -43,6 +44,8 @@
     display: flex;
     justify-content: row;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
     /* height: 20px; */
     /* padding: 0 16px; */
 }
@@ -75,7 +78,7 @@
 }
 .MutualInvitee{
     display: flex;
-    width: 100%;
+    /* width: 100%; */
     justify-content: space-between;
     padding: 10px;
 }
@@ -93,4 +96,22 @@
 }
 #invitee-event{
     display: flex;
+}
+#control-btn{
+    height: 18px;
+    width: 18px;
+    /* background: transparent;
+    background-color: navy; */
+}
+.controls-btn{
+    background: transparent;
+    border: none;
+    height: 40px;
+    padding: 10px;
+    border-radius: 99px;
+    background-color: hsla(0, 0%, 100%, .4);
+    backdrop-filter: blur(45px);
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
