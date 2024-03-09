@@ -4,7 +4,7 @@ export const MutualInvitee = ({ mutual }) => {
 
     const [clicked, setClicked] = useState(false);
     const [clickedStyle, setClickedStyle] = useState('invitee-checkbox-unchecked');
-    console.log(clickedStyle, clicked)
+    // console.log(clickedStyle, clicked)
 
     const handleClick = () => {
         if(clicked === false){
