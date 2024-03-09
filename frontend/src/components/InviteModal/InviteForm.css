@@ -127,7 +127,6 @@
     height: 35px;
 }
 #invitee-checkbox{
-    border: #fff;
     border-width: 2px;
     border-style: solid;
     padding: 5px;
@@ -136,4 +135,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.invitee-checkbox-unchecked{
+    border: #fff;
+}
+.invitee-checkbox-checked{
+    background-color: #ab76f6;
+    border: #ab76f6;
 }
