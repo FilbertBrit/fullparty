@@ -5,6 +5,7 @@ import cancel from "../../images/cancel.png"
 import "./InviteForm.css"
 import { useState, useEffect  } from "react";
 import { MutualInvitee } from "./MutualInvitee";
+import controls from "../../images/controls.png"
 
 export const InviteForm = ({ eventId }) => {
 
@@ -41,7 +42,9 @@ export const InviteForm = ({ eventId }) => {
                             placeholder="Find a Mutual"
                         />
                     </div>
-                    <button>⑆</button>
+                    <button className="controls-btn">
+                        <img src={controls} alt="controls" id="control-btn"/>
+                    </button>
                     <div className="invitees-mutuals">
                         {
                             filteredMutuals.map( (mutual, i) =>

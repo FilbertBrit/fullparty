@@ -8,7 +8,11 @@ export const MutualInvitee = ({ mutual }) => {
 
     return (
         <div className="MutualInvitee" onClick={ () => clicked === false ? setClicked(true) : setClicked(false)}>
-            <div id="invitee-user-photo"></div>
+            <div id="invitee-user-photo">
+                <div className="initials" id='initial-mutual-invitee'>
+                    {mutual.name.slice(0,1)}
+                </div>
+            </div>
             <div id="invitee-info">
                 <h2 id='invitee-name'>{mutual.name}</h2>
                 <p id='invitee-event'>🕔 {mutual.recentEvent}</p>

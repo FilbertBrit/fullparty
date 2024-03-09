@@ -17,11 +17,12 @@
 }
 .invite-select{
     height: 100%;
-    padding: 0 16px;
+    /* padding: 0 16px; */
 }
 #invite-select-header{
     display: flex;
     justify-content: space-between;
+    padding: 0 16px;
 }
 #invite-select-header-text{
     font-size: 24px;
@@ -43,8 +44,11 @@
     display: flex;
     justify-content: row;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
     /* height: 20px; */
-    /* padding: 0 16px; */
+    padding: 0 16px;
 }
 #invtite-search-bar-input{
     /* margin-left: 0px; */
@@ -75,8 +79,9 @@
 }
 .MutualInvitee{
     display: flex;
-    width: 100%;
+    /* width: 100%; */
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
 }
 #invitee-info{
@@ -93,4 +98,42 @@
 }
 #invitee-event{
     display: flex;
+}
+#control-btn{
+    height: 15px;
+    width: 15px;
+    /* background: transparent;
+    background-color: navy; */
+}
+.controls-btn{
+    background: transparent;
+    border: none;
+    height: 35px;
+    padding: 10px;
+    border-radius: 99px;
+    background-color: hsla(0, 0%, 100%, .4);
+    backdrop-filter: blur(45px);
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin: 0 16px;
+    margin-bottom: 10px;
+}
+#invitee-user-photo{
+    width: 35px;
+    margin-left: 5px;
+}
+#initial-mutual-invitee{
+    height: 35px;
+}
+#invitee-checkbox{
+    border: #fff;
+    border-width: 2px;
+    border-style: solid;
+    padding: 5px;
+    height: 7px;
+    width: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
