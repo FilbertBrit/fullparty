@@ -14,20 +14,26 @@
 }
 .invite-msg-inv-container{
     border-left: 1px solid hsla(0, 0%, 100%, .15);
+    width: 50%;
 }
 .invite-select{
     height: 100%;
+    width: 50%;
     /* padding: 0 16px; */
 }
 #invite-select-header{
     display: flex;
     justify-content: space-between;
     padding: 0 16px;
+    margin-top: -30px;
 }
 #invite-select-header-text{
     font-size: 24px;
     font-weight: 700;
-    padding: 5px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
 }
 #invite-select-header-btn{
     color: #ab76f6;;
@@ -68,7 +74,7 @@
     min-height: 200px;
     position: relative;
     height: 384px;
-    width: 358px;
+    width: 100%;
     overflow: auto;
     will-change: transform;
     direction: ltr;
@@ -138,6 +144,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 5px;
 }
 .invitee-checkbox-unchecked{
     border: #fff;

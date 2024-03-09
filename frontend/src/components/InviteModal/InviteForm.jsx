@@ -29,6 +29,9 @@ export const InviteForm = ({ eventId }) => {
     return (
         <div className="invite-modal-component">
             <div className="invite-select">
+            <div className="exit-btn-mutual-component" onClick={handleCancel}>
+                <img src={cancel} id="cancel-img" alt="cancel"/>
+            </div>
                 <header id="invite-select-header">
                     <h2 id="invite-select-header-text">Invite</h2>
                     <button id="invite-select-header-btn">COPY LINK</button>
@@ -72,9 +75,9 @@ export const InviteForm = ({ eventId }) => {
                     <button>SEND TEXTS</button>
                 </div>
             </div>
-            <div className="exit-btn-mutual-component" onClick={handleCancel}>
+            {/* <div className="exit-btn-mutual-component" onClick={handleCancel}>
                 <img src={cancel} id="cancel-img" alt="cancel"/>
-            </div>
+            </div> */}
         </div>
     )
 }
