@@ -53,6 +53,8 @@
     backdrop-filter: blur(80px) brightness(1.05);
     /* -webkit-backdrop-filter: blur(80px) brightness(1.05); */
     box-shadow: 0 8px 40px 0 rgba(0,0,0,.3),0 4px 16px 0 rgba(0,0,0,.2);
+    width: 800px;
+    height: 582.5px;
   }
   .modal-mutual{
     position: fixed;
