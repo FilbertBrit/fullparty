@@ -16,13 +16,24 @@ export const EventIndexItem = ({ event, usersState }) => {
     let rsvpStatus= '';
     let date = new Date(event.dateTime);
     const [showMenu, setShowMenu] = useState(false);
-    // console.log(showMenu);
     let eventTime = date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" ")
     let time = eventTime[0].slice(0,1) + eventTime[1].toLocaleLowerCase()
     let eventDate = date.toString().split(' ')[0] + ' ' + (date.getMonth() + 1) + '/' + date.getDate() + '・' + time;
+    const [soon, setSoon] = useState()
     // console.log(date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" "), eventDate)
     // console.log(date.getTimezoneOffset())
 
+    //checking is the event is a day or less away to set date preview to variable soon
+    switch (Math.floor((Math.abs(new Date(today.toDateString()) - new Date (new Date(event.dateTime).toDateString())))/(1000*60*60*24))) {
+        case 1:
+            setSoon('Tommorrow')
+            break;
+        case 0:
+            setSoon('Today')
+            break;
+        default:
+            break;
+    }
 
     if( ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)) ){
         if(event.authorId === sessionUser.id){
@@ -101,7 +112,7 @@ export const EventIndexItem = ({ event, usersState }) => {
                     </div>
                 }
                 { event.dateTime ? 
-                    <div id="event-item-date"> {eventDate} </div> :
+                    <div id="event-item-date"> {soon ? soon : eventDate} </div> :
                     <div id="event-item-date"> TBD </div> 
                 }
                 {/* <div id="event-item-option-menu" onClick={handleLeaveEvent()}>{showOptions? 'Remove Me From Event': ''}</div> */}
