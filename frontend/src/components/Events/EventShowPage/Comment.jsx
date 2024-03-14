@@ -15,6 +15,7 @@ export function Comment ({ comment }) {
     const notRSVP = (comment.commentType === "comment" ? true : false);
     const [showMenu, setShowMenu] = useState(false)
     const date = new Date(comment.date)
+    console.log(date)
     const today = new Date()
     let commentDate = ''
     const rsvps = {
@@ -29,24 +30,37 @@ export function Comment ({ comment }) {
     // console.log(date.getMonth() <= today.getMonth())
     // console.log((today.getMonth() - date.getMonth()))
 
-    if( today.getFullYear() - date.getFullYear() > 1 || (today.getFullYear() - date.getFullYear() === 1 && date.getMonth() <= today.getMonth()) ){ //in the years
-        commentDate = (date.getFullYear() - today.getFullYear() > 1) ? (today.getFullYear() - date.getFullYear()) + 'years ago' : '1 year ago';
-    }else{
-        if( date.getMonth() < today.getMonth() || (today.getFullYear() - date.getFullYear() === 1 && date.getMonth() > today.getMonth()) ){ //still in the months
-            if(today.getFullYear() - date.getFullYear() === 1){
-                commentDate = ((today.getMonth() - date.getMonth()) + 12 > 1) ? (today.getMonth() - date.getMonth() + 12) + ' months ago' : '1 month ago';
-            }else{
-                commentDate = ((today.getMonth() - date.getMonth()) > 1) ? (today.getMonth() - date.getMonth() ) + ' months ago' : '1 month ago';
-            }
-        }else if( date.getDay() === today.getDay() && date.getMonth() === today.getMonth() ){
-            if(today.getHours() - date.getHours() === 0){
-                commentDate = (today.getMinutes() - date.getMinutes() > 1) ? ((today.getMinutes() - date.getMinutes()) + ' minutes ago') : ('about 1 minute ago')
-            }else{
-                commentDate = (today.getHours() - date.getHours()) > 1 ? ('about ' + (today.getHours() - date.getHours()) + ' hours ago') : ( 'about 1 hour ago' )
-            }
+    // if( today.getFullYear() - date.getFullYear() > 1 || (today.getFullYear() - date.getFullYear() === 1 && date.getMonth() <= today.getMonth()) ){ //in the years
+    //     commentDate = (date.getFullYear() - today.getFullYear() > 1) ? (today.getFullYear() - date.getFullYear()) + 'years ago' : '1 year ago';
+    // }else{
+    //     if( date.getMonth() < today.getMonth() || (today.getFullYear() - date.getFullYear() === 1 && date.getMonth() > today.getMonth()) ){ //still in the months
+    //         if(today.getFullYear() - date.getFullYear() === 1){
+    //             commentDate = ((today.getMonth() - date.getMonth()) + 12 > 1) ? (today.getMonth() - date.getMonth() + 12) + ' months ago' : '1 month ago';
+    //         }else{
+    //             commentDate = ((today.getMonth() - date.getMonth()) > 1) ? (today.getMonth() - date.getMonth() ) + ' months ago' : '1 month ago';
+    //         }
+    //     }else if( date.getDay() === today.getDay() && date.getMonth() === today.getMonth() ){
+    //         if(today.getHours() - date.getHours() === 0){
+    //             commentDate = (today.getMinutes() - date.getMinutes() > 1) ? ((today.getMinutes() - date.getMinutes()) + ' minutes ago') : ('about 1 minute ago')
+    //         }else{
+    //             commentDate = (today.getHours() - date.getHours()) > 1 ? ('about ' + (today.getHours() - date.getHours()) + ' hours ago') : ( 'about 1 hour ago' )
+    //         }
+    //     }else{
+    //         commentDate = (date.getDay() - today.getDay() > 1) ? ((date.getDay() - today.getDay() ) + ' days ago') : ( '1 day ago' )  
+    //     }
+    // }
+    if((date.getDate() === today.getDate()) && (date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
+        if(today.getHours() - date.getHours() === 0){
+            commentDate = (today.getMinutes() - date.getMinutes() > 1) ? ((today.getMinutes() - date.getMinutes()) + ' minutes ago') : ('about 1 minute ago')
         }else{
-            commentDate = (date.getDay() - today.getDay() > 1) ? ((date.getDay() - today.getDay() ) + ' days ago') : ( '1 day ago' )  
+            commentDate = (today.getHours() - date.getHours()) > 1 ? ('about ' + (today.getHours() - date.getHours()) + ' hours ago') : ( 'about 1 hour ago' )
         }
+    }else if((date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
+        commentDate = (today.getDate() - date.getDate() > 1) ? ((today.getDate() - date.getDate()) + ' days ago') : ( '1 day ago' )  
+    }else if(date.getFullYear() === today.getFullYear()){
+        commentDate = (today.getMonth() - date.getMonth() > 1) ? (today.getMonth() - date.getMonth()) + ' months ago' : '1 month ago';
+    }else{
+        commentDate = (today.getFullYear() - date.getFullYear() > 1) ? (today.getFullYear() - date.getFullYear()) + ' years ago' : '1 year ago';
     }
 
     const handlePin = (e) => {
