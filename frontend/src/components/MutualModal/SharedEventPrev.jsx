@@ -7,19 +7,18 @@ export const SharedEventPrev = ({ event }) => {
     const today = new Date()
     let eventDate = ''
 
-    if((date.getDay() === today.getDay()) && (date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
+    if((date.getDate() === today.getDate()) && (date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
         if(today.getHours() - date.getHours() === 0){
             eventDate = (today.getMinutes() - date.getMinutes() > 1) ? ((today.getMinutes() - date.getMinutes()) + ' minutes ago') : ('about 1 minute ago')
         }else{
             eventDate = (today.getHours() - date.getHours()) > 1 ? ('about ' + (today.getHours() - date.getHours()) + ' hours ago') : ( 'about 1 hour ago' )
         }
     }else if((date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
-        eventDate = (date.getDay() - today.getDay() > 1) ? ((date.getDay() - today.getDay() ) + ' days ago') : ( '1 day ago' )  
-    }else if(date.getFullYear() === today.getFullYear() || (today.getMonth() - date.getMonth() < 0)){
-        console.log(today.getMonth(), date.getMonth())
-        eventDate = ((today.getMonth() - date.getMonth()) > 1) ? (today.getMonth() - date.getMonth() - 1) + ' months ago' : '1 month ago';
+        eventDate = (today.getDate() - date.getDate() > 1) ? ((today.getDate() - date.getDate()) + ' days ago') : ( '1 day ago' )  
+    }else if(date.getFullYear() === today.getFullYear()){
+        eventDate = (today.getMonth() - date.getMonth() > 1) ? (today.getMonth() - date.getMonth()) + ' months ago' : '1 month ago';
     }else{
-        eventDate = (date.getFullYear() - today.getFullYear() > 1) ? (date.getFullYear() - today.getFullYear()) + 'years ago' : '1 year ago';
+        eventDate = (today.getFullYear() - date.getFullYear() > 1) ? (today.getFullYear() - date.getFullYear()) + ' years ago' : '1 year ago';
     }
 
     return (

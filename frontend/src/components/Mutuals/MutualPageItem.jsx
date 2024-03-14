@@ -1,6 +1,8 @@
 
 import { useDispatch } from "react-redux";
 import { openModal } from "../../store/modal";
+import { useState } from "react";
+
 
 export function MutualPageItem ({ mutual }) {
 
@@ -8,21 +10,37 @@ export function MutualPageItem ({ mutual }) {
     const dispatch = useDispatch();
     const date = new Date(mutual.recentEvent)
     const today = new Date()
+    const [hovered, setHovered] = useState(false);
+    console.log(hovered)
+    
+    const time = Math.floor((Math.abs(new Date(today.toDateString()) - new Date (date.toDateString()))/(1000*60*60*24)));
     let recentEventDate = '';
 
-    if((date.getDay() === today.getDay()) && (date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
+    if((date.getDate() === today.getDate()) && (date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
         if(today.getHours() - date.getHours() === 0){
             recentEventDate = (today.getMinutes() - date.getMinutes() > 1) ? ((today.getMinutes() - date.getMinutes()) + ' minutes ago') : ('about 1 minute ago')
         }else{
             recentEventDate = (today.getHours() - date.getHours()) > 1 ? ('about ' + (today.getHours() - date.getHours()) + ' hours ago') : ( 'about 1 hour ago' )
         }
     }else if((date.getMonth() === today.getMonth()) && (date.getFullYear() === today.getFullYear())){
-        recentEventDate = (date.getDay() - today.getDay() > 1) ? ((date.getDay() - today.getDay() ) + ' days ago') : ( '1 day ago' )  
+        recentEventDate = (today.getDate() - date.getDate() > 1) ? ((today.getDate() - date.getDate()) + ' days ago') : ( '1 day ago' )  
     }else if(date.getFullYear() === today.getFullYear()){
-        recentEventDate = (date.getMonth() - today.getMonth() > 1) ? (date.getMonth() - today.getMonth()) + 'months ago' : '1 month ago';
+        recentEventDate = (today.getMonth() - date.getMonth() > 1) ? (today.getMonth() - date.getMonth()) + ' months ago' : '1 month ago';
     }else{
-        recentEventDate = (date.getFullYear() - today.getFullYear() > 1) ? (date.getFullYear() - today.getFullYear()) + 'years ago' : '1 year ago';
+        recentEventDate = (today.getFullYear() - date.getFullYear() > 1) ? (today.getFullYear() - date.getFullYear()) + ' years ago' : '1 year ago';
     }
+
+    // switch (time) {
+    //     case time / new Date(today.getFullYear(), today.getMonth()+1, 0).getDate() === 0:
+            
+    //         break;
+    //     case time / 365 === 0:
+    //         // recentEventDate = (time > 1) ? time / new Date(today.getFullYear(), today.getMonth()+1, 0).getDate()  + 'months ago' : '1 month ago';
+    //         break;
+    //     default:
+    //         // recentEventDate = (time > 1) ? time / 365  + 'years ago' : '1 year ago';
+    //         break;
+    // }
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -30,7 +48,7 @@ export function MutualPageItem ({ mutual }) {
     }
 
     return (
-        <div className="mutual-page-item" onClick={handleClick}>
+        <div className="mutual-page-item" onClick={handleClick} onMouseOver={ () => setHovered(true)} onMouseLeave={() => setHovered(false)}>
             <div className="profile-container-mutuals-page">
                 <div className="user-profile-photo" id="initial-container-mutual" >
                       <div className="initials" id="initials-mutual-page">
@@ -44,6 +62,7 @@ export function MutualPageItem ({ mutual }) {
             </div>
             <div className="mutuals-num-event-container">
                 <h2 id="mutual-page-info">{mutual.sharedEvents.length}</h2>
+                <div id={`hovered-arrow${hovered ? '-hovered' : ''}`}> {"＞"}</div>
             </div>
         </div>
     )
