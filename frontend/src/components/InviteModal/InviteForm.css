@@ -100,14 +100,14 @@
     flex-direction: column;
     justify-content: space-between;
     height: 40px;
-    width: 250px;
-
+    width: 70%;
 }
 #invitee-name{
     display: flex;
 }
 #invitee-event{
     display: flex;
+    color: hsla(0, 0%, 100%, .6);
 }
 #control-btn{
     height: 15px;
@@ -149,6 +149,7 @@
 }
 .invitee-checkbox-unchecked{
     border: #fff;
+    border:  hsla(0, 0%, 100%, .6);
 }
 .invitee-checkbox-checked{
     background-color: #ab76f6;
@@ -157,4 +158,29 @@
 .invitees-menu{
     /* height: 505px; */
     height: 100%;
+}
+.invite-message{
+    height: 45%;
+}
+#top-header-invite-message{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+#invite-msg-input{
+    height: 85px;
+    width: 85%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background: hsla(0, 0%, 100%, .1);
+    /* background-color: transparent; */
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    padding: 10px;
+}
+#rsvp-link{
+    padding-right: 65%;
 }

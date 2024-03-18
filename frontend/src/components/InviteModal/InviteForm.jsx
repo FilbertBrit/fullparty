@@ -59,13 +59,17 @@ export const InviteForm = ({ eventId }) => {
             </div>
             <div className="invite-msg-inv-container">
                 <div className="invite-message">
+                    <div id="top-header-invite-message">
                     <header>Message</header>
+                    <p>{}/480</p>
+                    </div>
                     <p>🥳 Hey [<span>Name</span>], {sessionUser.name} wants you to come to {event.title}!</p>
-                    <input
+                    <textarea
+                        id="invite-msg-input"
                         type="text"
                         placeholder="(Optional) Add a custom note"
                     />
-                    <p>RSVP 👉 [<span>link</span>]</p>
+                    <p id="rsvp-link">RSVP 👉 [<span>link</span>]</p>
                 </div>
                 <div className="invite-invitees">
                     <header>
