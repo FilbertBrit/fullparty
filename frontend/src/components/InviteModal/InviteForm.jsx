@@ -16,6 +16,7 @@ export const InviteForm = ({ eventId }) => {
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
     let filteredMutuals = mutuals;
     const [mutualFilter, setMutualFilter] = useState();
+    const [numOfInvitees, setNumOfInvitees] = useState(0);
 
     const handleCancel = (e) => {
         e.preventDefault()
@@ -72,16 +73,17 @@ export const InviteForm = ({ eventId }) => {
                     <p id="rsvp-link">RSVP 👉 [<span>link</span>]</p>
                 </div>
                 <div className="invite-invitees">
-                    <header>
-                        <h2>Invitees (0)</h2>
-                    </header>
-                    <button>CANCEL</button>
-                    <button>SEND TEXTS</button>
+                    <div className="invitees-section">
+                        <header>
+                            <h2>Invitees ({numOfInvitees})</h2>
+                        </header>
+                    </div>
+                    <div className="invite-submit-btns">
+                        <button id="cancel-invite">CANCEL</button>
+                        <button id="send-texts-btns" className={numOfInvitees === 0 ? 'disabled-send-texts' : ''}>SEND TEXTS</button>
+                    </div>
                 </div>
             </div>
-            {/* <div className="exit-btn-mutual-component" onClick={handleCancel}>
-                <img src={cancel} id="cancel-img" alt="cancel"/>
-            </div> */}
         </div>
     )
 }
