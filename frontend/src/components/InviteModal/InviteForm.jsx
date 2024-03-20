@@ -6,6 +6,7 @@ import "./InviteForm.css"
 import { useState, useEffect  } from "react";
 import { MutualInvitee } from "./MutualInvitee";
 import controls from "../../images/controls.png"
+import { InvitePrev } from "./InvitePrev";
 
 export const InviteForm = ({ eventId }) => {
 
@@ -82,7 +83,15 @@ export const InviteForm = ({ eventId }) => {
                         <header>
                             <h2>Invitees <span id="num-invites">({Object.keys(invites).length || 0})</span></h2>
                         </header>
+                        <div className="invites-preview">
+                            {
+                                Object.entries(invites).map( (invite, i) =>
+                                    <InvitePrev invite={invite} invites={invites} setInvites={setInvites} key={i}/>
+                                )
+                            }
+                        </div>
                     </div>
+
                     <div className="invite-submit-btns">
                         <button id="cancel-invite">CANCEL</button>
                         <button id="send-texts-btns" className={ Object.keys(invites).length === 0 ? 'disabled-send-texts' : ''}>SEND TEXTS</button>
