@@ -227,8 +227,23 @@
 }
 .invitees-section{
     display: inline-flex;
+    align-items: flex-start;
+    flex-direction: column;
     padding: 20px;
 }
 #num-invites{
     color: hsla(0, 0%, 100%, .6);
+}
+.invites-preview{
+    width: 100%;
+}
+#invitee-info{
+    display: flex;
+    justify-content: center;
+}
+.Invitee-prev{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
 }
