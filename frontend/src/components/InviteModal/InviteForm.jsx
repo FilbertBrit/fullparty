@@ -21,7 +21,6 @@ export const InviteForm = ({ eventId }) => {
     const [invites, setInvites] = useState({});
 
     // const invites = {};
-    console.log(invites, invites.length, invites.size)
 
 
     const handleCancel = (e) => {
