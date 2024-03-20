@@ -225,3 +225,10 @@
     background: transparent;
     background-color: hsla(0, 0%, 100%, .4);
 }
+.invitees-section{
+    display: inline-flex;
+    padding: 20px;
+}
+#num-invites{
+    color: hsla(0, 0%, 100%, .6);
+}
