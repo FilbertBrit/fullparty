@@ -1,16 +1,27 @@
 import { useState } from "react"
 
-export const MutualInvitee = ({ mutual }) => {
+export const MutualInvitee = ({ mutual, invites, setInvites }) => {
 
     const [clicked, setClicked] = useState(false);
     const [clickedStyle, setClickedStyle] = useState('invitee-checkbox-unchecked');
+    // let invitesCopy = invites;
     // console.log(clickedStyle, clicked)
+    console.log(invites)
 
     const handleClick = () => {
         if(clicked === false){
+            // invites[mutual.id] = mutual.name
+            const updatedInvites = {
+                ...invites,
+                [mutual.id]: mutual.name
+              };
+            setInvites(updatedInvites)
             setClicked(true);
             setClickedStyle('invitee-checkbox-checked');
         }else{
+            // delete invites[mutual.id]
+            const { [mutual.id]: value, ...remainingInvites } = invites;
+            setInvites(remainingInvites)
             setClicked(false);
             setClickedStyle('invitee-checkbox-unchecked');
         }

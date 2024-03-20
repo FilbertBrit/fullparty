@@ -17,6 +17,11 @@ export const InviteForm = ({ eventId }) => {
     let filteredMutuals = mutuals;
     const [mutualFilter, setMutualFilter] = useState();
     const [numOfInvitees, setNumOfInvitees] = useState(0);
+    const [invites, setInvites] = useState({});
+
+    // const invites = {};
+    console.log(invites, invites.length, invites.size)
+
 
     const handleCancel = (e) => {
         e.preventDefault()
@@ -52,7 +57,7 @@ export const InviteForm = ({ eventId }) => {
                     <div className="invitees-mutuals">
                         {
                             filteredMutuals.map( (mutual, i) =>
-                                <MutualInvitee mutual={mutual} key={i}/>
+                                <MutualInvitee mutual={mutual} invites={invites} setInvites={setInvites} key={i}/>
                             )
                         }
                     </div>
@@ -75,7 +80,7 @@ export const InviteForm = ({ eventId }) => {
                 <div className="invite-invitees">
                     <div className="invitees-section">
                         <header>
-                            <h2>Invitees ({numOfInvitees})</h2>
+                            <h2>Invitees ({Object.keys(invites).length || 0})</h2>
                         </header>
                     </div>
                     <div className="invite-submit-btns">
