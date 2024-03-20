@@ -6,22 +6,10 @@ export const InvitePrev = ({ invite, invites, setInvites }) => {
     
 
     const handleDelete = () => {
-        // if(clicked === false){
-        //     // invites[mutual.id] = mutual.name
-        //     const updatedInvites = {
-        //         ...invites,
-        //         [mutual.id]: mutual.name
-        //       };
-        //     setInvites(updatedInvites)
-        //     setClicked(true);
-        //     setClickedStyle('invitee-checkbox-checked');
-        // }else{
-        //     // delete invites[mutual.id]
-        //     const { [mutual.id]: value, ...remainingInvites } = invites;
-        //     setInvites(remainingInvites)
-        //     setClicked(false);
-        //     setClickedStyle('invitee-checkbox-unchecked');
-        // }
+    
+        // delete invites[mutual.id]
+        const { [invite[0]]: value, ...remainingInvites } = invites;
+        setInvites(remainingInvites);
     }
 
     return (

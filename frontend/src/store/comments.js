@@ -97,9 +97,9 @@ export const deleteComment = payload => async (dispatch) => {
         method: 'DELETE'
     });
 
-    console.log(response)
+    // console.log(response)
     if (response.ok) {
-        console.log('check')
+        // console.log('check')
         dispatch(removeComment(payload.commentId));
     }else{
         return response;
