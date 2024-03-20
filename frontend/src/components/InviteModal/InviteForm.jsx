@@ -80,12 +80,12 @@ export const InviteForm = ({ eventId }) => {
                 <div className="invite-invitees">
                     <div className="invitees-section">
                         <header>
-                            <h2>Invitees ({Object.keys(invites).length || 0})</h2>
+                            <h2>Invitees <span id="num-invites">({Object.keys(invites).length || 0})</span></h2>
                         </header>
                     </div>
                     <div className="invite-submit-btns">
                         <button id="cancel-invite">CANCEL</button>
-                        <button id="send-texts-btns" className={numOfInvitees === 0 ? 'disabled-send-texts' : ''}>SEND TEXTS</button>
+                        <button id="send-texts-btns" className={ Object.keys(invites).length === 0 ? 'disabled-send-texts' : ''}>SEND TEXTS</button>
                     </div>
                 </div>
             </div>
