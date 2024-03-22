@@ -4,7 +4,7 @@ import { useState } from "react"
 export const MutualInvitee = ({ mutual, invites, setInvites }) => {
 
     const [clicked, setClicked] = useState(invites[mutual.id] ? true : false);
-    const [clickedStyle, setClickedStyle] = useState('invitee-checkbox-unchecked');
+    const [clickedStyle, setClickedStyle] = useState(invites[mutual.id] ? 'invitee-checkbox-checked' : 'invitee-checkbox-unchecked' );
 
     const handleClick = () => {
         if(clicked === false){
@@ -25,7 +25,7 @@ export const MutualInvitee = ({ mutual, invites, setInvites }) => {
     useEffect( () => {
         invites[mutual.id] ? setClickedStyle('invitee-checkbox-checked') : setClickedStyle('invitee-checkbox-unchecked')
 
-    }, [invites])
+    }, [invites, mutual])
 
     return (
         <div className="MutualInvitee" onClick={ () => handleClick()}>
