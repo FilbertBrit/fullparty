@@ -30,11 +30,11 @@ export const MutualInvitee = ({ mutual, invites, setInvites }) => {
     return (
         <div className="MutualInvitee" onClick={ () => handleClick()}>
             <div id="invitee-user-photo">
-                <div className="initials" id='initial-mutual-invitee'>
+                <div className="initials" id='initial-mutual-invitee-conatiner'>
                     {mutual.name.slice(0,1)}
                 </div>
             </div>
-            <div id="invitee-info">
+            <div id="invitee-info" className="invitee-info-container">
                 <h2 id='invitee-name'>{mutual.name}</h2>
                 <p id='invitee-event'>🕔 {mutual.recentEvent}</p>
             </div>
