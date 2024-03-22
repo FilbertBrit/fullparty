@@ -79,7 +79,7 @@ export const InviteForm = ({ eventId }) => {
                 </div>
                 <div className="invite-invitees">
                     <div className="invitees-section">
-                        <header>
+                        <header className="invitees-header">
                             <h2>Invitees <span id="num-invites">({Object.keys(invites).length || 0})</span></h2>
                         </header>
                         <div className="invites-preview">
