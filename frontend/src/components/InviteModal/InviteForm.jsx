@@ -85,7 +85,7 @@ export const InviteForm = ({ eventId }) => {
                 <div className="invite-message">
                     <div id="top-header-invite-message">
                         <header>Message</header>
-                        <p>{inviteMsg.length}/480</p>
+                        <p>{inviteMsg?.length || 0}/480</p>
                     </div>
                     <p>🥳 Hey [<span>Name</span>], {sessionUser.name} wants you to come to {event.title}!</p>
                     <textarea
@@ -93,6 +93,7 @@ export const InviteForm = ({ eventId }) => {
                         type="text"
                         placeholder="(Optional) Add a custom note"
                         onChange={ e => setInviteMsg(e.target.value)}
+                        maxLength={480}
                     />
                     <p id="rsvp-link">RSVP 👉 [<span>link</span>]</p>
                 </div>
