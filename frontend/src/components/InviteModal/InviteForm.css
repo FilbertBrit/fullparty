@@ -64,6 +64,13 @@
     /* height: 20px; */
     font-size: 16px;
 }
+.invitee-info-container{
+    justify-content: space-between;
+}
+.invitee-info-prev{
+    display: flex;
+    justify-content: center;
+}
 .invitees-mutuals{
     /* width: 100%;
     height: 8000px;
@@ -75,6 +82,7 @@
     /* min-height: 200px; */
     position: relative;
     height: 72%;
+    height: 58vh;
     width: 100%;
     overflow: auto;
     will-change: transform;
@@ -99,9 +107,13 @@
     /* width: 100%; */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     height: 40px;
     width: 70%;
+}
+#initial-mutual-invitee-conatiner{
+    height: 45px;
+    width: 45px;
 }
 #invitee-name{
     display: flex;
@@ -240,7 +252,7 @@
 }
 .invites-preview{
     width: 100%;
-    height: 35.5vh;
+    height: 36vh;
     overflow: auto;
     scroll-behavior: auto;
     will-change: transform;
@@ -253,14 +265,14 @@
 }
 #invitee-info{
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
 }
 .Invitee-prev{
-    width: 100%;
+    width: 95%;
     display: flex;
     justify-content: space-between;
     padding-top: 10px;
-    /* height: 80%; */
+    padding-left: 15px;
 }
 .delete-invitee-prev{
     margin-right: 5px;
