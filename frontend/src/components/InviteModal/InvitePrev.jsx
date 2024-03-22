@@ -1,13 +1,9 @@
-import { useState } from "react"
+
 import cancel from "../../images/cancel.png"
 
 export const InvitePrev = ({ invite, invites, setInvites }) => {
 
-    
-
     const handleDelete = () => {
-    
-        // delete invites[mutual.id]
         const { [invite[0]]: value, ...remainingInvites } = invites;
         setInvites(remainingInvites);
     }
