@@ -15,7 +15,8 @@ export const InviteForm = ({ eventId }) => {
     const event = useSelector(state => state.events[eventId]);
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
-    let filteredMutuals = mutuals;
+    // let filteredMutuals = mutuals;
+    const [filteredMutuals, setFilteredMutuals] = useState(mutuals)
     const [mutualFilter, setMutualFilter] = useState();
     const [numOfInvitees, setNumOfInvitees] = useState(0);
     const [invites, setInvites] = useState({});
@@ -29,7 +30,31 @@ export const InviteForm = ({ eventId }) => {
     }
 
     useEffect( () => {
+        
+        const noUpdateMutualArr = mutualFilter === undefined || mutualFilter === ''  ;
+        switch (!noUpdateMutualArr) {
+            case true:
+                const filtered = mutuals.filter( mutual => mutual.name.toLowerCase().includes(mutualFilter.toLowerCase()) )
 
+                const sortBySubstring = (words, match) => {
+                return words.sort((a, b) => {
+                    // console.log(a.name,b.name,mutualFilter, a.name.indexOf(match) , b.name.indexOf(match))
+                    return a.name.toLowerCase().indexOf(match) - b.name.toLowerCase().indexOf(match);
+                });
+                }
+
+                const sortedFiltered = sortBySubstring(filtered, mutualFilter.toLowerCase());
+                console.log(filtered, sortedFiltered)
+
+                setFilteredMutuals(sortedFiltered)
+
+                break;
+        
+            default:
+                setFilteredMutuals(mutuals)
+                break;
+        }
+        console.log(filteredMutuals)
     }, [mutualFilter])
 
     return (
@@ -49,6 +74,7 @@ export const InviteForm = ({ eventId }) => {
                             id="invtite-search-bar-input"
                             type="text"
                             placeholder="Find a Mutual"
+                            onChange={ (e) => setMutualFilter(e.target.value) }
                         />
                     </div>
                     <button className="controls-btn">
