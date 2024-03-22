@@ -92,7 +92,7 @@ export const InviteForm = ({ eventId }) => {
                     </div>
 
                     <div className="invite-submit-btns">
-                        <button id="cancel-invite">CANCEL</button>
+                        <button id="cancel-invite" onClick={handleCancel}>CANCEL</button>
                         <button id="send-texts-btns" className={ Object.keys(invites).length === 0 ? 'disabled-send-texts' : ''}>SEND TEXTS</button>
                     </div>
                 </div>
