@@ -15,14 +15,10 @@ export const InviteForm = ({ eventId }) => {
     const event = useSelector(state => state.events[eventId]);
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
-    // let filteredMutuals = mutuals;
     const [filteredMutuals, setFilteredMutuals] = useState(mutuals)
     const [mutualFilter, setMutualFilter] = useState();
-    const [numOfInvitees, setNumOfInvitees] = useState(0);
     const [invites, setInvites] = useState({});
-
-    // const invites = {};
-
+    const [inviteMsg, setInviteMsg] = useState();
 
     const handleCancel = (e) => {
         e.preventDefault()
@@ -38,23 +34,19 @@ export const InviteForm = ({ eventId }) => {
 
                 const sortBySubstring = (words, match) => {
                 return words.sort((a, b) => {
-                    // console.log(a.name,b.name,mutualFilter, a.name.indexOf(match) , b.name.indexOf(match))
                     return a.name.toLowerCase().indexOf(match) - b.name.toLowerCase().indexOf(match);
                 });
                 }
 
                 const sortedFiltered = sortBySubstring(filtered, mutualFilter.toLowerCase());
-                console.log(filtered, sortedFiltered)
 
                 setFilteredMutuals(sortedFiltered)
-
                 break;
         
             default:
                 setFilteredMutuals(mutuals)
                 break;
         }
-        console.log(filteredMutuals)
     }, [mutualFilter])
 
     return (
@@ -92,14 +84,15 @@ export const InviteForm = ({ eventId }) => {
             <div className="invite-msg-inv-container">
                 <div className="invite-message">
                     <div id="top-header-invite-message">
-                    <header>Message</header>
-                    <p>{}/480</p>
+                        <header>Message</header>
+                        <p>{inviteMsg.length}/480</p>
                     </div>
                     <p>🥳 Hey [<span>Name</span>], {sessionUser.name} wants you to come to {event.title}!</p>
                     <textarea
                         id="invite-msg-input"
                         type="text"
                         placeholder="(Optional) Add a custom note"
+                        onChange={ e => setInviteMsg(e.target.value)}
                     />
                     <p id="rsvp-link">RSVP 👉 [<span>link</span>]</p>
                 </div>
