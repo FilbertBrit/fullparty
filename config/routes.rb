@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create, :update, :index, :show] do
       resources :invites, only: [:index, :create]
+      resources :notifications, only: [:index, :create]
     end
     resource :session, only: [:show, :create, :destroy]
-    resources :notifications, only: [:index, :create]
+    # resources :notifications, only: [:index, :create]
+    # resources :invites, only: [:index, :create]
     resources :events, only: [:show, :create, :destroy, :index, :update] do
       resources :rsvps, only: [:index, :show, :create, :update]
       resources :comments, only: [:index, :create, :update, :destroy]

@@ -3,8 +3,8 @@ class Api::NotificationsController < ApplicationController
     # before_action :set_rsvp, only: [:show, :update]
   
     def index
-      @notifications = Notification.where(reciever_id: params[:reciever_id])
-      render :index
+      # @notifications = Notification.where(reciever_id: params[:reciever_id])
+      # render :index
     end
   
     # def show 
@@ -15,7 +15,9 @@ class Api::NotificationsController < ApplicationController
       # debugger
       @notification = Notification.new(notification_params)
       if @notification.save
-        render :show
+        # render :show
+        render json: {notification: @notification}
+        
         # render json: rsvp_params
       else
         render json: {errors: @notification.errors.full_messages }, status: :unprocessable_entity

@@ -3,8 +3,8 @@ class Api::InvitesController < ApplicationController
     # before_action :set_rsvp, only: [:show, :update]
   
     def index
-      @invites = Invite.where(reciever_id: params[:reciever_id])
-      render :index
+      # @invites = Invite.where(reciever_id: params[:reciever_id])
+      # render :index
     end
   
     # def show 
@@ -15,7 +15,8 @@ class Api::InvitesController < ApplicationController
       # debugger
       @invite = Invite.new(invite_params)
       if @invite.save
-        render :show
+        render json: {invite: @invite}
+        # render :show
         # render json: rsvp_params
       else
         render json: {errors: @rsvp.errors.full_messages }, status: :unprocessable_entity
