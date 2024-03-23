@@ -8,7 +8,6 @@ export const MutualInvitee = ({ mutual, invites, setInvites }) => {
 
     const handleClick = () => {
         if(clicked === false){
-            // invites[mutual.id] = mutual.name
             const updatedInvites = {
                 ...invites,
                 [mutual.id]: mutual.name
@@ -16,7 +15,6 @@ export const MutualInvitee = ({ mutual, invites, setInvites }) => {
             setInvites(updatedInvites)
             setClicked(true);
         }else{
-            // delete invites[mutual.id]
             const { [mutual.id]: value, ...remainingInvites } = invites;
             setInvites(remainingInvites)
             setClicked(false);
