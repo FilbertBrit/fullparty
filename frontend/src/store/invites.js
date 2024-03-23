@@ -30,8 +30,10 @@ const removeInvite = inviteId => ({
 //     return response;
 // };
 export const createInvite = invite => async (dispatch) => {
-    debugger
-    const response = await csrfFetch(`/api/users/${invite.userId}/invites`, {
+    // console.log(invite)
+    // debugger
+    const response = await csrfFetch(`/api/invites/`, {
+        // const response = await csrfFetch(`/api/users/${invite.senderId}/invites`, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
@@ -41,7 +43,7 @@ export const createInvite = invite => async (dispatch) => {
 
     if (response.ok) {
         const invite = await response.json();
-        dispatch(receiveInvite(invite))
+        // dispatch(receiveInvite(invite))
         return invite;
     }
 };
@@ -60,12 +62,12 @@ export const createInvite = invite => async (dispatch) => {
 // REDUCER
 const invitesReducer = (state = {}, action) => {
     const nextState = { ...state };
-
     switch (action.type) {
+        // case RECEIVE_INVITE:
+        //     debugger
+        //     return {...state, [action.invite.id]: action.invite}
         case RECEIVE_INVITES:
             return {...state, ...action.invites}
-        case RECEIVE_INVITE:
-            return {...state, [action.invite.id]: action.invite}
         // case REMOVE_INVITE:
         //     const newState = { ...state };
         //     delete newState[action.inviteId];

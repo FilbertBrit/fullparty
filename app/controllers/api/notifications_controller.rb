@@ -1,5 +1,5 @@
 class Api::NotificationsController < ApplicationController
-    wrap_parameters include: Notification.attribute_names + ['recieverId', 'senderId', 'eventId']
+    wrap_parameters include: Notification.attribute_names + ['receiverId', 'senderId', 'eventId', 'notificationType']
     # before_action :set_rsvp, only: [:show, :update]
   
     def index
@@ -42,7 +42,7 @@ class Api::NotificationsController < ApplicationController
     end
   
     def notification_params
-      params.require(:notification).permit(:type, :content, :reciever_id, :sender_id, :event_id)
+      params.require(:notification).permit(:notification_type, :content, :receiver_id, :sender_id, :event_id)
     end
   end
   

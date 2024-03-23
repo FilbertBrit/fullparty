@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_01_074341) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_23_014517) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,25 +76,25 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_074341) do
 
   create_table "invites", force: :cascade do |t|
     t.bigint "sender_id", null: false
-    t.bigint "reciever_id", null: false
+    t.bigint "receiver_id", null: false
     t.bigint "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_invites_on_event_id"
-    t.index ["reciever_id"], name: "index_invites_on_reciever_id"
+    t.index ["receiver_id"], name: "index_invites_on_receiver_id"
     t.index ["sender_id"], name: "index_invites_on_sender_id"
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.string "type", null: false
+    t.string "notification_type", null: false
     t.string "content", null: false
-    t.bigint "reciever_id", null: false
+    t.bigint "receiver_id", null: false
     t.bigint "sender_id", null: false
     t.bigint "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_notifications_on_event_id"
-    t.index ["reciever_id"], name: "index_notifications_on_reciever_id"
+    t.index ["receiver_id"], name: "index_notifications_on_receiver_id"
     t.index ["sender_id"], name: "index_notifications_on_sender_id"
   end
 
@@ -138,10 +138,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_074341) do
   add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "events", "users", column: "author_id"
   add_foreign_key "invites", "events"
-  add_foreign_key "invites", "users", column: "reciever_id"
+  add_foreign_key "invites", "users", column: "receiver_id"
   add_foreign_key "invites", "users", column: "sender_id"
   add_foreign_key "notifications", "events"
-  add_foreign_key "notifications", "users", column: "reciever_id"
+  add_foreign_key "notifications", "users", column: "receiver_id"
   add_foreign_key "notifications", "users", column: "sender_id"
   add_foreign_key "rsvps", "events"
   add_foreign_key "rsvps", "users"
