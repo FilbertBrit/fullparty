@@ -15,7 +15,6 @@ export function Comment ({ comment }) {
     const notRSVP = (comment.commentType === "comment" ? true : false);
     const [showMenu, setShowMenu] = useState(false)
     const date = new Date(comment.date)
-    console.log(date)
     const today = new Date()
     let commentDate = ''
     const rsvps = {

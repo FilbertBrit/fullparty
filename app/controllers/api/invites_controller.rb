@@ -1,5 +1,5 @@
 class Api::InvitesController < ApplicationController
-    wrap_parameters include: Invite.attribute_names + ['senderId', 'recieverId', 'eventId']
+    wrap_parameters include: Invite.attribute_names + ['senderId', 'receiverId', 'eventId']
     # before_action :set_rsvp, only: [:show, :update]
   
     def index
@@ -42,7 +42,7 @@ class Api::InvitesController < ApplicationController
     end
   
     def invite_params
-      params.require(:invite).permit(:sender_id, :reciever_id, :event_id)
+      params.require(:invite).permit(:sender_id, :receiver_id, :event_id)
     end
   end
   

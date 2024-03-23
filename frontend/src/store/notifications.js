@@ -15,8 +15,10 @@ const receiveNotification = invite => ({
 
 // THUNK ACTIONS
 export const createNotification = notification => async (dispatch) => {
-    debugger
-    const response = await csrfFetch(`/api/users/${notification.userId}/notifications`, {
+    // console.log(notification)
+    // debugger
+    const response = await csrfFetch(`/api/notifications`, {
+        // const response = await csrfFetch(`/api/users/${notification.sender_id}/notifications`, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
@@ -26,7 +28,7 @@ export const createNotification = notification => async (dispatch) => {
 
     if (response.ok) {
         const notification = await response.json();
-        dispatch(receiveNotification(notification))
+        // dispatch(receiveNotification(notification))
         return notification;
     }
 };
@@ -36,7 +38,8 @@ const notificationsReducer = (state = {}, action) => {
     const nextState = { ...state };
     switch (action.type) {
         case RECEIVE_NOTIFICATION:
-                return {...state, ...action.invites}
+            // debugger
+            //     return {...state, ...action.notification}
         case RECEIVE_NOTIFICATIONS:
             return {...state, [action.invite.id]: action.invite}
         default:

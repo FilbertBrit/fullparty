@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom";
 import { closeModal } from "../../store/modal";
 import cancel from "../../images/cancel.png"
 import "./InviteForm.css"
@@ -7,6 +6,8 @@ import { useState, useEffect  } from "react";
 import { MutualInvitee } from "./MutualInvitee";
 import controls from "../../images/controls.png"
 import { InvitePrev } from "./InvitePrev";
+import { createInvite } from "../../store/invites";
+import { createNotification } from "../../store/notifications";
 
 export const InviteForm = ({ eventId }) => {
 
@@ -23,6 +24,16 @@ export const InviteForm = ({ eventId }) => {
     const handleCancel = (e) => {
         e.preventDefault()
         dispatch(closeModal());
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // console.log(invites, inviteMsg)
+        for(let userId in invites){
+            dispatch(createInvite({senderId: sessionUser.id, receiverId: userId, eventId: eventId})).then( res => console.log(res));
+            dispatch(createNotification({notificationType: 'invite', content: inviteMsg, receiverId: userId, senderId: sessionUser.id, eventId: eventId})).then( res => console.log(res));
+        }
+        handleCancel(e)
     }
 
     useEffect( () => {
@@ -113,7 +124,7 @@ export const InviteForm = ({ eventId }) => {
 
                     <div className="invite-submit-btns">
                         <button id="cancel-invite" onClick={handleCancel}>CANCEL</button>
-                        <button id="send-texts-btns" className={ Object.keys(invites).length === 0 ? 'disabled-send-texts' : ''}>SEND TEXTS</button>
+                        <button id="send-texts-btns" className={ Object.keys(invites).length === 0 ? 'disabled-send-texts' : ''} onClick={handleSubmit}>SEND TEXTS</button>
                     </div>
                 </div>
             </div>
