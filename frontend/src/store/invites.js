@@ -30,6 +30,7 @@ const removeInvite = inviteId => ({
 //     return response;
 // };
 export const createInvite = invite => async (dispatch) => {
+    debugger
     const response = await csrfFetch(`/api/users/${invite.userId}/invites`, {
         method: 'POST',
         headers: {
@@ -44,17 +45,17 @@ export const createInvite = invite => async (dispatch) => {
         return invite;
     }
 };
-export const deleteEvent = inviteId => async (dispatch) => {
-    const response = await csrfFetch (`/api/users/${inviteId}/invites`, {
-        method: 'DELETE'
-    });
+// export const deleteEvent = inviteId => async (dispatch) => {
+//     const response = await csrfFetch (`/api/users/${inviteId}/invites`, {
+//         method: 'DELETE'
+//     });
 
-    if (response.ok) {
-        dispatch(removeInvite(inviteId));
-    }
+//     if (response.ok) {
+//         dispatch(removeInvite(inviteId));
+//     }
 
-    return response;
-};
+//     return response;
+// };
 
 // REDUCER
 const invitesReducer = (state = {}, action) => {
@@ -65,10 +66,10 @@ const invitesReducer = (state = {}, action) => {
             return {...state, ...action.invites}
         case RECEIVE_INVITE:
             return {...state, [action.invite.id]: action.invite}
-        case REMOVE_INVITE:
-            const newState = { ...state };
-            delete newState[action.inviteId];
-            return newState;
+        // case REMOVE_INVITE:
+        //     const newState = { ...state };
+        //     delete newState[action.inviteId];
+        //     return newState;
         default:
             return state;
     }
