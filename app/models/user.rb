@@ -64,10 +64,10 @@ class User < ApplicationRecord
   # class_name: :Notification,
   # dependent: :destroy
 
-  # has_many :notifications,
-  # foreign_key: :receiver_id,
-  # class_name: :Notification,
-  # dependent: :destroy
+  has_many :notifications,
+  foreign_key: :receiver_id,
+  class_name: :Notification,
+  dependent: :destroy
 
     
   def reset_session_token!
