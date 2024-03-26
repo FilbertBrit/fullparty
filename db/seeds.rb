@@ -922,241 +922,241 @@ end
   comments_seed_data = [
     {
     event_id: 1,
-    user_id: 1,
+    author_id: 1,
     body: "I'm Going",
     comment_type: "rsvp"
     },
     {
     event_id: 1,
-    user_id: 1,
+    author_id: 1,
     body: "Hope you all can join!",
     comment_type: "comment"
     },
     {
       event_id: 2,
-      user_id: 2,
+      author_id: 2,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
     event_id: 2,
-    user_id: 2,
+    author_id: 2,
     body: "Can't wait to see you all",
     comment_type: "comment"
     },
     {
       event_id: 3,
-      user_id: 3,
+      author_id: 3,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
       event_id: 3,
-      user_id: 3,
+      author_id: 3,
       body: "Please join me!",
       comment_type: "comment"
     },
     {
       event_id: 4,
-      user_id: 4,
+      author_id: 4,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
       event_id: 4,
-      user_id: 4,
+      author_id: 4,
       body: "Looking forward to see you all",
       comment_type: "comment"
     },
     {
       event_id: 5,
-      user_id: 5,
+      author_id: 5,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
     event_id: 5,
-    user_id: 5,
+    author_id: 5,
     body: "Hope you all can join!",
     comment_type: "comment"
     },
     {
       event_id: 6,
-      user_id: 6,
+      author_id: 6,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
     event_id: 6,
-    user_id: 6,
+    author_id: 6,
     body: "Can't wait to see you all",
     comment_type: "comment"
     },
     {
       event_id: 7,
-      user_id: 7,
+      author_id: 7,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
       event_id: 7,
-      user_id: 7,
+      author_id: 7,
       body: "Please join me!",
       comment_type: "comment"
     },
     {
       event_id: 8,
-      user_id: 8,
+      author_id: 8,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
       event_id: 8,
-      user_id: 8,
+      author_id: 8,
       body: "Looking forward to see you all",
       comment_type: "comment"
     },
     {
       event_id: 9,
-      user_id: 9,
+      author_id: 9,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
       event_id: 9,
-      user_id: 9,
+      author_id: 9,
       body: "Hope you all can join!",
       comment_type: "comment"
     },
     {
       event_id: 10,
-      user_id: 10,
+      author_id: 10,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
       event_id: 10,
-      user_id: 10,
+      author_id: 10,
       body: "Can't wait to see you all",
       comment_type: "comment"
     },
     {
       event_id: 11,
-      user_id: 11,
+      author_id: 11,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
       event_id: 11,
-      user_id: 11,
+      author_id: 11,
       body: "Please join me!",
       comment_type: "comment"
     },
     {
       event_id: 12,
-      user_id: 12,
+      author_id: 12,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
     event_id: 12,
-    user_id: 12,
+    author_id: 12,
     body: "Hope you all can join!",
     comment_type: "comment"
     },
     {
       event_id: 13,
-      user_id: 13,
+      author_id: 13,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
       event_id: 13,
-      user_id: 13,
+      author_id: 13,
       body: "Can't wait to see you all",
       comment_type: "comment"
     },
     {
       event_id: 14,
-      user_id: 14,
+      author_id: 14,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
       event_id: 14,
-      user_id: 14,
+      author_id: 14,
       body: "Please join me!",
       comment_type: "comment"
     },
     {
       event_id: 15,
-      user_id: 15,
+      author_id: 15,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
-    event_id: 15,
-    user_id: 15,
-    body: "Hope you all can join!",
-    comment_type: "comment"
+      event_id: 15,
+      author_id: 15,
+      body: "Hope you all can join!",
+      comment_type: "comment"
     },
     {
       event_id: 16,
-      user_id: 16,
+      author_id: 16,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
       event_id: 16,
-      user_id: 16,
+      author_id: 16,
       body: "Can't wait to see you all",
       comment_type: "comment"
     },
     {
       event_id: 17,
-      user_id: 17,
+      author_id: 17,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
       event_id: 17,
-      user_id: 17,
+      author_id: 17,
       body: "Hope you all can join!",
       comment_type: "comment"
     },
     {
       event_id: 18,
-      user_id: 18,
+      author_id: 18,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
       event_id: 18,
-      user_id: 18,
+      author_id: 18,
       body: "Hope you all can join!",
       comment_type: "comment"
     },
     {
       event_id: 19,
-      user_id: 19,
+      author_id: 19,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
       event_id: 19,
-      user_id: 19,
+      author_id: 19,
       body: "Can't wait to see you all",
       comment_type: "comment"
     },
     {
       event_id: 20,
-      user_id: 20,
+      author_id: 20,
       body: "I'm Going",
       comment_type: "rsvp"
     },
     {
       event_id: 20,
-      user_id: 20,
+      author_id: 20,
       body: "Please join me!",
       comment_type: "comment"
     },
