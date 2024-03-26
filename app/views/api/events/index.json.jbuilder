@@ -6,6 +6,8 @@ today = (Time.now).inspect
 mutualsCounter = {}
 invites = @current_user.invites.includes(:event)
 invitedEvents = []
+invited = nil
+
 json.invites do 
     invites.each do |invite|
         invitedEvents.push(invite.event_id)
@@ -14,9 +16,12 @@ json.invites do
         end
     end
 end
-puts invitedEvents
 
 events.each do |event|
+    invited = nil
+    if invitedEvents.include?(event.id)
+    invited = 'invited'
+    end
 
     # if (event.author_id == @current_user.id || event.rsvps.includes(:user).where(users:{id: @current_user.id}).pluck(:user_id) == @current_user.id) && (!event.date_time || event.date_time < today)
     #     puts event.title
@@ -59,7 +64,7 @@ events.each do |event|
         json.set! event.id do
             json.extract! event, :title, :id, :author_id, :date_time
             json.host event.user.name
-            json.userRsvp rsvpUser.status
+            json.userRsvp rsvpUser.status || invited
         end
     end
 end
