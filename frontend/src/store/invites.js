@@ -1,4 +1,5 @@
 import csrfFetch from './csrf';
+import { RECEIVE_EVENTS, RECEIVE_EVENT } from './events';
 
 // ACTION TYPES
 export const RECEIVE_INVITES = 'invites/RECEIVE_INVITES';
@@ -72,6 +73,8 @@ const invitesReducer = (state = {}, action) => {
         //     const newState = { ...state };
         //     delete newState[action.inviteId];
         //     return newState;
+        case RECEIVE_EVENTS:
+            return { ...action.payload.invites};
         default:
             return state;
     }

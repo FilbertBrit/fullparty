@@ -4,6 +4,7 @@ upcomingEvents = 0
 test = 0
 today = (Time.now).inspect
 mutualsCounter = {}
+invites = @current_user.invites.includes(:event)
 
 events.each do |event|
 
@@ -66,4 +67,12 @@ json.users do
 end
 json.user do 
     json.upcomingEvents upcomingEvents
+end
+
+json.invites do 
+    invites.each do |invite|
+        json.set! invite.id do
+            json.extract! invite, :id, :sender_id, :receiver_id, :event_id
+        end
+    end
 end

@@ -18,6 +18,8 @@ export function HomePage () {
     const events = eventsObj ? Object.values(eventsObj) : [];
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
+    const invitesObj = useSelector(state => state.invites)
+    const eventsInvited = []
     const [filter, setFilter] = useState("Upcoming");
     const upcoming = useSelector(state => state.session.user.upcomingEvents)
     const today = new Date();
@@ -27,10 +29,14 @@ export function HomePage () {
 
     let filteredEvents = []
 
+    // for(invite of invitesObj){
+    //     eventsInvited.push(invite.eventId)
+    // }
+
     mutuals.sort( (a,b) => b.sharedEvents.length - a.sharedEvents.length  )
     
     if(filter === "Upcoming"){
-        filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== null || (event.authorId === sessionUser.id)));
+        filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== null || (event.authorId === sessionUser.id) || (Object.values(invitesObj).map(obj => obj.eventId).includes(event.id))));
     }else if(filter === "Hosting"){
         filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null) && (event.authorId === sessionUser.id));
     }else if(filter === "Open Invite"){

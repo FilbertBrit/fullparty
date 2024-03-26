@@ -48,6 +48,27 @@ class User < ApplicationRecord
   has_many :parties,
     through: :rsvps,
     source: :event
+
+  has_many :invites,
+  foreign_key: :sender_id,
+  class_name: :Invite,
+  dependent: :destroy
+
+  has_many :invites,
+  foreign_key: :receiver_id,
+  class_name: :Invite,
+  dependent: :destroy
+
+  has_many :notifications,
+  foreign_key: :sender_id,
+  class_name: :Notification,
+  dependent: :destroy
+
+  has_many :notifications,
+  foreign_key: :receiver_id,
+  class_name: :Notification,
+  dependent: :destroy
+
     
   def reset_session_token!
     # `update!` the user's session token to a new, random token
