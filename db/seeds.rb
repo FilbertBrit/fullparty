@@ -353,6 +353,103 @@ end
 # Seed data for RSVPs using Rsvp.create!
 rsvps_seed_data = [
   {
+    event_id: 1,
+    user_id: 1,
+    status: "I'm Going"
+  },
+  {
+    event_id: 2,
+    user_id: 2,
+    status: "I'm Going"
+  },
+  {
+    event_id: 3,
+    user_id: 3,
+    status: "I'm Going"
+  },
+  {
+    event_id: 4,
+    user_id: 4,
+    status: "I'm Going"
+  },
+  {
+    event_id: 5,
+    user_id: 5,
+    status: "I'm Going"
+  },
+  {
+    event_id: 6,
+    user_id: 6,
+    status: "I'm Going"
+  },
+  {
+    event_id: 7,
+    user_id: 7,
+    status: "I'm Going"
+  },{
+    event_id: 8,
+    user_id: 8,
+    status: "I'm Going"
+  },
+  {
+    event_id: 9,
+    user_id: 9,
+    status: "I'm Going"
+  },
+  {
+    event_id: 10,
+    user_id: 10,
+    status: "I'm Going"
+  },
+  {
+    event_id: 11,
+    user_id: 11,
+    status: "I'm Going"
+  },
+  {
+    event_id: 12,
+    user_id: 12,
+    status: "I'm Going"
+  },
+  {
+    event_id: 13,
+    user_id: 13,
+    status: "I'm Going"
+  },{
+    event_id: 14,
+    user_id: 14,
+    status: "I'm Going"
+  },
+  {
+    event_id: 15,
+    user_id: 15,
+    status: "I'm Going"
+  },{
+    event_id: 16,
+    user_id: 16,
+    status: "I'm Going"
+  },
+  {
+    event_id: 17,
+    user_id: 17,
+    status: "I'm Going"
+  },
+  {
+    event_id: 18,
+    user_id: 18,
+    status: "I'm Going"
+  },
+  {
+    event_id: 19,
+    user_id: 19,
+    status: "I'm Going"
+  },
+  {
+    event_id: 20,
+    user_id: 20,
+    status: "I'm Going"
+  },
+  {
     event_id: 10,
     user_id: 1,
     status: "I'm Going"
@@ -399,7 +496,7 @@ rsvps_seed_data = [
   },
   {
     event_id: 6,
-    user_id: 6,
+    user_id: 7,
     status: "I'm Going"
   },
   {
@@ -573,6 +670,21 @@ rsvps_seed_data = [
     user_id: 3,
     status: 'Maybe'
   },
+  {
+    event_id: 11,
+    user_id: 5,
+    status: "Can't Go"
+  },
+  {
+    event_id: 11,
+    user_id: 7,
+    status: "I'm Going"
+  },
+  {
+    event_id: 11,
+    user_id: 21,
+    status: 'Maybe'
+  },
 
   # Event ID 12 - RSVPs and Comments
   {
@@ -590,6 +702,21 @@ rsvps_seed_data = [
     user_id: 6,
     status: 'Maybe'
   },
+  {
+    event_id: 12,
+    user_id: 2,
+    status: "I'm Going"
+  },
+  {
+    event_id: 12,
+    user_id: 17,
+    status: "Can't Go"
+  },
+  {
+    event_id: 12,
+    user_id: 13,
+    status: 'Maybe'
+  },
 
   # Event ID 13 - RSVPs and Comments
   {
@@ -605,6 +732,21 @@ rsvps_seed_data = [
   {
     event_id: 13,
     user_id: 9,
+    status: "Can't Go"
+  },
+  {
+    event_id: 13,
+    user_id: 10,
+    status: 'Maybe'
+  },
+  {
+    event_id: 13,
+    user_id: 21,
+    status: "I'm Going"
+  },
+  {
+    event_id: 13,
+    user_id: 15,
     status: "Can't Go"
   },
 
@@ -638,14 +780,14 @@ rsvps_seed_data = [
   },
   {
     event_id: 15,
-    user_id: 15,
+    user_id: 10,
     status: 'Maybe'
   },
 
   # Event ID 16 - RSVPs and Comments
   {
     event_id: 16,
-    user_id: 16,
+    user_id: 21,
     status: "Can't Go"
   },
   {
