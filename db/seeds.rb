@@ -10,14 +10,14 @@
 ApplicationRecord.transaction do 
   puts "Destroying tables..."
   # Unnecessary if using `rails db:seed:replant`
+  Social.destroy_all
+  Invite.destroy_all
+  Notification.destroy_all
   User.destroy_all
   Event.destroy_all
   Rsvp.destroy_all
   Comment.destroy_all
   Achievement.destroy_all
-  Social.destroy_all
-  Invite.destroy_all
-  Notification.destroy_all
 
   puts "Resetting primary keys..."
   # For easy testing, so that after seeding, the first `User` has `id` of 1
