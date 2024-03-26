@@ -69,6 +69,9 @@ export const EventIndexItem = ({ event, usersState }) => {
                 case "Can't Go":
                     rsvpStatus = "😢 CAN'T"
                     break;
+                case "invited":
+                    rsvpStatus = "💌 INVITED"
+                    break;
                 default:
                     break;
             }
