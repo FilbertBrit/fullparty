@@ -72,7 +72,7 @@ end
 json.invites do 
     invites.each do |invite|
         json.set! invite.id do
-            json.extract! invite, :id, :sender_id, :receiver_id
+            json.extract! invite, :id, :sender_id, :receiver_id, :event_id
         end
     end
 end
