@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 
 export const EventIndexItem = ({ event, usersState }) => {
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     // const [showOptions, setShowOptions] = useState(false)
     const showPage = '/events/' + event.id;
@@ -19,6 +20,8 @@ export const EventIndexItem = ({ event, usersState }) => {
     let time = eventTime[0].slice(0,1) + eventTime[1].toLocaleLowerCase()
     let eventDate = date.toString().split(' ')[0] + ' ' + (date.getMonth() + 1) + '/' + date.getDate() + '・' + time;
     const [soon, setSoon] = useState()
+    // console.log(date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" "), eventDate)
+    // console.log(date.getTimezoneOffset())
 
     //checking is the event is a day or less away to set date preview to variable soon
     switch (Math.floor((Math.abs(new Date(today.toDateString()) - new Date (new Date(event.dateTime).toDateString())))/(1000*60*60*24))) {
