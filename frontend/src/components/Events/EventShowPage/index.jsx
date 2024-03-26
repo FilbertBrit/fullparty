@@ -7,6 +7,7 @@ import { deleteEvent } from '../../../store/events';
 import Navigation from "../../Navigation"
 import { useHistory } from 'react-router';
 import wazzap from "../../../images/wazzap-halloween.jpeg"
+import invite from "../../../images/invite.png"
 import "./EventShowPage.css"
 import { RsvpComponent } from './RsvpComponent';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
@@ -75,8 +76,11 @@ export function EventShowPage () {
                     <div className="show-img">
                         <img src={wazzap} alt="show-img" id='show-img'/>
                     </div>
-                    <div className="show-rsvp">
+                    <div className="show-rsvp" id={!['invited', null].includes(event.userRsvp) ? 'rsvped': null }>
                         <RsvpComponent event={event}/>
+                        {!['invited', null].includes(event.userRsvp) && 
+                            <button className='invite-container' onClick={handleInvite}><img src={invite} className='pp-invite-btn'/></button>
+                        }
                     </div>
                 </div>
                 <div className="show-info">
