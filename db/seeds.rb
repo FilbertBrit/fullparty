@@ -2384,6 +2384,11 @@ notification_seed_data = [
   }
   ]
 
+  # Create Invites with the updated seed data
+notification_seed_data.each do |notification_data|
+  Notification.create!(notification_data)
+end
+
 
   puts "Done!"
 end

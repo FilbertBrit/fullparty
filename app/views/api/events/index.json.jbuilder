@@ -5,6 +5,8 @@ test = 0
 today = (Time.now).inspect
 mutualsCounter = {}
 invites = @current_user.invites.includes(:event)
+notifications = @current_user.notifications
+puts 'notifications:', notifications
 invitedEvents = []
 invited = nil
 
@@ -13,6 +15,13 @@ json.invites do
         invitedEvents.push(invite.event_id)
         json.set! invite.id do
             json.extract! invite, :id, :sender_id, :receiver_id, :event_id
+        end
+    end
+end
+json.notifications do 
+    notifications.each do |notification|
+        json.set! notification.id do
+            json.extract! notification, :id, :content, :sender_id, :receiver_id, :event_id
         end
     end
 end
@@ -46,8 +55,8 @@ events.each do |event|
             end
         end
 
-        if rsvpUser.status || event.author_id == @current_user.id
-            if event.date_time
+        if rsvpUser.status || event.author_id == @current_user.id || invitedEvents.include?(event.id)
+            if event.date_time 
 
                 if event.date_time > today
                     upcomingEvents += 1
