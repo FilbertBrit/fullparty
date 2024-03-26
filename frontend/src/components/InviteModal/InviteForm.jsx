@@ -31,7 +31,7 @@ export const InviteForm = ({ eventId }) => {
         // console.log(invites, inviteMsg)
         for(let userId in invites){
             dispatch(createInvite({senderId: sessionUser.id, receiverId: userId, eventId: eventId})).then( res => console.log(res));
-            dispatch(createNotification({notificationType: 'invite', content: inviteMsg, receiverId: userId, senderId: sessionUser.id, eventId: eventId})).then( res => console.log(res));
+            dispatch(createNotification({notificationType: 'invite', content: inviteMsg || 'invite', receiverId: userId, senderId: sessionUser.id, eventId: eventId})).then( res => console.log(res));
         }
         handleCancel(e)
     }
@@ -117,8 +117,9 @@ export const InviteForm = ({ eventId }) => {
                             {
                                 Object.entries(invites).map( (invite, i) =>
                                     <InvitePrev invite={invite} invites={invites} setInvites={setInvites} key={i}/>
-                                )
-                            }
+                                    )
+                                }
+                                <div className="empty-space"></div>
                         </div>
                     </div>
 

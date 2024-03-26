@@ -1,4 +1,6 @@
 import csrfFetch from './csrf';
+import { RECEIVE_EVENTS, RECEIVE_EVENT } from './events';
+
 
 // ACTION TYPES
 export const RECEIVE_NOTIFICATIONS = 'invites/RECEIVE_NOTIFICATIONS';
@@ -37,6 +39,8 @@ export const createNotification = notification => async (dispatch) => {
 const notificationsReducer = (state = {}, action) => {
     const nextState = { ...state };
     switch (action.type) {
+        case RECEIVE_EVENTS:
+            return { ...action.payload.notifications};
         case RECEIVE_NOTIFICATION:
             // debugger
             //     return {...state, ...action.notification}

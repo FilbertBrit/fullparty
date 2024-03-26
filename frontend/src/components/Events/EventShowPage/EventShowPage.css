@@ -32,7 +32,7 @@
 #event-title-show{
     width: max-content;
     font-size: 56px;
-    max-width: 590px;
+    /* max-width: 590px; */
 }
 #event-time-h2{
    color: hsla(0,0%,100%,.6);
@@ -310,6 +310,9 @@
     background-color: transparent;
     border: none;
 }
+#rsvped{
+    margin-left: 100px;
+}
 .emoji-rsvp-btn{
     font-size: xxx-large;
     padding: 30px;
@@ -489,3 +492,26 @@
 /* .show-info{
     max-width: 550px;
 } */
+
+.pp-invite-btn{
+    height: 20px;
+    width: 20px;
+}
+.invite-container{
+    padding: 25px;
+    width: 70px;
+    height: 70px;
+    border-radius: 80px;
+    background-color: #a8afb86a;
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    align-items: center;
+    font-size: 18px;
+    justify-content: flex-start;
+    font-weight: 400;
+    font-family: Space Grotesk, Helvetica Neue, Helvetica, sans-serif;
+    color: hsla(0, 0%, 100%, .6);
+    border: none;
+    margin-left: 20px;
+}

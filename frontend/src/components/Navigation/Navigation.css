@@ -83,6 +83,10 @@
     padding: 15px;
     border-radius: 90%;
 }
+#notification-component{
+    background: transparent;
+    border: none;
+}
 #notification-btn:hover{
     background-color: hsla(0,0%,100%,.15);
     /* margin: 5px; */

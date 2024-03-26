@@ -8,11 +8,16 @@ import home from "../../images/home.png"
 import linkedin from "../../images/linkedin.png"
 import notification from "../../images/notification.png"
 import * as sessionActions from '../../store/session';
+import NotificationBtn from './NotificationBtn';
+import { NotificationItem } from './NotificationItem';
 // import { useHistory } from 'react-router';
 
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
+  const notificationsObj = useSelector(state => state.notifications);
+  const notifications = notificationsObj ? Object.values(notificationsObj) : [];
+
   // const history = useHistory();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
@@ -71,6 +76,7 @@ function Navigation() {
           {/* <p id="home-btn">HOME</p> */}
         </a>
         <img onClick={openNotifications} src={notification} id="notification-btn"  alt='notif-btn'/>
+        {/* <NotificationBtn notifications={notifications} /> */}
         <div className="profile-btn-container">
           <button onClick={openMenu} id='profile-btn'> {sessionUser.name.slice(0,1)}</button>
           <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" id='down-arrow' fill='#cad3e2'>
@@ -124,7 +130,6 @@ function Navigation() {
             <NavLink exact to="/" className="photo-logo-home-link">
               <img className='logo' src={logo} alt='logo'/>
             </NavLink>
-            {/* <>{sessionLinks}</> */}
           </div>
         )}
         {sessionLinks}
@@ -175,21 +180,23 @@ function Navigation() {
       </span>
     )}
     {showNotifications && (
-      <span className="dropdown-menu">
-        <ul className="profile-dropdown">
-\
-          <div className="mutals-btn">
-            <a href="/" id='mutuals-a-link'>
-              <div className="mutual-emoji">
-                🔔
-              </div>
-              <div className="mutual-header">
-                notification 1
-              </div>
-            </a>
-          </div>
-        </ul>
-      </span>
+      notifications.map((notification, i) => {
+        <NotificationItem notification={notification} key={i}/>
+      })
+//       <span className="dropdown-menu">
+//         <ul className="profile-dropdown">
+// \
+//           <div className="mutals-btn">
+//             <a href="/" id='mutuals-a-link'>
+//               <div className="mutual-emoji">
+//               </div>
+//               <div className="mutual-header">
+//                 notification 1
+//               </div>
+//             </a>
+//           </div>
+//         </ul>
+//       </span>
     )}
     </>
   );
