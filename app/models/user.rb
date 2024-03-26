@@ -59,10 +59,10 @@ class User < ApplicationRecord
   class_name: :Invite,
   dependent: :destroy
 
-  has_many :notifications,
-  foreign_key: :sender_id,
-  class_name: :Notification,
-  dependent: :destroy
+  # has_many :notifications,
+  # foreign_key: :sender_id,
+  # class_name: :Notification,
+  # dependent: :destroy
 
   has_many :notifications,
   foreign_key: :receiver_id,
