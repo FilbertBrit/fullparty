@@ -150,6 +150,7 @@ ApplicationRecord.transaction do
     bio: 'I LOVE TO PARTY'
   )
 
+  puts('Users created!')
 
 # Seed data for 10 events using Event.create!
 events_seed_data = [
@@ -349,6 +350,15 @@ events_seed_data.each do |event_data|
   Event.create!(event_data)
 end
 
+Event.create!(
+  title: "Bootastic",
+  description: "Happy Spooky season. Get ready for spooking 
+  drinks and food. There will be a costume contest so be sure to dress up!!",
+  location: "444 MyPlace way San Francisco 90514",
+  author_id: "21"
+)
+
+puts('events created!')
 
 # Seed data for RSVPs using Rsvp.create!
 rsvps_seed_data = [
@@ -880,13 +890,6 @@ rsvps_seed_data.each do |rsvp_data|
   Rsvp.create!(rsvp_data)
 end
 
-    Event.create!(
-      title: "Bootastic",
-      description: "Happy Spooky season. Get ready for spooking 
-      drinks and food. There will be a costume contest so be sure to dress up!!",
-      location: "444 MyPlace way San Francisco 90514",
-      author_id: "21"
-    )
 
     # Event.create!(
     #   title: "Going away party!",
@@ -917,6 +920,246 @@ end
 
     # Seed data for comments using Comment.create!
   comments_seed_data = [
+    {
+    event_id: 1,
+    user_id: 1,
+    body: "I'm Going",
+    comment_type: "rsvp"
+    },
+    {
+    event_id: 1,
+    user_id: 1,
+    body: "Hope you all can join!",
+    comment_type: "comment"
+    },
+    {
+      event_id: 2,
+      user_id: 2,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+    event_id: 2,
+    user_id: 2,
+    body: "Can't wait to see you all",
+    comment_type: "comment"
+    },
+    {
+      event_id: 3,
+      user_id: 3,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+      event_id: 3,
+      user_id: 3,
+      body: "Please join me!",
+      comment_type: "comment"
+    },
+    {
+      event_id: 4,
+      user_id: 4,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+      event_id: 4,
+      user_id: 4,
+      body: "Looking forward to see you all",
+      comment_type: "comment"
+    },
+    {
+      event_id: 5,
+      user_id: 5,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+    event_id: 5,
+    user_id: 5,
+    body: "Hope you all can join!",
+    comment_type: "comment"
+    },
+    {
+      event_id: 6,
+      user_id: 6,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+    event_id: 6,
+    user_id: 6,
+    body: "Can't wait to see you all",
+    comment_type: "comment"
+    },
+    {
+      event_id: 7,
+      user_id: 7,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+      event_id: 7,
+      user_id: 7,
+      body: "Please join me!",
+      comment_type: "comment"
+    },
+    {
+      event_id: 8,
+      user_id: 8,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+      event_id: 8,
+      user_id: 8,
+      body: "Looking forward to see you all",
+      comment_type: "comment"
+    },
+    {
+      event_id: 9,
+      user_id: 9,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+      event_id: 9,
+      user_id: 9,
+      body: "Hope you all can join!",
+      comment_type: "comment"
+    },
+    {
+      event_id: 10,
+      user_id: 10,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+      event_id: 10,
+      user_id: 10,
+      body: "Can't wait to see you all",
+      comment_type: "comment"
+    },
+    {
+      event_id: 11,
+      user_id: 11,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+      event_id: 11,
+      user_id: 11,
+      body: "Please join me!",
+      comment_type: "comment"
+    },
+    {
+      event_id: 12,
+      user_id: 12,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+    event_id: 12,
+    user_id: 12,
+    body: "Hope you all can join!",
+    comment_type: "comment"
+    },
+    {
+      event_id: 13,
+      user_id: 13,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+      event_id: 13,
+      user_id: 13,
+      body: "Can't wait to see you all",
+      comment_type: "comment"
+    },
+    {
+      event_id: 14,
+      user_id: 14,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+      event_id: 14,
+      user_id: 14,
+      body: "Please join me!",
+      comment_type: "comment"
+    },
+    {
+      event_id: 15,
+      user_id: 15,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+    event_id: 15,
+    user_id: 15,
+    body: "Hope you all can join!",
+    comment_type: "comment"
+    },
+    {
+      event_id: 16,
+      user_id: 16,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+      event_id: 16,
+      user_id: 16,
+      body: "Can't wait to see you all",
+      comment_type: "comment"
+    },
+    {
+      event_id: 17,
+      user_id: 17,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+      event_id: 17,
+      user_id: 17,
+      body: "Hope you all can join!",
+      comment_type: "comment"
+    },
+    {
+      event_id: 18,
+      user_id: 18,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+      event_id: 18,
+      user_id: 18,
+      body: "Hope you all can join!",
+      comment_type: "comment"
+    },
+    {
+      event_id: 19,
+      user_id: 19,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+      event_id: 19,
+      user_id: 19,
+      body: "Can't wait to see you all",
+      comment_type: "comment"
+    },
+    {
+      event_id: 20,
+      user_id: 20,
+      body: "I'm Going",
+      comment_type: "rsvp"
+    },
+    {
+      event_id: 20,
+      user_id: 20,
+      body: "Please join me!",
+      comment_type: "comment"
+    },
     {
       body: "I'm Going",
       comment_type: "rsvp",
@@ -1004,7 +1247,7 @@ end
     {
       body: "I'm Going",
       comment_type: "rsvp",
-      author_id: 6,
+      author_id: 7,
       event_id: 6
     },
     {
@@ -1083,6 +1326,12 @@ end
       body: "I'm Going",
       comment_type: "rsvp",
       author_id: 8,
+      event_id: 4
+    },
+    {
+      body: "I'm Going",
+      comment_type: "rsvp",
+      author_id: 1,
       event_id: 4
     },
     {
@@ -1272,547 +1521,547 @@ end
       event_id: 10
     },
     # Event ID 11 - Comments
-  {
-    body: "Can't Go",
-    comment_type: "rsvp",
-    author_id: 1,
-    event_id: 11
-  },
-  {
-    body: "I'm Going",
-    comment_type: "rsvp",
-    author_id: 2,
-    event_id: 11
-  },
-  {
-    body: 'Maybe',
-    comment_type: "rsvp",
-    author_id: 3,
-    event_id: 11
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 1,
-    event_id: 11
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 2,
-    event_id: 11
-  },
-  {
-    body: '',
-    comment_type: "comment",
-    author_id: 3,
-    event_id: 11
-  },
+    {
+      body: "Can't Go",
+      comment_type: "rsvp",
+      author_id: 1,
+      event_id: 11
+    },
+    {
+      body: "I'm Going",
+      comment_type: "rsvp",
+      author_id: 2,
+      event_id: 11
+    },
+    {
+      body: 'Maybe',
+      comment_type: "rsvp",
+      author_id: 3,
+      event_id: 11
+    },
+    {
+      body: "Wish I could make it!",
+      comment_type: "comment",
+      author_id: 1,
+      event_id: 11
+    },
+    {
+      body: "Can't wait!!",
+      comment_type: "comment",
+      author_id: 2,
+      event_id: 11
+    },
+    {
+      body: 'I think I can make it.',
+      comment_type: "comment",
+      author_id: 3,
+      event_id: 11
+    },
 
-  # Event ID 12 - Comments
-  {
-    body: "I'm Going",
-    comment_type: "rsvp",
-    author_id: 4,
-    event_id: 12
-  },
-  {
-    body: "Can't Go",
-    comment_type: "rsvp",
-    author_id: 5,
-    event_id: 12
-  },
-  {
-    body: 'Maybe',
-    comment_type: "rsvp",
-    author_id: 6,
-    event_id: 12
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 4,
-    event_id: 12
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 5,
-    event_id: 12
-  },
-  {
-    body: '',
-    comment_type: "comment",
-    author_id: 6,
-    event_id: 12
-  },
+    # Event ID 12 - Comments
+    {
+      body: "I'm Going",
+      comment_type: "rsvp",
+      author_id: 4,
+      event_id: 12
+    },
+    {
+      body: "Can't Go",
+      comment_type: "rsvp",
+      author_id: 5,
+      event_id: 12
+    },
+    {
+      body: 'Maybe',
+      comment_type: "rsvp",
+      author_id: 6,
+      event_id: 12
+    },
+    {
+      body: "Excited!!",
+      comment_type: "comment",
+      author_id: 4,
+      event_id: 12
+    },
+    {
+      body: "Very sad to miss it!",
+      comment_type: "comment",
+      author_id: 5,
+      event_id: 12
+    },
+    {
+      body: 'I hope to be there!',
+      comment_type: "comment",
+      author_id: 6,
+      event_id: 12
+    },
 
-  # Event ID 13 - Comments
-  {
-    body: 'Maybe',
-    comment_type: "rsvp",
-    author_id: 7,
-    event_id: 13
-  },
-  {
-    body: "I'm Going",
-    comment_type: "rsvp",
-    author_id: 8,
-    event_id: 13
-  },
-  {
-    body: "Can't Go",
-    comment_type: "rsvp",
-    author_id: 9,
-    event_id: 13
-  },
-  {
-    body: '',
-    comment_type: "comment",
-    author_id: 7,
-    event_id: 13
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 8,
-    event_id: 13
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 9,
-    event_id: 13
-  },
+    # Event ID 13 - Comments
+    {
+      body: 'Maybe',
+      comment_type: "rsvp",
+      author_id: 7,
+      event_id: 13
+    },
+    {
+      body: "I'm Going",
+      comment_type: "rsvp",
+      author_id: 8,
+      event_id: 13
+    },
+    {
+      body: "Can't Go",
+      comment_type: "rsvp",
+      author_id: 9,
+      event_id: 13
+    },
+    {
+      body: 'I should know soon.',
+      comment_type: "comment",
+      author_id: 7,
+      event_id: 13
+    },
+    {
+      body: "whoo",
+      comment_type: "comment",
+      author_id: 8,
+      event_id: 13
+    },
+    {
+      body: "I will be at the next one!",
+      comment_type: "comment",
+      author_id: 9,
+      event_id: 13
+    },
 
-  # Event ID 14 - Comments
-  {
-    body: "Can't Go",
-    comment_type: "rsvp",
-    author_id: 10,
-    event_id: 14
-  },
-  {
-    body: "I'm Going",
-    comment_type: "rsvp",
-    author_id: 11,
-    event_id: 14
-  },
-  {
-    body: 'Maybe',
-    comment_type: "rsvp",
-    author_id: 12,
-    event_id: 14
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 10,
-    event_id: 14
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 11,
-    event_id: 14
-  },
-  {
-    body: '',
-    comment_type: "comment",
-    author_id: 12,
-    event_id: 14
-  },
+    # Event ID 14 - Comments
+    {
+      body: "Can't Go",
+      comment_type: "rsvp",
+      author_id: 10,
+      event_id: 14
+    },
+    {
+      body: "I'm Going",
+      comment_type: "rsvp",
+      author_id: 11,
+      event_id: 14
+    },
+    {
+      body: 'Maybe',
+      comment_type: "rsvp",
+      author_id: 12,
+      event_id: 14
+    },
+    {
+      body: "Next time!",
+      comment_type: "comment",
+      author_id: 10,
+      event_id: 14
+    },
+    {
+      body: "Excited!!",
+      comment_type: "comment",
+      author_id: 11,
+      event_id: 14
+    },
+    {
+      body: 'Hope to be there.',
+      comment_type: "comment",
+      author_id: 12,
+      event_id: 14
+    },
 
-  # Event ID 15 - Comments
-  {
-    body: "I'm Going",
-    comment_type: "rsvp",
-    author_id: 13,
-    event_id: 15
-  },
-  {
-    body: "Can't Go",
-    comment_type: "rsvp",
-    author_id: 14,
-    event_id: 15
-  },
-  {
-    body: 'Maybe',
-    comment_type: "rsvp",
-    author_id: 15,
-    event_id: 15
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 13,
-    event_id: 15
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 14,
-    event_id: 15
-  },
-  {
-    body: '',
-    comment_type: "comment",
-    author_id: 15,
-    event_id: 15
-  },
+    # Event ID 15 - Comments
+    {
+      body: "I'm Going",
+      comment_type: "rsvp",
+      author_id: 13,
+      event_id: 15
+    },
+    {
+      body: "Can't Go",
+      comment_type: "rsvp",
+      author_id: 14,
+      event_id: 15
+    },
+    {
+      body: 'Maybe',
+      comment_type: "rsvp",
+      author_id: 15,
+      event_id: 15
+    },
+    {
+      body: "Yay",
+      comment_type: "comment",
+      author_id: 13,
+      event_id: 15
+    },
+    {
+      body: "Next time!",
+      comment_type: "comment",
+      author_id: 14,
+      event_id: 15
+    },
+    {
+      body: 'I think I will be there',
+      comment_type: "comment",
+      author_id: 15,
+      event_id: 15
+    },
 
-  # Event ID 16 - Comments
-  {
-    body: "Can't Go",
-    comment_type: "rsvp",
-    author_id: 16,
-    event_id: 16
-  },
-  {
-    body: "I'm Going",
-    comment_type: "rsvp",
-    author_id: 17,
-    event_id: 16
-  },
-  {
-    body: 'Maybe',
-    comment_type: "rsvp",
-    author_id: 18,
-    event_id: 16
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 16,
-    event_id: 16
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 17,
-    event_id: 16
-  },
-  {
-    body: '',
-    comment_type: "comment",
-    author_id: 18,
-    event_id: 16
-  },
-  # Event ID 17 - Comments
-  {
-    body: "Maybe",
-    comment_type: "rsvp",
-    author_id: 19,
-    event_id: 17
-  },
-  {
-    body: "I'm Going",
-    comment_type: "rsvp",
-    author_id: 20,
-    event_id: 17
-  },
-  {
-    body: "Can't Go",
-    comment_type: "rsvp",
-    author_id: 21,
-    event_id: 17
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 19,
-    event_id: 17
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 20,
-    event_id: 17
-  },
-  {
-    body: '',
-    comment_type: "comment",
-    author_id: 21,
-    event_id: 17
-  },
-  # Event ID 18 - Comments
-  {
-    body: "I'm Going",
-    comment_type: "rsvp",
-    author_id: 1,
-    event_id: 18
-  },
-  {
-    body: "Can't Go",
-    comment_type: "rsvp",
-    author_id: 2,
-    event_id: 18
-  },
-  {
-    body: 'Maybe',
-    comment_type: "rsvp",
-    author_id: 3,
-    event_id: 18
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 1,
-    event_id: 18
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 2,
-    event_id: 18
-  },
-  {
-    body: '',
-    comment_type: "comment",
-    author_id: 3,
-    event_id: 18
-  },
-  # Event ID 17 - Comments
-  {
-    body: "Maybe",
-    comment_type: "rsvp",
-    author_id: 19,
-    event_id: 17
-  },
-  {
-    body: "I'm Going",
-    comment_type: "rsvp",
-    author_id: 20,
-    event_id: 17
-  },
-  {
-    body: "Can't Go",
-    comment_type: "rsvp",
-    author_id: 21,
-    event_id: 17
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 19,
-    event_id: 17
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 20,
-    event_id: 17
-  },
-  {
-    body: '',
-    comment_type: "comment",
-    author_id: 21,
-    event_id: 17
-  },
-  # Event ID 18 - Comments
-  {
-    body: "I'm Going",
-    comment_type: "rsvp",
-    author_id: 1,
-    event_id: 18
-  },
-  {
-    body: "Can't Go",
-    comment_type: "rsvp",
-    author_id: 2,
-    event_id: 18
-  },
-  {
-    body: 'Maybe',
-    comment_type: "rsvp",
-    author_id: 3,
-    event_id: 18
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 1,
-    event_id: 18
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 2,
-    event_id: 18
-  },
-  {
-    body: '',
-    comment_type: "comment",
-    author_id: 3,
-    event_id: 18
-  },
-  # Event ID 19 - Comments
-  {
-    body: "Can't Go",
-    comment_type: "rsvp",
-    author_id: 4,
-    event_id: 19
-  },
-  {
-    body: "I'm Going",
-    comment_type: "rsvp",
-    author_id: 5,
-    event_id: 19
-  },
-  {
-    body: "Maybe",
-    comment_type: "rsvp",
-    author_id: 6,
-    event_id: 19
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 4,
-    event_id: 19
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 5,
-    event_id: 19
-  },
-  {
-    body: '',
-    comment_type: "comment",
-    author_id: 6,
-    event_id: 19
-  },
-  # Event ID 20 - Comments
-  {
-    body: "I'm Going",
-    comment_type: "rsvp",
-    author_id: 7,
-    event_id: 20
-  },
-  {
-    body: "Can't Go",
-    comment_type: "rsvp",
-    author_id: 8,
-    event_id: 20
-  },
-  {
-    body: 'Maybe',
-    comment_type: "rsvp",
-    author_id: 9,
-    event_id: 20
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 7,
-    event_id: 20
-  },
-  {
-    body: "",
-    comment_type: "comment",
-    author_id: 8,
-    event_id: 20
-  },
-  {
-    body: '',
-    comment_type: "comment",
-    author_id: 9,
-    event_id: 20
-  }
-
+    # Event ID 16 - Comments
+    {
+      body: "Can't Go",
+      comment_type: "rsvp",
+      author_id: 16,
+      event_id: 16
+    },
+    {
+      body: "I'm Going",
+      comment_type: "rsvp",
+      author_id: 17,
+      event_id: 16
+    },
+    {
+      body: 'Maybe',
+      comment_type: "rsvp",
+      author_id: 18,
+      event_id: 16
+    },
+    {
+      body: "Sadly won't be there",
+      comment_type: "comment",
+      author_id: 16,
+      event_id: 16
+    },
+    {
+      body: "Excited!",
+      comment_type: "comment",
+      author_id: 17,
+      event_id: 16
+    },
+    {
+      body: 'I hope to be there',
+      comment_type: "comment",
+      author_id: 18,
+      event_id: 16
+    },
+    # Event ID 17 - Comments
+    {
+      body: "Maybe",
+      comment_type: "rsvp",
+      author_id: 19,
+      event_id: 17
+    },
+    {
+      body: "I'm Going",
+      comment_type: "rsvp",
+      author_id: 20,
+      event_id: 17
+    },
+    {
+      body: "Can't Go",
+      comment_type: "rsvp",
+      author_id: 21,
+      event_id: 17
+    },
+    {
+      body: "I might be there",
+      comment_type: "comment",
+      author_id: 19,
+      event_id: 17
+    },
+    {
+      body: "YAY",
+      comment_type: "comment",
+      author_id: 20,
+      event_id: 17
+    },
+    {
+      body: 'sadly will have to miss out on this',
+      comment_type: "comment",
+      author_id: 21,
+      event_id: 17
+    },
+    # Event ID 18 - Comments
+    {
+      body: "I'm Going",
+      comment_type: "rsvp",
+      author_id: 1,
+      event_id: 18
+    },
+    {
+      body: "Can't Go",
+      comment_type: "rsvp",
+      author_id: 2,
+      event_id: 18
+    },
+    {
+      body: 'Maybe',
+      comment_type: "rsvp",
+      author_id: 3,
+      event_id: 18
+    },
+    {
+      body: "YAY",
+      comment_type: "comment",
+      author_id: 1,
+      event_id: 18
+    },
+    {
+      body: "Sad to miss this one",
+      comment_type: "comment",
+      author_id: 2,
+      event_id: 18
+    },
+    {
+      body: 'Will know soon',
+      comment_type: "comment",
+      author_id: 3,
+      event_id: 18
+    },
+    # Event ID 17 - Comments
+    {
+      body: "Maybe",
+      comment_type: "rsvp",
+      author_id: 19,
+      event_id: 17
+    },
+    {
+      body: "I'm Going",
+      comment_type: "rsvp",
+      author_id: 20,
+      event_id: 17
+    },
+    {
+      body: "Can't Go",
+      comment_type: "rsvp",
+      author_id: 21,
+      event_id: 17
+    },
+    {
+      body: "Hope to see you all there",
+      comment_type: "comment",
+      author_id: 19,
+      event_id: 17
+    },
+    {
+      body: "YAY",
+      comment_type: "comment",
+      author_id: 20,
+      event_id: 17
+    },
+    {
+      body: 'I will miss this one',
+      comment_type: "comment",
+      author_id: 21,
+      event_id: 17
+    },
+    # Event ID 18 - Comments
+    {
+      body: "I'm Going",
+      comment_type: "rsvp",
+      author_id: 1,
+      event_id: 18
+    },
+    {
+      body: "Can't Go",
+      comment_type: "rsvp",
+      author_id: 2,
+      event_id: 18
+    },
+    {
+      body: 'Maybe',
+      comment_type: "rsvp",
+      author_id: 3,
+      event_id: 18
+    },
+    {
+      body: "Excited!",
+      comment_type: "comment",
+      author_id: 1,
+      event_id: 18
+    },
+    {
+      body: "Sad to miss this",
+      comment_type: "comment",
+      author_id: 2,
+      event_id: 18
+    },
+    {
+      body: 'I hope to be there',
+      comment_type: "comment",
+      author_id: 3,
+      event_id: 18
+    },
+    # Event ID 19 - Comments
+    {
+      body: "Can't Go",
+      comment_type: "rsvp",
+      author_id: 4,
+      event_id: 19
+    },
+    {
+      body: "I'm Going",
+      comment_type: "rsvp",
+      author_id: 5,
+      event_id: 19
+    },
+    {
+      body: "Maybe",
+      comment_type: "rsvp",
+      author_id: 6,
+      event_id: 19
+    },
+    {
+      body: "Sad to miss this one",
+      comment_type: "comment",
+      author_id: 4,
+      event_id: 19
+    },
+    {
+      body: "YAY",
+      comment_type: "comment",
+      author_id: 5,
+      event_id: 19
+    },
+    {
+      body: 'Will know soon',
+      comment_type: "comment",
+      author_id: 6,
+      event_id: 19
+    },
+    # Event ID 20 - Comments
+    {
+      body: "I'm Going",
+      comment_type: "rsvp",
+      author_id: 7,
+      event_id: 20
+    },
+    {
+      body: "Can't Go",
+      comment_type: "rsvp",
+      author_id: 8,
+      event_id: 20
+    },
+    {
+      body: 'Maybe',
+      comment_type: "rsvp",
+      author_id: 9,
+      event_id: 20
+    },
+    {
+      body: "Will be there!",
+      comment_type: "comment",
+      author_id: 7,
+      event_id: 20
+    },
+    {
+      body: "Next Time!!",
+      comment_type: "comment",
+      author_id: 8,
+      event_id: 20
+    },
+    {
+      body: 'fingers crossed I can make it.',
+      comment_type: "comment",
+      author_id: 9,
+      event_id: 20
+    }
   ]
-
+  
   # Creating comments using Comment.create!
   comments_seed_data.each do |comment_data|
     # Comment.create!(
-    #   body: comment_data[:body],
-    #   comment_type: comment_data[:comment_type],
-    #   author_id: comment_data[:author_id],
-    #   event_id: comment_data[:event_id]
-    # )
+      #   body: comment_data[:body],
+      #   comment_type: comment_data[:comment_type],
+      #   author_id: comment_data[:author_id],
+      #   event_id: comment_data[:event_id]
+      # )
     Comment.create!(comment_data)
   end
+  puts 'comments created'
 
   invite_seed_data = [
   # Event ID 11 - Invites and Notifications
   {
     event_id: 11,
     sender_id: 1,
-    receiver_id: 2
+    receiver_id: 4
   },
   {
     event_id: 11,
     sender_id: 1,
-    receiver_id: 3
+    receiver_id: 21
   },
   {
     event_id: 11,
     sender_id: 2,
-    receiver_id: 1
+    receiver_id: 10
   },
 
   # Event ID 12 - Invites and Notifications
   {
     event_id: 12,
-    sender_id: 3,
-    receiver_id: 4
+    sender_id: 4,
+    receiver_id: 3
   },
   {
     event_id: 12,
-    sender_id: 3,
-    receiver_id: 5
+    sender_id: 5,
+    receiver_id: 7
   },
   {
     event_id: 12,
     sender_id: 4,
-    receiver_id: 3
+    receiver_id: 21
   },
 
   # Event ID 13 - Invites and Notifications
   {
     event_id: 13,
-    sender_id: 5,
+    sender_id: 7,
     receiver_id: 6
   },
   {
     event_id: 13,
-    sender_id: 5,
-    receiver_id: 7
+    sender_id: 7,
+    receiver_id: 11
   },
   {
     event_id: 13,
-    sender_id: 6,
-    receiver_id: 5
+    sender_id: 7,
+    receiver_id: 14
   },
 
   # Event ID 14 - Invites and Notifications
   {
     event_id: 14,
-    sender_id: 7,
+    sender_id: 10,
     receiver_id: 8
   },
   {
     event_id: 14,
-    sender_id: 7,
+    sender_id: 10,
     receiver_id: 9
   },
   {
     event_id: 14,
-    sender_id: 8,
+    sender_id: 11,
     receiver_id: 7
   },
 
   # Event ID 15 - Invites and Notifications
   {
     event_id: 15,
-    sender_id: 9,
-    receiver_id: 10
+    sender_id: 13,
+    receiver_id: 11
   },
   {
     event_id: 15,
-    sender_id: 9,
-    receiver_id: 11
+    sender_id: 14,
+    receiver_id: 12
   },
   {
     event_id: 15,
@@ -1823,85 +2072,85 @@ end
   # Event ID 16 - Invites and Notifications
   {
     event_id: 16,
-    sender_id: 11,
+    sender_id: 21,
     receiver_id: 12
   },
   {
     event_id: 16,
-    sender_id: 11,
+    sender_id: 21,
     receiver_id: 13
   },
   {
     event_id: 16,
-    sender_id: 12,
+    sender_id: 17,
     receiver_id: 11
   },
 
   # Event ID 17 - Invites and Notifications
   {
     event_id: 17,
-    sender_id: 13,
+    sender_id: 19,
     receiver_id: 14
   },
   {
     event_id: 17,
-    sender_id: 13,
+    sender_id: 19,
     receiver_id: 15
   },
   {
     event_id: 17,
-    sender_id: 14,
+    sender_id: 19,
     receiver_id: 13
   },
 
   # Event ID 18 - Invites and Notifications
   {
     event_id: 18,
-    sender_id: 15,
+    sender_id: 1,
     receiver_id: 16
   },
   {
     event_id: 18,
-    sender_id: 15,
+    sender_id: 1,
     receiver_id: 17
   },
   {
     event_id: 18,
-    sender_id: 16,
+    sender_id: 1,
     receiver_id: 15
   },
 
   # Event ID 19 - Invites and Notifications
   {
     event_id: 19,
-    sender_id: 17,
+    sender_id: 4,
     receiver_id: 18
   },
   {
     event_id: 19,
-    sender_id: 17,
+    sender_id: 5,
     receiver_id: 19
   },
   {
     event_id: 19,
-    sender_id: 18,
+    sender_id: 6,
     receiver_id: 17
   },
 
   # Event ID 20 - Invites and Notifications
   {
     event_id: 20,
-    sender_id: 19,
+    sender_id: 9,
     receiver_id: 20
   },
   {
     event_id: 20,
-    sender_id: 19,
+    sender_id: 9,
     receiver_id: 21
   },
   {
     event_id: 20,
-    sender_id: 20,
+    sender_id: 9,
     receiver_id: 19
   }
 ]
@@ -1917,21 +2166,21 @@ notification_seed_data = [
   {
     notification_type: 'invite',
     content: 'inviting',
-    receiver_id: 2,
+    receiver_id: 4,
     sender_id: 1,
     event_id: 11
   },
   {
     notification_type: 'invite',
     content: 'inviting',
-    receiver_id: 3,
+    receiver_id: 21,
     sender_id: 1,
     event_id: 11
   },
   {
     notification_type: 'invite',
     content: 'inviting',
-    receiver_id: 1,
+    receiver_id: 10,
     sender_id: 2,
     event_id: 11
   },
@@ -1940,21 +2189,21 @@ notification_seed_data = [
   {
     notification_type: 'invite',
     content: 'inviting',
-    receiver_id: 4,
-    sender_id: 3,
-    event_id: 12
-  },
-  {
-    notification_type: 'invite',
-    content: 'inviting',
-    receiver_id: 5,
-    sender_id: 3,
-    event_id: 12
-  },
-  {
-    notification_type: 'invite',
-    content: 'inviting',
     receiver_id: 3,
+    sender_id: 4,
+    event_id: 12
+  },
+  {
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 7,
+    sender_id: 5,
+    event_id: 12
+  },
+  {
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 21,
     sender_id: 4,
     event_id: 12
   },
@@ -1964,11 +2213,176 @@ notification_seed_data = [
     notification_type: 'invite',
     content: 'inviting',
     receiver_id: 6,
-    sender_id: 5,
+    sender_id: 7,
     event_id: 13
   },
   {
-    notification_type: ''}]
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 11,
+    sender_id: 7,
+    event_id: 13
+  },{
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 14,
+    sender_id: 7,
+    event_id: 13
+  },
+
+  # Event ID 14 - Notifications
+  {
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 8,
+    sender_id: 10,
+    event_id: 14
+  },
+  {
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 9,
+    sender_id: 10,
+    event_id: 14
+  },{
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 7,
+    sender_id: 11,
+    event_id: 14
+  },
+
+  # Event ID 15 - Notifications
+  {
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 15,
+    sender_id: 13,
+    event_id: 15
+  },
+  {
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 12,
+    sender_id: 14,
+    event_id: 15
+  },{
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 9,
+    sender_id: 10,
+    event_id: 15
+  },
+
+  # Event ID 16 - Notifications
+  {
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 12,
+    sender_id: 21,
+    event_id: 16
+  },
+  {
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 13,
+    sender_id: 21,
+    event_id: 16
+  },{
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 16,
+    sender_id: 17,
+    event_id: 16
+  },
+
+  # Event ID 17 - Notifications
+  {
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 14,
+    sender_id: 19,
+    event_id: 17
+  },
+  {
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 15,
+    sender_id: 19,
+    event_id: 17
+  },{
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 13,
+    sender_id: 19,
+    event_id: 17
+  },
+
+  # Event ID 18 - Notifications
+  {
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 16,
+    sender_id: 1,
+    event_id: 18
+  },
+  {
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 17,
+    sender_id: 1,
+    event_id: 18
+  },{
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 15,
+    sender_id: 1,
+    event_id: 18
+  },
+
+  # Event ID 19 - Notifications
+  {
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 18,
+    sender_id: 4,
+    event_id: 19
+  },
+  {
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 19,
+    sender_id: 5,
+    event_id: 19
+  },{
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 17,
+    sender_id: 6,
+    event_id: 19
+  },
+  # Event ID 20 - Notifications
+  {
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 20,
+    sender_id: 9,
+    event_id: 20
+  },
+  {
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 21,
+    sender_id: 9,
+    event_id: 20
+  },{
+    notification_type: 'invite',
+    content: 'inviting',
+    receiver_id: 19,
+    sender_id: 9,
+    event_id: 20
+  }
+  ]
 
 
   puts "Done!"
