@@ -1,20 +1,19 @@
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { getEvent, fetchEvent } from '../../../store/events';
 import { restoreUsers } from '../../../store/user';
-import { useEffect } from 'react';
 import { deleteEvent } from '../../../store/events';
+import { openModal } from '../../../store/modal';
+import { RsvpComponent } from './RsvpComponent';
+import { ActivityLog } from './ActivityLog';
 import Navigation from "../../Navigation"
-import { useHistory } from 'react-router';
 import wazzap from "../../../images/wazzap-halloween.jpeg"
 import invite from "../../../images/invite.png"
-import "./EventShowPage.css"
-import { RsvpComponent } from './RsvpComponent';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { AiOutlineInstagram } from "react-icons/ai"
-import { ActivityLog } from './ActivityLog';
-import { openModal } from '../../../store/modal';
-import { useState } from 'react';
+import "./EventShowPage.css"
 
 export function EventShowPage () {
 
@@ -24,43 +23,33 @@ export function EventShowPage () {
     const event = useSelector(getEvent(eventId));
     const sessionUser = useSelector(state => state.session.user);
     const rsvps = useSelector(state => state.rsvps);
-    const date = event ? new Date(event.dateTime).toLocaleTimeString('en-US', { timeZone: 'PST' }).split(" ") : ''
-    // const today = new Date()
-    // const eventDone = event ? date < today : '';
+    const editLink = "/events/" + eventId + "/edit";
+    const date = event ? new Date(event.dateTime).toLocaleTimeString('en-US', { timeZone: 'PST' }).split(" ") : '';
+    const [usersState, setUsersState] = useState()
+    const savedState = JSON.parse(localStorage.getItem('usersState'));
     let rsvpGoing = 0;
     let rsvpMaybe = 0;
-    const editLink = "/events/" + eventId + "/edit";
     let location = event?.location || "No Location Set";
-    const [usersState, setUsersState] = useState()
 
-    const savedState = JSON.parse(localStorage.getItem('usersState'));
-    // setUsersState(JSON.parse(localStorage.getItem('usersState')))
-    // localStorage.removeItem('userState');
+    
     
     for(let key in rsvps){
         rsvps[key].status === "I'm Going" ? (rsvpGoing = (rsvpGoing + 1)) : (rsvpGoing = (rsvpGoing));
         rsvps[key].status === "Maybe" ? (rsvpMaybe = (rsvpMaybe + 1)) : (rsvpMaybe = (rsvpMaybe));
     }
-
+    
     const handleDelete = async(e) => {
         dispatch(deleteEvent(eventId)).then(history.push('/events'));
     }
-
+    
     const handleInvite = (e) => {
         e.preventDefault();
         dispatch(openModal({command: 'invite-modal', prop: eventId}));
     }
     
     useEffect(  () => {
-        // debugger
-        dispatch(fetchEvent(eventId)).then(() => dispatch(restoreUsers(savedState)))
-        // .then(localStorage.removeItem('usersState'));
-        
+        dispatch(fetchEvent(eventId)).then(() => dispatch(restoreUsers(savedState)));
     }, [dispatch, eventId])
-    // useEffect( () => {
-    //     debugger
-    //     store.dispatch({ type: 'RESTORE_STATE', payload: savedState });
-    // }, [event])
     
     if (!sessionUser) return <Redirect to="/login" />;
 
@@ -90,7 +79,6 @@ export function EventShowPage () {
                                 <div>
                                     <h2>{event.date}</h2>
                                     <h2 id='event-time-h2'>{date[0].slice(0,5) + date[1].toLocaleLowerCase()}</h2>
-                                    {/* <h2 id='event-time-h2'>{date}</h2> */}
                                 </div>
                             ) 
                             : 
@@ -224,7 +212,6 @@ export function EventShowPage () {
                         </div>
                         : <ActivityLog/>
                     }
-                    {/* <ActivityLog/> */}
                 </div>
             </div>
         </div>

@@ -62,7 +62,7 @@ export function MutualPageItem ({ mutual }) {
             </div>
             <div className="mutuals-num-event-container">
                 <h2 id="mutual-page-info">{mutual.sharedEvents.length}</h2>
-                <div id={`hovered-arrow${hovered ? '-hovered' : ''}`}> {"＞"}</div>
+                <p id={`hovered-arrow${hovered ? '-hovered' : ''}`}> {"＞"}</p>
             </div>
         </div>
     )

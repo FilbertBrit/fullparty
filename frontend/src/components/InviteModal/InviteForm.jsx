@@ -1,71 +1,79 @@
 import { useDispatch, useSelector } from "react-redux"
+import { useState, useEffect  } from "react";
+import { createNotification } from "../../store/notifications";
+import { createInvite } from "../../store/invites";
 import { closeModal } from "../../store/modal";
+import { MutualInvitee } from "./MutualInvitee";
+import { InvitePrev } from "./InvitePrev";
+import controls from "../../images/controls.png"
 import cancel from "../../images/cancel.png"
 import "./InviteForm.css"
-import { useState, useEffect  } from "react";
-import { MutualInvitee } from "./MutualInvitee";
-import controls from "../../images/controls.png"
-import { InvitePrev } from "./InvitePrev";
-import { createInvite } from "../../store/invites";
-import { createNotification } from "../../store/notifications";
 
 export const InviteForm = ({ eventId }) => {
 
     const dispatch = useDispatch();
+
+    //grabbing essential data for component from redux store
     const sessionUser = useSelector(state => state.session.user);
     const event = useSelector(state => state.events[eventId]);
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
-    const [filteredMutuals, setFilteredMutuals] = useState(mutuals)
-    const [mutualFilter, setMutualFilter] = useState();
-    const [invites, setInvites] = useState({});
-    const [inviteMsg, setInviteMsg] = useState();
 
+    //useful state variables
+    const [filteredMutuals, setFilteredMutuals] = useState(mutuals)
+    const [mutualFilter, setMutualFilter] = useState(); // input, ex: 'david'
+    const [invites, setInvites] = useState({}); // {id: name}
+    const [inviteMsg, setInviteMsg] = useState();
+    
     const handleCancel = (e) => {
         e.preventDefault()
         dispatch(closeModal());
     }
-
-    const handleSubmit = (e) => {
+    
+    // created invites + notifications for all selected invitees then closes invite modal
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log(invites, inviteMsg)
+
         for(let userId in invites){
-            dispatch(createInvite({senderId: sessionUser.id, receiverId: userId, eventId: eventId})).then( res => console.log(res));
-            dispatch(createNotification({notificationType: 'invite', content: inviteMsg || 'invite', receiverId: userId, senderId: sessionUser.id, eventId: eventId})).then( res => console.log(res));
+            await dispatch(createInvite({senderId: sessionUser.id, receiverId: userId, eventId: eventId})).then( res => console.log(res));
+            await dispatch(createNotification({notificationType: 'invite', content: inviteMsg || 'invite', receiverId: userId, senderId: sessionUser.id, eventId: eventId})).then( res => console.log(res));
         }
-        handleCancel(e)
+        dispatch(closeModal());
+
     }
 
+    // useEffect will compute function when the dependent variable mutualFilter changes
     useEffect( () => {
         
-        const noUpdateMutualArr = mutualFilter === undefined || mutualFilter === ''  ;
-        switch (!noUpdateMutualArr) {
-            case true:
-                const filtered = mutuals.filter( mutual => mutual.name.toLowerCase().includes(mutualFilter.toLowerCase()) )
+        //checking whether how to update filteredMutuals
+        const updateMutualArr = (mutualFilter !== undefined) && (mutualFilter !== '');
 
-                const sortBySubstring = (words, match) => {
+        if(updateMutualArr){ //will enter if user searching for a mutual
+
+            //filtering for mutuals with names that include search string
+            const filtered = mutuals.filter( mutual => mutual.name.toLowerCase().includes( mutualFilter.toLowerCase() ) )
+
+            //sorting based on index of search string occurance in mutual name
+            const sortBySubstring = (words, match) => {
                 return words.sort((a, b) => {
                     return a.name.toLowerCase().indexOf(match) - b.name.toLowerCase().indexOf(match);
                 });
-                }
+            }
+            
+            const sortedFiltered = sortBySubstring(filtered, mutualFilter.toLowerCase());
 
-                const sortedFiltered = sortBySubstring(filtered, mutualFilter.toLowerCase());
-
-                setFilteredMutuals(sortedFiltered)
-                break;
-        
-            default:
-                setFilteredMutuals(mutuals)
-                break;
+            setFilteredMutuals(sortedFiltered)
+        }else{ //will enter if user is not longer searching for a mutual
+            setFilteredMutuals(mutuals)
         }
     }, [mutualFilter])
 
     return (
         <div className="invite-modal-component">
             <div className="invite-select">
-            <div className="exit-btn-mutual-component" onClick={handleCancel}>
-                <img src={cancel} id="cancel-img" alt="cancel"/>
-            </div>
+                <div className="exit-btn-mutual-component" onClick={handleCancel}>
+                    <img src={cancel} id="cancel-img" alt="cancel"/>
+                </div>
                 <header id="invite-select-header">
                     <h2 id="invite-select-header-text">Invite</h2>
                     <button id="invite-select-header-btn">COPY LINK</button>
@@ -117,9 +125,9 @@ export const InviteForm = ({ eventId }) => {
                             {
                                 Object.entries(invites).map( (invite, i) =>
                                     <InvitePrev invite={invite} invites={invites} setInvites={setInvites} key={i}/>
-                                    )
-                                }
-                                <div className="empty-space"></div>
+                                )
+                            }
+                        <div className="empty-space"></div>
                         </div>
                     </div>
 

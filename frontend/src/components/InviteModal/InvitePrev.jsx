@@ -1,3 +1,4 @@
+// component for viewing/deleting mutual for invite
 
 import cancel from "../../images/cancel.png"
 
