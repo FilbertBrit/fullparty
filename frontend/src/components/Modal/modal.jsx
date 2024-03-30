@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
 import { closeModal } from "../../store/modal"
-import './Modal.css'
 import { SocialForm } from "../SocialForm/SocialForm"
 import { MutualModal } from "../MutualModal/MutualModal"
 import { InviteForm } from "../InviteModal/InviteForm"
+import './Modal.css'
 
 export const Modal = () => {
     const dispatch = useDispatch();
@@ -14,11 +14,12 @@ export const Modal = () => {
     let div = ''
     modal ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"; 
     
+    //this component is in the app, if modal is not called this component will return null -> nothing
     if(!modal){
         return null;
     }
-    // debugger
 
+    //switch for handling which modal is being called to call corresponding modal component
     switch (componentCall) {
         case 'social-form':
             component = <SocialForm social={ prop }/>;
@@ -36,19 +37,17 @@ export const Modal = () => {
             return null;
     }
 
-    const handleClick = (e) => {
+    const handleExit = (e) => {
         dispatch(closeModal());
     }
 
     return (
-            <div
-                className="modal-background"
-                onClick={handleClick}>
-                    <div
-                    className={div}
-                    onClick={e => e.stopPropagation()}>
+            <div className="modal-background" onClick={handleExit}>
+
+                <div className={ div } onClick={e => e.stopPropagation()}>
                     { component }
-                    </div>
+                </div>
+                
             </div>
     )
 }

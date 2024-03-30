@@ -1,5 +1,6 @@
-import { useEffect } from "react";
-import { useState } from "react"
+// component for viewing/choosing a mutual to invite
+
+import { useEffect, useState } from "react";
 
 export const MutualInvitee = ({ mutual, invites, setInvites }) => {
 
@@ -12,18 +13,18 @@ export const MutualInvitee = ({ mutual, invites, setInvites }) => {
                 ...invites,
                 [mutual.id]: mutual.name
               };
-            setInvites(updatedInvites)
+            setInvites(updatedInvites);
             setClicked(true);
         }else{
             const { [mutual.id]: value, ...remainingInvites } = invites;
-            setInvites(remainingInvites)
+            setInvites(remainingInvites);
             setClicked(false);
         }
     }
     useEffect( () => {
         invites[mutual.id] ? setClickedStyle('invitee-checkbox-checked') : setClickedStyle('invitee-checkbox-unchecked')
-
-    }, [invites, mutual])
+    }, [invites, mutual]) // these are the dependents becuase component can exist but the mutual or
+                          // invitee status could change UI needs to reflect changes
 
     return (
         <div className="MutualInvitee" onClick={ () => handleClick()}>
