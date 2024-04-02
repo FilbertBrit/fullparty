@@ -10,6 +10,7 @@ export const EventIndexItem = ({ event, usersState }) => {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     // const [showOptions, setShowOptions] = useState(false)
+    // console.log(showOptions)
     const showPage = '/events/' + event.id;
     const userRsvp = event.userRsvp;
     const today = new Date();
@@ -22,7 +23,7 @@ export const EventIndexItem = ({ event, usersState }) => {
     const [soon, setSoon] = useState()
     // console.log(date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" "), eventDate)
     // console.log(date.getTimezoneOffset())
-
+    console.log(showMenu)
     //checking is the event is a day or less away to set date preview to variable soon
     switch (Math.floor((Math.abs(new Date(today.toDateString()) - new Date (new Date(event.dateTime).toDateString())))/(1000*60*60*24))) {
         case 1:
@@ -77,10 +78,11 @@ export const EventIndexItem = ({ event, usersState }) => {
             }
         }
     }
-    const openMenu = () => {
-        if (showMenu) return;
-        setShowMenu(true);
-    };
+    // const openMenu = () => {
+    //     // if (showMenu) return;
+        // setShowMenu(true);
+    //     console.log(showMenu)
+    // };
     
     useEffect(() => {
         if (!showMenu) return;
@@ -96,34 +98,37 @@ export const EventIndexItem = ({ event, usersState }) => {
 
     
     return (
+        <>
+            <a href={ showMenu === false ? showPage : null } id="event-item" onClick={() => localStorage.setItem('usersState', JSON.stringify(usersState))} >
+                <div id="photo-rsvp-container">
+                    <img src={wazzap} id="event-img" alt="dummy-pic"/>
+                    { rsvpStatus ? 
+                        <div id="user-rsvp-details">{rsvpStatus}</div> : null
+                    }
+                    <div id="event-date-details"> </div>
+                    { event.authorId !== sessionUser.id  && userRsvp? 
+                        <div id="event-item-option-btn" onClick={() => setShowMenu(true)} on> 
+                            <img src={dots} id="dots-options-btn" alt="options-btn-event-item" />
+                        </div> : null
+                    }
+                    { showMenu &&
+                        <div className="option-menu-event-item">
+                            <p className="arrow-emojji">⏏︎</p>
+                            <p>Remove me from event</p>
+                        </div>
+                    }
+                    { event.dateTime ? 
+                        <div id="event-item-date"> {soon ? soon : eventDate} </div> :
+                        <div id="event-item-date"> TBD </div> 
+                    }
+                    {/* <div id="event-item-option-menu" onClick={handleLeaveEvent()}>{showOptions? 'Remove Me From Event': ''}</div> */}
+                </div>
+                <div className="details">
+                    <h2 id="event-item-title">{event.title}</h2>
+                    <h2 id="event-item-host">Hosted by {event.host}</h2>
+                </div>
+            </a>
+        </>
         
-        <a href={ showMenu === false ? showPage : null } id="event-item" onClick={() => localStorage.setItem('usersState', JSON.stringify(usersState))} >
-            <div id="photo-rsvp-container">
-                <img src={wazzap} id="event-img" alt="dummy-pic"/>
-                { rsvpStatus ? 
-                    <div id="user-rsvp-details">{rsvpStatus}</div> : null
-                }
-                <div id="event-date-details"> </div>
-                { event.authorId !== sessionUser.id  && userRsvp? 
-                    <div id="event-item-option-btn" onClick={openMenu}> 
-                        <img src={dots} id="dots-options-btn" alt="options-btn-event-item" />
-                    </div> : null
-                }
-                { openMenu === true &&
-                    <div>
-                        <p>mute/delete</p>
-                    </div>
-                }
-                { event.dateTime ? 
-                    <div id="event-item-date"> {soon ? soon : eventDate} </div> :
-                    <div id="event-item-date"> TBD </div> 
-                }
-                {/* <div id="event-item-option-menu" onClick={handleLeaveEvent()}>{showOptions? 'Remove Me From Event': ''}</div> */}
-            </div>
-            <div className="details">
-                <h2 id="event-item-title">{event.title}</h2>
-                <h2 id="event-item-host">Hosted by {event.host}</h2>
-            </div>
-        </a>
     )
 }
