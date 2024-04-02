@@ -93,11 +93,18 @@
     background: black;
     width: max-content;
     height: min-content;
-    padding: 7px;
+    padding: 12px;
 }
 .arrow-emojji{
     color:black;
     position: absolute;
     bottom: 22px;
     right: 5px;
+}
+.menu-remove{
+    color: red;
+}
+.remove-emoji{
+    font-size: 12px;
+    padding-right: 5px;
 }
