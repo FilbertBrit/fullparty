@@ -87,5 +87,11 @@
     height: 15px
 }
 .option-menu-event-item{
-    
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    background: black;
+    width: max-content;
+    height: min-content;
+    padding: 10px;
 }

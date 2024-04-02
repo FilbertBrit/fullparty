@@ -111,6 +111,11 @@ export const EventIndexItem = ({ event, usersState }) => {
                             <img src={dots} id="dots-options-btn" alt="options-btn-event-item" />
                         </div> : null
                     }
+                    { showMenu &&
+                        <div className="option-menu-event-item">
+                            <p>Remove me from event</p>
+                        </div>
+                    }
                     { event.dateTime ? 
                         <div id="event-item-date"> {soon ? soon : eventDate} </div> :
                         <div id="event-item-date"> TBD </div> 
@@ -122,11 +127,6 @@ export const EventIndexItem = ({ event, usersState }) => {
                     <h2 id="event-item-host">Hosted by {event.host}</h2>
                 </div>
             </a>
-            { showMenu &&
-                <div className="option-menu-event-item">
-                    <p>Remove me from event</p>
-                </div>
-            }
         </>
         
     )
