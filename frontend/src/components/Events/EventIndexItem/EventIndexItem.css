@@ -93,5 +93,11 @@
     background: black;
     width: max-content;
     height: min-content;
-    padding: 10px;
+    padding: 7px;
+}
+.arrow-emojji{
+    color:black;
+    position: absolute;
+    bottom: 22px;
+    right: 5px;
 }

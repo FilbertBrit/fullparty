@@ -113,6 +113,7 @@ export const EventIndexItem = ({ event, usersState }) => {
                     }
                     { showMenu &&
                         <div className="option-menu-event-item">
+                            <p className="arrow-emojji">⏏︎</p>
                             <p>Remove me from event</p>
                         </div>
                     }
