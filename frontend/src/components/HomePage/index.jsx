@@ -35,25 +35,48 @@ export function HomePage () {
 
     mutuals.sort( (a,b) => b.sharedEvents.length - a.sharedEvents.length  )
     
-    if(filter === "Upcoming"){
-        filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== null || (event.authorId === sessionUser.id) || (Object.values(invitesObj).map(obj => obj.eventId).includes(event.id))));
-    }else if(filter === "Hosting"){
-        filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null) && (event.authorId === sessionUser.id));
-    }else if(filter === "Open Invite"){
-        filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp === null));
-    }else if(filter === 'Attended'){
-        filteredEvents = events.filter(event => (event.userRsvp === "I'm Going") && (today > new Date(event.dateTime) && event.dateTime !== null));
-    }else if(filter === 'All Past Events'){
-        filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)));
+    switch (filter) {
+        case "Upcoming":
+            filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== null || (event.authorId === sessionUser.id) || (Object.values(invitesObj).map(obj => obj.eventId).includes(event.id))));   
+            break;
+        case "Hosting":
+            filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null) && (event.authorId === sessionUser.id));
+            break;
+        case "Open Invite":
+            filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp === null) && (event.openInvite));
+            break;
+        case 'Attended':
+            filteredEvents = events.filter(event => (event.userRsvp === "I'm Going") && (today > new Date(event.dateTime) && event.dateTime !== null));
+            break;
+        case 'All Past Events':
+            filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)));
+            break;
+        case 'Invites':
+            filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ( (Object.values(invitesObj).map(obj => obj.eventId).includes(event.id)) && (event.userRsvp !== null)));
+            break;
     }
+    
+    // if(filter === "Upcoming"){
+    //     filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== null || (event.authorId === sessionUser.id) || (Object.values(invitesObj).map(obj => obj.eventId).includes(event.id))));
+    // }else if(filter === "Hosting"){
+    //     filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null) && (event.authorId === sessionUser.id));
+    // }else if(filter === "Open Invite"){
+    //     filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp === null) && (event.openInvite));
+    // }else if(filter === 'Attended'){
+    //     filteredEvents = events.filter(event => (event.userRsvp === "I'm Going") && (today > new Date(event.dateTime) && event.dateTime !== null));
+    // }else if(filter === 'All Past Events'){
+    //     filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)));
+    // }
     
     const handleClick = (e) => {
         setFilter(e.target.value)
     }
     function chbg(color){
-        // console.log(color)
+        
+    //    console.log(color)
     //    let div = document.getElementById("new-event-link")
     //    div.style.backgroundColor = color;
+
     }
 
     useEffect( () => {
@@ -76,11 +99,11 @@ export function HomePage () {
         return () => {
           window.removeEventListener('resize', handleWindowResize);
         };
-      }, []);
+    }, []);
 
-      useEffect(() => {
-        windowSize.width <= 720 ? setMutualSize(6) : setMutualSize(8)
-      }, [windowSize.width])
+    useEffect(() => {
+        windowSize.width <= 720 ? setMutualSize(6) : setMutualSize(8);
+    }, [windowSize.width])
 
    return (
     upcoming ? 
@@ -89,10 +112,20 @@ export function HomePage () {
             <div className="dashboard">
                 <section className="top-dashboard">
                 <h1 id="welcome-header">Welcome back, {sessionUser.name}!</h1>
+
                 <div className="upcoming-events-msg">
                     <span id="welcome-header-span">You have</span>
+                    {sessionUser.invitedEvents > 0 ? 
+                    <>
+                        <span id="upcoming-msg" onClick={() => setFilter('Upcoming')}>{upcoming } upcoming {upcoming > 1 ? 'events' : 'event'}</span>
+                        <span id="welcome-header-span">and</span>
+                        <span id="upcoming-msg" onClick={() => setFilter('Upcoming')}>{sessionUser.invitedEvents} {sessionUser.invitedEvents > 1 ? 'invites waiting.' : 'invite waiting.'}</span>
+                    </>
+                    :
                     <span id="upcoming-msg" onClick={() => setFilter('Upcoming')}>{upcoming } upcoming {upcoming > 1 ? 'events' : 'event'}.</span>
+                    }
                 </div>
+
                 <nav className="event-nav-bar">
                     <button className="event-filter-btn-open" style={{
                         background: 
@@ -113,15 +146,26 @@ export function HomePage () {
                         }} onClick={handleClick} value="Hosting">
                         Hosting
                     </button>
+                    {sessionUser.invitedEvents > 0 &&
+                        <button className="event-filter-btn" style={{
+                            backgroundColor: 
+                                filter === "Invites" ? "hsla(0,0%,100%,.15)" : null,
+                            }} onClick={handleClick} value="Invites">
+                            Invites
+                        </button>
+                    }
+
                     {/* <button className="event-filter-btn">
                         Drafts
                     </button> */}
+                    
                     <button className="event-filter-btn" style={{
                         backgroundColor: 
                             filter === "Attended" ? "hsla(0,0%,100%,.15)" : null,
                         }} onClick={handleClick} value="Attended">
                         Attended
                     </button>
+
                     <button className="event-filter-btn" id="event-filters" style={{
                         backgroundColor: 
                             filter === "All Past Events" ? "hsla(0,0%,100%,.15)" : null,
