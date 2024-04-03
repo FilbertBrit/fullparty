@@ -52,7 +52,7 @@ export function HomePage () {
             filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)));
             break;
         case 'Invites':
-            
+            filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ( (Object.values(invitesObj).map(obj => obj.eventId).includes(event.id)) && (event.userRsvp !== null)));
             break;
     }
     
