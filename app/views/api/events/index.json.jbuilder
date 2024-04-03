@@ -61,7 +61,7 @@ events.each do |event|
     #adding events to payload
     json.events do
         json.set! event.id do
-            json.extract! event, :title, :id, :author_id, :date_time
+            json.extract! event, :title, :id, :author_id, :date_time, :open_invite
             json.host event.user.name
             json.userRsvp rsvpUser.status || invited
         end
