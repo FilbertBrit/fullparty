@@ -51,9 +51,11 @@ export function HomePage () {
         setFilter(e.target.value)
     }
     function chbg(color){
-        // console.log(color)
+        
+    //    console.log(color)
     //    let div = document.getElementById("new-event-link")
     //    div.style.backgroundColor = color;
+
     }
 
     useEffect( () => {
@@ -76,11 +78,11 @@ export function HomePage () {
         return () => {
           window.removeEventListener('resize', handleWindowResize);
         };
-      }, []);
+    }, []);
 
-      useEffect(() => {
-        windowSize.width <= 720 ? setMutualSize(6) : setMutualSize(8)
-      }, [windowSize.width])
+    useEffect(() => {
+        windowSize.width <= 720 ? setMutualSize(6) : setMutualSize(8);
+    }, [windowSize.width])
 
    return (
     upcoming ? 
@@ -89,10 +91,12 @@ export function HomePage () {
             <div className="dashboard">
                 <section className="top-dashboard">
                 <h1 id="welcome-header">Welcome back, {sessionUser.name}!</h1>
+
                 <div className="upcoming-events-msg">
                     <span id="welcome-header-span">You have</span>
                     <span id="upcoming-msg" onClick={() => setFilter('Upcoming')}>{upcoming } upcoming {upcoming > 1 ? 'events' : 'event'}.</span>
                 </div>
+
                 <nav className="event-nav-bar">
                     <button className="event-filter-btn-open" style={{
                         background: 
@@ -113,15 +117,18 @@ export function HomePage () {
                         }} onClick={handleClick} value="Hosting">
                         Hosting
                     </button>
+
                     {/* <button className="event-filter-btn">
                         Drafts
                     </button> */}
+                    
                     <button className="event-filter-btn" style={{
                         backgroundColor: 
                             filter === "Attended" ? "hsla(0,0%,100%,.15)" : null,
                         }} onClick={handleClick} value="Attended">
                         Attended
                     </button>
+
                     <button className="event-filter-btn" id="event-filters" style={{
                         backgroundColor: 
                             filter === "All Past Events" ? "hsla(0,0%,100%,.15)" : null,

@@ -5,6 +5,7 @@ invites = @current_user.invites.includes(:event) #grabbing all invites related t
 
 today = (Time.now).inspect
 upcomingEvents = 0 #counter for upcoming events
+invitedCount = 0
 mutualsObj = {} #object for collecting all users who've attended the same events as the current user
 invitedEvents = [] #collect the ids of all events the current user is invted to
 
@@ -30,7 +31,7 @@ events.each do |event|
 
     #checking if current user is invited to this event
     invited = invitedEvents.include?(event.id) ? 'invited' : nil
-
+    
     #grabbing all rsvps of this event
     rsvps = event.rsvps.includes(:user)
 
@@ -49,6 +50,9 @@ events.each do |event|
                 end
             end
         end
+    end
+    if invited && (rsvpUser.status == nil)
+        invitedCount += 1
     end
 
     #check whether event is upcoming -> increment counter
@@ -85,5 +89,6 @@ end
 #adding user(sessionUser) payload
 json.user do 
     json.upcomingEvents upcomingEvents
+    json.invitedEvents invitedCount
 end
 
