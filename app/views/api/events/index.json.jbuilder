@@ -62,6 +62,7 @@ events.each do |event|
     json.events do
         json.set! event.id do
             json.extract! event, :title, :id, :author_id, :date_time
+            json.openInvite  event.open_invite || false
             json.host event.user.name
             json.userRsvp rsvpUser.status || invited
         end

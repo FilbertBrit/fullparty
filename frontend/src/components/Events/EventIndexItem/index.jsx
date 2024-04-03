@@ -9,8 +9,6 @@ import { useHistory } from "react-router";
 export const EventIndexItem = ({ event, usersState }) => {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    // const [showOptions, setShowOptions] = useState(false)
-    // console.log(showOptions)
     const showPage = '/events/' + event.id;
     const userRsvp = event.userRsvp;
     const today = new Date();
@@ -78,11 +76,6 @@ export const EventIndexItem = ({ event, usersState }) => {
             }
         }
     }
-    // const openMenu = () => {
-    //     // if (showMenu) return;
-        // setShowMenu(true);
-    //     console.log(showMenu)
-    // };
     
     useEffect(() => {
         if (!showMenu) return;
@@ -121,7 +114,6 @@ export const EventIndexItem = ({ event, usersState }) => {
                         <div id="event-item-date"> {soon ? soon : eventDate} </div> :
                         <div id="event-item-date"> TBD </div> 
                     }
-                    {/* <div id="event-item-option-menu" onClick={handleLeaveEvent()}>{showOptions? 'Remove Me From Event': ''}</div> */}
                 </div>
                 <div className="details">
                     <h2 id="event-item-title">{event.title}</h2>
