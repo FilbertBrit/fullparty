@@ -51,10 +51,10 @@ export function EventInputForm () {
         // console.log(dateTime);
         event ? 
         (
-            dispatch(eventActions.updateEvent({title, authorId: sessionUser.id, dateTime, location, capacity, cost, description, id: eventId})).then( res =>  history.push('/events/' + res.event.id))
+            dispatch(eventActions.updateEvent({title, authorId: sessionUser.id, dateTime, location, capacity, cost, description, id: eventId, openInvite: openInvite})).then( res =>  history.push('/events/' + res.event.id))
         ) : 
         (
-            dispatch(eventActions.createEvent({title, authorId: sessionUser.id, dateTime, location, capacity, cost, description})).then( res =>  history.push('/events/' + res.event.id))
+            dispatch(eventActions.createEvent({title, authorId: sessionUser.id, dateTime, location, capacity, cost, description, openInvite: openInvite})).then( res =>  history.push('/events/' + res.event.id))
         );
     }
 
@@ -249,7 +249,7 @@ export function EventInputForm () {
                         </div>
                         <div className="open-invite-div">
                             <h2 id="open-invite-title">💫 Open Invite</h2> 
-                            <h2 id="open-invite-btn"> Turned On </h2>
+                            <h2 id="open-invite-btn" onClick={() => setOpenInvite(!openInvite)}>{openInvite ? "Turned On": "Turned Off"}</h2>
                         </div>
                         <div className="rsvp-option-container">
                             <div className="rsvp-option-title-div">
