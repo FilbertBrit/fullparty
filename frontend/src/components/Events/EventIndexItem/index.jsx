@@ -21,7 +21,6 @@ export const EventIndexItem = ({ event, usersState }) => {
     const [soon, setSoon] = useState()
     // console.log(date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" "), eventDate)
     // console.log(date.getTimezoneOffset())
-    console.log(showMenu)
     //checking is the event is a day or less away to set date preview to variable soon
     switch (Math.floor((Math.abs(new Date(today.toDateString()) - new Date (new Date(event.dateTime).toDateString())))/(1000*60*60*24))) {
         case 1:

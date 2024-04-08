@@ -31,6 +31,7 @@ export function EventInputForm () {
     const [selectedInput, setSelectedInput] = useState('')
     const textareaRef = useRef(null); // Ref for textarea element
     const [load, setLoad] = useState( eventId ? false : true);
+    const [openInvite, setOpenInvite] = useState(false)
 
      // Effect to adjust textarea height on text change
     useEffect(() => {
