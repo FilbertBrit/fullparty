@@ -244,6 +244,7 @@
     background-color: none;
     color: hsla(0,0%,100%,.6);
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    cursor: pointer;
 }
 
 .rsvp-option-container{
