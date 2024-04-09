@@ -2,12 +2,14 @@
 import "./EventIndexItem.css"
 import wazzap from "../../../images/wazzap-halloween.jpeg"
 import dots from "../../../images/dots-horizontal-svgrepo-com.png"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
+import { deleteEvent } from '../../../store/events';
 
 export const EventIndexItem = ({ event, usersState }) => {
     const history = useHistory();
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const showPage = '/events/' + event.id;
     const userRsvp = event.userRsvp;
@@ -19,6 +21,7 @@ export const EventIndexItem = ({ event, usersState }) => {
     let time = eventTime[0].slice(0,1) + eventTime[1].toLocaleLowerCase()
     let eventDate = date.toString().split(' ')[0] + ' ' + (date.getMonth() + 1) + '/' + date.getDate() + '・' + time;
     const [soon, setSoon] = useState()
+    const [clickAction, setClickAction] = useState()
     // console.log(date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" "), eventDate)
     // console.log(date.getTimezoneOffset())
     //checking is the event is a day or less away to set date preview to variable soon
@@ -78,16 +81,26 @@ export const EventIndexItem = ({ event, usersState }) => {
     
     useEffect(() => {
         if (!showMenu) return;
-    
-        const closeMenu = () => {
-          setShowMenu(false);
-        };
-    
-        document.addEventListener('click', closeMenu);
-      
-        return () => document.removeEventListener("click", closeMenu);
-      }, [showMenu]);
 
+        const closeMenu = () => {
+            setShowMenu(false);
+        };
+
+        document.addEventListener('click', closeMenu);
+
+        return () => document.removeEventListener("click", closeMenu);
+    }, [showMenu]);
+
+
+    useEffect(() => {
+
+        if(clickAction === 'DELETE'){
+            dispatch(deleteEvent(event.id)).then(history.push('/events'));
+        }else{
+
+        }
+
+    }, [clickAction])
     
     return (
         <>
@@ -104,11 +117,11 @@ export const EventIndexItem = ({ event, usersState }) => {
                         </div> : null
                     }
                     { showMenu && (event.authorId === sessionUser.id ?
-                        <div className="option-menu-event-item">
+                        <div className="option-menu-event-item" onClick={() => setClickAction('DELETE')}>
                             <p className="arrow-emojji">⏏︎</p>
                             <p className="menu-remove"><span className="remove-emoji">❌</span> Delete Event </p>
                         </div> :
-                        <div className="option-menu-event-item">
+                        <div className="option-menu-event-item" onClick={() => setClickAction('REMOVE')}>
                             <p className="arrow-emojji">⏏︎</p>
                             <p className="menu-remove"><span className="remove-emoji">❌</span> Remove me from event</p>
                         </div>)
