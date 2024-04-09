@@ -98,16 +98,20 @@ export const EventIndexItem = ({ event, usersState }) => {
                         <div id="user-rsvp-details">{rsvpStatus}</div> : null
                     }
                     <div id="event-date-details"> </div>
-                    { event.authorId !== sessionUser.id  && userRsvp? 
+                    { event.authorId === sessionUser.id || userRsvp !== 'Invited' ? 
                         <div id="event-item-option-btn" onClick={() => setShowMenu(true)} on> 
                             <img src={dots} id="dots-options-btn" alt="options-btn-event-item" />
                         </div> : null
                     }
-                    { showMenu &&
+                    { showMenu && (event.authorId === sessionUser.id ?
+                        <div className="option-menu-event-item">
+                            <p className="arrow-emojji">⏏︎</p>
+                            <p className="menu-remove"><span className="remove-emoji">❌</span> Delete Event </p>
+                        </div> :
                         <div className="option-menu-event-item">
                             <p className="arrow-emojji">⏏︎</p>
                             <p className="menu-remove"><span className="remove-emoji">❌</span> Remove me from event</p>
-                        </div>
+                        </div>)
                     }
                     { event.dateTime ? 
                         <div id="event-item-date"> {soon ? soon : eventDate} </div> :
