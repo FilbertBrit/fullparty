@@ -5,9 +5,11 @@ import dots from "../../../images/dots-horizontal-svgrepo-com.png"
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
+import { deleteEvent } from '../../../store/events';
 
 export const EventIndexItem = ({ event, usersState }) => {
     const history = useHistory();
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const showPage = '/events/' + event.id;
     const userRsvp = event.userRsvp;
@@ -92,7 +94,13 @@ export const EventIndexItem = ({ event, usersState }) => {
 
     useEffect(() => {
 
-    }, [])
+        if(clickAction === 'DELETE'){
+            dispatch(deleteEvent(event.id)).then(history.push('/events'));
+        }else{
+
+        }
+
+    }, [clickAction])
     
     return (
         <>
