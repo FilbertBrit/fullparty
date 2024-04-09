@@ -2,7 +2,7 @@
 import "./EventIndexItem.css"
 import wazzap from "../../../images/wazzap-halloween.jpeg"
 import dots from "../../../images/dots-horizontal-svgrepo-com.png"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { deleteEvent } from '../../../store/events';
