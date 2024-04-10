@@ -1,6 +1,6 @@
 class Api::RsvpsController < ApplicationController
   wrap_parameters include: Rsvp.attribute_names + ['userId', 'eventId']
-  before_action :set_rsvp, only: [:show, :update]
+  before_action :set_rsvp, only: [:show, :update, :destroy]
 
   def index
     @rsvps = Rsvp.where(event_id: params[:event_id])

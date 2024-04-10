@@ -98,8 +98,7 @@ export const EventIndexItem = ({ event, usersState }) => {
     }
     const handleDeleteRSVP = (e) => {
         setClickAction('Rsvp')
-        dispatch(deleteRsvp(userRsvp[1]))
-        // dispatch(deleteEvent(event.id))
+        dispatch(deleteRsvp({eventId: event.id, rsvpId: userRsvp[1]}))
     }
 
     // useEffect(() => {
@@ -115,7 +114,7 @@ export const EventIndexItem = ({ event, usersState }) => {
     
     return (
         <>
-            <a href={ showMenu === false && clickAction !== 'Delete'? showPage : null } id="event-item" onClick={() => localStorage.setItem('usersState', JSON.stringify(usersState))} >
+            <a href={ showMenu === false && clickAction === null? showPage : null } id="event-item" onClick={() => localStorage.setItem('usersState', JSON.stringify(usersState))} >
                 <div id="photo-rsvp-container">
                     <img src={wazzap} id="event-img" alt="dummy-pic"/>
                     { rsvpStatus ? 
@@ -132,7 +131,7 @@ export const EventIndexItem = ({ event, usersState }) => {
                             <p className="arrow-emojji">⏏︎</p>
                             <p className="menu-remove"><span className="remove-emoji">❌</span> Delete Event </p>
                         </div> :
-                        <div className="option-menu-event-item" onClick={() => setClickAction('REMOVE')}>
+                        <div className="option-menu-event-item" onClick={handleDeleteRSVP}>
                             <p className="arrow-emojji">⏏︎</p>
                             <p className="menu-remove"><span className="remove-emoji">❌</span> Remove me from event</p>
                         </div>)

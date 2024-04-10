@@ -48,13 +48,13 @@ export const updateRsvp = rsvp => async (dispatch) => {
         return rsvp;
     }
 };
-export const deleteRsvp = rsvpId => async (dispatch) => {
-    const response = await csrfFetch (`/api/rsvps/${rsvpId}`, {
+export const deleteRsvp = payload => async (dispatch) => {
+    const response = await csrfFetch (`/api/events/${payload.eventId}/rsvps/${payload.rsvpId}`, {
         method: 'DELETE'
     });
 
     if (response.ok) {
-        dispatch(removeRsvp(rsvpId));
+        dispatch(removeRsvp(payload.rsvpId));
     }
     return response;
 };
@@ -71,6 +71,7 @@ const rsvpsReducer = (state = {}, action) => {
             const rsvpId = action.rsvp.id;
             return {...state, [rsvpId]: action.rsvp}
         case REMOVE_RSVP:
+            debugger
             const newState = { ...state };
             delete newState[action.rsvpId];
             return newState;
