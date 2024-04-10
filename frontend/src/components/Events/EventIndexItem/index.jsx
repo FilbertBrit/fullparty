@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { deleteEvent } from '../../../store/events';
+import { deleteRsvp } from "../../../store/rsvps";
 
 export const EventIndexItem = ({ event, usersState }) => {
     const history = useHistory();
@@ -97,6 +98,7 @@ export const EventIndexItem = ({ event, usersState }) => {
     }
     const handleDeleteRSVP = (e) => {
         setClickAction('Rsvp')
+        dispatch(deleteRsvp())
         // dispatch(deleteEvent(event.id))
     }
 
