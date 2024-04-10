@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
     resource :session, only: [:show, :create, :destroy]
     resources :notifications, only: [:index, :create]
-    resources :invites, only: [:index, :create]
+    resources :invites, only: [:index, :create, :destroy]
     resources :events, only: [:show, :create, :destroy, :index, :update] do
       resources :rsvps, only: [:index, :show, :create, :update, :destroy]
       resources :comments, only: [:index, :create, :update, :destroy]

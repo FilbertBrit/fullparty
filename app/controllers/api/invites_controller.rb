@@ -1,6 +1,6 @@
 class Api::InvitesController < ApplicationController
     wrap_parameters include: Invite.attribute_names + ['senderId', 'receiverId', 'eventId']
-    # before_action :set_rsvp, only: [:show, :update]
+    before_action :set_invite, only: [:show, :destroy]
   
     def index
       # @invites = Invite.where(reciever_id: params[:reciever_id])
@@ -31,6 +31,14 @@ class Api::InvitesController < ApplicationController
     #     render json: @rsvp.errors.full_messages, status: 422
     #   end
     # end
+
+    def destroy
+      # debugger
+      @invite.destroy
+      # @user = current_user
+      # render :show
+      # render json: {events: @events}
+    end
   
     private 
   

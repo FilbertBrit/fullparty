@@ -71,7 +71,6 @@ const rsvpsReducer = (state = {}, action) => {
             const rsvpId = action.rsvp.id;
             return {...state, [rsvpId]: action.rsvp}
         case REMOVE_RSVP:
-            debugger
             const newState = { ...state };
             delete newState[action.rsvpId];
             return newState;
