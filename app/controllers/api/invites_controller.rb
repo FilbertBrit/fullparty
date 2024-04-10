@@ -1,6 +1,6 @@
 class Api::InvitesController < ApplicationController
     wrap_parameters include: Invite.attribute_names + ['senderId', 'receiverId', 'eventId']
-    before_action :set_rsvp, only: [:show, :destroy]
+    before_action :set_invite, only: [:show, :destroy]
   
     def index
       # @invites = Invite.where(reciever_id: params[:reciever_id])

@@ -49,6 +49,7 @@ export const createInvite = invite => async (dispatch) => {
     }
 };
 export const deleteInvite = inviteId => async (dispatch) => {
+    debugger
     const response = await csrfFetch (`/api/invites/${inviteId}`, {
         method: 'DELETE'
     });
