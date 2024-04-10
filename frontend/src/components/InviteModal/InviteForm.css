@@ -1,0 +1,266 @@
+.invite-modal-component{
+    color: #fff;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    font-family: Lausanne, Helvetica Neue, Helvetica, sans-serif;
+    width: 100%;
+}
+.invite-msg-inv-container{
+    border-left: 1px solid hsla(0, 0%, 100%, .15);
+    width: 50%;
+}
+.invite-select{
+    height: 100%;
+    width: 50%;
+}
+#invite-select-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+    margin-top: -30px;
+}
+#invite-select-header-text{
+    font-size: 24px;
+    font-weight: 700;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+#invite-select-header-btn{
+    color: #ab76f6;;
+    background-color: transparent;
+    font-size: 14px;
+    border: none;
+    border-radius: 0;
+    padding: 16px;
+}
+#invite-select-header-btn:hover{
+    background-color: rgba(255, 255, 255, 0.15);
+}
+#invtite-search-bar{
+    display: flex;
+    justify-content: row;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0 16px;
+}
+#invtite-search-bar-input{
+    flex: 1 1 100%;
+    padding: 4px 0;
+    font-size: 16px;
+}
+.invitee-info-container{
+    justify-content: space-between;
+}
+.invitee-info-prev{
+    display: flex;
+    justify-content: center;
+}
+.invitees-mutuals{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 100%;
+    position: relative;
+    /* height: 72%;
+    height: 54vh; */
+    height: 390px;
+    width: 100%;
+    overflow: auto;
+    will-change: transform;
+    direction: ltr;
+}
+
+.invite-invitees{
+    border-top: 1px solid hsla(0, 0%, 100%, .15);
+}
+.MutualInvitee{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12.5px 10px 12.5px 10px;
+}
+.MutualInvitee:hover{
+    background-color: rgba(255, 255, 255, 0.15);
+}
+#invitee-info{
+    display: flex;
+    flex-direction: column;
+    height: 40px;
+    width: 70%;
+}
+#initial-mutual-invitee-conatiner{
+    height: 40px;
+    width: 40px;
+}
+#invitee-name{
+    display: flex;
+}
+#invitee-event{
+    display: flex;
+    color: hsla(0, 0%, 100%, .6);
+}
+#control-btn{
+    height: 15px;
+    width: 15px;
+}
+.controls-btn{
+    background: transparent;
+    border: none;
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    border-radius: 99px;
+    background-color: hsla(0, 0%, 100%, .4);
+    backdrop-filter: blur(45px);
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin: 14px 16px;
+    justify-content: center;
+    align-items: center;
+}
+#invitee-user-photo{
+    width: 35px;
+    margin-left: 5px;
+}
+#initial-mutual-invitee{
+    height: 35px;
+}
+#invitee-checkbox{
+    border-width: 2px;
+    border-style: solid;
+    padding: 5px;
+    height: 7px;
+    width: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+.invitee-checkbox-unchecked{
+    border: #fff;
+    border:  hsla(0, 0%, 100%, .6);
+}
+.invitee-checkbox-checked{
+    background-color: #ab76f6;
+    border: #ab76f6;
+}
+.invite-message{
+    /* height: 45%; */
+}
+#top-header-invite-message{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+#invite-msg-input{
+    height: 85px;
+    width: 85%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background: hsla(0, 0%, 100%, .1);
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    padding: 10px;
+    color: #fff;
+}
+#rsvp-link{
+    padding-right: 65%;
+    margin-bottom: 10px;
+}
+.invite-invitees{
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: Lausanne, Helvetica Neue, Helvetica, sans-serif;
+}
+
+.invite-submit-btns{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    background-color: #000;  
+}
+
+#send-texts-btns{
+    background-color: #ab76f6;
+    backdrop-filter: blur(45px);
+    border: none;
+    text-decoration: none;
+    border-radius: 0;
+    color: #fff;
+    padding: 16px;
+    font-size: 14px;
+}
+.disabled-send-texts{
+    cursor: not-allowed;
+    opacity: .3;
+}
+#cancel-invite{
+    backdrop-filter: blur(45px);
+    border: none;
+    text-decoration: none;
+    border-radius: 0;
+    color: #fff;
+    padding: 16px;
+    font-size: 14px;
+    background: transparent;
+    background-color: hsla(0, 0%, 100%, .4);
+}
+.invitees-section{
+    display: inline-flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+#num-invites{
+    color: hsla(0, 0%, 100%, .6);
+}
+.invitees-header{
+    padding: 20px;
+}
+.invites-preview{
+    width: 100%;
+    /* height: 34vh; */
+    height: 245px;
+    overflow: auto;
+    scroll-behavior: auto;
+    will-change: transform;
+    direction: ltr;
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
+
+}
+#invitee-info{
+    display: flex;
+}
+.Invitee-prev{
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-left: 15px;
+}
+.delete-invitee-prev{
+    margin-right: 5px;
+}
+@media screen and (max-width: 720px) and (min-width: 330px){
+ .invitees-mutuals{
+    height: calc(100vh - 178px);
+ }
+ .invites-preview{
+    height: calc(100vh - 319px);
+ }
+}
+.empty-space{
+    height: 40px;
+}

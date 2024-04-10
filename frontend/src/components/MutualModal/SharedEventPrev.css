@@ -1,0 +1,29 @@
+#shared-event-item{
+    /* width: 50%; */
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    /* padding: 15px; */
+}
+#shared-event-img{
+    height: 90%;
+    width: 90%;
+    margin-bottom: 10px;
+}
+#shared-event-item-title{
+    font-size: 12px;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;  
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+}
+#shared-event-item-date{
+    font-size: 12px;
+    color: hsla(0,0%,100%,.6);
+    margin-top: 5px;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+}

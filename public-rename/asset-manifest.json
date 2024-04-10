@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5dddbf5b.css",
+    "main.js": "/static/js/main.0d34e860.js",
+    "static/media/demo.mov": "/static/media/demo.86f0a1f42b0e6646667f.mov",
+    "static/media/goodtimes.png": "/static/media/goodtimes.416c982672a5e0b83aba.png",
+    "static/media/app.webp": "/static/media/app.e73c5e3af28e3652fd8d.webp",
+    "static/media/events-demo.webp": "/static/media/events-demo.959b920b67a5fdc9b781.webp",
+    "static/media/effect.webp": "/static/media/effect.2e5994f8c6e63d8171be.webp",
+    "static/media/photo-roll.webp": "/static/media/photo-roll.8229538353b0cb7858b1.webp",
+    "static/media/comments.webp": "/static/media/comments.71a9476d7f11e3a11735.webp",
+    "static/media/polls.webp": "/static/media/polls.3067b036d02215dfab63.webp",
+    "static/media/review2.png": "/static/media/review2.a8b653272ed02a82f0ce.png",
+    "static/media/camera.webp": "/static/media/camera.ff6cd6373c411cbe73f3.webp",
+    "static/media/review1.png": "/static/media/review1.975d75c9a104054dee34.png",
+    "static/media/review3.png": "/static/media/review3.6f49c9861ae30ba980ea.png",
+    "static/media/stringyy.png": "/static/media/stringyy.7e654dccdc9c85a540af.png",
+    "static/media/review4.png": "/static/media/review4.7c3267c3636be2cccf5b.png",
+    "static/media/theme.webp": "/static/media/theme.fdac89147b8281f4d32e.webp",
+    "static/media/feature.webp": "/static/media/feature.3ee1f243ad506d112dfb.webp",
+    "static/media/text-blast.webp": "/static/media/text-blast.391f26d5684a797d2e15.webp",
+    "static/media/cost.webp": "/static/media/cost.f0fc5c3a37bdcb9e787b.webp",
+    "static/media/highkeylowkey.png": "/static/media/highkeylowkey.e05b5927a08d9e7a7170.png",
+    "static/media/git.png": "/static/media/git.ad22d33059b5c251882e.png",
+    "static/media/rsvp.webp": "/static/media/rsvp.c522bee8e290b94e72e2.webp",
+    "static/media/contacts.webp": "/static/media/contacts.f16184d1cbcee59bedb5.webp",
+    "static/media/phone.png": "/static/media/phone.3276ef249bffebcfd061.png",
+    "static/media/enjoy.webp": "/static/media/enjoy.5ca276a32c829b3b5e97.webp",
+    "static/media/logo.png": "/static/media/logo.ab3345f4f32925a47079.png",
+    "index.html": "/index.html",
+    "main.5dddbf5b.css.map": "/static/css/main.5dddbf5b.css.map",
+    "main.0d34e860.js.map": "/static/js/main.0d34e860.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5dddbf5b.css",
+    "static/js/main.0d34e860.js"
+  ]
+}
