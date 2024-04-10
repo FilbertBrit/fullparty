@@ -16,7 +16,7 @@ export const EventIndexItem = ({ event, usersState }) => {
     const showPage = '/events/' + event.id;
     const userRsvp = event.userRsvp;
     const invites = useSelector(state => state.invites)
-    const inviteId = (Object.values(invites)).filter(function(invite){ return invite.eventId === event.id}).map(invite => invite.id)
+    const inviteIdArr = (Object.values(invites)).filter(function(invite){ return invite.eventId === event.id}).map(invite => invite.id)
     // console.log(inviteId)
     
     const today = new Date();
@@ -102,14 +102,15 @@ export const EventIndexItem = ({ event, usersState }) => {
         dispatch(deleteEvent(event.id));
     }
     const handleDeleteRSVP = (e) => {
-        setClickAction('Rsvp');
-        dispatch(deleteRsvp({eventId: event.id, rsvpId: userRsvp[1]}));
-        // console.log(invitedEvents, event.id)
-        // console.log(inviteId)
-        // if(inviteId){
-        //     // dispatch(deleteInvite(inviteId))
-        // }
-        // setClickAction();
+        setClickAction('Remove');
+        if(userRsvp[1]){
+            dispatch(deleteRsvp({eventId: event.id, rsvpId: userRsvp[1]}));
+        }
+        if(inviteIdArr.length !== 0){
+            for(let id of inviteIdArr){
+                dispatch(deleteInvite(id))
+            }
+        }
     }
     // console.log(clickAction)
 
