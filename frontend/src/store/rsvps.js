@@ -6,11 +6,16 @@ import { RECEIVE_EVENTS } from './events';
 
     //  ACTION TYPES
 export const RECEIVE_RSVP = 'rsvps/RECEIVE_RSVP';
+export const REMOVE_RSVP = 'rsvps/REMOVE_RSVP';
 
     // ACTIONS
 const receiveRsvp = rsvp => ({
     type: RECEIVE_RSVP,
     rsvp
+});
+const removeRsvp = rsvpId => ({
+    type: REMOVE_RSVP,
+    rsvpId
 });
 
 export const createRsvp = rsvp => async (dispatch) => {
@@ -43,6 +48,16 @@ export const updateRsvp = rsvp => async (dispatch) => {
         return rsvp;
     }
 };
+export const deleteRsvp = rsvpId => async (dispatch) => {
+    const response = await csrfFetch (`/api/rsvps/${rsvpId}`, {
+        method: 'DELETE'
+    });
+
+    if (response.ok) {
+        dispatch(removeRsvp(rsvpId));
+    }
+    return response;
+};
 
 // REDUCER
 const rsvpsReducer = (state = {}, action) => {
@@ -55,6 +70,10 @@ const rsvpsReducer = (state = {}, action) => {
         case RECEIVE_RSVP:
             const rsvpId = action.rsvp.id;
             return {...state, [rsvpId]: action.rsvp}
+        case REMOVE_RSVP:
+            const newState = { ...state };
+            delete newState[action.rsvpId];
+            return newState;
         default:
             return state;
     }

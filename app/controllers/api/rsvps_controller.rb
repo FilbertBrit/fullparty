@@ -31,6 +31,14 @@ class Api::RsvpsController < ApplicationController
     end
   end
 
+  def destroy
+    # debugger
+    @rsvp.destroy
+    # @user = current_user
+    # render :show
+    # render json: {events: @events}
+  end
+
   private 
 
   def set_rsvp
