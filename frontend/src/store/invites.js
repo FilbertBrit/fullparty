@@ -48,17 +48,17 @@ export const createInvite = invite => async (dispatch) => {
         return invite;
     }
 };
-// export const deleteEvent = inviteId => async (dispatch) => {
-//     const response = await csrfFetch (`/api/users/${inviteId}/invites`, {
-//         method: 'DELETE'
-//     });
+export const deleteInvite = inviteId => async (dispatch) => {
+    const response = await csrfFetch (`/api/invites/${inviteId}`, {
+        method: 'DELETE'
+    });
 
-//     if (response.ok) {
-//         dispatch(removeInvite(inviteId));
-//     }
+    if (response.ok) {
+        dispatch(removeInvite(inviteId));
+    }
 
-//     return response;
-// };
+    return response;
+};
 
 // REDUCER
 const invitesReducer = (state = {}, action) => {
@@ -69,10 +69,10 @@ const invitesReducer = (state = {}, action) => {
         //     return {...state, [action.invite.id]: action.invite}
         case RECEIVE_INVITES:
             return {...state, ...action.invites}
-        // case REMOVE_INVITE:
-        //     const newState = { ...state };
-        //     delete newState[action.inviteId];
-        //     return newState;
+        case REMOVE_INVITE:
+            const newState = { ...state };
+            delete newState[action.inviteId];
+            return newState;
         case RECEIVE_EVENTS:
             return { ...action.payload.invites};
         default:

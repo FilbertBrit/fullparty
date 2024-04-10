@@ -4,16 +4,21 @@ import wazzap from "../../../images/wazzap-halloween.jpeg"
 import dots from "../../../images/dots-horizontal-svgrepo-com.png"
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 import { deleteEvent } from '../../../store/events';
 import { deleteRsvp } from "../../../store/rsvps";
+import { deleteInvite } from "../../../store/invites";
 
 export const EventIndexItem = ({ event, usersState }) => {
-    const history = useHistory();
+    // const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const showPage = '/events/' + event.id;
     const userRsvp = event.userRsvp;
+    const invites = useSelector(state => state.invites)
+    const inviteId = (Object.values(invites)).filter(function(invite){ return invite.eventId === event.id}).map(invite => invite.id)
+    // console.log(inviteId)
+    
     const today = new Date();
     let rsvpStatus= '';
     let date = new Date(event.dateTime);
@@ -93,13 +98,20 @@ export const EventIndexItem = ({ event, usersState }) => {
     }, [showMenu]);
 
     const handleDeleteEvent = (e) => {
-        setClickAction('Delete')
-        dispatch(deleteEvent(event.id))
+        setClickAction('Delete');
+        dispatch(deleteEvent(event.id));
     }
     const handleDeleteRSVP = (e) => {
-        setClickAction('Rsvp')
-        dispatch(deleteRsvp({eventId: event.id, rsvpId: userRsvp[1]}))
+        setClickAction('Rsvp');
+        dispatch(deleteRsvp({eventId: event.id, rsvpId: userRsvp[1]}));
+        // console.log(invitedEvents, event.id)
+        // console.log(inviteId)
+        // if(inviteId){
+        //     // dispatch(deleteInvite(inviteId))
+        // }
+        // setClickAction();
     }
+    // console.log(clickAction)
 
     // useEffect(() => {
 
@@ -114,7 +126,7 @@ export const EventIndexItem = ({ event, usersState }) => {
     
     return (
         <>
-            <a href={ showMenu === false && clickAction === null? showPage : null } id="event-item" onClick={() => localStorage.setItem('usersState', JSON.stringify(usersState))} >
+            <a href={ showMenu === false && clickAction === undefined? showPage : null } id="event-item" onClick={() => localStorage.setItem('usersState', JSON.stringify(usersState))} >
                 <div id="photo-rsvp-container">
                     <img src={wazzap} id="event-img" alt="dummy-pic"/>
                     { rsvpStatus ? 
