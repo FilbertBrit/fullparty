@@ -37,16 +37,16 @@ export function HomePage () {
     
     switch (filter) {
         case "Upcoming":
-            filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== null || (event.authorId === sessionUser.id) || (Object.values(invitesObj).map(obj => obj.eventId).includes(event.id))));   
+            filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp[0] !== null || (event.authorId === sessionUser.id) || (Object.values(invitesObj).map(obj => obj.eventId).includes(event.id))));   
             break;
         case "Hosting":
             filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null) && (event.authorId === sessionUser.id));
             break;
         case "Open Invite":
-            filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp === null) && (event.openInvite));
+            filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp[0] === null) && (event.openInvite));
             break;
         case 'Attended':
-            filteredEvents = events.filter(event => (event.userRsvp === "I'm Going") && (today > new Date(event.dateTime) && event.dateTime !== null));
+            filteredEvents = events.filter(event => (event.userRsvp[0] === "I'm Going") && (today > new Date(event.dateTime) && event.dateTime !== null));
             break;
         case 'All Past Events':
             filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)));
