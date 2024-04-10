@@ -224,9 +224,12 @@ upcoming-events-msg{
     background-color: rgba(255, 255, 255, 0.15);
     height: 280px;
 }
-.empty-event:hover {
+#new-event-link:hover .empty-event{
     border-color: #AB76F6;
 }
+/* .empty-event:hover {
+    border-color: #AB76F6;
+} */
 .empty-event:hover  #new-event-link{
     background-color: rgba(255, 255, 255, 0.15);
     height: 280px;
