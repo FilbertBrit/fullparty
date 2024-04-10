@@ -95,6 +95,10 @@ export const EventIndexItem = ({ event, usersState }) => {
         setClickAction('Delete')
         dispatch(deleteEvent(event.id))
     }
+    const handleDeleteRSVP = (e) => {
+        setClickAction('Rsvp')
+        // dispatch(deleteEvent(event.id))
+    }
 
     // useEffect(() => {
 
