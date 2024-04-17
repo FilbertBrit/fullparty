@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { fetchEvents } from "../../store/events";
 import { getEvents } from "../../store/events";
 import { EventIndexItem } from "../Events/EventIndexItem";
+import { fetchNotifications } from "../../store/notifications";
 
 export function HomePage () {
     
@@ -71,6 +72,7 @@ export function HomePage () {
     const handleClick = (e) => {
         setFilter(e.target.value)
     }
+
     function chbg(color){
         
     //    console.log(color)
@@ -88,6 +90,8 @@ export function HomePage () {
             }
             setUsersState(users)
         });
+
+        dispatch( fetchNotifications())
     }, [dispatch])
 
     useEffect(() => {

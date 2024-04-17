@@ -3,8 +3,11 @@ class Api::NotificationsController < ApplicationController
     # before_action :set_rsvp, only: [:show, :update]
   
     def index
-      # @notifications = Notification.where(reciever_id: params[:reciever_id])
-      # render :index
+      # debugger
+      @user = current_user
+      @notifications = Notification.where(receiver_id: current_user.id)
+      # @notifications = Notification.where(receiver_id: params[:reciever_id])
+      render :index
     end
   
     # def show 
