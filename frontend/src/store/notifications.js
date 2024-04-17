@@ -1,10 +1,11 @@
 import csrfFetch from './csrf';
 import { RECEIVE_EVENTS, RECEIVE_EVENT } from './events';
 
-
+import { SET_CURRENT_USER } from './session';
 // ACTION TYPES
 export const RECEIVE_NOTIFICATIONS = 'invites/RECEIVE_NOTIFICATIONS';
 export const RECEIVE_NOTIFICATION = 'invites/RECEIVE_NOTIFICATION';
+
 
 // ACTIONS
 const recieveNotifications = invites => ({
