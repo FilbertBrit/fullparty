@@ -41,7 +41,8 @@ const notificationsReducer = (state = {}, action) => {
     const nextState = { ...state };
     switch (action.type) {
         case SET_CURRENT_USER:
-            return { ...action.payload.notifications};
+            debugger
+            return { ...state, ...action.payload.notifications};
         case RECEIVE_EVENTS:
             return { ...action.payload.notifications};
         case RECEIVE_NOTIFICATION:
