@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { fetchEvents } from "../../store/events";
 import { getEvents } from "../../store/events";
 import { EventIndexItem } from "../Events/EventIndexItem";
+import { fetchNotifications } from "../../store/notifications";
 
 export function HomePage () {
     
@@ -90,7 +91,7 @@ export function HomePage () {
             setUsersState(users)
         });
 
-        // dispatch()
+        dispatch( fetchNotifications())
     }, [dispatch])
 
     useEffect(() => {

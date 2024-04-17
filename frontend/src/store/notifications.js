@@ -8,16 +8,19 @@ export const RECEIVE_NOTIFICATION = 'invites/RECEIVE_NOTIFICATION';
 
 
 // ACTIONS
-const recieveNotifications = invites => ({
-    type: RECEIVE_NOTIFICATIONS
+const recieveNotifications = notifications => ({
+    type: RECEIVE_NOTIFICATIONS,
+    notifications
 });
-const receiveNotification = invite => ({
-    type: RECEIVE_NOTIFICATION
+const receiveNotification = notification => ({
+    type: RECEIVE_NOTIFICATION,
+    notification
 });
 
 
 // THUNK ACTIONS
 export const fetchNotifications = () => async (dispatch) => {
+    // debugger
     const response  = await csrfFetch('/api/notifications');
     if(response.ok){
         const notifications = await response.json();
@@ -58,7 +61,8 @@ const notificationsReducer = (state = {}, action) => {
             // debugger
             //     return {...state, ...action.notification}
         case RECEIVE_NOTIFICATIONS:
-            return {...state, [action.invite.id]: action.invite}
+            debugger
+            return {...state, ...action.notifications}
         default:
             return state;
     }
