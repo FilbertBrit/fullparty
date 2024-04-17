@@ -7,10 +7,10 @@ const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 export const UPDATE_CURRENT_USER = 'session/updateCurrentUser';
 // debugger
 
-const setCurrentUser = (user) => {
+const setCurrentUser = (payload) => {
   return {
     type: SET_CURRENT_USER,
-    user
+    payload
   };
 };
 
@@ -100,11 +100,13 @@ const sessionReducer = (state = initialState, action) => {
   // const nextState = { ...state };
   switch (action.type) {
     case RECEIVE_EVENTS:
+      // debugger
       return { ...state, user: {...state.user, ...action.payload.user}};
     case REMOVE_CURRENT_USER:
       return { ...state, user: null };
     case SET_CURRENT_USER:
-      return { ...state, user: action.user};
+      console.log(action.payload);
+      return { ...state, user: { ...action.payload.user}};
     case UPDATE_CURRENT_USER:
       return {...state, user: action.payload.user}
     default:

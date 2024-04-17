@@ -127,10 +127,10 @@ export function HomePage () {
                 </div>
 
                 <nav className="event-nav-bar">
-                    <button className="event-filter-btn-open" style={{
+                    <button className="event-filter-btn-open" id="open-filter-btn" style={{
                         background: 
                             filter === "Open Invite" ? "linear-gradient(0deg,rgba(0,0,0,.3),rgba(0,0,0,.3)),linear-gradient(90deg,rgba(217,149,211,.6) 7.51%,rgba(100,98,239,.6) 28.85%,rgba(109,238,255,.6) 57.53%,rgba(190,254,246,.6) 68.5%,rgba(118,246,185,.6) 82.82%,rgba(191,255,224,.6) 97.32%),hsla(0,0%,100%,.15)"
-                             : "hsla(0,0%,100%,.025)",
+                             : null,
                         }} onClick={handleClick} value="Open Invite">
                         💫 Open Invite
                     </button>
