@@ -85,6 +85,9 @@ upcoming-events-msg{
 #event-filters:hover{
     /* background-color: hsla(0, 0%, 100%, 0.095); */
 }
+#open-filter-btn:hover{
+    background-color: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(90deg, rgba(217, 149, 211, 0.6) 7.51%, rgba(100, 98, 239, 0.6) 28.85%, rgba(109, 238, 255, 0.6) 57.53%, rgba(190, 254, 246, 0.6) 68.5%, rgba(118, 246, 185, 0.6) 82.82%, rgba(191, 255, 224, 0.6) 97.32%), rgba(255, 255, 255, 0.15);
+}
 #event-filters{
 }
 .event-filter-btn-open{
@@ -224,9 +227,12 @@ upcoming-events-msg{
     background-color: rgba(255, 255, 255, 0.15);
     height: 280px;
 }
-.empty-event:hover {
+#new-event-link:hover .empty-event{
     border-color: #AB76F6;
 }
+/* .empty-event:hover {
+    border-color: #AB76F6;
+} */
 .empty-event:hover  #new-event-link{
     background-color: rgba(255, 255, 255, 0.15);
     height: 280px;
