@@ -71,6 +71,7 @@ export function HomePage () {
     const handleClick = (e) => {
         setFilter(e.target.value)
     }
+
     function chbg(color){
         
     //    console.log(color)
@@ -88,6 +89,8 @@ export function HomePage () {
             }
             setUsersState(users)
         });
+
+        // dispatch()
     }, [dispatch])
 
     useEffect(() => {

@@ -17,6 +17,15 @@ const receiveNotification = invite => ({
 
 
 // THUNK ACTIONS
+export const fetchNotifications = () => async (dispatch) => {
+    const response  = await csrfFetch('/api/notifications');
+    if(response.ok){
+        const notifications = await response.json();
+        dispatch(recieveNotifications(notifications));
+        return notifications;
+    }
+    return response;
+}
 export const createNotification = notification => async (dispatch) => {
     // console.log(notification)
     // debugger
