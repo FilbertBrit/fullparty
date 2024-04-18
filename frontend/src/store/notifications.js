@@ -55,15 +55,11 @@ const notificationsReducer = (state = {}, action) => {
         case SET_CURRENT_USER:
             debugger
             return { ...state, ...action.payload.notifications};
-        case RECEIVE_EVENTS:
-            return { ...action.payload.notifications};
-        case RECEIVE_NOTIFICATION:
-            // debugger
-            //     return {...state, ...action.notification}
         case RECEIVE_NOTIFICATIONS:
-            debugger
             return {...state, ...action.notifications}
         default:
+            // debugger
+            console.log(state)
             return state;
     }
 }

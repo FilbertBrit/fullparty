@@ -82,6 +82,7 @@ export function HomePage () {
     }
 
     useEffect( () => {
+        // debugger
         dispatch( fetchEvents() ).then( res => {
             const users = res.users
             for(let key in users){
@@ -89,9 +90,9 @@ export function HomePage () {
                 users[key]= user;
             }
             setUsersState(users)
-        });
+        }).then(dispatch( fetchNotifications() ));
 
-        dispatch( fetchNotifications())
+        // dispatch( fetchNotifications())
     }, [dispatch])
 
     useEffect(() => {
