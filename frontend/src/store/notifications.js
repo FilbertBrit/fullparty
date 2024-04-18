@@ -52,18 +52,14 @@ export const createNotification = notification => async (dispatch) => {
 const notificationsReducer = (state = {}, action) => {
     const nextState = { ...state };
     switch (action.type) {
-        case SET_CURRENT_USER:
-            debugger
-            return { ...state, ...action.payload.notifications};
-        case RECEIVE_EVENTS:
-            return { ...action.payload.notifications};
-        case RECEIVE_NOTIFICATION:
-            // debugger
-            //     return {...state, ...action.notification}
+        // case SET_CURRENT_USER:
+        //     debugger
+        //     return { ...state, ...action.payload.notifications};
         case RECEIVE_NOTIFICATIONS:
-            debugger
             return {...state, ...action.notifications}
         default:
+            // debugger
+            console.log(state)
             return state;
     }
 }
