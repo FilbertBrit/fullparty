@@ -1,7 +1,9 @@
-export const NotificationItem = ({notification}) => {
 
-
+export function NotificationItem ({ notification }) {
+    
     return(
-        <></>
+        <div>
+            {notification.event}
+        </div>
     )
 }
