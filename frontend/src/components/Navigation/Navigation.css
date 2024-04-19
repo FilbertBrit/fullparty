@@ -238,7 +238,7 @@
     justify-content: space-between;
     align-items: center;
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
-    color: azure;
+    color: hsla(0, 0%, 100%, .8);
 }
 #notification-title{
     font-weight: 700;
@@ -247,7 +247,7 @@
 }
 #notification-page-link{
     text-decoration: none;
-    color: azure;
+    color: hsla(0, 0%, 100%, .8);
     padding: 16px ;
     font-size: 14px;
     font-weight: 700;
