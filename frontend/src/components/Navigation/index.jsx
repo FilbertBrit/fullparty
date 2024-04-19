@@ -178,6 +178,10 @@ function Navigation() {
 
     <span className="dropdown-notifications">
       <ul className="profile-dropdown">
+        <div className='notification-header'>
+          <p id='notification-title'>Notifications</p>
+          <a href="" id='notification-page-link'>SEE ALL</a>
+        </div>
             {notifications.map((notification, i) => 
               <NotificationItem notification={notification} key={i}/>
             )}

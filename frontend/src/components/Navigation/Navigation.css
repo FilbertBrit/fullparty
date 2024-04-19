@@ -225,10 +225,33 @@
 .dropdown-notifications{
     position: absolute;
     inset: 0px 0px auto auto;
-    transform: translate3d(-16px, 85px, 0px);
+    transform: translate3d(-70px, 85px, 0px);
     -webkit-backdrop-filter: blur(30px);
     backdrop-filter: blur(30px);
     z-index: 96;
     width: 350px;
     background-color: rgba(0, 0, 0, .6);
+    padding: 10px;
+}
+.notification-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    color: azure;
+}
+#notification-title{
+    font-weight: 700;
+    font-size: 18px;
+    padding: 8px;
+}
+#notification-page-link{
+    text-decoration: none;
+    color: azure;
+    padding: 16px ;
+    font-size: 14px;
+    font-weight: 700;
+}
+#notification-page-link:hover{
+    background-color: rgba(81, 81, 81, 0.315);
 }
