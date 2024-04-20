@@ -23,7 +23,6 @@ function Navigation() {
   const [showNotifications, setShowNotifications] = useState(false);
   const userId = sessionUser ? (sessionUser.id) : ('');
   const userProfile = '/users/' + userId;
-  console.log(notifications,showNotifications)
   
   const openMenu = () => {
     if (showMenu) return;
