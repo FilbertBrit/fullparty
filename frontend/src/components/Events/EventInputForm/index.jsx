@@ -301,19 +301,21 @@ export function EventInputForm () {
             </form>
             <div className="author-nav-sidebar">
                 {event ? (
-                    <div onClick={handleSubmit}>
-                        <div className="module-invite" id='author-nav-sidebar-item'>
+                    // <div onClick={handleSubmit}>
+                    <>
+                        <div onClick={handleSubmit} className="module-invite" id='author-nav-sidebar-item'>
                             <h2>☑️</h2>
                             <h2 id='author-nav-sidebar-text' >DONE</h2>
                         </div>
                         <div className="module-invite" id='author-nav-sidebar-divider'>
                             <div className="divider-input"></div>
                         </div>
-                        <div className="module-invite" id='author-nav-sidebar-item'>
+                        <div onClick={() =>  history.push('/events/' + eventId)} className="module-invite" id='author-nav-sidebar-item'>
                             <h2>🔴</h2>
                             <h2 id='author-nav-sidebar-text' >CANCEL</h2>
                         </div>
-                    </div>
+                    </>
+                    // </div>
                 ) : (
                     // <div>
                     //     <div className="module-invite" id='author-nav-sidebar-item'>
