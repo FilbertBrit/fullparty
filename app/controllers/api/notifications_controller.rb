@@ -4,8 +4,8 @@ class Api::NotificationsController < ApplicationController
   
     def index
       # debugger
-      # @user = current_user
-      @notifications = Notification.where(receiver_id: current_user.id)
+      @user = current_user
+      @notifications = Notification.where(receiver_id: @user.id)
       # @notifications = Notification.where(receiver_id: params[:reciever_id])
       render :index
     end
