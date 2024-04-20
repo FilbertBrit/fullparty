@@ -88,15 +88,16 @@
 #footer{
     padding-bottom: 20px;
     margin-bottom: 0px;
+    /* margin-top: 0px; */
 }
 #layout-outer{
     display: flex;
     justify-content: space-between;
     /* height: max-content; */
-    max-height: max-content;
+    /* max-height: max-content; */
 }
 
-@media screen and (max-width: 811px){
+@media screen and (max-width: 695px){
     #layout-outer{
         height: max-content;
     }
