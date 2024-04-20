@@ -50,7 +50,7 @@ export function HomePage () {
             filteredEvents = events.filter(event => (event.userRsvp[0] === "I'm Going") && (today > new Date(event.dateTime) && event.dateTime !== null));
             break;
         case 'All Past Events':
-            filteredEvents = events.filter(event => (event.userRsvp[0] !== null && today > new Date(event.dateTime)));
+            filteredEvents = events.filter(event => (![null, 'invited'].includes(event.userRsvp[0]) && today > new Date(event.dateTime)));
             // filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)));
             break;
         case 'Invites':
