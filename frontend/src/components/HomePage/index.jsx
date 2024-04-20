@@ -123,7 +123,7 @@ export function HomePage () {
                     <>
                         <span id="upcoming-msg" onClick={() => setFilter('Upcoming')}>{upcoming } upcoming {upcoming > 1 ? 'events' : 'event'}</span>
                         <span id="welcome-header-span">and</span>
-                        <span id="upcoming-msg" onClick={() => setFilter('Upcoming')}>{sessionUser.invitedEvents} {sessionUser.invitedEvents > 1 ? 'invites waiting.' : 'invite waiting.'}</span>
+                        <span id="upcoming-msg" onClick={() => setFilter('Invites')}>{sessionUser.invitedEvents} {sessionUser.invitedEvents > 1 ? 'invites waiting.' : 'invite waiting.'}</span>
                     </>
                     :
                     <span id="upcoming-msg" onClick={() => setFilter('Upcoming')}>{upcoming } upcoming {upcoming > 1 ? 'events' : 'event'}.</span>
