@@ -68,7 +68,7 @@ events.each do |event|
             json.extract! event, :title, :id, :author_id, :date_time
             json.openInvite  event.open_invite || false
             json.host event.user.name
-            json.userRsvp [rsvpUser.status || invited, rsvpUser.id]
+            json.userRsvp rsvpUser.status || invited
         end
     end
 end
