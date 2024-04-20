@@ -20,7 +20,6 @@ export function HomePage () {
     const mutualsObj = useSelector(state => state.users)
     const mutuals = mutualsObj ? Object.values(mutualsObj) : [];
     const invitesObj = useSelector(state => state.invites)
-    const eventsInvited = []
     const [filter, setFilter] = useState("Upcoming");
     const upcoming = useSelector(state => state.session.user.upcomingEvents)
     const today = new Date();
@@ -29,10 +28,6 @@ export function HomePage () {
     const [usersState, setUsersState] = useState()
 
     let filteredEvents = []
-
-    // for(invite of invitesObj){
-    //     eventsInvited.push(invite.eventId)
-    // }
 
     mutuals.sort( (a,b) => b.sharedEvents.length - a.sharedEvents.length  )
     
@@ -65,17 +60,6 @@ export function HomePage () {
             break;
     }
     
-    // if(filter === "Upcoming"){
-    //     filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp !== null || (event.authorId === sessionUser.id) || (Object.values(invitesObj).map(obj => obj.eventId).includes(event.id))));
-    // }else if(filter === "Hosting"){
-    //     filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null) && (event.authorId === sessionUser.id));
-    // }else if(filter === "Open Invite"){
-    //     filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp === null) && (event.openInvite));
-    // }else if(filter === 'Attended'){
-    //     filteredEvents = events.filter(event => (event.userRsvp === "I'm Going") && (today > new Date(event.dateTime) && event.dateTime !== null));
-    // }else if(filter === 'All Past Events'){
-    //     filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)));
-    // }
     function sortEvents (){
         if(['Attended','All Past Events'].includes(filter)){
             filteredEvents = filteredEvents.sort((event1, event2) => new Date(event2.dateTime) - new Date(event1.dateTime))

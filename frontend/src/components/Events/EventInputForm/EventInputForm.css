@@ -246,6 +246,14 @@
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     cursor: pointer;
 }
+#open-invite-btn-on{
+    padding-right: 15px;
+    text-decoration: none;
+    background-color: none;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    cursor: pointer;
+    color:  #ab76f6;
+}
 
 .rsvp-option-container{
     height: max-content;
@@ -325,6 +333,16 @@
     flex-direction: column-reverse;
     justify-content: flex-start;
 
+}
+.divider-input{
+    height: 1px;
+    width: 40px;
+    border-top: 1px solid hsla(0, 0%, 100%, .25);
+}
+#author-nav-sidebar-divider{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media screen and (max-width: 1050px){

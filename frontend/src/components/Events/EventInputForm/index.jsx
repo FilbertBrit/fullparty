@@ -10,6 +10,7 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { AiOutlineInstagram } from "react-icons/ai"
+import { fetchNotifications } from "../../../store/notifications";
 // import useAutosizeTextArea from "./useAutosizeTextArea";
 
 
@@ -19,6 +20,8 @@ export function EventInputForm () {
     const history = useHistory();
     const { eventId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
+    const notifications = useSelector(state => state.notifications);
+    console.log(notifications, sessionUser)
     const event = useSelector(getEvent(eventId));
 
     const [title, setTitle] = useState('');
@@ -40,6 +43,10 @@ export function EventInputForm () {
         textareaRef.current.style.height = -20 +textareaRef.current.scrollHeight + 'px'; // Set new height
         }
     }, [description]);
+
+    useEffect(() => {    
+        dispatch( fetchNotifications() )
+    }, [dispatch]);
 
 
     const filteredDate = (date) => { 
@@ -249,7 +256,11 @@ export function EventInputForm () {
                         </div>
                         <div className="open-invite-div">
                             <h2 id="open-invite-title">💫 Open Invite</h2> 
-                            <h2 id="open-invite-btn" onClick={() => setOpenInvite(!openInvite)}>{openInvite ? "Turned On": "Turned Off"}</h2>
+                            <h2 id={openInvite? "open-invite-btn-on" : "open-invite-btn"} onClick={() => setOpenInvite(!openInvite)} 
+                            // style={{
+                            //     color: 
+                            //         openInvite === true ? "#ab76f6" : '#fff9',}}
+                                    >{openInvite ? "Turned On": "Turned Off"}</h2>
                         </div>
                         <div className="rsvp-option-container">
                             <div className="rsvp-option-title-div">
@@ -290,12 +301,21 @@ export function EventInputForm () {
             </form>
             <div className="author-nav-sidebar">
                 {event ? (
-                    <div onClick={handleSubmit}>
-                        <div className="module-invite" id='author-nav-sidebar-item'>
+                    // <div onClick={handleSubmit}>
+                    <>
+                        <div onClick={handleSubmit} className="module-invite" id='author-nav-sidebar-item'>
                             <h2>☑️</h2>
                             <h2 id='author-nav-sidebar-text' >DONE</h2>
                         </div>
-                    </div>
+                        <div className="module-invite" id='author-nav-sidebar-divider'>
+                            <div className="divider-input"></div>
+                        </div>
+                        <div onClick={() =>  history.push('/events/' + eventId)} className="module-invite" id='author-nav-sidebar-item'>
+                            <h2>🔴</h2>
+                            <h2 id='author-nav-sidebar-text' >CANCEL</h2>
+                        </div>
+                    </>
+                    // </div>
                 ) : (
                     // <div>
                     //     <div className="module-invite" id='author-nav-sidebar-item'>
