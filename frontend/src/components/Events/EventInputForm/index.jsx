@@ -20,8 +20,8 @@ export function EventInputForm () {
     const history = useHistory();
     const { eventId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
-    const notifications = useSelector(state => state.notifications);
-    console.log(notifications, sessionUser)
+    // const notifications = useSelector(state => state.notifications);
+    // console.log(notifications, sessionUser)
     const event = useSelector(getEvent(eventId));
 
     const [title, setTitle] = useState('');
@@ -304,7 +304,7 @@ export function EventInputForm () {
                     // <div onClick={handleSubmit}>
                     <>
                         <div onClick={handleSubmit} className="module-invite" id='author-nav-sidebar-item'>
-                            <h2>☑️</h2>
+                            <h2>✅</h2>
                             <h2 id='author-nav-sidebar-text' >DONE</h2>
                         </div>
                         <div className="module-invite" id='author-nav-sidebar-divider'>
@@ -326,7 +326,7 @@ export function EventInputForm () {
                     <></>
                 )}
             </div>
-            <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
+            {/* <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div> */}
         </> ) 
     )
 }
