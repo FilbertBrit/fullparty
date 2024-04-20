@@ -53,7 +53,8 @@ export function HomePage () {
             filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)));
             break;
         case 'Invites':
-            filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ( (Object.values(invitesObj).map(obj => obj.eventId).includes(event.id)) && (event.userRsvp !== null)));
+            filteredEvents = events.filter(event => (event.userRsvp[0] === 'invited' && (today < new Date(event.dateTime) || event.dateTime === null)));
+            // filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ( (Object.values(invitesObj).map(obj => obj.eventId).includes(event.id)) && (event.userRsvp !== null)));
             break;
     }
     
