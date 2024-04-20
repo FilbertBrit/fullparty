@@ -10,6 +10,7 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { AiOutlineInstagram } from "react-icons/ai"
+import { fetchNotifications } from "../../../store/notifications";
 // import useAutosizeTextArea from "./useAutosizeTextArea";
 
 
@@ -19,6 +20,8 @@ export function EventInputForm () {
     const history = useHistory();
     const { eventId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
+    const notifications = useSelector(state => state.notifications);
+    console.log(notifications, sessionUser)
     const event = useSelector(getEvent(eventId));
 
     const [title, setTitle] = useState('');
@@ -40,6 +43,10 @@ export function EventInputForm () {
         textareaRef.current.style.height = -20 +textareaRef.current.scrollHeight + 'px'; // Set new height
         }
     }, [description]);
+
+    useEffect(() => {    
+        dispatch( fetchNotifications() )
+    }, [dispatch]);
 
 
     const filteredDate = (date) => { 
