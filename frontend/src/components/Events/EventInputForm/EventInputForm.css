@@ -246,6 +246,14 @@
     font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
     cursor: pointer;
 }
+#open-invite-btn-on{
+    padding-right: 15px;
+    text-decoration: none;
+    background-color: none;
+    font-family: Space Grotesk,Helvetica Neue,Helvetica,sans-serif;
+    cursor: pointer;
+    color:  #ab76f6;
+}
 
 .rsvp-option-container{
     height: max-content;

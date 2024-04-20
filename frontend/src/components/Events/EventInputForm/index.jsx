@@ -249,7 +249,11 @@ export function EventInputForm () {
                         </div>
                         <div className="open-invite-div">
                             <h2 id="open-invite-title">💫 Open Invite</h2> 
-                            <h2 id="open-invite-btn" onClick={() => setOpenInvite(!openInvite)}>{openInvite ? "Turned On": "Turned Off"}</h2>
+                            <h2 id={openInvite? "open-invite-btn-on" : "open-invite-btn"} onClick={() => setOpenInvite(!openInvite)} 
+                            // style={{
+                            //     color: 
+                            //         openInvite === true ? "#ab76f6" : '#fff9',}}
+                                    >{openInvite ? "Turned On": "Turned Off"}</h2>
                         </div>
                         <div className="rsvp-option-container">
                             <div className="rsvp-option-title-div">
