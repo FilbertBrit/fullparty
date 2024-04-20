@@ -38,23 +38,29 @@ export function HomePage () {
     
     switch (filter) {
         case "Upcoming":
-            filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp[0] !== null || (event.authorId === sessionUser.id) || (Object.values(invitesObj).map(obj => obj.eventId).includes(event.id))));   
+            filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null ) && (event.userRsvp[0] !== null || (event.authorId === sessionUser.id) || (Object.values(invitesObj).map(obj => obj.eventId).includes(event.id))));
+            sortEvents('asc');   
             break;
         case "Hosting":
             filteredEvents = events.filter(event => (today < new Date(event.dateTime) || event.dateTime === null) && (event.authorId === sessionUser.id));
+            sortEvents();   
             break;
         case "Open Invite":
             filteredEvents = events.filter(event => (today < new Date(event.dateTime)) && (event.userRsvp[0] === null) && (event.openInvite));
+            sortEvents();   
             break;
         case 'Attended':
             filteredEvents = events.filter(event => (event.userRsvp[0] === "I'm Going") && (today > new Date(event.dateTime) && event.dateTime !== null));
+            sortEvents();   
             break;
         case 'All Past Events':
             filteredEvents = events.filter(event => (![null, 'invited'].includes(event.userRsvp[0]) && today > new Date(event.dateTime)));
+            sortEvents();   
             // filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)));
             break;
         case 'Invites':
             filteredEvents = events.filter(event => (event.userRsvp[0] === 'invited' && (today < new Date(event.dateTime) || event.dateTime === null)));
+            sortEvents();   
             // filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ( (Object.values(invitesObj).map(obj => obj.eventId).includes(event.id)) && (event.userRsvp !== null)));
             break;
     }
@@ -70,7 +76,14 @@ export function HomePage () {
     // }else if(filter === 'All Past Events'){
     //     filteredEvents = events.filter(event => ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)));
     // }
-    
+    function sortEvents (){
+        if(['Attended','All Past Events'].includes(filter)){
+            filteredEvents = filteredEvents.sort((event1, event2) => new Date(event2.dateTime) - new Date(event1.dateTime))
+        }else{
+            filteredEvents = filteredEvents.sort((event1, event2) => new Date(event1.dateTime) - new Date(event2.dateTime))
+        }
+    }
+
     const handleClick = (e) => {
         setFilter(e.target.value)
     }
