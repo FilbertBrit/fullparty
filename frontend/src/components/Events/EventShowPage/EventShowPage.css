@@ -370,7 +370,7 @@
     z-index: 3;
     min-height: 200px;
     justify-content: space-between;
-    width: 300px;
+    width: 340px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -381,6 +381,18 @@
 }
 #restricted-header{
     font-size: 25px;
+}
+#restricted-rsvp-btn{
+    background-color: #ab76f6;
+    border: none;
+    color: #fff;
+    padding: 15px;
+    width: 100%;
+    font-weight: 700;
+    /* text-decoration: none; */
+}
+#restricted-p-element{
+    color: hsla(0, 0%, 100%, .8);
 }
 #log-restricted{
     margin-top: -310px;
