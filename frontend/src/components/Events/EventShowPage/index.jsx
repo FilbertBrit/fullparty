@@ -202,9 +202,9 @@ export function EventShowPage () {
                         <div id='restricted-log-container'>
                             <div className='restrict-activity-log'>
                                 <h2 id='restricted-header'>🔒 Restricted Access</h2>
-                                <p>Only RSVP'd guests can view event activity & see who's going</p>
-                                <button>RSVP FOR ACCESS</button>
-                                <p> Not sure if you'll go? Pick “Maybe”</p>
+                                <p id='restricted-p-element'>Only RSVP'd guests can view event activity & see who's going</p>
+                                <button id='restricted-rsvp-btn'>RSVP FOR ACCESS</button>
+                                <p id='restricted-p-element'> Not sure if you'll go? Pick “Maybe”</p>
                             </div>
                             <div id='log-restricted'>
                                 <ActivityLog />
