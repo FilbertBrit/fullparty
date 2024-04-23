@@ -359,7 +359,9 @@
 }
 .restrict-activity-log{
     background-color: rgba(0,0,0,.8);
+
     background-color: rgb(14 9 9);
+    background-color: rgba(0, 0, 0, .8);;
     border-radius: 5%;
     margin: 30px auto;
     position: sticky;
@@ -367,14 +369,15 @@
     transform: translateY(-35px);
     z-index: 3;
     min-height: 200px;
-    justify-content: center;
+    justify-content: space-between;
     width: 300px;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
     max-width: 360px;
     color: #fff;
+    font-family: Space Grotesk, Helvetica Neue, Helvetica, sans-serif;
 }
 #restricted-header{
     font-size: 25px;
