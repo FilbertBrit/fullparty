@@ -311,7 +311,7 @@
     border: none;
 }
 #rsvped{
-    margin-left: 100px;
+    margin-left: 80px;
 }
 .emoji-rsvp-btn{
     font-size: xxx-large;
@@ -461,7 +461,7 @@
         top: 150px;
         width: 460px;
         width: 35vw;
-        margin-left: 50vw;
+        margin-left: 55vw;
         /* max-height: calc(100% - 150px); */
         position: fixed;
         /* right: 100px; */
