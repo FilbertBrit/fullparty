@@ -362,7 +362,7 @@
 
     background-color: rgb(14 9 9);
     background-color: rgba(0, 0, 0, .8);;
-    border-radius: 5%;
+    /* border-radius: 5%; */
     margin: 30px auto;
     position: sticky;
     /* bottom: -45px; */
@@ -393,6 +393,8 @@
 }
 #restricted-p-element{
     color: hsla(0, 0%, 100%, .8);
+    font-size: 15px;
+    font-weight: 300;
 }
 #log-restricted{
     margin-top: -310px;
