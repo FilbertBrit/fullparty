@@ -129,8 +129,8 @@ function LoginFormPage() {
             </form>
 
           </div>
-          <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
         </div>
+        <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
       </div>
   );
 }

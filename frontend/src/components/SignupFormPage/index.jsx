@@ -63,7 +63,7 @@ function SignupFormPage() {
     return (
       <div id='layout-outer'>
         <Navigation/>
-        <div id='log-container'>
+        <div id='log-container' className='signup-div'>
             <div className="layout">
               
               <div id='signup-title-container'>
@@ -144,8 +144,8 @@ function SignupFormPage() {
                 </div>
               </form>
             </div>
-          <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
           </div>
+          <div id='footer'>© 2023 FullParty™ | Terms & Privacy | Careers | Questions? DM us <AiOutlineInstagram/></div>
         </div>
     );
   }
