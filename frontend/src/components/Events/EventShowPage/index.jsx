@@ -34,7 +34,7 @@ export function EventShowPage () {
 
     const makeRSVP = () => {
         console.log('here')
-        ref.current?.scrollIntoView({behavior: 'smooth'});
+        ref.current?.scrollIntoView({behavior: 'smooth',  block: "center",});
     };
     
     for(let key in rsvps){
