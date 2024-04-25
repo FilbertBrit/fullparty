@@ -1,6 +1,6 @@
 
 events = @events.includes(:user) #grabbing all events
-invites = @current_user.invites.includes(:event) #grabbing all invites related to current user
+invites = @current_user.invites.includes(:event).includes(:user) #grabbing all invites related to current user
 # notifications = @current_user.notifications #grabbing all notifications related to current user, will need to move retrieval 
 
 today = (Time.now).inspect
@@ -14,7 +14,8 @@ json.invites do
     invites.each do |invite|
         invitedEvents.push(invite.event_id)
         json.set! invite.id do
-            json.extract! invite, :id, :sender_id, :receiver_id, :event_id
+            json.extract! invite, :id, :sender_id, :event_id
+            json.name invite.user.name
             json.event invite.event.title
         end
     end
