@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -19,6 +19,7 @@ export function EventShowPage () {
 
     const { eventId } = useParams();
     const dispatch = useDispatch();
+    const ref = useRef(null);
     const history = useHistory();
     const event = useSelector(getEvent(eventId));
     const sessionUser = useSelector(state => state.session.user);
@@ -31,7 +32,10 @@ export function EventShowPage () {
     let rsvpMaybe = 0;
     let location = event?.location || "No Location Set";
 
-    
+    const makeRSVP = () => {
+        console.log('here')
+        ref.current?.scrollIntoView({behavior: 'smooth'});
+    };
     
     for(let key in rsvps){
         rsvps[key].status === "I'm Going" ? (rsvpGoing = (rsvpGoing + 1)) : (rsvpGoing = (rsvpGoing));
@@ -65,7 +69,7 @@ export function EventShowPage () {
                     <div className="show-img">
                         <img src={wazzap} alt="show-img" id='show-img'/>
                     </div>
-                    <div className="show-rsvp" id={!['invited', null].includes(event.userRsvp) ? 'rsvped': null }>
+                    <div ref={ref} className="show-rsvp" id={!['invited', null].includes(event.userRsvp) ? 'rsvped': null }>
                         <RsvpComponent event={event}/>
                         {!['invited', null].includes(event.userRsvp) && 
                             <button className='invite-container' onClick={handleInvite}><img src={invite} className='pp-invite-btn'/></button>
@@ -203,7 +207,7 @@ export function EventShowPage () {
                             <div className='restrict-activity-log'>
                                 <h2 id='restricted-header'>🔒 Restricted Access</h2>
                                 <p id='restricted-p-element'>Only RSVP'd guests can view event activity & see who's going</p>
-                                <button id='restricted-rsvp-btn'>RSVP FOR ACCESS</button>
+                                <button id='restricted-rsvp-btn' onClick={makeRSVP}>RSVP FOR ACCESS</button>
                                 <p id='restricted-p-element'> Not sure if you'll go? Pick “Maybe”</p>
                             </div>
                             <div id='log-restricted'>
