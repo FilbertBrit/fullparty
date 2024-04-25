@@ -15,6 +15,7 @@ json.invites do
         invitedEvents.push(invite.event_id)
         json.set! invite.id do
             json.extract! invite, :id, :sender_id, :receiver_id, :event_id
+            json.event invite.event.title
         end
     end
 end
