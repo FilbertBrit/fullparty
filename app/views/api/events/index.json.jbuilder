@@ -37,9 +37,9 @@ events.each do |event|
     #grabbing all rsvps of this event
     rsvps = event.rsvps.where.not(rsvps: {user_id: userId}).includes(:user)
     userRSVP = event.rsvps.find_by(user_id: userId) 
-    rsvpUser = Rsvp.new()
+    eventPast = event.date_time && event.date_time < today
    
-    if userRSVP && (event.date_time && event.date_time < today)
+    if userRSVP && eventPast
         rsvps.each do |rsvp|
             if rsvp.status == "I'm Going" 
                 mutualsObj[rsvp.user_id] ?  mutualsObj[rsvp.user_id][:events].push(event.id) && mutualsObj[rsvp.user_id][:event] = event.id : mutualsObj[rsvp.user_id] = { name: rsvp.user.name, events: [event.id], event: event.id, created_at: rsvp.user.created_at}
@@ -61,13 +61,14 @@ events.each do |event|
     #         end
     #     end
     # end
-    if invited && userRSVP == nil && ( event.date_time == nil || event.date_time < today)
+    if invited && userRSVP == nil && !eventPast
+        # ( event.date_time == nil || event.date_time < today)
         invitedCount += 1
     end
 
     # check whether event is upcoming -> increment counter
-    if (userRSVP || event.author_id == userId || invited ) && (!event.date_time || event.date_time > today)
-        puts event.title, userRSVP, event.author_id, invited
+    if (userRSVP || event.author_id == userId || invited ) && !eventPast
+        # (!event.date_time || event.date_time > today)
         upcomingEvents += 1
     end
 
