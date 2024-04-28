@@ -1,6 +1,6 @@
 
 events = @events.includes(:user) #grabbing all events
-invites = @current_user.invites.includes(:event).includes(:user) #grabbing all invites related to current user
+invites = @user.invites.includes(:event).includes(:user) #grabbing all invites related to current user
 # notifications = @current_user.notifications #grabbing all notifications related to current user, will need to move retrieval 
 
 today = (Time.now).inspect
@@ -41,12 +41,12 @@ events.each do |event|
         
     #iterating through all rsvp to find current user's rsvp + all rsvped users' info
     rsvps.each do |rsvp|
-        if rsvp.user.id === @current_user.id
+        if rsvp.user_id === @user.id
             rsvpUser = rsvp
             
             if event.date_time && event.date_time < today
                 rsvps.each do |rsvp|
-                    if rsvp.user_id != @current_user.id && rsvp.status != "Can't Go" 
+                    if rsvp.user_id != @user.id && rsvp.status != "Can't Go" 
                         mutualsObj[rsvp.user_id] ?  mutualsObj[rsvp.user_id][:events].push(event.id) && mutualsObj[rsvp.user_id][:event] = event.id : mutualsObj[rsvp.user_id] = { name: rsvp.user.name, events: [event.id], event: event.id, created_at: rsvp.user.created_at}
                     end
                 end
@@ -58,7 +58,7 @@ events.each do |event|
     end
 
     #check whether event is upcoming -> increment counter
-    if rsvpUser.status || event.author_id == @current_user.id || invited
+    if rsvpUser.status || event.author_id == @user.id || invited
         if !event.date_time || event.date_time > today
             upcomingEvents += 1
         end
