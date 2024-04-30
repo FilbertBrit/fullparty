@@ -1,4 +1,4 @@
-notifications = @notifications.includes(:event)
+notifications = @notifications.includes(:event).includes(:user)
 today = (Time.now).inspect
 notifications.each do |notification|
     # debugger
@@ -7,8 +7,10 @@ notifications.each do |notification|
 
 
         json.set! notification.id do
-            json.sender notification.sender_id
+            json.sender notification.user.name
+            json.sender_id notification.sender_id
             json.event notification.event.title
+            json.event_id notification.event_id
             json.date notification.created_at
         end
     end
