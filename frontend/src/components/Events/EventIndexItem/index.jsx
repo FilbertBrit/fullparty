@@ -1,35 +1,34 @@
-// import { useDispatch } from "react-redux"
+
 import "./EventIndexItem.css"
 import wazzap from "../../../images/wazzap-halloween.jpeg"
 import dots from "../../../images/dots-horizontal-svgrepo-com.png"
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from "react";
-// import { useHistory } from "react-router";
 import { deleteEvent } from '../../../store/events';
 import { deleteRsvp } from "../../../store/rsvps";
 import { deleteInvite } from "../../../store/invites";
 
 export const EventIndexItem = ({ event, usersState }) => {
-    // const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const invites = useSelector(state => state.invites)
     const showPage = '/events/' + event.id;
     const userRsvp = event.userRsvp;
-    const invites = useSelector(state => state.invites)
     const inviteIdArr = (Object.values(invites)).filter(function(invite){ return invite.eventId === event.id}).map(invite => invite.id)
-    // console.log(inviteId)
-    
     const today = new Date();
+
     let rsvpStatus= '';
     let date = new Date(event.dateTime);
-    const [showMenu, setShowMenu] = useState(false);
     let eventTime = date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" ")
     let time = eventTime[0].slice(0,1) + eventTime[1].toLocaleLowerCase()
     let eventDate = date.toString().split(' ')[0] + ' ' + (date.getMonth() + 1) + '/' + date.getDate() + '・' + time;
+
+    const [showMenu, setShowMenu] = useState(false);
     const [soon, setSoon] = useState()
     const [clickAction, setClickAction] = useState()
     // console.log(date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" "), eventDate)
     // console.log(date.getTimezoneOffset())
+
     //checking is the event is a day or less away to set date preview to variable soon
     switch (Math.floor((Math.abs(new Date(today.toDateString()) - new Date (new Date(event.dateTime).toDateString())))/(1000*60*60*24))) {
         case 1:
@@ -96,6 +95,7 @@ export const EventIndexItem = ({ event, usersState }) => {
 
         return () => document.removeEventListener("click", closeMenu);
     }, [showMenu]);
+    console.log(showMenu)
 
     const handleDeleteEvent = (e) => {
         setClickAction('Delete');
@@ -112,18 +112,6 @@ export const EventIndexItem = ({ event, usersState }) => {
             }
         }
     }
-    // console.log(clickAction)
-
-    // useEffect(() => {
-
-    //     if(clickAction === 'DELETE'){
-    //         dispatch(deleteEvent(event.id))
-    //         // .then(history.push('/events'));
-    //     }else{
-
-    //     }
-
-    // }, [clickAction])
     
     return (
         <>
@@ -135,7 +123,7 @@ export const EventIndexItem = ({ event, usersState }) => {
                     }
                     <div id="event-date-details"> </div>
                     { event.authorId === sessionUser.id || userRsvp !== 'Invited' ? 
-                        <div id="event-item-option-btn" onClick={() => setShowMenu(true)} on> 
+                        <div id="event-item-option-btn" onClick={() => setShowMenu(true)} > 
                             <img src={dots} id="dots-options-btn" alt="options-btn-event-item" />
                         </div> : null
                     }
