@@ -9,7 +9,6 @@ import { deleteRsvp } from "../../../store/rsvps";
 import { deleteInvite } from "../../../store/invites";
 
 export const EventIndexItem = ({ event, usersState }) => {
-    console.log(usersState)
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const invites = useSelector(state => state.invites)
@@ -21,7 +20,6 @@ export const EventIndexItem = ({ event, usersState }) => {
     const isUserHost = event.authorId === sessionUser.id ? true : false;
 
     let rsvpStatus = '';
-    let soon = null;
     let date = new Date(event.dateTime);
     const eventTime = date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" ")
     const time = eventTime[0].slice(0,1) + eventTime[1].toLocaleLowerCase()
@@ -29,22 +27,22 @@ export const EventIndexItem = ({ event, usersState }) => {
 
     const [showMenu, setShowMenu] = useState(false);
     const [clickAction, setClickAction] = useState(null)
-    // const [soon, setSoon] = useState(null)
+    const [soon, setSoon] = useState(null)
     // console.log(date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" "), eventDate)
     // console.log(date.getTimezoneOffset())
 
     //checking is the event is a day or less away to set date preview to variable soon
-    switch (Math.floor((Math.abs(new Date(today.toDateString()) - new Date (new Date(event.dateTime).toDateString())))/(1000*60*60*24))) {
-        case 1:
-            // setSoon('Tommorrow')
-            soon = 'Tommorrow';
-            break;
-        case 0:
-            // setSoon('Today')
-            soon = 'Today';
-            break;
-        default:
-            break;
+    if(soon === null){
+        switch (Math.floor((Math.abs(new Date(today.toDateString()) - new Date (new Date(event.dateTime).toDateString())))/(1000*60*60*24))) {
+            case 1:
+                setSoon('Tommorrow')
+                break;
+            case 0:
+                setSoon('Today')
+                break;
+            default:
+                break;
+        }
     }
 
     // if else to set eventIndexItem's user RSVP preview
