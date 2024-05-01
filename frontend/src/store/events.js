@@ -45,12 +45,9 @@ export const getEvents = state => {
 
 // THUNK ACTIONS
 export const fetchEvents = () => async (dispatch) => {
-    // debugger
-    console.log('fetching events')
     const response = await csrfFetch('/api/events');
     if (response.ok) {
         const events = await response.json();
-        // debugger
         dispatch(receiveEvents(events));
         // storeEvents(events)
         return events;
