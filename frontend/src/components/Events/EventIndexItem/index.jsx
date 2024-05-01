@@ -1,72 +1,81 @@
-// import { useDispatch } from "react-redux"
+
 import "./EventIndexItem.css"
 import wazzap from "../../../images/wazzap-halloween.jpeg"
 import dots from "../../../images/dots-horizontal-svgrepo-com.png"
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from "react";
-// import { useHistory } from "react-router";
 import { deleteEvent } from '../../../store/events';
 import { deleteRsvp } from "../../../store/rsvps";
 import { deleteInvite } from "../../../store/invites";
 
 export const EventIndexItem = ({ event, usersState }) => {
-    // const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const invites = useSelector(state => state.invites)
+    const inviteIdArr = Object.values(invites).filter(function(invite){ return invite.eventId === event.id }).map(invite => invite.id)
     const showPage = '/events/' + event.id;
     const userRsvp = event.userRsvp;
-    const invites = useSelector(state => state.invites)
-    const inviteIdArr = (Object.values(invites)).filter(function(invite){ return invite.eventId === event.id}).map(invite => invite.id)
-    // console.log(inviteId)
-    
     const today = new Date();
-    let rsvpStatus= '';
+    const eventPast = event.dateTime !== null && today > new Date(event.dateTime) ? true : false;
+    const isUserHost = event.authorId === sessionUser.id ? true : false;
+
+    let rsvpStatus = '';
     let date = new Date(event.dateTime);
+    const eventTime = date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" ")
+    const time = eventTime[0].slice(0,1) + eventTime[1].toLocaleLowerCase()
+    const eventDate = date.toString().split(' ')[0] + ' ' + (date.getMonth() + 1) + '/' + date.getDate() + '・' + time;
+
     const [showMenu, setShowMenu] = useState(false);
-    let eventTime = date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" ")
-    let time = eventTime[0].slice(0,1) + eventTime[1].toLocaleLowerCase()
-    let eventDate = date.toString().split(' ')[0] + ' ' + (date.getMonth() + 1) + '/' + date.getDate() + '・' + time;
-    const [soon, setSoon] = useState()
-    const [clickAction, setClickAction] = useState()
+    const [clickAction, setClickAction] = useState(null)
+    const [soon, setSoon] = useState(null)
     // console.log(date.toLocaleTimeString('en-US', { timeZone: 'EST' }).split(" "), eventDate)
     // console.log(date.getTimezoneOffset())
+
     //checking is the event is a day or less away to set date preview to variable soon
-    switch (Math.floor((Math.abs(new Date(today.toDateString()) - new Date (new Date(event.dateTime).toDateString())))/(1000*60*60*24))) {
-        case 1:
-            setSoon('Tommorrow')
-            break;
-        case 0:
-            setSoon('Today')
-            break;
-        default:
-            break;
+    if(soon === null){
+        switch (Math.floor((Math.abs(new Date(today.toDateString()) - new Date (new Date(event.dateTime).toDateString())))/(1000*60*60*24))) {
+            case 1:
+                setSoon('Tommorrow')
+                break;
+            case 0:
+                setSoon('Today')
+                break;
+            default:
+                break;
+        }
     }
 
-    if( ((event.dateTime !== null) && today > new Date(event.dateTime)) && ((event.authorId === sessionUser.id ) || (event.userRsvp !== null)) ){
-        if(event.authorId === sessionUser.id){
+    // if else to set eventIndexItem's user RSVP preview
+    if ( eventPast ) {
+    // && ((event.authorId === sessionUser.id ) || (userRsvp[0] !== null)) ){
+        if( isUserHost ){
             rsvpStatus = "👑 HOSTED";
         }else{
-            switch (userRsvp[0]) {
+            switch ( userRsvp[0] ) {
                 case "I'm Going":
                     rsvpStatus = '👍 WENT'
                     break;
                 case "Maybe":
                     rsvpStatus = '🤔 MAYBE'
                     break;
-                case "Can't Go":
-                    rsvpStatus = "😢 DIDN'T GO"
-                    break;
+                // case "Can't Go":
+                //     rsvpStatus = "😢 DIDN'T GO"
+                //     break;
+                // case "invited":
+                //     rsvpStatus = "😢 DIDN'T GO"
+                    // break;
                 default:
+                    rsvpStatus = "😢 DIDN'T GO"
                     break;
             }
         }
     }
     else{
-        if(event.authorId === sessionUser.id){
+        if( isUserHost ){
             rsvpStatus = "👑 HOSTING"
         }
         else{
-            switch (userRsvp[0]) {
+            switch ( userRsvp[0] ) {
                 case "I'm Going":
                     rsvpStatus = '👍 GOING'
                     break;
@@ -85,6 +94,7 @@ export const EventIndexItem = ({ event, usersState }) => {
         }
     }
     
+    // function for menu popup -> delete or (remove from) event
     useEffect(() => {
         if (!showMenu) return;
 
@@ -101,33 +111,22 @@ export const EventIndexItem = ({ event, usersState }) => {
         setClickAction('Delete');
         dispatch(deleteEvent(event.id));
     }
+
     const handleDeleteRSVP = (e) => {
         setClickAction('Remove');
         if(userRsvp[1]){
             dispatch(deleteRsvp({eventId: event.id, rsvpId: userRsvp[1]}));
         }
         if(inviteIdArr.length !== 0){
-            for(let id of inviteIdArr){
-                dispatch(deleteInvite(id))
+            for(let inviteId of inviteIdArr){
+                dispatch(deleteInvite(inviteId))
             }
         }
     }
-    // console.log(clickAction)
-
-    // useEffect(() => {
-
-    //     if(clickAction === 'DELETE'){
-    //         dispatch(deleteEvent(event.id))
-    //         // .then(history.push('/events'));
-    //     }else{
-
-    //     }
-
-    // }, [clickAction])
     
     return (
         <>
-            <a href={ showMenu === false && clickAction === undefined? showPage : null } id="event-item" onClick={() => localStorage.setItem('usersState', JSON.stringify(usersState))} >
+            <a href={ showMenu === false && clickAction === null ? showPage : null } id="event-item" onClick={() => localStorage.setItem('usersState', JSON.stringify(usersState))} >
                 <div id="photo-rsvp-container">
                     <img src={wazzap} id="event-img" alt="dummy-pic"/>
                     { rsvpStatus ? 
@@ -135,7 +134,7 @@ export const EventIndexItem = ({ event, usersState }) => {
                     }
                     <div id="event-date-details"> </div>
                     { event.authorId === sessionUser.id || userRsvp !== 'Invited' ? 
-                        <div id="event-item-option-btn" onClick={() => setShowMenu(true)} on> 
+                        <div id="event-item-option-btn" onClick={() => setShowMenu(true)} > 
                             <img src={dots} id="dots-options-btn" alt="options-btn-event-item" />
                         </div> : null
                     }
@@ -151,7 +150,7 @@ export const EventIndexItem = ({ event, usersState }) => {
                     }
                     { event.dateTime ? 
                         <div id="event-item-date"> {soon ? soon : eventDate} </div> :
-                        <div id="event-item-date"> TBD </div> 
+                        <div id="event-item-date"> TBD </div>
                     }
                 </div>
                 <div className="details">

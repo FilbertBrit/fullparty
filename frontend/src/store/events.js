@@ -1,5 +1,5 @@
 // This file will contain all the actions specific to the event's information and the event's Redux reducer.
-
+import { merge } from "lodash"
 import csrfFetch from './csrf';
 import { RECEIVE_RSVP } from './rsvps';
 import { RECEIVE_USER } from './user';
@@ -45,7 +45,6 @@ export const getEvents = state => {
 
 // THUNK ACTIONS
 export const fetchEvents = () => async (dispatch) => {
-    // debugger
     const response = await csrfFetch('/api/events');
     if (response.ok) {
         const events = await response.json();
@@ -114,10 +113,11 @@ export const deleteEvent = eventId => async (dispatch) => {
 
 // REDUCER
 const eventsReducer = (state = {}, action) => {
-    const nextState = { ...state };
+    // const nextState = { ...state };
+    const newState = merge({}, state)
     switch (action.type) {
         case RECEIVE_EVENTS:
-            return {...nextState, ...action.payload.events };
+            return {...newState, ...action.payload.events };
         case RECEIVE_EVENT:
             return { ...state, [action.payload.event.id]: action.payload.event };
         case RECEIVE_USER:
@@ -125,7 +125,7 @@ const eventsReducer = (state = {}, action) => {
             case RECEIVE_USERS:
             return { ...action.payload.events}
         case REMOVE_EVENT:
-            const newState = { ...state };
+            // const newState = { ...state };
             delete newState[action.eventId];
             return newState;
         case RECEIVE_RSVP:

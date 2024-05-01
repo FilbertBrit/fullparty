@@ -25,7 +25,7 @@ export function HomePage () {
     const today = new Date();
     const [windowSize, setWindowSize] = useState({width: window.innerWidth, height: window.innerHeight})
     const [mutualSize, setMutualSize] = useState(8)
-    const [usersState, setUsersState] = useState()
+    const [usersState, setUsersState] = useState({})
 
     let filteredEvents = []
 
@@ -83,7 +83,9 @@ export function HomePage () {
 
     useEffect( () => {
         // debugger
+        // console.log('useEffect')
         dispatch( fetchEvents() ).then( res => {
+            // debugger
             const users = res.users
             for(let key in users){
                 const user = {id: users[key].id, name: users[key].name, recentEvent: (res.events[users[key].recentEvent]).title}
@@ -93,7 +95,7 @@ export function HomePage () {
         }).then(dispatch( fetchNotifications() ));
 
         // dispatch( fetchNotifications())
-    }, [dispatch])
+    }, [])
 
     useEffect(() => {
         const handleWindowResize = () => {
@@ -188,8 +190,9 @@ export function HomePage () {
                 <div className="event-items">
                     <div className="events">
                         {
+                            // <EventIndexItem event={filteredEvents[0]} usersState={usersState} />
                             filteredEvents.map( (event, i) => 
-                                <EventIndexItem event={event} usersState={usersState} key={i}/>
+                                <EventIndexItem event={event} usersState={usersState} key={event.id}/>
                             )
                         }
                         <a href="/create" id="new-event-link">
