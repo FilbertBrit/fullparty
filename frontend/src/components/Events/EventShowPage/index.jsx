@@ -28,6 +28,9 @@ export function EventShowPage () {
     const date = event ? new Date(event.dateTime).toLocaleTimeString('en-US', { timeZone: 'PST' }).split(" ") : '';
     const [usersState, setUsersState] = useState()
     const savedState = JSON.parse(localStorage.getItem('usersState'));
+    const dateCheck = event ? new Date(event.dateTime) : ''
+    const today = new Date()
+    const eventDone = event ? dateCheck < today : '';
     let rsvpGoing = 0;
     let rsvpMaybe = 0;
     let location = event?.location || "No Location Set";
@@ -71,8 +74,9 @@ export function EventShowPage () {
                     </div>
                     <div ref={ref} className="show-rsvp" id={!['invited', null].includes(event.userRsvp) ? 'rsvped': null }>
                         <RsvpComponent event={event}/>
-                        {!['invited', null].includes(event.userRsvp) && 
-                            <button className='invite-container' onClick={handleInvite}><img src={invite} className='pp-invite-btn'/></button>
+                        {!['invited', null].includes(event.userRsvp) && !eventDone ?
+                            <button className='invite-container' onClick={handleInvite}><img src={invite} className='pp-invite-btn'/></button> :
+                            <div className='non-invite-btn'>  </div>
                         }
                     </div>
                 </div>
