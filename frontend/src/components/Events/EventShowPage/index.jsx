@@ -74,8 +74,10 @@ export function EventShowPage () {
                     </div>
                     <div ref={ref} className="show-rsvp" id={!['invited', null].includes(event.userRsvp) ? 'rsvped': null }>
                         <RsvpComponent event={event}/>
-                        {!['invited', null].includes(event.userRsvp) && !eventDone ?
-                            <button className='invite-container' onClick={handleInvite}><img src={invite} className='pp-invite-btn'/></button> :
+                        {!['invited', null].includes(event.userRsvp) && !eventDone &&
+                            <button className='invite-container' onClick={handleInvite}><img src={invite} className='pp-invite-btn'/></button>
+                        }
+                        { eventDone && event.dateTime !== null &&
                             <div className='non-invite-btn'>  </div>
                         }
                     </div>
