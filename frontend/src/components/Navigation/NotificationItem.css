@@ -1,0 +1,13 @@
+.notificationItem{
+    text-decoration: none;
+}
+.notification-item-user-link{
+    text-decoration: none;
+}
+.notificationItemContainer{
+    display: flex;
+    justify-content: space-between;
+}
+.notification-info{
+    width: 80%;
+}
