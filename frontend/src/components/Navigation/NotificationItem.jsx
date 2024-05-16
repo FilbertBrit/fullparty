@@ -13,6 +13,11 @@ export function NotificationItem ({ notification }) {
                 <div className='notification-prof-photo'>
 
                 </div>
+                <div className="user-profile-photo-form">
+                            <div className="initials">
+                            {notification.sender.slice(0,1)}
+                            </div>
+                    </div>
                 <div className='notification-info'>
                     <div>
                         <a href={userProfile} className='notification-item-user-link'>{notification.sender} </a>

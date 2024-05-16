@@ -7,7 +7,14 @@
 .notificationItemContainer{
     display: flex;
     justify-content: space-between;
+    padding: 0 0 10px 0;
 }
 .notification-info{
     width: 80%;
+}
+.notication-item-date{
+    color: hsla(0, 0%, 100%, .4);
+}
+.notification-item-msg{
+    color: hsla(0, 0%, 100%, .8);;
 }
